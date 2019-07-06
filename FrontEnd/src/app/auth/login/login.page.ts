@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +8,15 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private r:Router) { }
+  constructor(
+    private auth:AuthService
+    ) { }
 
   ngOnInit() {
   }
 
   login(form){
-    console.log(form.value);
-    this.r.navigateByUrl("/")
+    this.auth.login(form);
   }
 
 }
