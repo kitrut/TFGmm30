@@ -1,0 +1,21 @@
+<ion-content color="primary" padding>
+  <form #form="ngForm" (ngSubmit)="login(form)">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-center size="6" size-xs="12"> 
+          <ion-tab-button>
+            <ion-icon ios="ios-book" md="md-book"></ion-icon>
+            <ion-label>E-School</ion-label>
+          </ion-tab-button>        
+          <ion-item>
+            <ion-input name="user" type="text" placeholder="Username" ngModel required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+          </ion-item>
+          <ion-button color="success" size="large" type="submit" [disabled]="form.invalid" expand="full">Entrar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
