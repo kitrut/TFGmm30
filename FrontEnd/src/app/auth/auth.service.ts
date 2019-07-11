@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { HttpClient } from "@angular/common/http";
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   constructor(
-    private router:Router
+    private http:HttpClient
     ) { }
 
-  login(data){  
-    console.log(data);
-    this.router.navigateByUrl("/home")
+  login(user:String,pass:String):Observable<any>{
+    //valores en back: user y password
+    return this.http.post("http://localhost:9090/api/authenticate?username="+user+"&password="+pass,{},{observe: 'response'})
   }
 }

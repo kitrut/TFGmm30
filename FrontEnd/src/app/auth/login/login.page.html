@@ -13,6 +13,9 @@
           <ion-item>
             <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
           </ion-item>
+            
+          <ion-label *ngIf="error" color="danger">{{errorCode}}</ion-label>
+          
           <ion-button color="success" size="large" type="submit" [disabled]="form.invalid" expand="full">Entrar</ion-button>
         </ion-col>
       </ion-row>
