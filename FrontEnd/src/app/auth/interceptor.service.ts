@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { from, Observable, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Constantes } from '../global/constantes';
 
 
 const TOKEN_KEY = 'auth-token';
@@ -11,13 +12,11 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root'
 })
 export class InterceptorService implements HttpInterceptor {
-  
-  protected url   = 'http://localhost:9090';
 
   constructor(private storage: Storage,private router:Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return from(this.storage.get(TOKEN_KEY))
+    return from(this.storage.get(Constantes.TOKEN_KEY))
             .pipe(
                 switchMap(token => {
                     //si tiene el token, lo añade a las cabeceras de todas las peticiones
@@ -41,7 +40,7 @@ export class InterceptorService implements HttpInterceptor {
                             
                             const status =  error.status;
                             if(status == 403){
-                                this.storage.remove(TOKEN_KEY)
+                                this.storage.remove(Constantes.TOKEN_KEY)
                                 this.router.navigateByUrl("/")
                             }
                             return throwError(error);
