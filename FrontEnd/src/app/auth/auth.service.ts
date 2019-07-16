@@ -9,15 +9,25 @@ import { Storage } from '@ionic/storage';
 })
 export class AuthService {
 
+  isLoggedIn = false;
+
   constructor(
     private http:HttpClient,
     private storage: Storage,
     private router:Router
     ) { }
 
-  login(user:String,pass:String):Observable<any>{
+  login(user:String,pass:String){
     //valores en back: user y password
-    return this.http.post(Constantes.URL_LOGIN[0]+user+Constantes.URL_LOGIN[1]+pass,{},{observe: 'response'})
+    this.http.post(Constantes.URL_LOGIN[0]+user+Constantes.URL_LOGIN[1]+pass,{},{observe: 'response'}).subscribe(
+      ()=>{
+        this.isLoggedIn = true;
+        this.router.navigateByUrl('/home');
+      },
+      err =>{
+        return err;
+      }
+    )
   }
 
   logout(){
