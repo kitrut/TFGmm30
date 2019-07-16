@@ -1,4 +1,4 @@
-package tfg.BackEnd.Security;
+package tfg.backend.security;
 
 public final class SecurityConstants {
 
