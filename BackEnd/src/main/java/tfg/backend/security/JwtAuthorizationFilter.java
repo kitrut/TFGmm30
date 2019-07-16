@@ -1,4 +1,4 @@
-package tfg.BackEnd.Security;
+package tfg.backend.security;
 
 import java.io.IOException;
 import java.util.List;
