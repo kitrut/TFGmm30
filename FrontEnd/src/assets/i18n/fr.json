@@ -1,0 +1,15 @@
+{
+    "Menu":{
+        "Home": "Principale",
+        "Materiales": "Sujets",
+        "Tutorías": "Tutoriels",
+        "Agenda": "Agenda",
+        "Notas" : "Évaluations",
+        "Ajustes": "Paramètres",
+        "Salir" : "Sortir"
+    },
+
+    "Ajustes":{
+        "Selecciona un idioma":"Sélectionnez une langue"
+    }
+}

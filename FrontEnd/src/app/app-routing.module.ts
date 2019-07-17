@@ -6,11 +6,12 @@ const routes: Routes = [
   { path: '', redirectTo: 'login',  pathMatch: 'full' },
   { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule'},
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule',canActivate:[AlumnoGuard]},
-  { path: 'list', loadChildren: './pages/list/list.module#ListPageModule',canActivate:[AlumnoGuard]},
   { path: 'materiales', loadChildren: './pages/materiales/materiales.module#MaterialesPageModule',canActivate:[AlumnoGuard]},
   { path: 'tutorias', loadChildren: './pages/tutorias/tutorias.module#TutoriasPageModule',canActivate:[AlumnoGuard] },
   { path: 'agenda', loadChildren: './pages/agenda/agenda.module#AgendaPageModule',canActivate:[AlumnoGuard] },
-  { path: 'notas', loadChildren: './pages/notas/notas.module#NotasPageModule',canActivate:[AlumnoGuard] }
+  { path: 'notas', loadChildren: './pages/notas/notas.module#NotasPageModule',canActivate:[AlumnoGuard] },
+  { path: 'ajustes', loadChildren: './pages/ajustes/ajustes.module#AjustesPageModule',canActivate:[AlumnoGuard]}
+
 
 ];
 

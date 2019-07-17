@@ -1,0 +1,15 @@
+{
+    "Menu":{
+        "Home": "Home",
+        "Materiales": "Subjects",
+        "Tutorías": "Tutorials",
+        "Agenda": "Schedule",
+        "Notas" : "Ratings",
+        "Ajustes": "Settings",
+        "Salir" : "Exit"
+    },
+
+    "Ajustes":{
+        "Selecciona un idioma":"Select a language"
+    }
+}

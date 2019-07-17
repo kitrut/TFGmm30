@@ -3,7 +3,7 @@
     <ion-menu type="overlay">
       <ion-header>
         <ion-toolbar>
-            <ion-item>
+            <ion-item color="primary">
               <ion-avatar slot="start">
                 <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
               </ion-avatar>
@@ -20,7 +20,7 @@
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" *ngFor="let p of appPages">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
-                {{p.title}}
+                {{ 'Menu.'+p.title | translate }}
               </ion-label>
               <ion-badge slot="end">0</ion-badge>
             </ion-item>
