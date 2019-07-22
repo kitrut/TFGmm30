@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Usuario;
+import tfg.backend.models.Role;
 import tfg.backend.reposiroties.IUsuarioReposority;
 
 import java.util.ArrayList;
@@ -23,7 +24,11 @@ public class UserService implements UserDetailsService {
         Usuario user = iUsuarioReposority.findByUser(username);
 
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("Alumno"));
+        for(Role r:user.getRoles()) {
+        	authorities.add(new SimpleGrantedAuthority(r.getNombre()));
+        }
+        
+        
 
         UserDetails userDetails = new User(user.getUser(), user.getPassword(),authorities);
 

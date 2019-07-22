@@ -14,7 +14,7 @@ import tfg.backend.reposiroties.IUsuarioReposority;
 @SpringBootTest
 public class BackEndApplicationTests {
 
-	/*@Autowired
+	@Autowired
 	private IUsuarioReposority usuarioReposority;
 
 	@Autowired
@@ -24,11 +24,11 @@ public class BackEndApplicationTests {
 	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
-		us.setUser("user");
+		us.setUser("profesor");
 		us.setPassword(encoder.encode("password"));
 		usuarioReposority.save(us);
 
-	}*/
+	}
 
     @Test
     public void someTest(){}
