@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane>
-    <ion-menu type="overlay">
+    <ion-menu type="overlay" *ngIf="isLoggued">
       <ion-header>
         <ion-toolbar>
             <ion-item color="primary">
@@ -16,13 +16,19 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-menu-toggle auto-hide="false">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" *ngFor="let p of appPages">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages;let lastItem = last;">
+            <ion-item *ngIf="!lastItem" [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{ 'Menu.'+p.title | translate }}
               </ion-label>
               <ion-badge slot="end">0</ion-badge>
+            </ion-item>
+            <ion-item *ngIf="lastItem" [routerDirection]="'root'" [routerLink]="[p.url]" (click)="salir()">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>
+                {{ 'Menu.Salir' | translate }}
+              </ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>

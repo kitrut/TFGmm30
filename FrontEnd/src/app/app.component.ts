@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 import { RolMenuService } from './services/rol-menu.service';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { RolMenuService } from './services/rol-menu.service';
 export class AppComponent {
   public appPages;
   public rolUsuario;
+  public isLoggued;
 
   constructor(
     private platform: Platform,
@@ -22,7 +24,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private translate: TranslateService,
     private storage: Storage,
-    private rolMenuService:RolMenuService
+    private rolMenuService:RolMenuService,
+    private auth:AuthService
   ) {
     this.initializeApp();
   }
@@ -38,11 +41,27 @@ export class AppComponent {
         this.storage.set('lang', event.lang);
         this.translate.use(event.lang)
       });
-      this.storage.get("ROLES").then(data=>{
-        this.rolUsuario = data[0];
-        this.appPages = this.rolMenuService.getMenu(data[0]);
+      this.getRoles();
+      this.auth.configObservable.subscribe(() => {
+        this.isLoggued = this.auth.isLoggedIn;
+        setTimeout(()=>{ this.getRoles(); }, 200);//espera para que se actualice el storage
+        
       })
       
     });
+  }
+
+  getRoles(){
+    this.storage.get("ROLES").then(data=>{
+      if(data!=null){
+        console.log("Obteniendo roles de "+data)
+        this.rolUsuario = data[0];
+        this.appPages = this.rolMenuService.getMenu(data[0]);
+      }      
+    })
+  }
+
+  salir(){
+    this.auth.logout();
   }
 }
