@@ -1,5 +1,8 @@
 package tfg.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Collection;
 
 import javax.persistence.*;
@@ -15,8 +18,10 @@ public class Usuario {
     private String user;
     private String password;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Collection<Role> roles;
+
 
     public Collection<Role> getRoles() {
 		return roles;

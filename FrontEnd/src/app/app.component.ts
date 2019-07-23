@@ -6,28 +6,23 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
+import { RolMenuService } from './services/rol-menu.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Home',      url: '/home',      icon: 'home'     },
-    { title: 'Materiales',url: '/materiales',      icon: 'book'     },
-    { title: 'Tutorías',  url: '/tutorias',      icon: 'chatboxes'},
-    { title: 'Agenda',    url: '/agenda',      icon: 'calendar' },
-    { title: 'Notas',     url: '/notas',      icon: 'school'   },
-    { title: 'Ajustes',     url: '/ajustes',      icon: 'settings'   },
-    { title: 'Salir',     url: '/login',     icon: 'log-out'  }
-  ];
+  public appPages;
+  public rolUsuario;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private translate: TranslateService,
-    private storage: Storage
+    private storage: Storage,
+    private rolMenuService:RolMenuService
   ) {
     this.initializeApp();
   }
@@ -43,6 +38,11 @@ export class AppComponent {
         this.storage.set('lang', event.lang);
         this.translate.use(event.lang)
       });
+      this.storage.get("ROLES").then(data=>{
+        this.rolUsuario = data[0];
+        this.appPages = this.rolMenuService.getMenu(data[0]);
+      })
+      
     });
   }
 }

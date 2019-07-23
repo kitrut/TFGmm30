@@ -27,12 +27,14 @@ public class UserService implements UserDetailsService {
         for(Role r:user.getRoles()) {
         	authorities.add(new SimpleGrantedAuthority(r.getNombre()));
         }
-        
-        
 
         UserDetails userDetails = new User(user.getUser(), user.getPassword(),authorities);
 
         return  userDetails;
 
+    }
+
+    public List<Usuario> all(){
+        return iUsuarioReposority.findAll();
     }
 }
