@@ -39,9 +39,7 @@ export class InterceptorService implements HttpInterceptor {
                                 this.storage.set(TOKEN_KEY,token)
                                 if(token)
                                 {
-                                  this.storage.set("ROLES",helper.decodeToken(token).rol).then(
-                                    ()=>console.log("Roles guardados")
-                                  )
+                                  this.storage.set("ROLES",helper.decodeToken(token).rol)
                                 }
                             }
                             return event;

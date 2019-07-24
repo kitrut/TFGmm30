@@ -10,7 +10,11 @@ const routes: Routes = [
   { path: 'tutorias', loadChildren: './pages/tutorias/tutorias.module#TutoriasPageModule',canActivate:[AlumnoGuard] },
   { path: 'agenda', loadChildren: './pages/agenda/agenda.module#AgendaPageModule',canActivate:[AlumnoGuard] },
   { path: 'notas', loadChildren: './pages/notas/notas.module#NotasPageModule',canActivate:[AlumnoGuard] },
-  { path: 'ajustes', loadChildren: './pages/ajustes/ajustes.module#AjustesPageModule',canActivate:[AlumnoGuard]}
+  { path: 'ajustes', loadChildren: './pages/ajustes/ajustes.module#AjustesPageModule',canActivate:[AlumnoGuard]},
+  { path: 'alumnos', loadChildren: './pages/alumnos/alumnos.module#AlumnosPageModule' },
+  { path: 'profesores', loadChildren: './pages/profesores/profesores.module#ProfesoresPageModule' },
+  { path: 'asignaturas', loadChildren: './pages/asignaturas/asignaturas.module#AsignaturasPageModule' }
+
 
 
 ];

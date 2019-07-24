@@ -1,6 +1,9 @@
 {
     "Menu":{
         "Home": "Principal",
+        "Alumnos":"Alumnos",
+        "Profesores":"Profesores",
+        "Asignaturas":"Asignaturas",
         "Materiales": "Materiales",
         "Tutorías": "Tutorías",
         "Agenda": "Agenda",

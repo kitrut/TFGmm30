@@ -1,7 +1,10 @@
 {
     "Menu":{
         "Home": "Principale",
-        "Materiales": "Sujets",
+        "Alumnos":"Élèves",
+        "Profesores":"Enseignants",
+        "Asignaturas":"Sujets",
+        "Materiales": "Matériels",
         "Tutorías": "Tutoriels",
         "Agenda": "Agenda",
         "Notas" : "Évaluations",

@@ -54,7 +54,6 @@ export class AppComponent {
   getRoles(){
     this.storage.get("ROLES").then(data=>{
       if(data!=null){
-        console.log("Obteniendo roles de "+data)
         this.rolUsuario = data[0];
         this.appPages = this.rolMenuService.getMenu(data[0]);
       }      
