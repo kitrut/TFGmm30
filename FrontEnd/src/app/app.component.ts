@@ -6,28 +6,26 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
+import { RolMenuService } from './services/rol-menu.service';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Home',      url: '/home',      icon: 'home'     },
-    { title: 'Materiales',url: '/materiales',      icon: 'book'     },
-    { title: 'Tutorías',  url: '/tutorias',      icon: 'chatboxes'},
-    { title: 'Agenda',    url: '/agenda',      icon: 'calendar' },
-    { title: 'Notas',     url: '/notas',      icon: 'school'   },
-    { title: 'Ajustes',     url: '/ajustes',      icon: 'settings'   },
-    { title: 'Salir',     url: '/login',     icon: 'log-out'  }
-  ];
+  public appPages;
+  public rolUsuario;
+  public isLoggued;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private translate: TranslateService,
-    private storage: Storage
+    private storage: Storage,
+    private rolMenuService:RolMenuService,
+    private auth:AuthService
   ) {
     this.initializeApp();
   }
@@ -43,6 +41,26 @@ export class AppComponent {
         this.storage.set('lang', event.lang);
         this.translate.use(event.lang)
       });
+      this.getRoles();
+      this.auth.configObservable.subscribe(() => {
+        this.isLoggued = this.auth.isLoggedIn;
+        setTimeout(()=>{ this.getRoles(); }, 200);//espera para que se actualice el storage
+        
+      })
+      
     });
+  }
+
+  getRoles(){
+    this.storage.get("ROLES").then(data=>{
+      if(data!=null){
+        this.rolUsuario = data[0];
+        this.appPages = this.rolMenuService.getMenu(data[0]);
+      }      
+    })
+  }
+
+  salir(){
+    this.auth.logout();
   }
 }

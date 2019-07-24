@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import tfg.backend.models.Usuario;
@@ -14,7 +13,7 @@ import tfg.backend.reposiroties.IUsuarioReposority;
 @SpringBootTest
 public class BackEndApplicationTests {
 
-	/*@Autowired
+	@Autowired
 	private IUsuarioReposority usuarioReposority;
 
 	@Autowired
@@ -24,11 +23,11 @@ public class BackEndApplicationTests {
 	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
-		us.setUser("user");
+		us.setUser("profesor");
 		us.setPassword(encoder.encode("password"));
 		usuarioReposority.save(us);
 
-	}*/
+	}
 
     @Test
     public void someTest(){}
