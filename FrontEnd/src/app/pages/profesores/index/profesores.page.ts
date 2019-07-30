@@ -10,12 +10,16 @@ import { Router } from '@angular/router';
 export class ProfesoresPage implements OnInit {
 
   profesores=[];
+  profesoresFiltrados=[];
   buscado="";
   
   constructor(private profesorService:ProfesoresService,private router: Router) { }
 
   ngOnInit() {
-    this.profesores = this.profesorService.getAll();
+    this.profesorService.getAll().subscribe(
+      data=>this.profesores =  this.profesoresFiltrados = data,
+      error=>this.profesores=[]
+    );
   }
 
   perfil(id){
@@ -23,7 +27,14 @@ export class ProfesoresPage implements OnInit {
   }
 
   buscar(){
-    this.profesores = this.profesorService.search(this.buscado.toLowerCase());
+    let info = this.buscado.toLowerCase();
+    if(this.buscado=="")
+      this.profesoresFiltrados=this.profesores;
+    else{
+      this.profesoresFiltrados=this.profesores.filter(data=>{
+        return (data.nombre.toLowerCase().includes(info) || data.apellidos.toLowerCase().includes(info) ||data.email.toLowerCase().includes(info));
+      })
+    }
   }
 
 }

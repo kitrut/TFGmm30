@@ -14,6 +14,7 @@ import tfg.backend.reposiroties.IUsuarioReposority;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -36,5 +37,16 @@ public class UserService implements UserDetailsService {
 
     public List<Usuario> all(){
         return iUsuarioReposority.findAll();
+    }
+
+    public List<Usuario> getProfesores(){
+        Role r = new Role();
+        r.setId(2l);
+        r.setNombre("PROFESOR");
+        return iUsuarioReposority.findByRoles(r);
+    }
+
+    public Optional<Usuario> getProfesorID(Integer id){
+        return iUsuarioReposority.findById(id);
     }
 }

@@ -1,36 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Constantes } from '../global/constantes';
+import { Usuario } from '../models/usuario';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfesoresService {
 
-  profesores=[
-    {id:1,name:"Juan",apellidos:"García García",mail:"a@a.a"},
-    {id:2,name:"Luis",apellidos:"García García",mail:"b@a.a"},
-    {id:3,name:"María",apellidos:"García García",mail:"c@a.a"},
-    {id:4,name:"Ana",apellidos:"García García",mail:"d@a.a"},
-  ]
+  constructor(private http:HttpClient) { }
 
-  constructor() { }
-
-  getAll():Array<{}>{
-    return this.profesores;
+  getAll():Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(Constantes.URL_PROFESORES,{});
   }
 
-  search(info):Array<{}>{
-    if(info=="")
-      return this.profesores;
-    return this.profesores.filter(data=>{
-      return (data.name.toLowerCase().includes(info) || data.apellidos.toLowerCase().includes(info) ||data.mail.toLowerCase().includes(info));
-    })
-  }
-  
-  findById(id){
-    let aux=this.profesores.filter(data => data.id==id);
-    if(aux.length!=0)
-      return aux[0]
-    return null;
-    
+  getById(id):Observable<Usuario>{
+    return this.http.get<Usuario>(Constantes.URL_PROFESORES+"/"+id,{});
   }
 }

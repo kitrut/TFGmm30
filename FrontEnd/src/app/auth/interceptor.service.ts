@@ -36,9 +36,9 @@ export class InterceptorService implements HttpInterceptor {
                             if (event instanceof HttpResponse) {
                                 //captura el token de la respuesta del servidor
                                 const token =event.headers.get("Authorization");
-                                this.storage.set(TOKEN_KEY,token)
                                 if(token)
                                 {
+                                  this.storage.set(TOKEN_KEY,token)
                                   this.storage.set("ROLES",helper.decodeToken(token).rol)
                                 }
                             }
