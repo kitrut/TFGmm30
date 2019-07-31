@@ -1,10 +1,7 @@
 package tfg.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Usuario;
 import tfg.backend.services.AsignaturaService;
@@ -29,4 +26,8 @@ public class AsignaturaController {
         return asignaturaService.findById(id);
     }
 
+    @PostMapping
+    public Asignatura create(@RequestBody Asignatura asignatura){
+        return asignaturaService.create(asignatura);
+    }
 }

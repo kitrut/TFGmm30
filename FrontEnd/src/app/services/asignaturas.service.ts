@@ -18,4 +18,8 @@ export class AsignaturasService {
   getById(id):Observable<Asignatura>{
     return this.http.get<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id,{});
   }
+
+  create(Asignatura):Observable<Asignatura>{
+    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS,Asignatura,{});
+  }
 }

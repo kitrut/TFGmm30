@@ -21,4 +21,8 @@ public class AsignaturaService {
     public Optional<Asignatura> findById(Long id){
         return asignaturaRepository.findById(id);
     }
+
+    public Asignatura create(Asignatura asignatura){
+        return asignaturaRepository.save(asignatura);
+    }
 }

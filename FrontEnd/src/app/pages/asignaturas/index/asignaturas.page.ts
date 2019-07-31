@@ -24,6 +24,9 @@ export class AsignaturasPage implements OnInit {
   detalles(id){
     this.router.navigateByUrl('/asignaturas/'+id);
   }
+  crear(){
+    this.router.navigateByUrl('/asignaturas/create');
+  }
   filtrar(value){
     if(value.detail.value=="Todos"){
       this.asignaturas = this.asignaturasTodas;
