@@ -14,12 +14,8 @@ const routes: Routes = [
   { path: 'alumnos', loadChildren: './pages/alumnos/alumnos.module#AlumnosPageModule' },
   { path: 'profesores', loadChildren: './pages/profesores/index/profesores.module#ProfesoresPageModule' },
   { path: 'profesores/:id', loadChildren: './pages/profesores/perfil/perfil.module#PerfilPageModule' },
-  { path: 'asignaturas', loadChildren: './pages/asignaturas/asignaturas.module#AsignaturasPageModule' },
-  
-
-
-
-
+  { path: 'asignaturas', loadChildren: './pages/asignaturas/index/asignaturas.module#AsignaturasPageModule' },
+  { path: 'asignaturas/:id', loadChildren: './pages/asignaturas/detalles/detalle-asignatura.module#DetalleAsignaturaPageModule' },
 ];
 
 @NgModule({
