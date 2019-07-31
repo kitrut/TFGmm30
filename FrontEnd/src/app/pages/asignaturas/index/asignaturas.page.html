@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'Menu.Asignaturas' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="crear()">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+      <ion-label>Curso</ion-label>
+      <ion-select (ionChange)="filtrar($event)">
+        <ion-select-option value="Todos">Todos</ion-select-option>
+        <ion-select-option value="1º">1º</ion-select-option>
+        <ion-select-option value="2º">2º</ion-select-option>
+        <ion-select-option value="3º">3º</ion-select-option>
+        <ion-select-option value="4º">4º</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-list no-padding>
+        <ion-item text-center color="secondary">
+          <ion-avatar slot="start"></ion-avatar>
+          <ion-label>{{'Asignaturas.Nombre' | translate}}</ion-label>
+          <ion-label>{{'Asignaturas.Descripción' | translate}}</ion-label>
+          <ion-label>{{'Asignaturas.Curso' | translate}}</ion-label>
+        </ion-item>
+        <ion-item-sliding *ngFor="let asignatura of asignaturas">
+          <ion-item-options side="end">
+            <ion-item-option color="primary" (click)="detalles(asignatura.id)">
+              <ion-icon slot="top" name="information-circle-outline"></ion-icon>
+              {{'Asignaturas.Detalles' | translate}}
+            </ion-item-option>
+            <ion-item-option color="tertiary">
+              <ion-icon slot="top" name="create"></ion-icon>
+              {{'Asignaturas.Editar' | translate}}
+            </ion-item-option>
+            <ion-item-option color="danger">
+              <ion-icon slot="top" name="trash"></ion-icon>
+              {{'Asignaturas.Borrar' | translate}}
+            </ion-item-option>
+          </ion-item-options>
+    
+          <ion-item text-center>
+            <ion-avatar slot="start">
+              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+            <ion-label text-wrap>{{asignatura.nombre}}</ion-label>
+            <ion-label>{{asignatura.descripcion}}</ion-label>
+            <ion-label text-wrap>{{asignatura.curso}}</ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+</ion-content>

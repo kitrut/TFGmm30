@@ -14,5 +14,15 @@
 
     "Ajustes":{
         "Selecciona un idioma":"Selecciona un idioma"
+    },
+
+    "Asignaturas":{
+        "Nombre":"Nombre",
+        "Descripción":"Descripción",
+        "Curso":"Curso",
+        "Detalles":"Detalles",
+        "Editar":"Editar",
+        "Borrar":"Borrar"
+
     }
 }
