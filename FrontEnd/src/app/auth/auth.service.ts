@@ -33,10 +33,21 @@ export class AuthService{
     )
   }
 
+  checktoken(){
+     this.http.get(Constantes.URL_PROFESORES,{}).subscribe(
+       ()=>{
+        this.isLoggedIn = true;
+        this.router.navigateByUrl('/home');
+        this.configObservable.next();},
+       err=>{}
+     )
+  }
+
   logout(){
     this.storage.remove(Constantes.TOKEN_KEY)
     this.storage.remove("ROLES")
     this.router.navigateByUrl("/")
+    this.isLoggedIn = false;
     this.configObservable.next();
   }
 }

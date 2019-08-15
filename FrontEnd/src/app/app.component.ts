@@ -41,11 +41,11 @@ export class AppComponent {
         this.storage.set('lang', event.lang);
         this.translate.use(event.lang)
       });
+      this.auth.checktoken();
       this.getRoles();
       this.auth.configObservable.subscribe(() => {
         this.isLoggued = this.auth.isLoggedIn;
-        setTimeout(()=>{ this.getRoles(); }, 200);//espera para que se actualice el storage
-        
+        setTimeout(()=>{ this.getRoles(); }, 200);//espera para que se actualice el storage        
       })
       
     });
