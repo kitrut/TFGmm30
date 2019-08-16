@@ -16,9 +16,8 @@ const routes: Routes = [
   { path: 'profesores/:id', loadChildren: './pages/profesores/perfil/perfil.module#PerfilPageModule' },
   
   //ASIGNATURAS
-  { path: 'asignaturas', loadChildren: './pages/asignaturas/index/asignaturas.module#AsignaturasPageModule' },
-  { path: 'asignaturas/create', loadChildren: './pages/asignaturas/create-asignatura/create-asignatura.module#CreateAsignaturaPageModule' },
-  { path: 'asignaturas/:id', loadChildren: './pages/asignaturas/detalles/detalle-asignatura.module#DetalleAsignaturaPageModule' },
+  { path: 'asignaturas', loadChildren: './pages/asignaturas/asignaturas.module#AsignaturasPageModule' },
+
   
 
 ];

@@ -4,11 +4,11 @@ import { Asignatura } from 'src/app/models/asignatura';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-asignaturas',
-  templateUrl: './asignaturas.page.html',
-  styleUrls: ['./asignaturas.page.scss'],
+  selector: 'app-index-asignaturas',
+  templateUrl: './index-asignatura.page.html',
+  styleUrls: ['./index-asignatura.page.scss'],
 })
-export class AsignaturasPage implements OnInit {
+export class IndexAsignaturaPage implements OnInit {
 
   asignaturas:Asignatura[]=[];
   asignaturasTodas:Asignatura[]=[];

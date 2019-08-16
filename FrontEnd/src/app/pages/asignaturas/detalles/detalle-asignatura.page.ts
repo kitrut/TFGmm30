@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
+import { Asignatura } from 'src/app/models/asignatura';
 
 @Component({
   selector: 'app-detalle-asignatura',
@@ -9,7 +10,7 @@ import { AsignaturasService } from 'src/app/services/asignaturas.service';
 })
 export class DetalleAsignaturaPage implements OnInit {
 
-  asignatura:{}=null;
+  asignatura:Asignatura=new Asignatura();
   constructor(private route: ActivatedRoute,private asginaturasService:AsignaturasService) { }
 
   ngOnInit() {
