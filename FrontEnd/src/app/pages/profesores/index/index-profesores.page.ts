@@ -3,11 +3,11 @@ import { ProfesoresService } from 'src/app/services/profesores.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-profesores',
-  templateUrl: './profesores.page.html',
-  styleUrls: ['./profesores.page.scss'],
+  selector: 'app-index-profesores',
+  templateUrl: './index-profesores.page.html',
+  styleUrls: ['./index-profesores.page.scss'],
 })
-export class ProfesoresPage implements OnInit {
+export class IndexProfesoresPage implements OnInit {
 
   profesores=[];
   profesoresFiltrados=[];
