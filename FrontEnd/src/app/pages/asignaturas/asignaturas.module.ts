@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { IonicModule } from '@ionic/angular';
 
 import { AsignaturasPage } from './asignaturas.page';
@@ -33,7 +33,8 @@ const routes: Routes = [
     IonicModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    NgxPaginationModule
   ],
   declarations: [AsignaturasPage,DetalleAsignaturaPage,CreateAsignaturaPage,IndexAsignaturaPage]
 })

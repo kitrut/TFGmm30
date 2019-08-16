@@ -15,6 +15,8 @@ import { InterceptorService } from './auth/interceptor.service';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -30,7 +32,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
       }
-    })
+    }),
+    NgxPaginationModule
   ],
   providers: [
     StatusBar,
