@@ -30,4 +30,7 @@ public class AsignaturaController {
     public Asignatura create(@RequestBody Asignatura asignatura){
         return asignaturaService.create(asignatura);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id){asignaturaService.delete(id);}
 }

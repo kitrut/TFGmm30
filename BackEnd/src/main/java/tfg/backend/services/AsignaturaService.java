@@ -25,4 +25,6 @@ public class AsignaturaService {
     public Asignatura create(Asignatura asignatura){
         return asignaturaRepository.save(asignatura);
     }
+
+    public void delete(Long id){ asignaturaRepository.deleteById(id);}
 }
