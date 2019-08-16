@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,11 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
+  loginForm = new FormGroup({
+    user: new FormControl(''),
+    password: new FormControl(''),
+  });
 
   error:boolean=false;
   errorCode:number;
@@ -16,9 +22,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login(form){
+  login(){
     this.error=false;
-    this.auth.login(form.value.user,form.value.password);
+    this.auth.login(this.loginForm.value.user,this.loginForm.value.password);
+    this.loginForm.reset();
   }
 
 }

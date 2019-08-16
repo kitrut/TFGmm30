@@ -1,5 +1,5 @@
 <ion-content color="primary" padding>
-  <form #form="ngForm" (ngSubmit)="login(form)" (keyup.enter)="login(form)">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" (keyup.enter)="login(form)">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-center size="6" size-xs="12"> 
@@ -8,15 +8,15 @@
             <ion-label>E-School</ion-label>
           </ion-tab-button>        
           <ion-item>
-            <ion-input name="user" type="text" placeholder="Username" ngModel required></ion-input>
+            <ion-input formControlName="user" type="text" placeholder="Username" autofocus required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+            <ion-input formControlName="password" type="password" placeholder="Password" required></ion-input>
           </ion-item>
             
           <ion-label *ngIf="error" color="danger">{{errorCode}}</ion-label>
           
-          <ion-button color="success" size="large" type="submit" [disabled]="form.invalid" expand="full">Entrar</ion-button>
+          <ion-button color="success" size="large" type="submit" [disabled]="loginForm.invalid" expand="full">Entrar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

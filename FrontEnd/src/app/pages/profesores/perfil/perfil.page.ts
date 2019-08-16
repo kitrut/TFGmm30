@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfesoresService } from 'src/app/services/profesores.service';
-import { Usuario } from 'src/app/models/usuario';
+import { Usuario, Profesor } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-perfil',
@@ -11,7 +11,7 @@ import { Usuario } from 'src/app/models/usuario';
 export class PerfilPage implements OnInit {
 
   id: string;
-  profesor:Usuario={id:null,nombre:null,apellidos:null,email:null};
+  profesor:Profesor={id:null,nombre:null,apellidos:null,email:null,asignaturas:[]};
 
   constructor(private route: ActivatedRoute, private profesorService:ProfesoresService) {
     

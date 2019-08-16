@@ -47,6 +47,8 @@ public class UserService implements UserDetailsService {
     }
 
     public Optional<Usuario> getProfesorID(Integer id){
+        Optional<Usuario> profe = iUsuarioReposority.findById(id);
+
         return iUsuarioReposority.findById(id);
     }
 }

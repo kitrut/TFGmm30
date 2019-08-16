@@ -62,12 +62,12 @@
           </ion-item>
           <ion-card-content>
             <ion-list>
-              <ion-item *ngFor="let a of [1,2,3,4,5] | paginate: { itemsPerPage: 3, currentPage: p,id:'alumnos' }">
-                Asignatura {{a}}
-                <ion-button (click)="crear()" slot="end">
+              <ion-item *ngFor="let a of profesor.asignaturas | paginate: { itemsPerPage: 3, currentPage: p,id:'alumnos' }">
+                {{a.nombre}}
+                <ion-button [routerLink]="['/asignaturas/'+ a.id]" slot="end">
                   <ion-icon slot="icon-only" name="contact"></ion-icon>
                 </ion-button>
-                <ion-button (click)="crear()" slot="end">
+                <ion-button slot="end">
                   <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
                 </ion-button>
               </ion-item>
