@@ -12,11 +12,11 @@ const routes: Routes = [
   { path: 'notas', loadChildren: './pages/notas/notas.module#NotasPageModule',canActivate:[AlumnoGuard] },
   { path: 'ajustes', loadChildren: './pages/ajustes/ajustes.module#AjustesPageModule',canActivate:[AlumnoGuard]},
   { path: 'alumnos', loadChildren: './pages/alumnos/alumnos.module#AlumnosPageModule' },
-  { path: 'profesores', loadChildren: './pages/profesores/index/profesores.module#ProfesoresPageModule' },
-  { path: 'profesores/:id', loadChildren: './pages/profesores/perfil/perfil.module#PerfilPageModule' },
   
   //ASIGNATURAS
   { path: 'asignaturas', loadChildren: './pages/asignaturas/asignaturas.module#AsignaturasPageModule' },
+  { path: 'profesores', loadChildren: './pages/profesores/profesores.module#ProfesoresPageModule' },
+
 
   
 
