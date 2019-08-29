@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Asignatura } from 'src/app/models/asignatura';
 
@@ -11,11 +11,15 @@ import { Asignatura } from 'src/app/models/asignatura';
 export class DetalleAsignaturaPage implements OnInit {
 
   asignatura:Asignatura=new Asignatura();
-  constructor(private route: ActivatedRoute,private asginaturasService:AsignaturasService) { }
+  constructor(private router:Router,private route: ActivatedRoute,private asginaturasService:AsignaturasService) { }
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     this.asginaturasService.getById(id).subscribe(data=>this.asignatura = data);
+  }
+
+  addMaterial(){
+    this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/addMaterial");
   }
 
 }
