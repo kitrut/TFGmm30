@@ -18,8 +18,10 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
+
     @Autowired
     private IUsuarioReposority iUsuarioReposority;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario user = iUsuarioReposority.findByUser(username);

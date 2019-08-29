@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Asignatura } from 'src/app/models/asignatura';
 import { Router } from '@angular/router';
+import { ProfesoresService } from 'src/app/services/profesores.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-index-asignaturas',
@@ -13,12 +15,17 @@ export class IndexAsignaturaPage implements OnInit {
   asignaturas:Asignatura[]=[];
   asignaturasTodas:Asignatura[]=[];
 
-  constructor(private asignService:AsignaturasService,private router:Router) { }
+  constructor(private authService:AuthService, private asignService:AsignaturasService,private profService:ProfesoresService,private router:Router) { }
 
   ngOnInit() {
-    this.asignService.getAll().subscribe(
-      data=>{this.asignaturas=this.asignaturasTodas=data;}
-    )
+    if(this.authService.isAdmin()){
+      this.asignService.getAll().subscribe(data=>{this.asignaturas=this.asignaturasTodas=data;});
+    }else if(this.authService.isProfesor()){
+      this.profService.getAsignaturas(2).subscribe(
+        data=>{this.asignaturas=this.asignaturasTodas=data;}
+      )
+    }
+    
   }
 
   detalles(id){
