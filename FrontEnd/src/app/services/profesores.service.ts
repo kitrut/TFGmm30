@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Constantes } from '../global/constantes';
-import { Usuario } from '../models/usuario';
+import { Profesor } from '../models/usuario';
 import { Observable } from 'rxjs';
+import { Asignatura } from '../models/asignatura';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,15 @@ export class ProfesoresService {
 
   constructor(private http:HttpClient) { }
 
-  getAll():Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(Constantes.URL_PROFESORES,{});
+  getAll():Observable<Profesor[]>{
+    return this.http.get<Profesor[]>(Constantes.URL_PROFESORES,{});
   }
 
-  getById(id):Observable<Usuario>{
-    return this.http.get<Usuario>(Constantes.URL_PROFESORES+"/"+id,{});
+  getById(id):Observable<Profesor>{
+    return this.http.get<Profesor>(Constantes.URL_PROFESORES+"/"+id,{});
+  }
+
+  getAsignaturas(id):Observable<Asignatura[]>{
+    return this.http.get<Asignatura[]>(Constantes.URL_PROFESORES+"/"+id+"/asignaturas",{});
   }
 }

@@ -1,11 +1,16 @@
 package tfg.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Asignatura {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,9 +30,21 @@ public class Asignatura {
         this.materiales = materiales;
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JsonBackReference
     private Collection<Materiales> materiales;
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Profesor profesor;
 
     public Long getId() {
         return id;
