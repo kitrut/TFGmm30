@@ -33,7 +33,7 @@
           <ion-card-content>
 
             <p>Descripción: {{asignatura.descripcion}}</p>
-            <p>Profesor:</p>
+            <p>Profesor: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -75,8 +75,8 @@
           </ion-item>
           <ion-card-content>
             <ion-list>
-              <ion-item *ngFor="let a of [1,2,3,4,5] | paginate: { itemsPerPage: 3, currentPage: p2,id:'materiales' }">
-                Tema {{a}}</ion-item>
+              <ion-item *ngFor="let a of asignatura.materiales | paginate: { itemsPerPage: 3, currentPage: p2,id:'materiales' }">
+                {{a.titulo}}</ion-item>
             </ion-list>
             <pagination-controls (pageChange)="p2 = $event" id="materiales"></pagination-controls>
           </ion-card-content>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Asignatura } from '../models/asignatura';
 import { Observable } from 'rxjs';
 import { Constantes } from '../global/constantes';
+import { Materiales } from '../models/materiales';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class AsignaturasService {
 
   create(Asignatura):Observable<Asignatura>{
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS,Asignatura,{});
+  }
+
+  createMaterial(id,mat:Materiales):Observable<Asignatura>{
+    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id+"/materiales",mat,{});
   }
 }

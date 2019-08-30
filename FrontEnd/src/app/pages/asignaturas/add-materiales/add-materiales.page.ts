@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AsignaturasService } from 'src/app/services/asignaturas.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Materiales } from 'src/app/models/materiales';
+interface UploadResult {
+  isImg: boolean
+  name: string
+  url: string
+}
 @Component({
   selector: 'app-add-materiales',
   templateUrl: './add-materiales.page.html',
   styleUrls: ['./add-materiales.page.scss'],
 })
 export class AddMaterialesPage implements OnInit {
-
+  titulo="";
   content=`
   # Titulo
   ## Subtitulo
@@ -41,17 +48,37 @@ export class AddMaterialesPage implements OnInit {
   `;
   options={
     resizable:true,
-    enablePreviewContentClick: false,
-    scrollPastEnd:10,
+    enablePreviewContentClick: false
   };
-  constructor() { }
+  constructor(private asigService:AsignaturasService,private route: ActivatedRoute,private router:Router) {   }
 
   ngOnInit() {
   }
 
   guardar(){
-    console.log(this.content)
+    let mat:Materiales = new Materiales(null,this.titulo,this.content);
+    this.asigService.createMaterial(this.route.snapshot.paramMap.get('id'),mat)
+    .subscribe(
+      ()=>{this.router.navigate(["/asignaturas/",this.route.snapshot.paramMap.get('id')])}
+    )
   }
+
+  doUpload(files: Array<File>): Promise<Array<UploadResult>> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let result: Array<UploadResult> = [];
+        for (let file of files) {
+          result.push({
+            name: file.name,
+            url: `https://avatars3.githubusercontent.com/${file.name}`,
+            isImg: file.type.indexOf('image') !== -1
+          })
+        }
+        resolve(result);
+      }, 3000);
+    });
+  }
+  
 
   hidePreview(e) { console.log(e.getContent()); }
 

@@ -40,6 +40,14 @@ public class UserService implements UserDetailsService {
     public List<Usuario> all(){
         return iUsuarioReposority.findAll();
     }
+    
+    public Usuario findById(Integer id){
+    	Usuario p = this.iUsuarioReposority.findById(id).orElse(null);
+        if(p!=null){
+            p.setAsignaturasImpartidas(p.getAsignaturasImpartidas());
+        }
+        return p;
+    }
 
     public List<Usuario> getProfesores(){
         Role r = new Role();

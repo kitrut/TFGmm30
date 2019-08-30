@@ -8,13 +8,14 @@ import java.util.Collection;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Usuario implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
@@ -29,9 +30,21 @@ public class Usuario implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     @JsonBackReference
     private Collection<Role> roles;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Collection<Asignatura> asignaturasImpartidas;
 
 
-    public Collection<Role> getRoles() {
+    public Collection<Asignatura> getAsignaturasImpartidas() {
+		return asignaturasImpartidas;
+	}
+
+	public void setAsignaturasImpartidas(Collection<Asignatura> asignaturasImpartidas) {
+		this.asignaturasImpartidas = asignaturasImpartidas;
+	}
+
+	public Collection<Role> getRoles() {
 		return roles;
 	}
 

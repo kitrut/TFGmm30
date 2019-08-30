@@ -2,6 +2,7 @@ package tfg.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -21,30 +22,35 @@ public class Asignatura {
     private String descripcion;
 
     private String curso;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    private Collection<Materiales> materiales;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Usuario profesor;
 
     public Collection<Materiales> getMateriales() {
         return materiales;
     }
-
+    
+    public boolean addMateriales(Materiales materiales) {
+    	return this.materiales.add(materiales);
+    }
     public void setMateriales(Collection<Materiales> materiales) {
         this.materiales = materiales;
     }
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JsonBackReference
-    private Collection<Materiales> materiales;
+    
 
-    public Profesor getProfesor() {
+    public Usuario getProfesor() {
         return profesor;
     }
 
-    public void setProfesor(Profesor profesor) {
+    public void setProfesor(Usuario profesor) {
         this.profesor = profesor;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
-    private Profesor profesor;
+   
 
     public Long getId() {
         return id;
