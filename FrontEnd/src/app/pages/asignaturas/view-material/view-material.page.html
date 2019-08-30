@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ver material</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <md-editor name="Content"
+  [(ngModel)]="content"
+  [mode]="mode" 
+  [options]="options">
+</md-editor>
+</ion-content>

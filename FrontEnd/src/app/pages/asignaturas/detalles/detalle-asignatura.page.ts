@@ -22,4 +22,9 @@ export class DetalleAsignaturaPage implements OnInit {
     this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/addMaterial");
   }
 
+  verMaterial(id){
+    console.log(id)
+    this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/materiales/"+id);
+  }
+
 }

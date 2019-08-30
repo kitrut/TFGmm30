@@ -13,6 +13,7 @@ import { IndexAsignaturaPage } from './index/index-asignatura.page';
 import { AddMaterialesPage } from './add-materiales/add-materiales.page';
 
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { ViewMaterialPage } from './view-material/view-material.page';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: ':id/addMaterial',
     component: AddMaterialesPage
+  },
+  {
+    path: ':id/materiales/:idMat',
+    component: ViewMaterialPage
   }
 ];
 
@@ -49,7 +54,8 @@ const routes: Routes = [
     DetalleAsignaturaPage,
     CreateAsignaturaPage,
     IndexAsignaturaPage,
-    AddMaterialesPage
+    AddMaterialesPage,
+    ViewMaterialPage
   ]
 })
 export class AsignaturasPageModule { }
