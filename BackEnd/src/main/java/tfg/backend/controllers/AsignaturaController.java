@@ -3,7 +3,7 @@ package tfg.backend.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tfg.backend.models.Asignatura;
-import tfg.backend.models.Usuario;
+import tfg.backend.models.Materiales;
 import tfg.backend.services.AsignaturaService;
 
 import java.util.Collection;
@@ -24,6 +24,16 @@ public class AsignaturaController {
     @GetMapping("/{id}")
     public Optional<Asignatura> find(@PathVariable("id") Long id) {
         return asignaturaService.findById(id);
+    }
+    
+    @PostMapping("/{id}/materiales")
+    public void addMateriales(@PathVariable("id") Long id,@RequestBody Materiales material) {
+        asignaturaService.addMaterial(id, material);
+    }
+    
+    @GetMapping("/{id}/materiales/{idMat}")
+    public Materiales getMaterial(@PathVariable("id") Long id,@PathVariable("idMat") Long idMat) {
+        return asignaturaService.getMaterial(idMat);
     }
 
     @PostMapping

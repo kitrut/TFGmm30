@@ -33,7 +33,7 @@
           <ion-card-content>
 
             <p>Descripción: {{asignatura.descripcion}}</p>
-            <p>Profesor:</p>
+            <p>Profesor: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -49,7 +49,7 @@
           </ion-item>
           <ion-card-content>
             <ion-list>
-              <ion-item *ngFor="let a of [1,2,3,4,5] | paginate: { itemsPerPage: 3, currentPage: p,id:'alumnos' }">
+              <ion-item *ngFor="let a of [1,2,3,4,5] | paginate: { itemsPerPage: 5, currentPage: p,id:'alumnos' }">
                 Alumno {{a}}
                 <ion-button (click)="crear()" slot="end">
                   <ion-icon slot="icon-only" name="contact"></ion-icon>
@@ -69,14 +69,21 @@
         <ion-card>
           <ion-item text-center color="primary">
             <ion-label>Materiales</ion-label>
-            <ion-button (click)="crear()" slot="end">
+            <ion-button (click)="addMaterial()" slot="end">
               <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
             </ion-button>
           </ion-item>
           <ion-card-content>
             <ion-list>
-              <ion-item *ngFor="let a of [1,2,3,4,5] | paginate: { itemsPerPage: 3, currentPage: p2,id:'materiales' }">
-                Tema {{a}}</ion-item>
+              <ion-item *ngFor="let a of asignatura.materiales | paginate: { itemsPerPage: 5, currentPage: p2,id:'materiales' }">
+                {{a.titulo}}
+                <ion-button (click)="verMaterial(a.id)" slot="end">
+                  <ion-icon slot="icon-only" name="book"></ion-icon>
+                </ion-button>
+                <ion-button (click)="verMaterial(a.id)" slot="end">
+                  <ion-icon slot="icon-only" name="cloud-download"></ion-icon>
+                </ion-button>
+              </ion-item>
             </ion-list>
             <pagination-controls (pageChange)="p2 = $event" id="materiales"></pagination-controls>
           </ion-card-content>

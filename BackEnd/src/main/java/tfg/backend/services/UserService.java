@@ -40,6 +40,11 @@ public class UserService implements UserDetailsService {
     public List<Usuario> all(){
         return iUsuarioReposority.findAll();
     }
+    
+    public Usuario findById(Integer id){
+    	Usuario p = this.iUsuarioReposority.findById(id).orElse(null);
+        return p;
+    }
 
     public List<Usuario> getProfesores(){
         Role r = new Role();
@@ -49,8 +54,6 @@ public class UserService implements UserDetailsService {
     }
 
     public Optional<Usuario> getProfesorID(Integer id){
-        Optional<Usuario> profe = iUsuarioReposority.findById(id);
-
         return iUsuarioReposority.findById(id);
     }
 }

@@ -3,41 +3,38 @@ package tfg.backend.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Materiales {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    private String titulo;
+	private String titulo;
 
-    public Long getId() {
-        return id;
-    }
+	private String contenido;
 
-    public Asignatura getAsignatura() {
-        return asignatura;
-    }
+	public String getContenido() {
+		return contenido;
+	}
 
-    public void setAsignatura(Asignatura asignatura) {
-        this.asignatura = asignatura;
-    }
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
+	}
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
-    private Asignatura asignatura;
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getTitulo() {
-        return titulo;
-    }
+	public String getTitulo() {
+		return titulo;
+	}
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 }
