@@ -27,4 +27,8 @@ export class AsignaturasService {
   createMaterial(id,mat:Materiales):Observable<Asignatura>{
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id+"/materiales",mat,{});
   }
+
+  getMaterial(idAsig,idMat):Observable<Materiales>{
+    return this.http.get<Materiales>(Constantes.URL_ASIGNATURAS+"/"+idAsig+"/materiales/"+idMat,{});
+  }
 }

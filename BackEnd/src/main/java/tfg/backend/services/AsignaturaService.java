@@ -41,4 +41,9 @@ public class AsignaturaService {
     	}
     	return asignatura;
     }
+    
+    public Materiales getMaterial(Long idMat) {
+		Materiales mat = materialesRepository.findById(idMat).orElse(null);
+    	return mat;
+    }
 }

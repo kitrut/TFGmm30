@@ -1,4 +1,5 @@
 import { Usuario } from './usuario';
+import { Materiales } from './materiales';
 
 export class Asignatura {
     id: number;
@@ -6,6 +7,7 @@ export class Asignatura {
     descripcion: string;
     curso: string;
     profesor:Usuario;
+    materiales:Materiales[]
 
     constructor(){
         this.id=null;

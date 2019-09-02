@@ -4,14 +4,15 @@
       <ion-menu-button></ion-menu-button>
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Ver material</ion-title>
+    <ion-title>{{titulo}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <md-editor name="Content"
   [(ngModel)]="content"
-  [mode]="mode" 
+  [mode]="mode"
+  [height]="'auto'"
   [options]="options">
 </md-editor>
 </ion-content>

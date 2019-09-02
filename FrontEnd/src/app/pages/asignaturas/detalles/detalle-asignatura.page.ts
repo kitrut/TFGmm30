@@ -15,7 +15,13 @@ export class DetalleAsignaturaPage implements OnInit {
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.asginaturasService.getById(id).subscribe(data=>this.asignatura = data);
+    this.asginaturasService.getById(id).subscribe(
+      data=>{
+        data.materiales = data.materiales.sort((a, b) => (a.titulo > b.titulo) ? 1 : -1)
+        this.asignatura = data
+    
+    });
+    
   }
 
   addMaterial(){

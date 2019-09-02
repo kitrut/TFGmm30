@@ -48,7 +48,7 @@ export class AddMaterialesPage implements OnInit {
   `;
   options={
     resizable:true,
-    enablePreviewContentClick: false
+    scrollPastEnd: 0,
   };
   constructor(private asigService:AsignaturasService,private route: ActivatedRoute,private router:Router) {   }
 
@@ -65,17 +65,7 @@ export class AddMaterialesPage implements OnInit {
 
   doUpload(files: Array<File>): Promise<Array<UploadResult>> {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        let result: Array<UploadResult> = [];
-        for (let file of files) {
-          result.push({
-            name: file.name,
-            url: `https://avatars3.githubusercontent.com/${file.name}`,
-            isImg: file.type.indexOf('image') !== -1
-          })
-        }
-        resolve(result);
-      }, 3000);
+      
     });
   }
   

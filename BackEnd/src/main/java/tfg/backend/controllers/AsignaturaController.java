@@ -30,6 +30,11 @@ public class AsignaturaController {
     public void addMateriales(@PathVariable("id") Long id,@RequestBody Materiales material) {
         asignaturaService.addMaterial(id, material);
     }
+    
+    @GetMapping("/{id}/materiales/{idMat}")
+    public Materiales getMaterial(@PathVariable("id") Long id,@PathVariable("idMat") Long idMat) {
+        return asignaturaService.getMaterial(idMat);
+    }
 
     @PostMapping
     public Asignatura create(@RequestBody Asignatura asignatura){

@@ -43,9 +43,6 @@ public class UserService implements UserDetailsService {
     
     public Usuario findById(Integer id){
     	Usuario p = this.iUsuarioReposority.findById(id).orElse(null);
-        if(p!=null){
-            p.setAsignaturasImpartidas(p.getAsignaturasImpartidas());
-        }
         return p;
     }
 
@@ -57,8 +54,6 @@ public class UserService implements UserDetailsService {
     }
 
     public Optional<Usuario> getProfesorID(Integer id){
-        Optional<Usuario> profe = iUsuarioReposority.findById(id);
-
         return iUsuarioReposority.findById(id);
     }
 }
