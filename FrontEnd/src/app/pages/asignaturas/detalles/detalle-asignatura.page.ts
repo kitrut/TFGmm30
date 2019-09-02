@@ -22,6 +22,7 @@ export class DetalleAsignaturaPage implements OnInit {
     
     });
     
+    
   }
 
   addMaterial(){

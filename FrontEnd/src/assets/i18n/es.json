@@ -20,9 +20,15 @@
         "Nombre":"Nombre",
         "Descripción":"Descripción",
         "Curso":"Curso",
+        "DetalleAsignatura": "Detalles de la asignatura",
+        "AlumnosMatriculados":"Alumnos matriculados",
+        "Profesor":"Profesor"
+    }
+    ,
+    "Botones":{
+        "Crear":"Crear",
         "Detalles":"Detalles",
         "Editar":"Editar",
         "Borrar":"Borrar"
-
     }
 }
