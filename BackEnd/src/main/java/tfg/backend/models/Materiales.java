@@ -1,6 +1,5 @@
 package tfg.backend.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 

@@ -18,7 +18,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import tfg.backend.models.Usuario;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 

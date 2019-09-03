@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Detalle Asignatura</ion-title>
+    <ion-title>{{'Asignaturas.DetalleAsignatura' | translate}}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="editar()">
         <ion-icon slot="icon-only" name="create"></ion-icon>
@@ -26,14 +26,14 @@
         <ion-card>
           <ion-card-header text-center color="primary">
             <ion-card-title>{{asignatura.nombre}}</ion-card-title>
-            <ion-card-subtitle>Curso en que se imparte: {{asignatura.curso}}</ion-card-subtitle>
+            <ion-card-subtitle>{{'Asignaturas.Curso' | translate}}: {{asignatura.curso}}</ion-card-subtitle>
 
           </ion-card-header>
 
           <ion-card-content>
 
-            <p>Descripción: {{asignatura.descripcion}}</p>
-            <p>Profesor: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
+            <p *ngIf="asignatura.descripcion">{{'Asignaturas.Descripción' | translate}}: {{asignatura.descripcion}}</p>
+            <p *ngIf="asignatura.profesor">{{'Asignaturas.Profesor' | translate}}: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -42,7 +42,7 @@
       <ion-col text-center>
         <ion-card>
           <ion-item text-center color="primary">
-            <ion-label>Alumnos matrículados</ion-label>
+            <ion-label>{{'Asignaturas.AlumnosMatriculados' | translate}}</ion-label>
             <ion-button (click)="crear()" slot="end">
               <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
             </ion-button>
@@ -68,17 +68,20 @@
       <ion-col>
         <ion-card>
           <ion-item text-center color="primary">
-            <ion-label>Materiales</ion-label>
+            <ion-label>{{'Menu.Materiales' | translate}}</ion-label>
             <ion-button (click)="addMaterial()" slot="end">
               <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
             </ion-button>
           </ion-item>
           <ion-card-content>
             <ion-list>
-              <ion-item *ngFor="let a of asignatura.materiales | paginate: { itemsPerPage: 5, currentPage: p2,id:'materiales' }">
+              <ion-item *ngFor="let a of materiales | paginate: { itemsPerPage: 5, currentPage: p2,id:'materiales' }">
                 {{a.titulo}}
                 <ion-button (click)="verMaterial(a.id)" slot="end">
                   <ion-icon slot="icon-only" name="book"></ion-icon>
+                </ion-button>
+                <ion-button (click)="editMaterial(a.id)" slot="end">
+                  <ion-icon slot="icon-only" name="create"></ion-icon>
                 </ion-button>
                 <ion-button (click)="verMaterial(a.id)" slot="end">
                   <ion-icon slot="icon-only" name="cloud-download"></ion-icon>

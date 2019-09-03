@@ -34,18 +34,19 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.translate.addLangs(['es','en','fr']);
-      this.translate.setDefaultLang('es');
-      this.storage.get('lang').then(value=>{this.translate.use(value)})
-      this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-        this.storage.set('lang', event.lang);
-        this.translate.use(event.lang)
-      });
+      this.configureLang();
+
       this.auth.checktoken();
       this.getRoles();
-      this.auth.configObservable.subscribe(() => {
-        this.isLoggued = this.auth.isLoggedIn;
-        setTimeout(()=>{ this.getRoles(); }, 200);//espera para que se actualice el storage        
+      this.auth.isLoggedIn.subscribe(data => {
+        console.log("Login ",data)
+        this.isLoggued = data;
+        if(data){
+          setTimeout(()=>{ this.getRoles(); }, 200);//espera para que se actualice el storage 
+        }else{
+          this.appPages=null;
+          this.rolUsuario=null;
+        }
       })
       
     });
@@ -53,7 +54,7 @@ export class AppComponent {
 
   getRoles(){
     this.storage.get("ROLES").then(data=>{
-      if(data!=null){
+      if(data){
         this.rolUsuario = data[0];
         this.appPages = this.rolMenuService.getMenu(data[0]);
       }      
@@ -62,5 +63,15 @@ export class AppComponent {
 
   salir(){
     this.auth.logout();
+  }
+
+  private configureLang(){
+    this.translate.addLangs(['es','en','fr']);
+    this.translate.setDefaultLang('es');
+    this.storage.get('lang').then(value=>{if(value)this.translate.use(value)});
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.storage.set('lang', event.lang);
+      this.translate.use(event.lang);
+    });
   }
 }

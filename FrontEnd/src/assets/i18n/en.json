@@ -14,5 +14,20 @@
 
     "Ajustes":{
         "Selecciona un idioma":"Select a language"
+    },
+    "Asignaturas":{
+        "Nombre":"Name",
+        "Descripción":"Description",
+        "Curso":"Course",
+        "DetalleAsignatura": "Subject details",
+        "AlumnosMatriculados":"Enrolled students",
+        "Profesor":"Teacher"
+
+    },
+    "Botones":{
+        "Crear":"Create",
+        "Detalles":"Details",
+        "Editar":"Edit",
+        "Borrar":"Delete"
     }
 }

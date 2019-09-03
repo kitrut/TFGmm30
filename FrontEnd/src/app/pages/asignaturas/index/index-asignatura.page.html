@@ -14,7 +14,7 @@
 
 <ion-content>
   <ion-item>
-    <ion-label>Curso</ion-label>
+    <ion-label>{{'Asignaturas.Curso' | translate}}</ion-label>
     <ion-select (ionChange)="filtrar($event)">
       <ion-select-option value="Todos">Todos</ion-select-option>
       <ion-select-option value="1º">1º</ion-select-option>
@@ -35,11 +35,11 @@
         <ion-item-options side="end">
           <ion-item-option color="primary" (click)="detalles(asignatura.id)">
             <ion-icon slot="top" name="information-circle-outline"></ion-icon>
-            {{'Asignaturas.Detalles' | translate}}
+            {{'Botones.Detalles' | translate}}
           </ion-item-option>
-          <ion-item-option color="danger">
+          <ion-item-option color="danger" (click)="borrar(asignatura)">
             <ion-icon slot="top" name="trash"></ion-icon>
-            {{'Asignaturas.Borrar' | translate}}
+            {{'Botones.Borrar' | translate}}
           </ion-item-option>
         </ion-item-options>
 

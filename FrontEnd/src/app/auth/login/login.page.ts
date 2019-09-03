@@ -20,10 +20,11 @@ export class LoginPage implements OnInit {
   constructor(private auth:AuthService) { }
 
   ngOnInit() {
+    this.error=false;
+    this.loginForm.reset();
   }
 
   login(){
-    this.error=false;
     this.auth.login(this.loginForm.value.user,this.loginForm.value.password);
     this.loginForm.reset();
   }

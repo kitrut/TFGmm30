@@ -24,11 +24,18 @@ export class AsignaturasService {
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS,Asignatura,{});
   }
 
+  deleteAsignatura(idAsignatura):Observable<any>{
+    return this.http.delete(Constantes.URL_ASIGNATURAS+"/"+idAsignatura);
+  }
+
   createMaterial(id,mat:Materiales):Observable<Asignatura>{
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id+"/materiales",mat,{});
   }
 
   getMaterial(idAsig,idMat):Observable<Materiales>{
     return this.http.get<Materiales>(Constantes.URL_ASIGNATURAS+"/"+idAsig+"/materiales/"+idMat,{});
+  }
+  getMateriales(idAsig):Observable<Materiales[]>{
+    return this.http.get<Materiales[]>(Constantes.URL_ASIGNATURAS+"/"+idAsig+"/materiales",{});
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Asignatura } from 'src/app/models/asignatura';
+import { Materiales } from 'src/app/models/materiales';
 
 @Component({
   selector: 'app-detalle-asignatura',
@@ -11,16 +12,22 @@ import { Asignatura } from 'src/app/models/asignatura';
 export class DetalleAsignaturaPage implements OnInit {
 
   asignatura:Asignatura=new Asignatura();
+  materiales:Materiales[]=[];
   constructor(private router:Router,private route: ActivatedRoute,private asginaturasService:AsignaturasService) { }
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     this.asginaturasService.getById(id).subscribe(
       data=>{
-        data.materiales = data.materiales.sort((a, b) => (a.titulo > b.titulo) ? 1 : -1)
+        
         this.asignatura = data
-    
     });
+    this.asginaturasService.getMateriales(id).subscribe(
+      data =>{
+        this.materiales = data.sort((a, b) => (a.titulo > b.titulo) ? 1 : -1)
+      }
+    )
+    
     
   }
 

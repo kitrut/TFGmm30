@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Asignatura } from 'src/app/models/asignatura';
 import { Router } from '@angular/router';
@@ -10,26 +10,38 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './index-asignatura.page.html',
   styleUrls: ['./index-asignatura.page.scss'],
 })
-export class IndexAsignaturaPage implements OnInit {
+export class IndexAsignaturaPage {
 
   asignaturas:Asignatura[]=[];
   asignaturasTodas:Asignatura[]=[];
 
   constructor(private authService:AuthService, private asignService:AsignaturasService,private profService:ProfesoresService,private router:Router) { }
 
-  ngOnInit() {
+  ionViewWillEnter() {
+      this.getData()
+  }
+
+  getData(){
     if(this.authService.isAdmin()){
       this.asignService.getAll().subscribe(data=>{this.asignaturas=this.asignaturasTodas=data;});
     }else if(this.authService.isProfesor()){
       this.profService.getAsignaturas(2).subscribe(
         data=>{this.asignaturas=this.asignaturasTodas=data;}
       )
+    }else{
+      console.error("No es nada")
     }
-    
   }
 
   detalles(id){
     this.router.navigateByUrl('/asignaturas/'+id);
+  }
+  borrar(asignatura){
+    this.asignService.deleteAsignatura(asignatura.id).subscribe(
+      ()=>{
+        this.getData()
+      }
+    )
   }
   crear(){
     this.router.navigateByUrl('/asignaturas/create');
