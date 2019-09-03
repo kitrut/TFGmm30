@@ -46,4 +46,12 @@ public class AsignaturaService {
 		Materiales mat = materialesRepository.findById(idMat).orElse(null);
     	return mat;
     }
+
+    public Collection<Materiales> getMateriales(Long idAsignatura) {
+        Asignatura as = asignaturaRepository.findById(idAsignatura).orElse(null);
+        if(as!=null){
+            return  as.getMateriales();
+        }
+        return null;
+    }
 }

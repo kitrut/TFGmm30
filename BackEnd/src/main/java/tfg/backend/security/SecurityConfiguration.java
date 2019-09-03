@@ -1,5 +1,7 @@
 package tfg.backend.security;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -50,10 +52,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-
-        return source;
+    	CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();    	
+    	configuration.setAllowedMethods(Arrays.asList("GET","POST","DELETE"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
     }
 }
 

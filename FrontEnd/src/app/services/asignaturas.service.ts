@@ -24,6 +24,10 @@ export class AsignaturasService {
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS,Asignatura,{});
   }
 
+  deleteAsignatura(idAsignatura):Observable<any>{
+    return this.http.delete(Constantes.URL_ASIGNATURAS+"/"+idAsignatura);
+  }
+
   createMaterial(id,mat:Materiales):Observable<Asignatura>{
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id+"/materiales",mat,{});
   }

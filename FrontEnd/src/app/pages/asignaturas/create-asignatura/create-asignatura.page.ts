@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Asignatura } from 'src/app/models/asignatura';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-asignatura',
@@ -16,7 +17,7 @@ export class CreateAsignaturaPage implements OnInit {
     curso: new FormControl('')
   });
 
-  constructor(private asignaturasService:AsignaturasService) { }
+  constructor(private asignaturasService:AsignaturasService,private router:Router) { }
 
   ngOnInit() {
   }
@@ -32,10 +33,8 @@ export class CreateAsignaturaPage implements OnInit {
     }
 
     this.asignaturasService.create(asig).subscribe(
-      data => console.log(data),
+      data => this.router.navigateByUrl('/asignaturas/'+data.id),
       err => console.error(err)
     )
-    // TODO: Use EventEmitter with form value
-    //console.warn(this.asignaturaForm.value);
   }
 }

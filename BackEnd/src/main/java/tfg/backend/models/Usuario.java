@@ -28,11 +28,10 @@ public class Usuario implements Serializable {
     private String email;
     
     @ManyToMany(fetch = FetchType.EAGER)
-    @JsonBackReference
     private Collection<Role> roles;
     
     @OneToMany(fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "asignaturasImpartidas")
     private Collection<Asignatura> asignaturasImpartidas;
 
 

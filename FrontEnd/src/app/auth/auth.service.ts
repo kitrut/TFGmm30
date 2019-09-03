@@ -57,15 +57,12 @@ export class AuthService{
   }
 
   isAdmin():boolean{
-    console.log("Soy ADMIN?" , this.rol=="ADMIN")
     return this.rol=="ADMIN";
   }
   isProfesor():boolean{
-    console.log("Soy PROFESOR?" , this.rol=="PROFESOR")
     return this.rol=="PROFESOR";
   }
   isAlumno():boolean{
-    console.log("Soy ALUMNO?" , this.rol=="ALUMNO")
     return this.rol=="ALUMNO";
   }
 

@@ -32,8 +32,8 @@
 
           <ion-card-content>
 
-            <p>{{'Asignaturas.Descripción' | translate}}: {{asignatura.descripcion}}</p>
-            <p>{{'Asignaturas.Profesor' | translate}}: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
+            <p *ngIf="asignatura.descripcion">{{'Asignaturas.Descripción' | translate}}: {{asignatura.descripcion}}</p>
+            <p *ngIf="asignatura.profesor">{{'Asignaturas.Profesor' | translate}}: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -75,7 +75,7 @@
           </ion-item>
           <ion-card-content>
             <ion-list>
-              <ion-item *ngFor="let a of asignatura.materiales | paginate: { itemsPerPage: 5, currentPage: p2,id:'materiales' }">
+              <ion-item *ngFor="let a of materiales | paginate: { itemsPerPage: 5, currentPage: p2,id:'materiales' }">
                 {{a.titulo}}
                 <ion-button (click)="verMaterial(a.id)" slot="end">
                   <ion-icon slot="icon-only" name="book"></ion-icon>

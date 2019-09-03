@@ -18,17 +18,30 @@ export class IndexAsignaturaPage {
   constructor(private authService:AuthService, private asignService:AsignaturasService,private profService:ProfesoresService,private router:Router) { }
 
   ionViewWillEnter() {
+      this.getData()
+  }
+
+  getData(){
     if(this.authService.isAdmin()){
       this.asignService.getAll().subscribe(data=>{this.asignaturas=this.asignaturasTodas=data;});
     }else if(this.authService.isProfesor()){
       this.profService.getAsignaturas(2).subscribe(
         data=>{this.asignaturas=this.asignaturasTodas=data;}
       )
-    }    
+    }else{
+      console.error("No es nada")
+    }
   }
 
   detalles(id){
     this.router.navigateByUrl('/asignaturas/'+id);
+  }
+  borrar(asignatura){
+    this.asignService.deleteAsignatura(asignatura.id).subscribe(
+      ()=>{
+        this.getData()
+      }
+    )
   }
   crear(){
     this.router.navigateByUrl('/asignaturas/create');

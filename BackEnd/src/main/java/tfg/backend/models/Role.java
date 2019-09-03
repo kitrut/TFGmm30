@@ -1,6 +1,6 @@
 package tfg.backend.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import java.util.Collection;
 
@@ -16,7 +16,7 @@ public class Role {
 	private String nombre;
 
 	@ManyToMany(mappedBy="roles")
-	@JsonManagedReference
+	@JsonBackReference
 	private Collection<Usuario> usuarios;
 
 	public Long getId() {

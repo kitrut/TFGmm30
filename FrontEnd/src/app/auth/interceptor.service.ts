@@ -21,7 +21,6 @@ export class InterceptorService implements HttpInterceptor {
     return from(this.storage.get(Constantes.TOKEN_KEY))
             .pipe(
                 switchMap(token => {
-                  
                     //si tiene el token, lo añade a las cabeceras de todas las peticiones
                     if (token) {
                       req = req.clone({ headers: req.headers.set('Authorization', token) });
@@ -30,7 +29,6 @@ export class InterceptorService implements HttpInterceptor {
                     if (!req.headers.has('Content-Type')) {
                       req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });
                     }
-
                     return next.handle(req).pipe(
                         map((event: HttpEvent<any>) => {
                             if (event instanceof HttpResponse) {
@@ -45,7 +43,7 @@ export class InterceptorService implements HttpInterceptor {
                             return event;
                         }),
                         catchError((error: HttpErrorResponse) => {
-                            
+                            console.log(error)
                             const status =  error.status;
                             if(status == 403){
                                 this.storage.remove(Constantes.TOKEN_KEY)
