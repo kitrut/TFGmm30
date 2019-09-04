@@ -4,6 +4,7 @@ import { Asignatura } from '../models/asignatura';
 import { Observable } from 'rxjs';
 import { Constantes } from '../global/constantes';
 import { Materiales } from '../models/materiales';
+import { Profesor } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,13 @@ export class AsignaturasService {
 
   createMaterial(id,mat:Materiales):Observable<Asignatura>{
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id+"/materiales",mat,{});
+  }
+
+  asignProfesor(idAsignatura,idProfesor):Observable<any>{
+    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+idAsignatura+"/profesor/"+idProfesor,{});
+  }
+  getProfesor(idAsignatura):Observable<Profesor>{
+    return this.http.get<Profesor>(Constantes.URL_ASIGNATURAS+"/"+idAsignatura+"/profesor",{});
   }
 
   getMaterial(idAsig,idMat):Observable<Materiales>{

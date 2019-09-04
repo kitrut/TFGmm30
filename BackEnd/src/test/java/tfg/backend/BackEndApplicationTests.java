@@ -23,7 +23,7 @@ public class BackEndApplicationTests {
 	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
-		us.setUser("profesor");
+		us.setUser("alumno");
 		us.setPassword(encoder.encode("password"));
 		usuarioReposority.save(us);
 

@@ -43,6 +43,10 @@ public class Usuario implements Serializable {
 		this.asignaturasImpartidas = asignaturasImpartidas;
 	}
 
+	public boolean addAsignaturaImpartida(Asignatura a){
+        return this.asignaturasImpartidas.add(a);
+    }
+
 	public Collection<Role> getRoles() {
 		return roles;
 	}
