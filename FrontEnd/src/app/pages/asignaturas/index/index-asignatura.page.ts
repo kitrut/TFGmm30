@@ -28,8 +28,6 @@ export class IndexAsignaturaPage {
       this.profService.getAsignaturas(2).subscribe(
         data=>{this.asignaturas=this.asignaturasTodas=data;}
       )
-    }else{
-      console.error("No es nada")
     }
   }
 

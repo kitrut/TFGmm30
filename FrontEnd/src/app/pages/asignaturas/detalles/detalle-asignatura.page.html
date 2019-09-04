@@ -34,6 +34,14 @@
 
             <p *ngIf="asignatura.descripcion">{{'Asignaturas.Descripción' | translate}}: {{asignatura.descripcion}}</p>
             <p *ngIf="asignatura.profesor">{{'Asignaturas.Profesor' | translate}}: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
+            
+            <ion-item *ngIf="!asignatura.profesor">
+              <ion-label>Asignar profesor</ion-label>
+              <ion-select placeholder="Select One" [(ngModel)]="profesorAsignadoID">
+                <ion-select-option *ngFor="let p of profesores" value="{{p.id}}">{{p.nombre+' '+p.apellidos}}</ion-select-option>
+              </ion-select>              
+            </ion-item>
+            <ion-button *ngIf="!asignatura.profesor" (click)="asignarProfesor()" expand="full">Asignar</ion-button>
           </ion-card-content>
         </ion-card>
       </ion-col>
