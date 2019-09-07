@@ -1,0 +1,6 @@
+language: java
+jdk:
+  - oraclejdk8
+services: mysql
+before_install:
+  - cd BackEnd
