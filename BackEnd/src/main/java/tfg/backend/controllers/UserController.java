@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Usuario;
-import tfg.backend.services.UserService;
+import tfg.backend.services.IUserService;
 
 import java.util.Collection;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/private")
-public class UsuarioController {
+public class UserController {
 
     @Autowired
-    UserService userService;
+    IUserService userService;
 
     @GetMapping("/usuarios")
     public List<Usuario> index() {

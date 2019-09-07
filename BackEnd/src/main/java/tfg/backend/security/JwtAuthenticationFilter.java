@@ -29,6 +29,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import tfg.backend.models.Usuario;
+import tfg.backend.services.IUserService;
 import tfg.backend.services.UserService;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -36,7 +37,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	
 	private final AuthenticationManager autManager;
 
-	private UserService userService;
+	private IUserService userService;
 	
 	public JwtAuthenticationFilter(AuthenticationManager auManager) {
 		this.autManager = auManager;
