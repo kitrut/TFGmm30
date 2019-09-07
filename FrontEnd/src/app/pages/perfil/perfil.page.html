@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <img class="rounded-circle" *ngIf="uploadImage != null" id="checkinImage" [src]="uploadImage" (load)="imageLoaded()" width="300" height="300" (click)="presentActionSheet(fileLoader)" />
+        <img class="rounded-circle" *ngIf="uploadImage == null" src="assets\images\User_icon.png" width="300" height="300" (click)="presentActionSheet(fileLoader)"/>
+        <button ion-button icon-left (click)="presentActionSheet(fileLoader)">
+            <ion-icon name="camera"></ion-icon>Select Image
+          </button>
+        <button ion-button icon-left (click)="removePic()" [disabled]="uploadImage === null">
+            <ion-icon name="trash"></ion-icon>Remove
+          </button>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-item text-center color="primary">
+            <ion-label>Datos personales</ion-label>
+          </ion-item>
+          <ion-list>
+            <ion-item>
+              <ion-label>
+                <ion-row>
+                  <ion-col><b>Nombre</b></ion-col>
+                  <ion-col>NOMBRE</ion-col>
+                </ion-row>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-row>
+                  <ion-col><b>Apellidos</b></ion-col>
+                  <ion-col>APELLIDOS</ion-col>
+                </ion-row>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-row>
+                  <ion-col><b>Email</b></ion-col>
+                  <ion-col>CORREO</ion-col>
+                </ion-row>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-row>
+                  <ion-col><b>ROL</b></ion-col>
+                  <ion-col>MyRol</ion-col>
+                </ion-row>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <input type="file" id="fileLoader" #fileLoader name="files" title="Load File" hidden />
+
+</ion-content>

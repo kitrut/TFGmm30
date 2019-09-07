@@ -11,7 +11,7 @@ import { Usuario, Profesor } from 'src/app/models/usuario';
   templateUrl: './detalle-asignatura.page.html',
   styleUrls: ['./detalle-asignatura.page.scss'],
 })
-export class DetalleAsignaturaPage implements OnInit {
+export class DetalleAsignaturaPage{
 
   asignatura:Asignatura=new Asignatura();
   materiales:Materiales[]=[];
@@ -19,7 +19,7 @@ export class DetalleAsignaturaPage implements OnInit {
   profesorAsignadoID:number;
   constructor(private router:Router,private route: ActivatedRoute,private asginaturasService:AsignaturasService,private profService:ProfesoresService) { }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     let id = this.route.snapshot.paramMap.get('id');
     this.getData(id)
     this.asginaturasService.getMateriales(id).subscribe(

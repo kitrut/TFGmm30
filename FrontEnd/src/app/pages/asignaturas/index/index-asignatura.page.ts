@@ -20,7 +20,7 @@ export class IndexAsignaturaPage {
   ionViewWillEnter() {
       this.getData()
   }
-
+//TODO remplazar el get asignaturas del profesor por el id del usuario
   getData(){
     if(this.authService.isAdmin()){
       this.asignService.getAll().subscribe(data=>{this.asignaturas=this.asignaturasTodas=data;});
@@ -28,6 +28,8 @@ export class IndexAsignaturaPage {
       this.profService.getAsignaturas(2).subscribe(
         data=>{this.asignaturas=this.asignaturasTodas=data;}
       )
+    }else{
+      console.error("No es nada")
     }
   }
 

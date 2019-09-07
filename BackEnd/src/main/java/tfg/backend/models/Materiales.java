@@ -2,6 +2,7 @@ package tfg.backend.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Materiales {
@@ -11,6 +12,7 @@ public class Materiales {
 
 	private String titulo;
 
+	@Size(max = 2000)
 	private String contenido;
 
 	public String getContenido() {
