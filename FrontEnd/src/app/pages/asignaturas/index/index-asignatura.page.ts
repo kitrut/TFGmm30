@@ -25,7 +25,7 @@ export class IndexAsignaturaPage {
     if(this.authService.isAdmin()){
       this.asignService.getAll().subscribe(data=>{this.asignaturas=this.asignaturasTodas=data;});
     }else if(this.authService.isProfesor()){
-      this.profService.getAsignaturas(2).subscribe(
+      this.profService.getAsignaturas(this.authService.usuario.id).subscribe(
         data=>{this.asignaturas=this.asignaturasTodas=data;}
       )
     }else{

@@ -12,6 +12,7 @@ import { Usuario } from '../models/usuario';
 export class AuthService{
   
   public isLoggedIn = new Subject();
+  public user = new Subject();
   usuario:Usuario=null;
   rol="";
 
@@ -28,8 +29,14 @@ export class AuthService{
     observable.subscribe(
       (data:any)=>{
         this.rol=data.body.user.authorities[0].authority;
+        this.usuario = new Usuario();
+        this.usuario.id = data.body.id;
+        this.usuario.nombre =data.body.nombre;
+        this.usuario.apellidos =data.body.apellidos;
+        this.usuario.email =data.body.email;
         this.router.navigateByUrl('/home');
         this.isLoggedIn.next(true);
+        this.user.next(this.usuario);
       },
       err =>{
         return err;
@@ -41,7 +48,6 @@ export class AuthService{
   checktoken(){
      this.http.get(Constantes.URL_PROFESORES,{}).subscribe(
        ()=>{
-        this.getRoles();
         this.router.navigateByUrl(document.URL.replace("http://localhost:8100",""));
         this.isLoggedIn.next(true);
       },
@@ -66,13 +72,5 @@ export class AuthService{
   }
   isAlumno():boolean{
     return this.rol=="ALUMNO";
-  }
-
-  getRoles(){
-    this.storage.get("ROLES").then(data=>{
-      if(data){
-        this.rol = data[0];
-      }      
-    })
   }
 }

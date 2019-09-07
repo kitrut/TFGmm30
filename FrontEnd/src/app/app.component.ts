@@ -16,6 +16,7 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent {
   public appPages;
   public rolUsuario;
+  public usuarioNombreApellidos="";
   public isLoggued;
 
   constructor(
@@ -35,30 +36,23 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.configureLang();
-
       this.auth.checktoken();
-      this.getRoles();
+      this.auth.user.subscribe(
+        data=>{
+          this.usuarioNombreApellidos = this.auth.usuario.nombre+" "+this.auth.usuario.apellidos;
+          this.rolUsuario = this.auth.rol;
+          this.appPages = this.rolMenuService.getMenu(this.rolUsuario);
+        }
+      )
       this.auth.isLoggedIn.subscribe(data => {
-        console.log("Login ",data)
         this.isLoggued = data;
-        if(data){
-          setTimeout(()=>{ this.getRoles(); }, 200);//espera para que se actualice el storage 
-        }else{
+        if(!data){
           this.appPages=null;
           this.rolUsuario=null;
         }
       })
       
     });
-  }
-
-  getRoles(){
-    this.storage.get("ROLES").then(data=>{
-      if(data){
-        this.rolUsuario = data[0];
-        this.appPages = this.rolMenuService.getMenu(data[0]);
-      }      
-    })
   }
 
   salir(){

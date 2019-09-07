@@ -20,15 +20,6 @@ public class BackEndApplicationTests {
 	private PasswordEncoder encoder;
 
 
-	@Test
-	public void crearUsuario() {
-		Usuario us = new Usuario();
-		us.setUser("alumno");
-		us.setPassword(encoder.encode("password"));
-		usuarioReposority.save(us);
-
-	}
-
     @Test
     public void someTest(){}
 

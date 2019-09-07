@@ -26,9 +26,9 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario user = iUsuarioReposority.findByUser(username).orElse(null);
 
-        if(user==null){
+        if(user==null)
             throw  new UsernameNotFoundException("Usuario no encontrado");
-        }
+
         List<GrantedAuthority> authorities = new ArrayList<>();
         for(Role r:user.getRoles()) {
         	authorities.add(new SimpleGrantedAuthority(r.getNombre()));
@@ -38,6 +38,10 @@ public class UserService implements UserDetailsService {
 
         return  userDetails;
 
+    }
+
+    public Usuario getUser(String username){
+        return iUsuarioReposority.findByUser(username).orElse(null);
     }
 
     public List<Usuario> all(){

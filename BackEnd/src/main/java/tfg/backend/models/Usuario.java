@@ -1,6 +1,7 @@
 package tfg.backend.models;
 
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.io.Serializable;
@@ -34,7 +35,6 @@ public class Usuario implements Serializable {
     @OneToMany(fetch = FetchType.LAZY)
     @JsonManagedReference(value = "asignaturasImpartidas")
     private Collection<Asignatura> asignaturasImpartidas;
-
 
     public Collection<Asignatura> getAsignaturasImpartidas() {
 		return asignaturasImpartidas;

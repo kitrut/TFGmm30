@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ProfesoresService } from 'src/app/services/profesores.service';
 import { Usuario } from 'src/app/models/usuario';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-perfil',
@@ -11,13 +10,15 @@ import { Usuario } from 'src/app/models/usuario';
 export class PerfilPage implements OnInit {
   id:string;
   user:Usuario;
+  rol:string;
+  
   processing: boolean;
   uploadImage: string;
-  constructor(private route: ActivatedRoute, private profesorService:ProfesoresService) { }
+  constructor(private auth:AuthService) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.profesorService.getById(this.id).subscribe(data=>this.user = data);
+    this.user = this.auth.usuario;
+    this.rol = this.auth.rol;
   }
 
   presentActionSheet(fileLoader) {
