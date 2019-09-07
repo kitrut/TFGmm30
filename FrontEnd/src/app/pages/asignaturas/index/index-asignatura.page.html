@@ -26,10 +26,9 @@
   <ion-card>
     <ion-list no-padding>
       <ion-item text-center color="primary">
-        <ion-avatar slot="start"></ion-avatar>
-        <ion-label>{{'Asignaturas.Nombre' | translate}}</ion-label>
-        <ion-label>{{'Asignaturas.Descripción' | translate}}</ion-label>
+        <ion-label>{{'Asignaturas.Nombre' | translate}}</ion-label>        
         <ion-label>{{'Asignaturas.Curso' | translate}}</ion-label>
+        <ion-label>{{'Asignaturas.Descripción' | translate}}</ion-label>
       </ion-item>
       <ion-item-sliding *ngFor="let asignatura of asignaturas | paginate: { itemsPerPage: 5, currentPage: p }">
         <ion-item-options side="end">
@@ -44,9 +43,9 @@
         </ion-item-options>
 
         <ion-item text-center>
-          <ion-label text-wrap>{{asignatura.nombre}}</ion-label>
-          <ion-label>{{asignatura.descripcion}}</ion-label>
+          <ion-label text-wrap>{{asignatura.nombre}}</ion-label>          
           <ion-label text-wrap>{{asignatura.curso}}</ion-label>
+          <ion-label>{{asignatura.descripcion}}</ion-label>
         </ion-item>
       </ion-item-sliding>
     </ion-list>

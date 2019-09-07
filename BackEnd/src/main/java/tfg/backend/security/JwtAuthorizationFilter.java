@@ -32,7 +32,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
 	
 	public JwtAuthorizationFilter(AuthenticationManager authenticationManager) {
 		super(authenticationManager);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

@@ -12,7 +12,7 @@
   <ion-grid>
     <ion-row>
       <ion-col text-center>
-        <img width="200" height="200" src="assets\images\User_icon.png" />
+        <img class="rounded-circle" width="200" height="200" src="assets\images\User_icon.png" />
       </ion-col>
       <ion-col>
         <ion-card>
@@ -63,7 +63,7 @@
           <ion-card-content>
             <ion-list>
               <ion-item *ngFor="let a of asignaturas | paginate: { itemsPerPage: 3, currentPage: p,id:'alumnos' }">
-                {{a.nombre}}
+                {{a.curso+'  '+a.nombre}}
                 <ion-button [routerLink]="['/asignaturas/'+ a.id]" slot="end">
                   <ion-icon slot="icon-only" name="contact"></ion-icon>
                 </ion-button>

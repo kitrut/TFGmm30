@@ -25,7 +25,16 @@ export class LoginPage implements OnInit {
   }
 
   login(){
-    this.auth.login(this.loginForm.value.user,this.loginForm.value.password);
+    this.auth.login(this.loginForm.value.user,this.loginForm.value.password).subscribe(
+      data=>{
+
+      },
+      err=>{
+        this.error = true;
+        this.errorCode = err.status
+
+      }
+    )
     this.loginForm.reset();
   }
 

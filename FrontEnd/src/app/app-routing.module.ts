@@ -16,10 +16,7 @@ const routes: Routes = [
   //ASIGNATURAS
   { path: 'asignaturas', loadChildren: './pages/asignaturas/asignaturas.module#AsignaturasPageModule' },
   { path: 'profesores', loadChildren: './pages/profesores/profesores.module#ProfesoresPageModule' },
-
-
-  
-
+  { path: 'perfil', loadChildren: './pages/perfil/perfil.module#PerfilPageModule' },
 ];
 
 @NgModule({

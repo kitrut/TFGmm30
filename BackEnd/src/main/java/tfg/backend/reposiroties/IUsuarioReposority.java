@@ -6,10 +6,11 @@ import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IUsuarioReposority extends JpaRepository<Usuario, Integer> {
-    Usuario findByUser(String username);
+    Optional<Usuario> findByUser(String username);
 
     List<Usuario> findByRoles(Role rol);
 }
