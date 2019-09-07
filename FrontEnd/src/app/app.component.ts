@@ -39,7 +39,9 @@ export class AppComponent {
       this.auth.checktoken();
       this.auth.user.subscribe(
         data=>{
-          this.usuarioNombreApellidos = this.auth.usuario.nombre+" "+this.auth.usuario.apellidos;
+          if(this.auth.usuario){
+            this.usuarioNombreApellidos = this.auth.usuario.nombre+" "+this.auth.usuario.apellidos;
+          }          
           this.rolUsuario = this.auth.rol;
           this.appPages = this.rolMenuService.getMenu(this.rolUsuario);
         }

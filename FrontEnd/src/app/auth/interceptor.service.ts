@@ -3,11 +3,8 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { from, Observable, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { Constantes } from '../global/constantes';
-import { JwtHelperService } from "@auth0/angular-jwt";
-
-const helper = new JwtHelperService();
+import { AuthService } from './auth.service';
 
 const TOKEN_KEY = 'auth-token';
 @Injectable({
@@ -15,7 +12,7 @@ const TOKEN_KEY = 'auth-token';
 })
 export class InterceptorService implements HttpInterceptor {
 
-  constructor(private storage: Storage,private router:Router) {}
+  constructor(private storage: Storage,private auth:AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return from(this.storage.get(Constantes.TOKEN_KEY))
@@ -35,10 +32,7 @@ export class InterceptorService implements HttpInterceptor {
                                 //captura el token de la respuesta del servidor
                                 const token =event.headers.get("Authorization");
                                 if(token)
-                                {
                                   this.storage.set(TOKEN_KEY,token)
-                                  this.storage.set("ROLES",helper.decodeToken(token).rol)
-                                }
                             }
                             return event;
                         }),
@@ -47,8 +41,7 @@ export class InterceptorService implements HttpInterceptor {
                             const status =  error.status;
                             if(status == 403){
                                 this.storage.remove(Constantes.TOKEN_KEY)
-                                this.storage.remove("ROLES")
-                                this.router.navigateByUrl("/")
+                                this.auth.logout();
                             }
                             return throwError(error);
                         })

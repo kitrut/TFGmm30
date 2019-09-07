@@ -58,6 +58,9 @@ export class AuthService{
   logout(){
     this.storage.clear().then(()=>{      
       this.isLoggedIn.next(false);
+      this.usuario=null;
+      this.user.next(null);
+      this.rol="";
       this.router.navigate(["/login"]);
     })
     
