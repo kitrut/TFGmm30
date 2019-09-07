@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import tfg.backend.services.UserService;
+import tfg.backend.services.IUserService;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -24,7 +24,7 @@ import tfg.backend.services.UserService;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
