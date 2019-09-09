@@ -4,6 +4,12 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>{{'Menu.Alumnos' | translate}}</ion-title>
+    <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-searchbar animated [(ngModel)]="buscado" (ionChange)="buscar()" debounce="500"></ion-searchbar>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
