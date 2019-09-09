@@ -60,7 +60,11 @@ public class UserService implements UserDetailsService,IUserService {
         return iUsuarioReposority.findByRoles(r);
     }
 
-    public Optional<Usuario> getProfesorID(Integer id){
-        return iUsuarioReposority.findById(id);
+    @Override
+    public List<Usuario> getAlumnos() {
+        Role r = new Role();
+        r.setId(3l);
+        r.setNombre("ALUMNO");
+        return iUsuarioReposority.findByRoles(r);
     }
 }

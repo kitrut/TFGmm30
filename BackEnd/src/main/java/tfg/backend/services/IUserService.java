@@ -22,5 +22,5 @@ public interface IUserService extends UserDetailsService{
     public List<Usuario> all();
     public Usuario findById(Integer id);
     public List<Usuario> getProfesores();
-    public Optional<Usuario> getProfesorID(Integer id);
+    public List<Usuario> getAlumnos();
 }

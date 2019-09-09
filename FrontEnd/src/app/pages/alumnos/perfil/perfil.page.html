@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+    <ion-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <img class="rounded-circle" width="200" height="200" src="assets\images\User_icon.png" />
+            </ion-col>
+            <ion-col>
+              <ion-card>
+                <ion-item class="ion-text-center" color="primary">
+                  <ion-label>Datos personales</ion-label>
+                  <ion-button (click)="crear()" slot="end">
+                    <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+                <ion-list>
+                  <ion-item>
+                    <ion-label>
+                      <ion-row>
+                        <ion-col><b>Nombre</b></ion-col>
+                        <ion-col>{{profesor.nombre}}</ion-col>
+                      </ion-row>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <ion-row>
+                        <ion-col><b>Apellidos</b></ion-col>
+                        <ion-col>{{profesor.apellidos}}</ion-col>
+                      </ion-row>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <ion-row>
+                        <ion-col><b>Email</b></ion-col>
+                        <ion-col>{{profesor.email}}</ion-col>
+                      </ion-row>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <ion-card>
+                <ion-item class="ion-text-center" color="primary">
+                  <ion-label>Asignaturas en la que está matriculado</ion-label>
+                  <ion-button (click)="crear()" slot="end">
+                    <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+                <ion-card-content>
+                  <ion-list>
+                    <ion-item *ngFor="let a of asignaturas | paginate: { itemsPerPage: 3, currentPage: p,id:'alumnos' }">
+                      {{a.curso+'  '+a.nombre}}
+                      <ion-button [routerLink]="['/asignaturas/'+ a.id]" slot="end">
+                        <ion-icon slot="icon-only" name="contact"></ion-icon>
+                      </ion-button>
+                      <ion-button slot="end">
+                        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+                      </ion-button>
+                    </ion-item>
+                  </ion-list>
+                  <pagination-controls (pageChange)="p = $event" id="alumnos"></pagination-controls>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+</ion-content>

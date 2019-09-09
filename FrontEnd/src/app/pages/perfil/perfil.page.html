@@ -10,7 +10,7 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col text-center>
+      <ion-col class="ion-text-center">
         <img class="rounded-circle" *ngIf="uploadImage != null" id="checkinImage" [src]="uploadImage" (load)="imageLoaded()" width="300" height="300" (click)="presentActionSheet(fileLoader)" />
         <img class="rounded-circle" *ngIf="uploadImage == null" src="assets\images\User_icon.png" width="300" height="300" (click)="presentActionSheet(fileLoader)"/>
         <button ion-button icon-left (click)="presentActionSheet(fileLoader)">

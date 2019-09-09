@@ -5,14 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AlumnosPage } from './alumnos.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { PerfilPage } from './perfil/perfil.page';
+import { IndexPage } from './index/index.page';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AlumnosPage
-  }
+  { path: '', component: IndexPage},
+  { path: ':id', component: PerfilPage}
 ];
 
 @NgModule({
@@ -21,8 +21,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    NgxPaginationModule
   ],
-  declarations: [AlumnosPage]
+  declarations: [PerfilPage,IndexPage]
 })
 export class AlumnosPageModule {}

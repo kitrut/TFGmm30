@@ -24,7 +24,7 @@
     <ion-row>
       <ion-col>
         <ion-card>
-          <ion-card-header text-center color="primary">
+          <ion-card-header class="ion-text-center" color="primary">
             <ion-card-title>{{asignatura.nombre}}</ion-card-title>
             <ion-card-subtitle>{{'Asignaturas.Curso' | translate}}: {{asignatura.curso}}</ion-card-subtitle>
 
@@ -47,9 +47,9 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col text-center>
+      <ion-col class="ion-text-center">
         <ion-card>
-          <ion-item text-center color="primary">
+          <ion-item class="ion-text-center" color="primary">
             <ion-label>{{'Asignaturas.AlumnosMatriculados' | translate}}</ion-label>
             <ion-button (click)="crear()" slot="end">
               <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
@@ -75,7 +75,7 @@
 
       <ion-col>
         <ion-card>
-          <ion-item text-center color="primary">
+          <ion-item class="ion-text-center" color="primary">
             <ion-label>{{'Menu.Materiales' | translate}}</ion-label>
             <ion-button (click)="addMaterial()" slot="end">
               <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>

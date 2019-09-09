@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'Menu.Alumnos' | translate}}</ion-title>
+    <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-searchbar animated [(ngModel)]="buscado" (ionChange)="buscar()" debounce="500"></ion-searchbar>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list class="ion-no-padding">
+      <ion-item class="ion-text-center" color="primary">
+        <ion-avatar slot="start"></ion-avatar>
+        <ion-label>Nombre</ion-label>
+        <ion-label>Apellidos</ion-label>
+        <ion-label>Email</ion-label>
+      </ion-item>
+      <ion-item-sliding *ngFor="let alu of alumnosFiltrados | paginate: { itemsPerPage: 5, currentPage: p }">
+        <ion-item-options side="end">
+          <ion-item-option color="primary" (click)="perfil(alu.id)">
+            <ion-icon slot="top" name="information-circle-outline"></ion-icon>
+            Detalles
+          </ion-item-option>
+        </ion-item-options>
+
+        <ion-item class="ion-text-center">
+          <ion-avatar slot="start">
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-avatar>
+          <ion-label class="ion-text-wrap">{{alu.nombre}}</ion-label>
+          <ion-label class="ion-text-wrap">{{alu.apellidos}}</ion-label>
+          <ion-label class="ion-text-wrap">{{alu.email}}</ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </ion-card>
+</ion-content>
