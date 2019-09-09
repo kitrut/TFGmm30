@@ -46,8 +46,8 @@ public class UserServiceTest {
 
     @Test
     public void getProfesoresByID(){
-        Optional<Usuario> profesor = userService.getProfesorID(2);
-        assertEquals("Manuel",profesor.get().getNombre());
+        Usuario profesor = userService.findById(2);
+        assertEquals("Manuel",profesor.getNombre());
     }
 
     @Test

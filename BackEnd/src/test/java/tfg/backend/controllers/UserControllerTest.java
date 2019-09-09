@@ -29,7 +29,7 @@ public class UserControllerTest {
 
     @Test
     public void getProfesorSinToken() throws Exception {
-        when(userService.getProfesorID(2)).thenReturn(null);
+        when(userService.findById(2)).thenReturn(null);
         this.mockMvc.perform(get("/profesores/2")
                 .contentType(APPLICATION_JSON_UTF8))
                 .andExpect(status().is(403));

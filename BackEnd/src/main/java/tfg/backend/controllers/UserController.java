@@ -33,6 +33,15 @@ public class UserController {
         return userService.findById(id);
     }
 
+    @GetMapping("/alumnos")
+    public List<Usuario> getAlumnos() {
+        return userService.getAlumnos();
+    }
+    @GetMapping("/alumnos/{id}")
+    public Usuario getAlumnosID(@PathVariable("id") Integer id) {
+        return userService.findById(id);
+    }
+
     @GetMapping("/profesores/{id}/asignaturas")
     public Collection<Asignatura> getProfesoresIDAsignatura(@PathVariable("id") Integer id) {
         return userService.findById(id).getAsignaturasImpartidas();
