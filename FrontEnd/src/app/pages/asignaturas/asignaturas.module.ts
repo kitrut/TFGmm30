@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { IonicModule } from '@ionic/angular';
 
-import { AsignaturasPage } from './asignaturas.page';
 import { DetalleAsignaturaPage } from './detalles/detalle-asignatura.page';
 import { CreateAsignaturaPage } from './create-asignatura/create-asignatura.page';
 import { TranslateModule } from '@ngx-translate/core';
@@ -50,7 +49,6 @@ const routes: Routes = [
     LMarkdownEditorModule
   ],
   declarations: [
-    AsignaturasPage,
     DetalleAsignaturaPage,
     CreateAsignaturaPage,
     IndexAsignaturaPage,
