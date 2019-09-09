@@ -9,16 +9,16 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 })
 export class IndexPage implements OnInit {
 
-  profesores=[];
-  profesoresFiltrados=[];
+  alumnos=[];
+  alumnosFiltrados=[];
   buscado="";
 
   constructor(private alumnoService:AlumnosService,private router: Router) { }
 
   ngOnInit() {
     this.alumnoService.getAll().subscribe(
-      data=>this.profesores =  this.profesoresFiltrados = data,
-      error=>this.profesores=[]
+      data=>this.alumnos =  this.alumnosFiltrados = data,
+      error=>this.alumnos=[]
     );
   }
 
@@ -29,9 +29,9 @@ export class IndexPage implements OnInit {
   buscar(){
     let info = this.buscado.toLowerCase();
     if(this.buscado=="")
-      this.profesoresFiltrados=this.profesores;
+      this.alumnosFiltrados=this.alumnos;
     else{
-      this.profesoresFiltrados=this.profesores.filter(data=>{
+      this.alumnosFiltrados=this.alumnos.filter(data=>{
         return (data.nombre.toLowerCase().includes(info) || data.apellidos.toLowerCase().includes(info) ||data.email.toLowerCase().includes(info));
       })
     }

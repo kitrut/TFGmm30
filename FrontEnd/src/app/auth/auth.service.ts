@@ -46,10 +46,17 @@ export class AuthService{
   }
 
   checktoken(){
-     this.http.get(Constantes.URL_PROFESORES,{}).subscribe(
-       ()=>{
-        this.router.navigateByUrl(document.URL.replace("http://localhost:8100",""));
-        this.isLoggedIn.next(true);
+     this.http.get(Constantes.URL_BACKEND+'private/checktoken',{}).subscribe(
+      (data:any)=>{
+          this.usuario = new Usuario();
+          this.usuario.id = data.id;
+          this.usuario.nombre =data.nombre;
+          this.usuario.apellidos =data.apellidos;
+          this.usuario.email =data.email;
+          this.rol = data.roles[0].nombre;
+          this.router.navigateByUrl(document.URL.replace("http://localhost:8100",""));
+          this.isLoggedIn.next(true);
+          this.user.next(this.usuario);
       },
        err=>{}
      )
