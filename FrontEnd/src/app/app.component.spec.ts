@@ -7,11 +7,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpLoaderFactory } from './app.module';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 describe('AppComponent', () => {
 
-  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
-
+  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;  
+  
   beforeEach(async(() => {
     statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
     splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
@@ -26,9 +31,19 @@ describe('AppComponent', () => {
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
       ],
-      imports: [ RouterTestingModule.withRoutes([])],
+      imports: [ 
+        RouterTestingModule.withRoutes([]),
+        HttpClientModule,
+        IonicStorageModule.forRoot(),
+        TranslateModule.forRoot({
+          loader: {
+              provide: TranslateLoader,
+              useFactory: HttpLoaderFactory,
+              deps: [HttpClient]
+          }
+        }),],
     }).compileComponents();
-  }));
+  }));  
 
   it('should create the app', async () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -44,24 +59,21 @@ describe('AppComponent', () => {
     expect(splashScreenSpy.hide).toHaveBeenCalled();
   });
 
-  it('should have menu labels', async () => {
+  it('should have split pane', async () => {
     const fixture = await TestBed.createComponent(AppComponent);
     await fixture.detectChanges();
     const app = fixture.nativeElement;
-    const menuItems = app.querySelectorAll('ion-label');
-    expect(menuItems.length).toEqual(2);
-    expect(menuItems[0].textContent).toContain('Home');
-    expect(menuItems[1].textContent).toContain('List');
+    const menuItems = app.querySelectorAll('ion-split-pane');
+    expect(menuItems.length).toEqual(1);
   });
 
-  it('should have urls', async () => {
+  it('should have urls to profile user', async () => {
     const fixture = await TestBed.createComponent(AppComponent);
     await fixture.detectChanges();
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-item');
-    expect(menuItems.length).toEqual(2);
-    expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/home');
-    expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/list');
+    expect(menuItems.length).toEqual(1);
+    expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/perfil');
   });
 
 });

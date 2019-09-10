@@ -12,15 +12,15 @@
   <form [formGroup]="asignaturaForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">{{'Asignaturas.Nombre' | translate}}:</ion-label>
-      <ion-input type="text" formControlName="nombre"></ion-input>
+      <ion-input type="text" formControlName="nombre" ngDefaultControl></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">{{'Asignaturas.Descripción' | translate}}:</ion-label>
-      <ion-input type="text" formControlName="descripcion"></ion-input>
+      <ion-input type="text" formControlName="descripcion" ngDefaultControl></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">{{'Asignaturas.Curso' | translate}}:</ion-label>
-      <ion-input type="text" formControlName="curso"></ion-input>
+      <ion-input type="text" formControlName="curso" ngDefaultControl></ion-input>
     </ion-item>
     <ion-button color="success" type="submit" [disabled]="!asignaturaForm.valid">{{'Botones.Crear' | translate}}</ion-button>
   </form>
