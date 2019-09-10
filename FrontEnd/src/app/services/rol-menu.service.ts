@@ -32,10 +32,7 @@ export class RolMenuService {
   ];
 
   constructor() { }
-
-  getMainMenu(){
-    return this.adminPages;
-  }
+  
   getMenu(data){
     if(data){
       switch(data){
