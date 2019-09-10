@@ -5,7 +5,6 @@ import { CreateAsignaturaPage } from './create-asignatura.page';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonicStorageModule } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 
@@ -22,7 +21,6 @@ describe('CreateAsignaturaPage', () => {
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        IonicStorageModule.forRoot(),
         TranslateModule.forRoot({
           loader: {
               provide: TranslateLoader,

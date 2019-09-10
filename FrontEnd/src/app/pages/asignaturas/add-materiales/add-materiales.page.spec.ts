@@ -4,7 +4,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddMaterialesPage } from './add-materiales.page';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { IonicStorageModule } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 
@@ -19,7 +18,6 @@ describe('AddMaterialesPage', () => {
       imports: [ 
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
-        IonicStorageModule.forRoot(),
         TranslateModule.forRoot({
           loader: {
               provide: TranslateLoader,

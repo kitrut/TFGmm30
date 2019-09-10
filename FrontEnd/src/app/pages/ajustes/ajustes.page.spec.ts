@@ -18,9 +18,7 @@ describe('AjustesPage', () => {
       declarations: [ AjustesPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [ 
-        RouterTestingModule.withRoutes([]),
         HttpClientModule,
-        IonicStorageModule.forRoot(),
         TranslateModule.forRoot({
           loader: {
               provide: TranslateLoader,

@@ -14,13 +14,7 @@ describe('AuthService', () => {
       RouterTestingModule.withRoutes([]),
       HttpClientModule,
       IonicStorageModule.forRoot(),
-      TranslateModule.forRoot({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-        }
-      }),],
+],
   }));
 
   it('should be created', () => {

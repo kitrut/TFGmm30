@@ -20,7 +20,6 @@ describe('PerfilPage', () => {
       imports: [ 
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
-        IonicStorageModule.forRoot(),
         TranslateModule.forRoot({
           loader: {
               provide: TranslateLoader,
