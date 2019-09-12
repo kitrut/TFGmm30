@@ -23,7 +23,4 @@ export class ThemeService{
     this.storage.set("theme",val)
     this.theme.next(val);
   }
-  getActiveTheme():Observable<BehaviorSubject<String>>{
-    return of(this.theme);
-  }
 }

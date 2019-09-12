@@ -25,7 +25,9 @@ describe('AjustesPage', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }),],
+        }), 
+          IonicStorageModule.forRoot(),
+      ],
     })
     .compileComponents();
   }));
