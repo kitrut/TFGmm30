@@ -8,6 +8,7 @@ import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 import { RolMenuService } from './services/rol-menu.service';
 import { AuthService } from './auth/auth.service';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,8 @@ export class AppComponent {
   public usuarioNombreApellidos="";
   public isLoggued;
 
+  public theme;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -26,7 +29,8 @@ export class AppComponent {
     private translate: TranslateService,
     private storage: Storage,
     private rolMenuService:RolMenuService,
-    private auth:AuthService
+    private auth:AuthService,
+    private themeService: ThemeService
   ) {
     this.initializeApp();
   }
@@ -35,6 +39,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.themeService.theme.subscribe(data=>this.theme=data)
       this.configureLang();
       this.auth.checktoken();
       this.auth.user.subscribe(
