@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-ajustes',
@@ -13,14 +14,24 @@ export class AjustesPage implements OnInit {
     {value:'en',label:'Inglés'},
     {value:'fr',label:'Francés'}
   ];
+  themes: any[]=[
+    {value:'',label:'Defecto'},
+    {value:'light-theme',label:'Claro'},
+    {value:'dark-theme',label:'Oscuro'}
+  ];
 
-  constructor(private translateService:TranslateService) { }
+  constructor(
+    private translateService:TranslateService,
+    private themeService:ThemeService) { }
 
   ngOnInit() {
   }
 
   cambiarIdioma(idioma){
     this.translateService.use(idioma.detail.value);
+  }
+  cambiarTheme(theme){
+    this.themeService.setActiveTheme(theme.detail.value);
   }
 
 }

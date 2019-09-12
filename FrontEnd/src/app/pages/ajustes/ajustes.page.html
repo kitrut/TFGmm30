@@ -16,5 +16,14 @@
       </ion-select-option>
     </ion-select>
   </ion-item>
+
+  <ion-item>
+    <ion-label>Selecciona un tema:</ion-label>  
+    <ion-select (ionChange)="cambiarTheme($event)">
+      <ion-select-option *ngFor="let item of themes" [value]="item.value">
+        {{ item.label }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
   
 </ion-content>
