@@ -5,17 +5,6 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{'Asignaturas.DetalleAsignatura' | translate}}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="editar()">
-        <ion-icon slot="icon-only" name="create"></ion-icon>
-      </ion-button>
-      <ion-button (click)="editar()">
-        <ion-icon slot="icon-only" name="save"></ion-icon>
-      </ion-button>
-      <ion-button (click)="editar()">
-        <ion-icon slot="icon-only" name="undo"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -85,15 +74,18 @@
             <ion-list>
               <ion-item *ngFor="let a of materiales | paginate: { itemsPerPage: 5, currentPage: p2,id:'materiales' }">
                 {{a.titulo}}
-                <ion-button (click)="verMaterial(a.id)" slot="end">
+                <ion-buttons slot="end">
+
+                <ion-button (click)="verMaterial(a.id)" slot="end" color="tertiary" title="Ver">
                   <ion-icon slot="icon-only" name="book"></ion-icon>
                 </ion-button>
-                <ion-button (click)="editMaterial(a.id)" slot="end">
+                <ion-button (click)="editMaterial(a.id)" slot="end" color="secondary" title="Editar">
                   <ion-icon slot="icon-only" name="create"></ion-icon>
                 </ion-button>
-                <ion-button (click)="verMaterial(a.id)" slot="end">
-                  <ion-icon slot="icon-only" name="cloud-download"></ion-icon>
+                <ion-button (click)="presentAlertConfirm(a.id)" slot="end" color="danger" title="Borrar">
+                  <ion-icon slot="icon-only" name="trash"></ion-icon>
                 </ion-button>
+              </ion-buttons>
               </ion-item>
             </ion-list>
             <pagination-controls (pageChange)="p2 = $event" id="materiales"></pagination-controls>

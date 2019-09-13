@@ -32,6 +32,10 @@ const routes: Routes = [
     component: AddMaterialesPage
   },
   {
+    path: ':id/update/:idMat',
+    component: AddMaterialesPage
+  },
+  {
     path: ':id/materiales/:idMat',
     component: ViewMaterialPage
   }
