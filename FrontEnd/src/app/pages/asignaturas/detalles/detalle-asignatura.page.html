@@ -5,17 +5,6 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{'Asignaturas.DetalleAsignatura' | translate}}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="editar()">
-        <ion-icon slot="icon-only" name="create"></ion-icon>
-      </ion-button>
-      <ion-button (click)="editar()">
-        <ion-icon slot="icon-only" name="save"></ion-icon>
-      </ion-button>
-      <ion-button (click)="editar()">
-        <ion-icon slot="icon-only" name="undo"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -93,7 +82,7 @@
                 <ion-button (click)="editMaterial(a.id)" slot="end" color="secondary" title="Editar">
                   <ion-icon slot="icon-only" name="create"></ion-icon>
                 </ion-button>
-                <ion-button (click)="deleteMaterial(a.id)" slot="end" color="danger" title="Borrar">
+                <ion-button (click)="presentAlertConfirm(a.id)" slot="end" color="danger" title="Borrar">
                   <ion-icon slot="icon-only" name="trash"></ion-icon>
                 </ion-button>
               </ion-buttons>

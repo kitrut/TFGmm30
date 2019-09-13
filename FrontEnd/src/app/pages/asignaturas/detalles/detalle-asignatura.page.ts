@@ -5,6 +5,7 @@ import { Asignatura } from 'src/app/models/asignatura';
 import { Materiales } from 'src/app/models/materiales';
 import { ProfesoresService } from 'src/app/services/profesores.service';
 import { Usuario, Profesor } from 'src/app/models/usuario';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle-asignatura',
@@ -17,7 +18,11 @@ export class DetalleAsignaturaPage{
   materiales:Materiales[]=[];
   profesores:Profesor[];
   profesorAsignadoID:number;
-  constructor(private router:Router,private route: ActivatedRoute,private asginaturasService:AsignaturasService,private profService:ProfesoresService) { }
+  constructor(private router:Router,
+    private route: ActivatedRoute,
+    private asginaturasService:AsignaturasService,
+    private profService:ProfesoresService,
+    private alertController: AlertController) { }
 
   ionViewWillEnter() {
     let id = this.route.snapshot.paramMap.get('id');
@@ -76,6 +81,31 @@ export class DetalleAsignaturaPage{
         this.getData(this.asignatura.id)
       }
     )
+  }
+
+  async presentAlertConfirm(idMat) {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>No es recuperable</strong>!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          cssClass: 'danger',
+          handler: () => {
+            this.deleteMaterial(idMat)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   verMaterial(id){
