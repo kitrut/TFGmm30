@@ -22,11 +22,7 @@ export class DetalleAsignaturaPage{
   ionViewWillEnter() {
     let id = this.route.snapshot.paramMap.get('id');
     this.getData(id)
-    this.asginaturasService.getMateriales(id).subscribe(
-      data =>{
-        this.materiales = data.sort((a, b) => (a.titulo > b.titulo) ? 1 : -1)
-      }
-    )    
+    
   }
 
   getData(id){
@@ -42,6 +38,11 @@ export class DetalleAsignaturaPage{
             }
           }
         )
+        this.asginaturasService.getMateriales(id).subscribe(
+          data =>{
+            this.materiales = data.sort((a, b) => (a.titulo > b.titulo) ? 1 : -1)
+          }
+        )    
         
     });
   }
@@ -69,9 +70,15 @@ export class DetalleAsignaturaPage{
   editMaterial(idMat){
     this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/update/"+idMat);
   }
+  deleteMaterial(idMat){
+    this.asginaturasService.deleteMaterial(this.asignatura.id,idMat).subscribe(
+      data =>{
+        this.getData(this.asignatura.id)
+      }
+    )
+  }
 
   verMaterial(id){
-    console.log(id)
     this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/materiales/"+id);
   }
 

@@ -51,6 +51,23 @@ public class AsignaturaService {
     	}
     	return asignatura;
     }
+
+    public void deleteMaterial(Long idAsignatura,Long idMaterial){
+        Asignatura asignatura = asignaturaRepository.findById(idAsignatura).orElse(null);
+        if(asignatura!=null){
+            Materiales mat = materialesRepository.findById(idMaterial).orElse(null);
+            if(mat!=null){
+                Collection<Materiales> materiales = asignatura.getMateriales();
+                if(materiales.remove(mat)){
+                    asignatura.setMateriales(materiales);
+                    asignaturaRepository.save(asignatura);
+                    materialesRepository.delete(mat);
+                }
+
+            }
+        }
+
+    }
     
     public Materiales getMaterial(Long idMat) {
 		Materiales mat = materialesRepository.findById(idMat).orElse(null);

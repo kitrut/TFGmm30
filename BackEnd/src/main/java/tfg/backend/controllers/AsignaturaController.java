@@ -59,4 +59,9 @@ public class AsignaturaController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id){asignaturaService.delete(id);}
+
+    @DeleteMapping("/{id}/materiales/{idMat}")
+    private void deleteMat(@PathVariable("id") Long id,@PathVariable("idMat") Long idMat){
+        asignaturaService.deleteMaterial(id,idMat);
+    }
 }
