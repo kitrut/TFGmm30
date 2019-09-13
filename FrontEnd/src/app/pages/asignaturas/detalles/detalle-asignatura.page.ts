@@ -66,6 +66,9 @@ export class DetalleAsignaturaPage{
   addMaterial(){
     this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/addMaterial");
   }
+  editMaterial(idMat){
+    this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/update/"+idMat);
+  }
 
   verMaterial(id){
     console.log(id)

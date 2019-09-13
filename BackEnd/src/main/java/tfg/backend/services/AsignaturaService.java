@@ -41,9 +41,13 @@ public class AsignaturaService {
     public Asignatura addMaterial(Long idAsignatura,Materiales materiales) {
     	Asignatura asignatura=asignaturaRepository.findById(idAsignatura).orElse(null);
     	if(asignatura!=null) {
-    		Materiales mat = materialesRepository.save(materiales);
-    		asignatura.addMateriales(mat);
-    		asignatura = asignaturaRepository.save(asignatura);
+    	    if(materiales.getId()==null){
+                Materiales mat = materialesRepository.save(materiales);
+                asignatura.addMateriales(mat);
+                asignatura = asignaturaRepository.save(asignatura);
+            }else{
+                materialesRepository.save(materiales);
+            }
     	}
     	return asignatura;
     }

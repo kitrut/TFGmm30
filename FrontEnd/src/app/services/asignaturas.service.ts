@@ -33,6 +33,10 @@ export class AsignaturasService {
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id+"/materiales",mat,{});
   }
 
+  updateMaterial(id,mat:Materiales):Observable<Asignatura>{
+    return this.http.put<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id+"/materiales",mat,{});
+  }
+
   asignProfesor(idAsignatura,idProfesor):Observable<any>{
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+idAsignatura+"/profesor/"+idProfesor,{});
   }

@@ -13,6 +13,8 @@ interface UploadResult {
   styleUrls: ['./add-materiales.page.scss'],
 })
 export class AddMaterialesPage implements OnInit {
+  matId=null;
+  asigId=null;
   titulo="";
   content=`
   # Titulo
@@ -53,14 +55,24 @@ export class AddMaterialesPage implements OnInit {
   constructor(private asigService:AsignaturasService,private route: ActivatedRoute,private router:Router) {   }
 
   ngOnInit() {
+    this.matId = this.route.snapshot.paramMap.get('idMat');
+    this.asigId = this.route.snapshot.paramMap.get('id');
+    if(this.matId != null){
+      this.asigService.getMaterial(this.asigId,this.matId).subscribe(
+        data=>{
+          this.titulo = data.titulo;
+          this.content = data.contenido;
+        }
+      )
+    }
   }
 
   guardar(){
-    let mat:Materiales = new Materiales(null,this.titulo,this.content);
-    this.asigService.createMaterial(this.route.snapshot.paramMap.get('id'),mat)
-    .subscribe(
-      ()=>{this.router.navigate(["/asignaturas/",this.route.snapshot.paramMap.get('id')])}
-    )
+    let mat:Materiales = new Materiales(this.matId,this.titulo,this.content);
+    if(this.matId==null)
+      this.asigService.createMaterial(this.asigId,mat).subscribe(()=>{this.router.navigate(["/asignaturas/",this.asigId])})
+    else
+      this.asigService.createMaterial(this.asigId,mat).subscribe(()=>{this.router.navigate(["/asignaturas/",this.asigId])})
   }
 
   doUpload(files: Array<File>): Promise<Array<UploadResult>> {
