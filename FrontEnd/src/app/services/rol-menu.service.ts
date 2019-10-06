@@ -25,8 +25,7 @@ export class RolMenuService {
   public adminPages = [
     { title: 'Home',      url: '/home',      icon: 'home'     },
     { title: 'Asignaturas',      url: '/asignaturas',      icon: 'color-palette'     },
-    { title: 'Profesores',url: '/profesores',      icon: 'book'     },
-    { title: 'Alumnos',  url: '/alumnos',      icon: 'contacts'},
+    { title: 'Usuarios',  url: '/usuarios',      icon: 'contacts'},
     { title: 'Ajustes',     url: '/ajustes',      icon: 'settings'   },
     { title: 'Salir',     url: '/login',     icon: 'log-out'  }
   ];
