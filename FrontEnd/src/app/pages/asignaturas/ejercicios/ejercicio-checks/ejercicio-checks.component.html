@@ -1,0 +1,9 @@
+<ion-list>
+  <ion-list-header color="tertiary">
+    {{pregunta}}
+  </ion-list-header>
+  <ion-item *ngFor="let opt of opciones">
+    <ion-label>{{opt}}</ion-label>
+    <ion-checkbox slot="start" color="success"></ion-checkbox>
+  </ion-item>
+</ion-list>

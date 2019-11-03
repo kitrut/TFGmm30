@@ -1,0 +1,15 @@
+<ion-list>
+    <ion-radio-group allowEmptySelection="true">
+      <ion-list-header color="tertiary">
+        {{pregunta}}
+        
+      </ion-list-header>
+      
+      <ion-item *ngFor="let opt of opciones">
+        <ion-label>{{opt}}</ion-label>
+        <ion-radio slot="start" value="{{opt}}"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+</ion-list>
+  
+  

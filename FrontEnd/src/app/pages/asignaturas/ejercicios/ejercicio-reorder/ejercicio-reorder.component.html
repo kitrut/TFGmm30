@@ -1,0 +1,14 @@
+<ion-list>
+  <ion-list-header color="tertiary">
+    {{pregunta}}
+  </ion-list-header>
+  <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+    <ion-reorder *ngFor="let opt of opciones">
+      <ion-item>
+        <ion-label>
+          {{opt}}
+        </ion-label>
+      </ion-item>
+    </ion-reorder>
+  </ion-reorder-group>
+</ion-list>

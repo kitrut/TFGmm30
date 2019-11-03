@@ -1,0 +1,41 @@
+<ion-card>
+  <ion-item class="ion-text-center" color="primary">
+    <ion-label>Ejercicios</ion-label>
+    <ion-button (click)="addMaterial()" slot="end">
+      <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-card-content>
+      <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+        <ion-reorder>
+            <ion-item>
+              <ion-label>
+                Item 7
+              </ion-label>
+            </ion-item>
+          </ion-reorder>
+          
+          <ion-reorder>
+            <ion-item>
+              <ion-label>
+                Item 8
+              </ion-label>
+            </ion-item>
+          </ion-reorder>
+
+          <ion-reorder>
+            <ion-item color="secondary">
+              <ion-label>
+                Tema 1
+              </ion-label>
+            </ion-item>
+          </ion-reorder>
+      </ion-reorder-group>
+  </ion-card-content>
+</ion-card>
+
+<app-ejercicio-test pregunta="¿Cuántos dedos tiene una mano?" [opciones]="[1,2,3,4,5]"></app-ejercicio-test>
+<app-ejercicio-reorder pregunta="Ordena de mayor a menor" [opciones]="[1,2,3,4,5]"></app-ejercicio-reorder>
+<app-ejercicio-checks pregunta="Selecciona los animales" [opciones]="['Perro','Agua','Gato','Verde','Ratón']"></app-ejercicio-checks>
+<app-ejercicio-relation pregunta="Relaciona" [opciones1]="['Perro','Gato','Ratón']" [opciones2]="['Roedor','Felino','Canino']"></app-ejercicio-relation>
+<app-ejercicio-redaction pregunta="¿Cuál es tu color favorito?"></app-ejercicio-redaction>

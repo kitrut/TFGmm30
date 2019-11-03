@@ -1,0 +1,11 @@
+<ion-list>
+  <ion-list-header color="tertiary">
+    {{pregunta}}
+  </ion-list-header>
+  <ion-item *ngFor="let opt1 of opciones1">
+      <ion-label>{{opt1}}</ion-label>
+      <ion-select>
+        <ion-select-option *ngFor="let opt2 of opciones2" value="{{opt2}}">{{opt2}}</ion-select-option>
+      </ion-select>   
+  </ion-item> 
+</ion-list>

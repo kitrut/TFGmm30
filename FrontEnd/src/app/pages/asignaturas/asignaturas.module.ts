@@ -13,6 +13,12 @@ import { AddMaterialesPage } from './add-materiales/add-materiales.page';
 
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { ViewMaterialPage } from './view-material/view-material.page';
+import { EjerciciosComponent } from './ejercicios/ejercicios.component';
+import { EjercicioTestComponent } from './ejercicios/ejercicio-test/ejercicio-test.component';
+import { EjercicioReorderComponent } from './ejercicios/ejercicio-reorder/ejercicio-reorder.component';
+import { EjercicioRelationComponent } from './ejercicios/ejercicio-relation/ejercicio-relation.component';
+import { EjercicioRedactionComponent } from './ejercicios/ejercicio-redaction/ejercicio-redaction.component';
+import { EjercicioChecksComponent } from './ejercicios/ejercicio-checks/ejercicio-checks.component';
 
 const routes: Routes = [
   {
@@ -57,7 +63,13 @@ const routes: Routes = [
     CreateAsignaturaPage,
     IndexAsignaturaPage,
     AddMaterialesPage,
-    ViewMaterialPage
+    ViewMaterialPage,
+    EjerciciosComponent,
+    EjercicioTestComponent,
+    EjercicioReorderComponent,
+    EjercicioRelationComponent,
+    EjercicioRedactionComponent,
+    EjercicioChecksComponent
   ]
 })
 export class AsignaturasPageModule { }
