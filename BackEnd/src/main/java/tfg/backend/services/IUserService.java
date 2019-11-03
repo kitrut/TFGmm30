@@ -20,7 +20,9 @@ public interface IUserService extends UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
     public Usuario getUser(String username);
     public List<Usuario> all();
+    public Usuario create(Usuario user,String role);
     public Usuario findById(Integer id);
     public List<Usuario> getProfesores();
     public List<Usuario> getAlumnos();
+    public List<Usuario> getAdmins();
 }

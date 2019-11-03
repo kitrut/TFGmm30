@@ -41,6 +41,13 @@ export class UsuariosPage implements OnInit {
     );
   }
 
+  getOthers(){
+    this.alumnoService.getOthers().subscribe(
+      data=>this.usuarios =  this.usuariosFiltrados = data,
+      error=>this.usuarios=[]
+    );
+  }
+
   perfil(id){
     this.router.navigateByUrl('/usuarios/'+id);
   }
@@ -49,7 +56,7 @@ export class UsuariosPage implements OnInit {
     switch(event.target.value){
       case 'profesores': this.getProfesores();break;
       case 'alumnos': this.getAlumnos();break;
-      case 'otros':
+      case 'otros': this.getOthers();break;
       default: this.usuarios=this.usuariosFiltrados=[];
     }
   }
