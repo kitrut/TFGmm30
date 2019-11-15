@@ -19,6 +19,7 @@ import { EjercicioReorderComponent } from './ejercicios/ejercicio-reorder/ejerci
 import { EjercicioRelationComponent } from './ejercicios/ejercicio-relation/ejercicio-relation.component';
 import { EjercicioRedactionComponent } from './ejercicios/ejercicio-redaction/ejercicio-redaction.component';
 import { EjercicioChecksComponent } from './ejercicios/ejercicio-checks/ejercicio-checks.component';
+import { GeneradorEjerciciosComponent } from './ejercicios/generador-ejercicios/generador-ejercicios.component';
 
 const routes: Routes = [
   {
@@ -69,7 +70,8 @@ const routes: Routes = [
     EjercicioReorderComponent,
     EjercicioRelationComponent,
     EjercicioRedactionComponent,
-    EjercicioChecksComponent
+    EjercicioChecksComponent,
+    GeneradorEjerciciosComponent
   ]
 })
 export class AsignaturasPageModule { }
