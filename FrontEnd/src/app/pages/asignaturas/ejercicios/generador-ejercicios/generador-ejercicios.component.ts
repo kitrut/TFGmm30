@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { timeInterval } from 'rxjs/operators';
+import { NavController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-generador-ejercicios',
@@ -17,7 +18,7 @@ export class GeneradorEjerciciosComponent implements OnInit {
 
   ejercicios:Ejercicio[]=[];
 
-  constructor() { }
+  constructor(private modalControl:ModalController) { }
 
   ngOnInit() { }
 
@@ -43,6 +44,11 @@ export class GeneradorEjerciciosComponent implements OnInit {
   createEjer(){
     this.ejercicios.push(new Ejercicio(this.pregunta,this.opciones,this.ejercicioType));
     console.log(this.ejercicios)
+  }
+
+  async closeModal(){
+    const modal = await this.modalControl.getTop()
+    modal.dismiss()
   }
 }
 

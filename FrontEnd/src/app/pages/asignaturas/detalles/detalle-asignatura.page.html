@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-back-button></ion-back-button>
+      <ion-back-button></ion-back-button>      
     </ion-buttons>
     <ion-title>{{'Asignaturas.DetalleAsignatura' | translate}}</ion-title>
   </ion-toolbar>
@@ -11,93 +11,69 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header class="ion-text-center" color="primary">
-            <ion-card-title>{{asignatura.nombre}}</ion-card-title>
-            <ion-card-subtitle>{{'Asignaturas.Curso' | translate}}: {{asignatura.curso}}</ion-card-subtitle>
+      <ion-col size="10">
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-card-header class="ion-text-center" color="primary">
+                <ion-card-title>{{asignatura.nombre}}</ion-card-title>
+                <ion-card-subtitle>{{'Asignaturas.Curso' | translate}}: {{asignatura.curso}}</ion-card-subtitle>
 
-          </ion-card-header>
+              </ion-card-header>
 
-          <ion-card-content>
+              <ion-card-content>
 
-            <p *ngIf="asignatura.descripcion">{{'Asignaturas.Descripción' | translate}}: {{asignatura.descripcion}}</p>
-            <p *ngIf="asignatura.profesor">{{'Asignaturas.Profesor' | translate}}: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
-            
-            <ion-item *ngIf="!asignatura.profesor">
-              <ion-label>Asignar profesor</ion-label>
-              <ion-select placeholder="Select One" [(ngModel)]="profesorAsignadoID">
-                <ion-select-option *ngFor="let p of profesores" value="{{p.id}}">{{p.nombre+' '+p.apellidos}}</ion-select-option>
-              </ion-select>              
-            </ion-item>
-            <ion-button *ngIf="!asignatura.profesor" (click)="asignarProfesor()" expand="full">Asignar</ion-button>
-          </ion-card-content>
-        </ion-card>
+                <p *ngIf="asignatura.descripcion">{{'Asignaturas.Descripción' | translate}}: {{asignatura.descripcion}}</p>
+                <p *ngIf="asignatura.profesor">{{'Asignaturas.Profesor' | translate}}: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
+                
+                <ion-item *ngIf="!asignatura.profesor">
+                  <ion-label>Asignar profesor</ion-label>
+                  <ion-select placeholder="Select One" [(ngModel)]="profesorAsignadoID">
+                    <ion-select-option *ngFor="let p of profesores" value="{{p.id}}">{{p.nombre+' '+p.apellidos}}</ion-select-option>
+                  </ion-select>              
+                </ion-item>
+                <ion-button *ngIf="!asignatura.profesor" (click)="asignarProfesor()" expand="full">Asignar</ion-button>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col size-lg="8">
+            <app-ejercicios [asignatura]="asignatura"></app-ejercicios>
+          </ion-col>    
+          <ion-col size-lg="4" class="ion-text-center">
+              <ion-card>
+                <ion-item class="ion-text-center" color="primary">
+                  <ion-label>{{'Asignaturas.AlumnosMatriculados' | translate}}</ion-label>
+                  <ion-button (click)="crear()" slot="end">
+                    <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+                <ion-card-content>
+                  <ion-list>
+                    <ion-item *ngFor="let a of [1,2,3,4,5] | paginate: { itemsPerPage: 5, currentPage: p,id:'alumnos' }">
+                      Alumno {{a}}
+                      <ion-button (click)="crear()" slot="end">
+                        <ion-icon slot="icon-only" name="contact"></ion-icon>
+                      </ion-button>
+                      <ion-button (click)="crear()" slot="end">
+                        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+                      </ion-button>
+                    </ion-item>
+                  </ion-list>
+                  <pagination-controls (pageChange)="p = $event" id="alumnos"></pagination-controls>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>   
+        </ion-row>
+
+        <ion-row>
+                
+        </ion-row>
       </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <ion-card>
-          <ion-item class="ion-text-center" color="primary">
-            <ion-label>{{'Asignaturas.AlumnosMatriculados' | translate}}</ion-label>
-            <ion-button (click)="crear()" slot="end">
-              <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
-            </ion-button>
-          </ion-item>
-          <ion-card-content>
-            <ion-list>
-              <ion-item *ngFor="let a of [1,2,3,4,5] | paginate: { itemsPerPage: 5, currentPage: p,id:'alumnos' }">
-                Alumno {{a}}
-                <ion-button (click)="crear()" slot="end">
-                  <ion-icon slot="icon-only" name="contact"></ion-icon>
-                </ion-button>
-                <ion-button (click)="crear()" slot="end">
-                  <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
-                </ion-button>
-              </ion-item>
-            </ion-list>
-            <pagination-controls (pageChange)="p = $event" id="alumnos"></pagination-controls>
-          </ion-card-content>
-        </ion-card>
+      <ion-col size="2">side menu
       </ion-col>
-
-
-      <ion-col>
-        <ion-card>
-          <ion-item class="ion-text-center" color="primary">
-            <ion-label>{{'Menu.Materiales' | translate}}</ion-label>
-            <ion-button (click)="addMaterial()" slot="end">
-              <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
-            </ion-button>
-          </ion-item>
-          <ion-card-content>
-            <ion-list>
-              <ion-item *ngFor="let a of materiales | paginate: { itemsPerPage: 5, currentPage: p2,id:'materiales' }">
-                {{a.titulo}}
-                <ion-buttons slot="end">
-
-                <ion-button (click)="verMaterial(a.id)" slot="end" color="tertiary" title="Ver">
-                  <ion-icon slot="icon-only" name="book"></ion-icon>
-                </ion-button>
-                <ion-button (click)="editMaterial(a.id)" slot="end" color="secondary" title="Editar">
-                  <ion-icon slot="icon-only" name="create"></ion-icon>
-                </ion-button>
-                <ion-button (click)="presentAlertConfirm(a.id)" slot="end" color="danger" title="Borrar">
-                  <ion-icon slot="icon-only" name="trash"></ion-icon>
-                </ion-button>
-              </ion-buttons>
-              </ion-item>
-            </ion-list>
-            <pagination-controls (pageChange)="p2 = $event" id="materiales"></pagination-controls>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <app-ejercicios></app-ejercicios>
-      </ion-col>      
     </ion-row>
   </ion-grid>
 </ion-content>

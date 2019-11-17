@@ -72,6 +72,9 @@ const routes: Routes = [
     EjercicioRedactionComponent,
     EjercicioChecksComponent,
     GeneradorEjerciciosComponent
+  ],
+  entryComponents:[
+    GeneradorEjerciciosComponent
   ]
 })
 export class AsignaturasPageModule { }

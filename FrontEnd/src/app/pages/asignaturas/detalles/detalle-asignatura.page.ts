@@ -26,8 +26,7 @@ export class DetalleAsignaturaPage{
 
   ionViewWillEnter() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.getData(id)
-    
+    this.getData(id)    
   }
 
   getData(id){

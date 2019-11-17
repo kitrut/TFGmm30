@@ -15,6 +15,27 @@ public class Materiales {
 	@Size(max = 2000)
 	private String contenido;
 
+	private Integer seccion;
+	private Integer orden;
+
+	public Integer getSeccion() {
+		return seccion;
+	}
+
+	public void setSeccion(Integer seccion) {
+		this.seccion = seccion;
+	}
+
+	public Integer getOrden() {
+		return orden;
+	}
+
+	public void setOrden(Integer orden) {
+		this.orden = orden;
+	}
+
+
+
 	public String getContenido() {
 		return contenido;
 	}

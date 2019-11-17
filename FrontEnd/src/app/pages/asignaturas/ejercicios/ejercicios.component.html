@@ -1,38 +1,55 @@
 <ion-card>
   <ion-item class="ion-text-center" color="primary">
     <ion-label>Ejercicios</ion-label>
-    <ion-button (click)="addMaterial()" slot="end">
-      <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
-    </ion-button>
   </ion-item>
-  <ion-card-content>
+  <ion-card-content class="ion-no-padding">
       <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
-        <ion-reorder>
-            <ion-item>
-              <ion-label>
-                Item 7
-              </ion-label>
-            </ion-item>
-          </ion-reorder>
-          
-          <ion-reorder>
-            <ion-item>
-              <ion-label>
-                Item 8
-              </ion-label>
-            </ion-item>
-          </ion-reorder>
 
-          <ion-reorder>
-            <ion-item color="secondary">
-              <ion-label>
-                Tema 1
-              </ion-label>
+        <ion-list *ngFor="let sec of secciones;let firstSec = first;let lastSec = last;" class="ion-no-padding">
+          
+          <ion-toolbar color="medium">
+            <ion-reorder slot="start" color="medium"></ion-reorder>
+            {{sec.title}}
+            <ion-buttons slot="end">
+              <ion-button (click)="addMaterial()">
+                <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            
+          </ion-toolbar>
+        
+          <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+            <ion-item *ngFor="let mat of sec.materiales">
+              <ion-reorder slot="start"><ion-icon name="move"></ion-icon></ion-reorder>
+              <ion-buttons slot="start">
+                  <ion-button (click)="moveMat(mat,sec,-1)"  [disabled]="firstSec" color="tertiary" title="Ver">
+                    <ion-icon slot="icon-only" name="arrow-dropup-circle"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="moveMat(mat,sec,1)" [disabled]="lastSec" color="tertiary" title="Ver">
+                    <ion-icon slot="icon-only" name="arrow-dropdown-circle"></ion-icon>
+                  </ion-button>
+              </ion-buttons>
+              {{mat.titulo}}
+              <ion-buttons slot="end">
+                  <ion-button (click)="verMaterial(mat.id)" slot="end" color="tertiary" title="Ver">
+                    <ion-icon slot="icon-only" name="book"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="presentModal()"slot="end" color="tertiary" title="Ejercicio">
+                    <ion-icon slot="icon-only" name="calculator"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="editMaterial(mat.id)" slot="end" color="secondary" title="Editar">
+                    <ion-icon slot="icon-only" name="create"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="presentAlertConfirm(mat.id)" slot="end" color="danger" title="Borrar">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
             </ion-item>
-          </ion-reorder>
+          </ion-reorder-group>
+        </ion-list>
+
+
       </ion-reorder-group>
   </ion-card-content>
 </ion-card>
-
-<app-generador-ejercicios></app-generador-ejercicios>
 
