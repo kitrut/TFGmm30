@@ -20,32 +20,40 @@ import { EjercicioRelationComponent } from './ejercicios/ejercicio-relation/ejer
 import { EjercicioRedactionComponent } from './ejercicios/ejercicio-redaction/ejercicio-redaction.component';
 import { EjercicioChecksComponent } from './ejercicios/ejercicio-checks/ejercicio-checks.component';
 import { GeneradorEjerciciosComponent } from './ejercicios/generador-ejercicios/generador-ejercicios.component';
+import { AsignaturasPage } from './asignaturas/asignaturas.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: IndexAsignaturaPage
+    component: AsignaturasPage,
+    children: [
+      {
+        path: '',
+        component: IndexAsignaturaPage
+      },
+      {
+        path: 'create',
+        component: CreateAsignaturaPage
+      },
+      {
+        path: ':id',
+        component: DetalleAsignaturaPage
+      },
+      {
+        path: ':id/addMaterial',
+        component: AddMaterialesPage
+      },
+      {
+        path: ':id/update/:idMat',
+        component: AddMaterialesPage
+      },
+      {
+        path: ':id/materiales/:idMat',
+        component: ViewMaterialPage
+      }
+    ]
   },
-  {
-    path: 'create',
-    component: CreateAsignaturaPage
-  },
-  {
-    path: ':id',
-    component: DetalleAsignaturaPage
-  },
-  {
-    path: ':id/addMaterial',
-    component: AddMaterialesPage
-  },
-  {
-    path: ':id/update/:idMat',
-    component: AddMaterialesPage
-  },
-  {
-    path: ':id/materiales/:idMat',
-    component: ViewMaterialPage
-  }
+  
 ];
 
 @NgModule({
@@ -71,7 +79,8 @@ const routes: Routes = [
     EjercicioRelationComponent,
     EjercicioRedactionComponent,
     EjercicioChecksComponent,
-    GeneradorEjerciciosComponent
+    GeneradorEjerciciosComponent,
+    AsignaturasPage
   ],
   entryComponents:[
     GeneradorEjerciciosComponent

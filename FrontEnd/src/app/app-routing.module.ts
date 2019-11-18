@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'perfil', loadChildren: './pages/perfil/perfil.module#PerfilPageModule' },
   { path: 'usuarios', loadChildren: './pages/usuarios/usuarios.module#UsuariosPageModule' },
 
+
 ];
 
 @NgModule({
