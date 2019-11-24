@@ -11,12 +11,13 @@ const routes: Routes = [
   { path: 'agenda', loadChildren: './pages/agenda/agenda.module#AgendaPageModule',canActivate:[AlumnoGuard] },
   { path: 'notas', loadChildren: './pages/notas/notas.module#NotasPageModule',canActivate:[AlumnoGuard] },
   { path: 'ajustes', loadChildren: './pages/ajustes/ajustes.module#AjustesPageModule',canActivate:[AlumnoGuard]},
-  { path: 'alumnos', loadChildren: './pages/alumnos/alumnos.module#AlumnosPageModule' },
   
   //ASIGNATURAS
   { path: 'asignaturas', loadChildren: './pages/asignaturas/asignaturas.module#AsignaturasPageModule' },
-  { path: 'profesores', loadChildren: './pages/profesores/profesores.module#ProfesoresPageModule' },
   { path: 'perfil', loadChildren: './pages/perfil/perfil.module#PerfilPageModule' },
+  { path: 'usuarios', loadChildren: './pages/usuarios/usuarios.module#UsuariosPageModule' },
+
+
 ];
 
 @NgModule({

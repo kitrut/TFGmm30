@@ -3,13 +3,26 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{'Menu.Profesores' | translate}}</ion-title>
+    <ion-title>{{'Menu.Usuarios' | translate}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button routerLink="create">
         <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
       </ion-button>
       <ion-searchbar animated [(ngModel)]="buscado" (ionChange)="buscar()" debounce="500"></ion-searchbar>
     </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-segment  (ionChange)="segmentChanged($event)" [(ngModel)]="valorSegmento">
+      <ion-segment-button value="profesores" style="font-size:11px;">
+        Profesores
+      </ion-segment-button>
+      <ion-segment-button value="alumnos" style="font-size:11px;">
+        Alumnos
+      </ion-segment-button>
+      <ion-segment-button value="otros" style="font-size:11px;">
+        Otros
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
@@ -22,9 +35,9 @@
         <ion-label>Apellidos</ion-label>
         <ion-label>Email</ion-label>
       </ion-item>
-      <ion-item-sliding *ngFor="let profe of profesoresFiltrados | paginate: { itemsPerPage: 5, currentPage: p }">
+      <ion-item-sliding *ngFor="let usuario of usuariosFiltrados | paginate: { itemsPerPage: 5, currentPage: p }">
         <ion-item-options side="end">
-          <ion-item-option color="primary" (click)="perfil(profe.id)">
+          <ion-item-option color="primary" (click)="perfil(usuario.id)">
             <ion-icon slot="top" name="information-circle-outline"></ion-icon>
             Detalles
           </ion-item-option>
@@ -46,9 +59,9 @@
           <ion-avatar slot="start">
             <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
           </ion-avatar>
-          <ion-label class="ion-text-wrap">{{profe.nombre}}</ion-label>
-          <ion-label class="ion-text-wrap">{{profe.apellidos}}</ion-label>
-          <ion-label class="ion-text-wrap">{{profe.email}}</ion-label>
+          <ion-label class="ion-text-wrap">{{usuario.nombre}}</ion-label>
+          <ion-label class="ion-text-wrap">{{usuario.apellidos}}</ion-label>
+          <ion-label class="ion-text-wrap">{{usuario.email}}</ion-label>
         </ion-item>
       </ion-item-sliding>
     </ion-list>

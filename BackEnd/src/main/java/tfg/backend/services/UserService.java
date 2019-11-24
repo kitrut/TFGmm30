@@ -10,9 +10,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.Role;
+import tfg.backend.reposiroties.IRoleReposority;
 import tfg.backend.reposiroties.IUsuarioReposority;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +23,17 @@ public class UserService implements UserDetailsService,IUserService {
 
     @Autowired
     private IUsuarioReposority iUsuarioReposority;
+
+    @Autowired
+    private IRoleReposority roleReposority;
+
+    @Override
+    public Usuario create(Usuario user, String role) {
+        Role r = this.roleReposority.findByNombre(role).orElse(null);
+        user.setRoles(Arrays.asList(r));
+        Usuario usuario =  this.iUsuarioReposority.save(user);
+        return null;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -47,7 +60,7 @@ public class UserService implements UserDetailsService,IUserService {
     public List<Usuario> all(){
         return iUsuarioReposority.findAll();
     }
-    
+
     public Usuario findById(Integer id){
     	Usuario p = this.iUsuarioReposority.findById(id).orElse(null);
         return p;
@@ -67,4 +80,13 @@ public class UserService implements UserDetailsService,IUserService {
         r.setNombre("ALUMNO");
         return iUsuarioReposority.findByRoles(r);
     }
+
+    @Override
+    public List<Usuario> getAdmins() {
+        Role r = new Role();
+        r.setId(1l);
+        r.setNombre("ADMIN");
+        return iUsuarioReposority.findByRoles(r);
+    }
+
 }

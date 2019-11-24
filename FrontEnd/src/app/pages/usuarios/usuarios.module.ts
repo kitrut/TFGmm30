@@ -5,16 +5,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PerfilPage } from './perfil/perfil.page';
-import { IndexProfesoresPage } from './index/index-profesores.page';
+import { UsuariosPage } from './usuarios.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PerfilPage } from './perfil/perfil.page';
+import { FormCreateUserComponent } from './form-create-user/form-create-user.component';
 
 const routes: Routes = [
-  { path: '', component: IndexProfesoresPage},
-  { path: ':id', component: PerfilPage}
+  { path: '', component: UsuariosPage },  
+  { path: 'create', component: FormCreateUserComponent},
+  { path: ':id', component: PerfilPage},
 ];
-
 @NgModule({
   imports: [
     CommonModule,
@@ -25,6 +26,6 @@ const routes: Routes = [
     TranslateModule.forChild(),
     NgxPaginationModule
   ],
-  declarations: [PerfilPage,IndexProfesoresPage]
+  declarations: [UsuariosPage,PerfilPage,FormCreateUserComponent]
 })
-export class ProfesoresPageModule {}
+export class UsuariosPageModule {}
