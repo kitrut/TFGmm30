@@ -32,6 +32,7 @@
     "brace": "^0.11.1",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
+    "ionic2-calendar": "^0.5.7",
     "jquery": "^3.4.1",
     "ngx-markdown-editor": "^2.1.1",
     "ngx-pagination": "^4.1.0",
