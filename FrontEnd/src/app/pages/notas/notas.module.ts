@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
+import {MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule} from '@angular/material'
+
 import { IonicModule } from '@ionic/angular';
 
 import { NotasPage } from './notas.page';
@@ -21,7 +23,11 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   declarations: [NotasPage]
 })

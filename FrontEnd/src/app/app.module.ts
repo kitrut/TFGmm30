@@ -17,6 +17,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgCalendarModule} from 'ionic2-calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +36,8 @@ import {NgCalendarModule} from 'ionic2-calendar';
       }
     }),
     NgxPaginationModule,
-    NgCalendarModule
+    NgCalendarModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,
