@@ -40,10 +40,10 @@ export interface Calificacion{
 }
 
 const NOTAS : Calificacion[] =  [
-  {nombre:"Tema 1",peso:20,nota:10,comentarios:"adsada"},
-  {nombre:"Tema 2",peso:20,nota:10,comentarios:"adsada"},
-  {nombre:"Tema 3",peso:20,nota:6,comentarios:"adsada"},
-  {nombre:"Tema 4",peso:20,nota:7,comentarios:"adsada"},
-  {nombre:"Tema 5",peso:10,nota:2,comentarios:"adsada"},
-  {nombre:"Tema 6",peso:10,nota:10,comentarios:"adsada"}
+  {nombre: "Tema 1",peso:20,nota:10,comentarios:"adsada"},
+  {nombre: "Tema 2",peso:20,nota:10,comentarios:"adsada"},
+  {nombre: "Tema 3",peso:20,nota:6,comentarios:"adsada"},
+  {nombre: "Tema 4",peso:20,nota:7,comentarios:"adsada"},
+  {nombre: "Tema 5",peso:10,nota:2,comentarios:"adsada"},
+  {nombre: "Tema 6",peso:10,nota:10,comentarios:"adsada"}
 ]

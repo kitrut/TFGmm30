@@ -1,6 +1,6 @@
 <ion-app [ngClass]="theme">
-  <ion-split-pane when="(min-width: 2000px)">
-    <ion-menu type="overlay">
+  <ion-split-pane contentId="main-content" when="(min-width: 2000px)">
+    <ion-menu contentId="main-content" type="overlay">
       <ion-header>
         <ion-toolbar>
             <ion-item color="primary" [routerDirection]="'root'" [routerLink]="['/perfil']">
@@ -34,6 +34,6 @@
         </ion-list>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet main></ion-router-outlet>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
