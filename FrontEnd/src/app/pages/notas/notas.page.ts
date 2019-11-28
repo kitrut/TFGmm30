@@ -11,8 +11,8 @@ export class NotasPage implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight','weight2', 'symbol'];
   dataSource = new MatTableDataSource<Calificacion>(NOTAS);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
