@@ -25,7 +25,7 @@ const groupBy = function groupBy<T extends any, K extends keyof T>(array: T[], k
 })
 export class EjerciciosComponent implements OnInit {
 
-  @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
+  @ViewChild(IonReorderGroup, { static: false }) reorderGroup: IonReorderGroup;
   @Input() asignatura:Asignatura = new Asignatura();
   id:any;
 
