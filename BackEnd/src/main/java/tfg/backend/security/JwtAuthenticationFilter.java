@@ -56,14 +56,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 	@Override
 	protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
-		super.unsuccessfulAuthentication(request, response, failed);
-		response.setStatus(403);
-
-		Map<String,Object> body = new HashMap<>();
-		body.put("error","Credenciales inválidos");
-		response.getWriter().write(new ObjectMapper().writeValueAsString(body));
+		response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 		response.setContentType("application/json");
-
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write("{\"error\":\""+failed.getMessage()+"\"}");
 	}
 
 	@Override

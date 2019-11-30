@@ -14,27 +14,31 @@ export class LoginPage implements OnInit {
     password: new FormControl(''),
   });
 
-  error:boolean=false;
-  errorCode:number;
+  error = false;
+  errorCode: string;
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.error=false;
+    this.error = false;
     this.loginForm.reset();
   }
 
-  login(){
-    this.auth.login(this.loginForm.value.user,this.loginForm.value.password).subscribe(
-      data=>{
-
+  login() {
+    this.auth.login(this.loginForm.value.user, this.loginForm.value.password).subscribe(
+      () => {
+        this.error = false;
+        this.errorCode = '';
       },
-      err=>{
+      err => {
         this.error = true;
-        this.errorCode = err.status
-
+        if (err.status === 0) {
+          this.errorCode = 'Sin conexión';
+        } else {
+          this.errorCode = err.status + ' ' + err.error.error;
+        }
       }
-    )
+    );
     this.loginForm.reset();
   }
 
