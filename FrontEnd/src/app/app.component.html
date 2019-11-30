@@ -1,6 +1,6 @@
 <ion-app [ngClass]="theme">
   <ion-split-pane contentId="main-content" when="(min-width: 2000px)">
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu [disabled]="!isLoggued" contentId="main-content" type="overlay">
       <ion-header>
         <ion-toolbar>
             <ion-item color="primary" [routerDirection]="'root'" [routerLink]="['/perfil']">
