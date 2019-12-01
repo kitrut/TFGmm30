@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Materiales;
+import tfg.backend.models.Matricula;
 import tfg.backend.models.Usuario;
 import tfg.backend.services.AsignaturaService;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/private/asignaturas")
@@ -40,6 +42,11 @@ public class AsignaturaController {
     @GetMapping("/{id}/profesor")
     public Usuario getProfesor(@PathVariable("id") Long id) {
         return asignaturaService.getProfesor(id);
+    }
+
+    @GetMapping("/{id}/matriculas")
+    public Set<Matricula> getMatriculados(@PathVariable("id") Long id) {
+        return asignaturaService.getMatriculados(id);
     }
     
     @GetMapping("/{id}/materiales/{idMat}")

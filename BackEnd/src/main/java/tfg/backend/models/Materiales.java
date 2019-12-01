@@ -1,6 +1,9 @@
 package tfg.backend.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
@@ -17,6 +20,10 @@ public class Materiales {
 
 	private Integer seccion;
 	private Integer orden;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	private Asignatura asignatura;
 
 	public Integer getSeccion() {
 		return seccion;

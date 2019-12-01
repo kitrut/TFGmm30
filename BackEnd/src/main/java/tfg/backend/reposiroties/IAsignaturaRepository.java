@@ -11,5 +11,8 @@ import tfg.backend.models.Asignatura;
 public interface IAsignaturaRepository extends JpaRepository<Asignatura, Long> {
 	
 	@Query("Select a from Asignatura a left join fetch a.materiales m left join fetch a.profesor p where a.id=?1")
-	public Optional<Asignatura> findByIdWithMats(Long id);
+	Optional<Asignatura> findByIdWithMats(Long id);
+
+	@Query("Select a from Asignatura a left join fetch a.matriculas p where a.id=?1")
+	Optional<Asignatura> findByIdWithMatriculas(Long id);
 }

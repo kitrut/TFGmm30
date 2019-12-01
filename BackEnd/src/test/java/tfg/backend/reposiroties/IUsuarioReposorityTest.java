@@ -8,8 +8,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
 
-import java.util.Optional;
-
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -15,8 +15,8 @@ import tfg.backend.reposiroties.IUsuarioReposority;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService,IUserService {
@@ -30,7 +30,7 @@ public class UserService implements UserDetailsService,IUserService {
     @Override
     public Usuario create(Usuario user, String role) {
         Role r = this.roleReposority.findByNombre(role).orElse(null);
-        user.setRoles(Arrays.asList(r));
+        user.setRoles(Collections.singletonList(r));
         Usuario usuario =  this.iUsuarioReposority.save(user);
         return null;
     }
@@ -47,10 +47,7 @@ public class UserService implements UserDetailsService,IUserService {
         	authorities.add(new SimpleGrantedAuthority(r.getNombre()));
         }
 
-        UserDetails userDetails = new User(user.getUser(), user.getPassword(),authorities);
-
-        return  userDetails;
-
+        return new User(user.getUser(), user.getPassword(),authorities);
     }
 
     public Usuario getUser(String username){
@@ -62,8 +59,7 @@ public class UserService implements UserDetailsService,IUserService {
     }
 
     public Usuario findById(Integer id){
-    	Usuario p = this.iUsuarioReposority.findById(id).orElse(null);
-        return p;
+        return this.iUsuarioReposority.findById(id).orElse(null);
     }
 
     public List<Usuario> getProfesores(){

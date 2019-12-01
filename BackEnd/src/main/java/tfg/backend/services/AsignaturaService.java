@@ -2,16 +2,14 @@ package tfg.backend.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tfg.backend.models.Asignatura;
-import tfg.backend.models.Materiales;
-import tfg.backend.models.Role;
-import tfg.backend.models.Usuario;
+import tfg.backend.models.*;
 import tfg.backend.reposiroties.IAsignaturaRepository;
 import tfg.backend.reposiroties.IMaterialesRepository;
 import tfg.backend.reposiroties.IUsuarioReposority;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class AsignaturaService {
@@ -70,8 +68,7 @@ public class AsignaturaService {
     }
     
     public Materiales getMaterial(Long idMat) {
-		Materiales mat = materialesRepository.findById(idMat).orElse(null);
-    	return mat;
+		return materialesRepository.findById(idMat).orElse(null);
     }
     public Usuario getProfesor(Long id){
         Asignatura a = this.asignaturaRepository.findById(id).orElse(null);
@@ -79,6 +76,10 @@ public class AsignaturaService {
             return a.getProfesor();
         }
         return null;
+    }
+
+    public Set<Matricula> getMatriculados(Long idAsignatura){
+        return this.asignaturaRepository.findByIdWithMatriculas(idAsignatura).get().getMatriculas();
     }
     public Asignatura addProfesor(Long idAsignatura,Integer idProfesor){
         Asignatura a = this.asignaturaRepository.findById(idAsignatura).orElse(null);
