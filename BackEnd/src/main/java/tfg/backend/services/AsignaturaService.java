@@ -47,6 +47,7 @@ public class AsignaturaService {
                 asignatura.addMateriales(mat);
                 asignatura = asignaturaRepository.save(asignatura);
             }else{
+    	        materiales.setAsignatura(asignatura);
                 materialesRepository.save(materiales);
             }
     	}

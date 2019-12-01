@@ -31,7 +31,7 @@
   <ng-container matColumnDef="weight2">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Ponderada </th>
     <td mat-cell *matCellDef="let element"> {{(element.nota * element.peso)/100 | number:'.2'}}  </td>
-    <td mat-footer-cell *matFooterCellDef>{{getTotalCost()}}</td>
+    <td mat-footer-cell *matFooterCellDef>{{getTotalCost()| number:'.2'}}</td>
   </ng-container>
 
   <!-- Symbol Column -->
