@@ -32,6 +32,10 @@ const routes: Routes = [
         component: IndexAsignaturaPage
       },
       {
+        path: 'list',
+        component: IndexAsignaturaPage
+      },
+      {
         path: 'create',
         component: CreateAsignaturaPage
       },
@@ -53,7 +57,6 @@ const routes: Routes = [
       }
     ]
   },
-  
 ];
 
 @NgModule({

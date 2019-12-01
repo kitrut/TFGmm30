@@ -111,4 +111,7 @@ export class DetalleAsignaturaPage{
     this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/materiales/"+id);
   }
 
+  info(){
+    console.log("SHOW INFO")
+  }
 }
