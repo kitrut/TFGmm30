@@ -1,0 +1,26 @@
+table{
+    width: 100%;    
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.mat-header-row{
+    background: var(--ion-color-primary, blue);
+    th{
+        color: var(--ion-color-primary-contrast, white);
+    }
+}
+.mat-row:nth-child(even){
+    background: var(--ion-color-gray, lightgray);
+    td{
+        color: var(--ion-color-gray-contrast, white);
+    }
+}
+.mat-footer-row{
+    background: var(--ion-color-primary, blue);
+    td{
+        color: var(--ion-color-primary-contrast, white);
+    }
+}

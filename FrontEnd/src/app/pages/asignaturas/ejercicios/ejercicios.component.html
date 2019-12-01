@@ -1,6 +1,11 @@
 <ion-card>
   <ion-item class="ion-text-center" color="primary">
     <ion-label>Ejercicios</ion-label>
+    <ion-buttons slot="end">
+      <ion-button (click)="addMaterial()">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-item>
   <ion-card-content class="ion-no-padding">
       <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
@@ -21,15 +26,7 @@
           <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
             <ion-item *ngFor="let mat of sec.materiales">
               <ion-reorder slot="start"><ion-icon name="move"></ion-icon></ion-reorder>
-              <ion-buttons slot="start">
-                  <ion-button (click)="moveMat(mat,sec,-1)"  [disabled]="firstSec" color="tertiary" title="Ver">
-                    <ion-icon slot="icon-only" name="arrow-dropup-circle"></ion-icon>
-                  </ion-button>
-                  <ion-button (click)="moveMat(mat,sec,1)" [disabled]="lastSec" color="tertiary" title="Ver">
-                    <ion-icon slot="icon-only" name="arrow-dropdown-circle"></ion-icon>
-                  </ion-button>
-              </ion-buttons>
-              {{mat.titulo}}
+              <ion-label class="ion-text-wrap">{{mat.titulo}}</ion-label>              
               <ion-buttons slot="end">
                   <ion-button (click)="verMaterial(mat.id)" slot="end" color="tertiary" title="Ver">
                     <ion-icon slot="icon-only" name="book"></ion-icon>
@@ -43,12 +40,18 @@
                   <ion-button (click)="presentAlertConfirm(mat.id)" slot="end" color="danger" title="Borrar">
                     <ion-icon slot="icon-only" name="trash"></ion-icon>
                   </ion-button>
+                  <ion-button [matMenuTriggerFor]="appMenu">
+                      <ion-icon slot="icon-only" name="more"></ion-icon>
+                  </ion-button>
+                  <mat-menu #appMenu="matMenu">
+                      <button mat-menu-item (click)="moveMat(mat,sec,-1)" [disabled]="firstSec">Subir sección</button>
+                      <button mat-menu-item (click)="moveMat(mat,sec,1)" [disabled]="lastSec">Bajar sección</button>
+                      <button mat-menu-item>Help</button>
+                  </mat-menu>
                 </ion-buttons>
             </ion-item>
           </ion-reorder-group>
         </ion-list>
-
-
       </ion-reorder-group>
   </ion-card-content>
 </ion-card>
