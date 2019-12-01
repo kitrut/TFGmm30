@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class IUsuarioReposorityTest {

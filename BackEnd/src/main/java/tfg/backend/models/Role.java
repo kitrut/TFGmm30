@@ -1,12 +1,13 @@
 package tfg.backend.models;
 
-import com.fasterxml.jackson.annotation.*;
-
-import java.util.Collection;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
+@Data
 public class Role {
 	
 	@Id
@@ -18,30 +19,4 @@ public class Role {
 	@ManyToMany(mappedBy="roles")
 	@JsonBackReference
 	private Collection<Usuario> usuarios;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public Collection<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(Collection<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
-
 }

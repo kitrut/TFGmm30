@@ -8,13 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import tfg.backend.models.Usuario;
 import tfg.backend.models.Role;
+import tfg.backend.models.Usuario;
 import tfg.backend.reposiroties.IRoleReposority;
 import tfg.backend.reposiroties.IUsuarioReposority;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

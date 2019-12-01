@@ -2,7 +2,10 @@ package tfg.backend.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tfg.backend.models.*;
+import tfg.backend.models.Asignatura;
+import tfg.backend.models.Materiales;
+import tfg.backend.models.Matricula;
+import tfg.backend.models.Usuario;
 import tfg.backend.reposiroties.IAsignaturaRepository;
 import tfg.backend.reposiroties.IMaterialesRepository;
 import tfg.backend.reposiroties.IUsuarioReposority;

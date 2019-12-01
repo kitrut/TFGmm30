@@ -1,14 +1,17 @@
 package tfg.backend.models;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 
-import javax.persistence.*;
-
 @Entity
+@Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario implements Serializable {
 
@@ -42,55 +45,7 @@ public class Usuario implements Serializable {
     @JsonIgnore
     private Set<Matricula> matriculas;
 
-    public Collection<Asignatura> getAsignaturasImpartidas() {
-		return asignaturasImpartidas;
-	}
-	public void setAsignaturasImpartidas(Collection<Asignatura> asignaturasImpartidas) { this.asignaturasImpartidas = asignaturasImpartidas; }
-	public boolean addAsignaturaImpartida(Asignatura a){
+    public boolean addAsignaturaImpartida(Asignatura a){
         return this.asignaturasImpartidas.add(a);
     }
-	public Collection<Role> getRoles() {
-		return roles;
-	}
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
-	}
-	public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getUser() {
-        return user;
-    }
-    public void setUser(String user) {
-        this.user = user;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public String getApellidos() {
-        return apellidos;
-    }
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public Set<Matricula> getMatriculas() { return matriculas; }
-    public void setMatriculas(Set<Matricula> matriculas) { this.matriculas = matriculas; }
 }
