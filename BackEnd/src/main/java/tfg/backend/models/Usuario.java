@@ -37,7 +37,7 @@ public class Usuario implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles;
     
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonManagedReference(value = "asignaturasImpartidas")
     private Collection<Asignatura> asignaturasImpartidas;
 
@@ -48,4 +48,5 @@ public class Usuario implements Serializable {
     public boolean addAsignaturaImpartida(Asignatura a){
         return this.asignaturasImpartidas.add(a);
     }
+    public boolean removeAsignaturaImpartida(Asignatura a) { return this.asignaturasImpartidas.remove(a);}
 }
