@@ -4,7 +4,9 @@ import { Asignatura } from 'src/app/models/asignatura';
 import { Router } from '@angular/router';
 import { ProfesoresService } from 'src/app/services/profesores.service';
 import { AuthService } from 'src/app/auth/auth.service';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-index-asignaturas',

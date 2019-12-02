@@ -37,7 +37,17 @@ public class AsignaturaService {
         return asignaturaRepository.save(asignatura);
     }
 
-    public void delete(Long id){ asignaturaRepository.deleteById(id);}
+    public void delete(Long id){
+        Asignatura asignatura = asignaturaRepository.findById(id).orElse(null);
+        if(asignatura != null) {
+            Usuario user =  asignatura.getProfesor();
+            if(user != null){
+                user.removeAsignaturaImpartida(asignatura);
+                usuarioReposority.save(user);
+            }
+        }
+        asignaturaRepository.deleteById(id);
+    }
     
     public Asignatura addMaterial(Long idAsignatura,Materiales materiales) {
     	Asignatura asignatura=asignaturaRepository.findById(idAsignatura).orElse(null);

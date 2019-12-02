@@ -21,7 +21,11 @@ import { EjercicioRedactionComponent } from './ejercicios/ejercicio-redaction/ej
 import { EjercicioChecksComponent } from './ejercicios/ejercicio-checks/ejercicio-checks.component';
 import { GeneradorEjerciciosComponent } from './ejercicios/generador-ejercicios/generador-ejercicios.component';
 import { AsignaturasPage } from './asignaturas/asignaturas.page';
-import { MatMenuModule, MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { NotasAsignaturaComponent } from './detalles/notas-asignatura/notas-asignatura.component';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { CalendarAsignaturaComponent } from './detalles/calendar-asignatura/calendar-asignatura.component';
