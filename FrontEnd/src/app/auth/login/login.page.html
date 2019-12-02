@@ -2,7 +2,10 @@
   <div class="login-container">
     <ion-card color="medium">
       <ion-card-header class="ion-text-center">
-        <ion-card-title>TFG MMH30</ion-card-title>
+        <ion-card-title>
+          <ion-icon name="logo-angular"></ion-icon>
+          <ion-icon name="logo-ionic"></ion-icon>
+          TFG MMH30</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <form class="container py-5" [formGroup]="loginForm" (ngSubmit)="login()" (keyup.enter)="login()">

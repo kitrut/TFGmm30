@@ -12,74 +12,70 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './detalle-asignatura.page.html',
   styleUrls: ['./detalle-asignatura.page.scss'],
 })
-export class DetalleAsignaturaPage{
+export class DetalleAsignaturaPage {
 
-  asignatura:Asignatura=new Asignatura();
-  materiales:Materiales[]=[];
-  profesores:Profesor[];
-  profesorAsignadoID:number;
-  constructor(private router:Router,
-    private route: ActivatedRoute,
-    private asginaturasService:AsignaturasService,
-    private profService:ProfesoresService,
-    private alertController: AlertController) { }
+  asignatura: Asignatura = new Asignatura();
+  materiales: Materiales[] = [];
+  profesores: Profesor[];
+  profesorAsignadoID: number;
+
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private asginaturasService: AsignaturasService,
+              private profService: ProfesoresService,
+              private alertController: AlertController) { }
 
   ionViewWillEnter() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.getData(id)    
+    const id = this.route.snapshot.paramMap.get('id');
+    this.getData(id);
   }
 
-  getData(id){
+  getData(id) {
     this.asginaturasService.getById(id).subscribe(
-      data=>{        
-        this.asignatura = data
+      data => {
+        this.asignatura = data;
         this.asginaturasService.getProfesor(id).subscribe(
-          data =>{
-            if(data)
-              this.asignatura.profesor = data;
-            if(this.asignatura.profesor==null){
+          data2 => {
+            if (data2) {
+              this.asignatura.profesor = data2;
+            }
+            if (this.asignatura.profesor == null) {
               this.mostrarProfesores();
             }
           }
-        )
+        );
         this.asginaturasService.getMateriales(id).subscribe(
-          data =>{
-            this.materiales = data.sort((a, b) => (a.titulo > b.titulo) ? 1 : -1)
+          data3 => {
+            this.materiales = data3.sort((a, b) => (a.titulo > b.titulo) ? 1 : -1);
           }
-        )    
-        
-    });
+        );
+
+      });
   }
 
-  mostrarProfesores(){
-    this.profService.getAll().subscribe(
-      data=>{
-        this.profesores = data;
-      }
-    )
+  mostrarProfesores() {
+    this.profService.getAll().subscribe(data => this.profesores = data);
   }
 
-  asignarProfesor(){
-    this.asginaturasService.asignProfesor(this.asignatura.id,this.profesorAsignadoID).subscribe(
-      data=>{
-        this.asignatura=data;
-        this.getData(this.asignatura.id)
+  asignarProfesor() {
+    this.asginaturasService.asignProfesor(this.asignatura.id, this.profesorAsignadoID).subscribe(
+      data => {
+        this.asignatura = data;
+        this.getData(this.asignatura.id);
       }
-    )
+    );
   }
 
-  addMaterial(){
-    this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/addMaterial");
+  addMaterial() {
+    this.router.navigateByUrl('/asignaturas/' + this.asignatura.id + '/addMaterial');
   }
-  editMaterial(idMat){
-    this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/update/"+idMat);
+  editMaterial(idMat) {
+    this.router.navigateByUrl('/asignaturas/' + this.asignatura.id + '/update/' + idMat);
   }
-  deleteMaterial(idMat){
-    this.asginaturasService.deleteMaterial(this.asignatura.id,idMat).subscribe(
-      data =>{
-        this.getData(this.asignatura.id)
-      }
-    )
+  deleteMaterial(idMat) {
+    this.asginaturasService.deleteMaterial(this.asignatura.id, idMat).subscribe(
+      data => this.getData(this.asignatura.id)
+    );
   }
 
   async presentAlertConfirm(idMat) {
@@ -91,15 +87,11 @@ export class DetalleAsignaturaPage{
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
+          handler: (blah) => console.log('Confirm Cancel: blah')
         }, {
           text: 'Okay',
           cssClass: 'danger',
-          handler: () => {
-            this.deleteMaterial(idMat)
-          }
+          handler: () => this.deleteMaterial(idMat)
         }
       ]
     });
@@ -107,8 +99,7 @@ export class DetalleAsignaturaPage{
     await alert.present();
   }
 
-  verMaterial(id){
-    this.router.navigateByUrl("/asignaturas/"+this.asignatura.id+"/materiales/"+id);
+  verMaterial(id) {
+    this.router.navigateByUrl('/asignaturas/' + this.asignatura.id + '/materiales/' + id);
   }
-
 }

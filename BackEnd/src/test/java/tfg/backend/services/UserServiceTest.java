@@ -3,16 +3,15 @@ package tfg.backend.services;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
 
 import java.util.Collection;
-import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -32,7 +31,7 @@ public class UserServiceTest {
         Role rol = new Role();
         rol.setId(1L);
         rol.setNombre("ADMIN");
-        assertTrue(usuario.getRoles().size()==1);
+        assertEquals(1,usuario.getRoles().size());
         for (Role r:usuario.getRoles()) {
             assertEquals("ADMIN",r.getNombre());
         }

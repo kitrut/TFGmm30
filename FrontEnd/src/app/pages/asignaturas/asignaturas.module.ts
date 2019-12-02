@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetalleAsignaturaPage } from './detalles/detalle-asignatura.page';
 import { CreateAsignaturaPage } from './create-asignatura/create-asignatura.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { IndexAsignaturaPage } from './index/index-asignatura.page';
+import { IndexAsignaturaPage } from './index-asignatura/index-asignatura.page';
 import { AddMaterialesPage } from './add-materiales/add-materiales.page';
 
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
@@ -21,6 +21,10 @@ import { EjercicioRedactionComponent } from './ejercicios/ejercicio-redaction/ej
 import { EjercicioChecksComponent } from './ejercicios/ejercicio-checks/ejercicio-checks.component';
 import { GeneradorEjerciciosComponent } from './ejercicios/generador-ejercicios/generador-ejercicios.component';
 import { AsignaturasPage } from './asignaturas/asignaturas.page';
+import { MatMenuModule, MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { NotasAsignaturaComponent } from './detalles/notas-asignatura/notas-asignatura.component';
+import { NgCalendarModule } from 'ionic2-calendar';
+import { CalendarAsignaturaComponent } from './detalles/calendar-asignatura/calendar-asignatura.component';
 
 const routes: Routes = [
   {
@@ -29,6 +33,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        component: IndexAsignaturaPage
+      },
+      {
+        path: 'list',
         component: IndexAsignaturaPage
       },
       {
@@ -53,7 +61,6 @@ const routes: Routes = [
       }
     ]
   },
-  
 ];
 
 @NgModule({
@@ -65,7 +72,13 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TranslateModule.forChild(),
     NgxPaginationModule,
-    LMarkdownEditorModule
+    LMarkdownEditorModule,
+    MatMenuModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    NgCalendarModule
   ],
   declarations: [
     DetalleAsignaturaPage,
@@ -80,9 +93,11 @@ const routes: Routes = [
     EjercicioRedactionComponent,
     EjercicioChecksComponent,
     GeneradorEjerciciosComponent,
-    AsignaturasPage
+    AsignaturasPage,
+    NotasAsignaturaComponent,
+    CalendarAsignaturaComponent
   ],
-  entryComponents:[
+  entryComponents: [
     GeneradorEjerciciosComponent
   ]
 })

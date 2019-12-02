@@ -17,24 +17,25 @@ export class CreateAsignaturaPage implements OnInit {
     curso: new FormControl('')
   });
 
-  constructor(private asignaturasService:AsignaturasService,private router:Router) { }
+  constructor(private asignaturasService: AsignaturasService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    let asig:Asignatura={
-      id:null,
-      nombre:this.asignaturaForm.value.nombre,
-      descripcion:this.asignaturaForm.value.descripcion,
-      curso:this.asignaturaForm.value.curso,
-      profesor:null,
-      materiales:null
-    }
+    const asig: Asignatura = {
+      id: null,
+      nombre: this.asignaturaForm.value.nombre,
+      descripcion: this.asignaturaForm.value.descripcion,
+      curso: this.asignaturaForm.value.curso,
+      profesor: null,
+      materiales: null,
+      matriculas : null
+    };
 
     this.asignaturasService.create(asig).subscribe(
-      data => this.router.navigateByUrl('/asignaturas/'+data.id),
+      data => this.router.navigateByUrl('/asignaturas/' + data.id),
       err => console.error(err)
-    )
+    );
   }
 }

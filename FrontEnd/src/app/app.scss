@@ -4,3 +4,26 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+
+table{
+    width: 100%;
+}
+
+.mat-header-row{
+    background: var(--ion-color-primary, blue);
+    th{
+        color: var(--ion-color-primary-contrast, white);
+    }
+}
+.mat-row:nth-child(even){
+    background: var(--ion-color-gray, lightgray);
+    td{
+        color: var(--ion-color-gray-contrast, white);
+    }
+}
+.mat-footer-row{
+    background: var(--ion-color-primary, blue);
+    td{
+        color: var(--ion-color-primary-contrast, white);
+    }
+}

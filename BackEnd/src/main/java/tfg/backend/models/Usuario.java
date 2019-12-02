@@ -1,15 +1,18 @@
 package tfg.backend.models;
 
-import com.fasterxml.jackson.annotation.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-
-import java.io.Serializable;
-import java.util.Collection;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
+@Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario implements Serializable {
 
     /**
@@ -22,7 +25,9 @@ public class Usuario implements Serializable {
     private Integer id;
 
     @Column(unique=true)
+    @JsonIgnore
     private String user;
+    @JsonIgnore
     private String password;
 
     private String nombre;
@@ -36,75 +41,11 @@ public class Usuario implements Serializable {
     @JsonManagedReference(value = "asignaturasImpartidas")
     private Collection<Asignatura> asignaturasImpartidas;
 
-    public Collection<Asignatura> getAsignaturasImpartidas() {
-		return asignaturasImpartidas;
-	}
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonIgnore
+    private Set<Matricula> matriculas;
 
-	public void setAsignaturasImpartidas(Collection<Asignatura> asignaturasImpartidas) {
-		this.asignaturasImpartidas = asignaturasImpartidas;
-	}
-
-	public boolean addAsignaturaImpartida(Asignatura a){
+    public boolean addAsignaturaImpartida(Asignatura a){
         return this.asignaturasImpartidas.add(a);
-    }
-
-	public Collection<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
-	}
-
-	public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @JsonIgnore
-    @JsonProperty(value = "user")
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    @JsonIgnore
-    @JsonProperty(value = "password")
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

@@ -1,10 +1,14 @@
 package tfg.backend.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
+@Data
 public class Materiales {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,45 +22,8 @@ public class Materiales {
 	private Integer seccion;
 	private Integer orden;
 
-	public Integer getSeccion() {
-		return seccion;
-	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	private Asignatura asignatura;
 
-	public void setSeccion(Integer seccion) {
-		this.seccion = seccion;
-	}
-
-	public Integer getOrden() {
-		return orden;
-	}
-
-	public void setOrden(Integer orden) {
-		this.orden = orden;
-	}
-
-
-
-	public String getContenido() {
-		return contenido;
-	}
-
-	public void setContenido(String contenido) {
-		this.contenido = contenido;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
 }

@@ -1,0 +1,36 @@
+<ion-content>
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard= !collapseCard" color="primary">
+        <ion-card-title>Añadir evento</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="!collapseCard">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A quisquam blanditiis rerum eius, unde odio deleniti quae sed doloremque odit dolorum sint ad repudiandae dolores tenetur explicabo nam id quia?
+      </ion-card-content>
+    </ion-card>
+      <ion-segment color="danger" [value]="calendar.mode">
+          <ion-segment-button (ionSelect)="changeMode('day')" value="day">
+            <ion-label>Día</ion-label>
+          </ion-segment-button>
+          <ion-segment-button (ionSelect)="changeMode('week')" value="week">
+            <ion-label>Semana</ion-label>
+          </ion-segment-button>
+          <ion-segment-button (ionSelect)="changeMode('month')" value="month">
+            <ion-label>Mes</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+  
+        <ion-toolbar color="primary" class="ion-text-center">{{fechaSeleccionada}}</ion-toolbar>
+        <label></label>
+      <calendar [eventSource]="eventSource"
+      [calendarMode]="calendar.mode"
+      [locale]="calendar.locale"
+      [currentDate]="calendar.currentDate"
+      (onCurrentDateChanged)="onCurrentDateChanged($event)"
+      (onRangeChanged)="reloadSource(startTime, endTime)"
+      (onEventSelected)="onEventSelected($event)"
+      (onTitleChanged)="onViewTitleChanged($event)"
+      (onTimeSelected)="onTimeSelected($event)"
+      step="30">
+      
+      </calendar>
+  </ion-content>

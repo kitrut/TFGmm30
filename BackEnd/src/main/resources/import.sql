@@ -18,28 +18,24 @@ INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (1,'1º'
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (2,'1º','Historia','aaaaaaaaaaa',3);
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (3,'1º','Física y Química','aaaaaaaaa',2);
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (4,'1º','Castellano','aaaaaaaaaaaa',4);
-
-INSERT INTO materiales (id,titulo,contenido,seccion,orden) VALUES (1,'Tema 1','## Tema 1: la la la',1,1);
-INSERT INTO materiales (id,titulo,contenido,seccion,orden) VALUES (2,'Tema 2','## Tema 2: la la la',1,2);
-INSERT INTO materiales (id,titulo,contenido,seccion,orden) VALUES (3,'Tema 3','## Tema 3: la la la',1,3);
-INSERT INTO materiales (id,titulo,contenido,seccion,orden) VALUES (4,'Tema 4','## Tema 1: la la la',2,1);
-INSERT INTO materiales (id,titulo,contenido,seccion,orden) VALUES (5,'Tema 5','## Tema 1: la la la',2,2);
-
-INSERT INTO asignatura_materiales (asignatura_id,materiales_id) VALUES (1,1)
-INSERT INTO asignatura_materiales (asignatura_id,materiales_id) VALUES (1,2)
-INSERT INTO asignatura_materiales (asignatura_id,materiales_id) VALUES (1,3)
-INSERT INTO asignatura_materiales (asignatura_id,materiales_id) VALUES (1,4)
-INSERT INTO asignatura_materiales (asignatura_id,materiales_id) VALUES (1,5)
-
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (5,'2º','Matemáticas','aaaaaaaaaaaa',2);
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (6,'2º','Historia','aaaaaaaaaaa',3);
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (7,'2º','Física y Química','aaaaaaaaa',2);
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (8,'2º','Castellano','aaaaaaaaaaaa',4);
-
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (9,'3º','Matemáticas','aaaaaaaaaaaa',2);
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (10,'3º','Historia','aaaaaaaaaaa',3);
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (11,'3º','Física y Química','aaaaaaaaa',2);
 INSERT INTO asignatura (id,curso,nombre,descripcion,profesor_id) VALUES (12,'3º','Castellano','aaaaaaaaaaaa',4);
+
+INSERT INTO matricula (id,anyo,asignatura_id) VALUES (1,'2019',1);
+INSERT INTO matricula (id,anyo,asignatura_id) VALUES (2,'2019',1);
+INSERT INTO matricula (id,anyo,asignatura_id) VALUES (3,'2019',1);
+
+INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (1,'Tema 1','## Tema 1: la la la',1,1,1);
+INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (2,'Tema 2','## Tema 2: la la la',1,2,1);
+INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (3,'Tema 3','## Tema 3: la la la',1,3,1);
+INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (4,'Tema 4','## Tema 1: la la la',2,1,1);
+INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (5,'Tema 5','## Tema 1: la la la',2,2,1);
 
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (2,1);
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (3,2);
