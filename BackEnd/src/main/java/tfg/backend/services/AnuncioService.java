@@ -20,6 +20,11 @@ public class AnuncioService implements IAnuncioService {
 
     @Override
     public List<Anuncio> findAll() {
-        return anuncioRepository.findAll();
+        return anuncioRepository.findAllByOrderByCreateAtDesc();
+    }
+
+    @Override
+    public Anuncio create(Anuncio anuncio) {
+        return anuncioRepository.save(anuncio);
     }
 }

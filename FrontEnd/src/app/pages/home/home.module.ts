@@ -12,7 +12,6 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     IonicModule,
-    
     RouterModule.forChild([
       {
         path: '',
