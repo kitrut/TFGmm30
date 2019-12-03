@@ -1,6 +1,8 @@
 package tfg.backend.models;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ public class Anuncio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private  String texto;
-
+    private String titulo;
+    private String contenido;
+    private Integer importancia;
 }

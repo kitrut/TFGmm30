@@ -51,3 +51,7 @@ INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (3,10);
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (2,11);
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (4,12);
+
+INSERT INTO anuncio (id,titulo,contenido,importancia) VALUES (1, 'Primer anuncio','Esto es un anuncio de prueba 1',4)
+INSERT INTO anuncio (id,titulo,contenido,importancia) VALUES (2, 'Segundo anuncio','Esto es un anuncio de prueba 2',4)
+INSERT INTO anuncio (id,titulo,contenido,importancia) VALUES (3, 'Tercer anuncio','Esto es un anuncio de prueba 3',3)
