@@ -3,12 +3,9 @@ package tfg.backend.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tfg.backend.models.Anuncio;
-import tfg.backend.models.Asignatura;
-import tfg.backend.models.Materiales;
-import tfg.backend.services.IAnuncioService;
+import tfg.backend.services.interfaces.IAnuncioService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/private/anuncios")

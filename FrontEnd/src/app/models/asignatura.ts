@@ -2,7 +2,7 @@ import { Usuario } from './usuario';
 import { Materiales } from './materiales';
 
 export class Asignatura {
-    id: number;
+    id: string;
     nombre: string;
     descripcion: string;
     curso: string;

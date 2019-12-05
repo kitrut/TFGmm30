@@ -10,17 +10,17 @@ import { Asignatura } from '../models/asignatura';
 })
 export class ProfesoresService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAll():Observable<Profesor[]>{
-    return this.http.get<Profesor[]>(Constantes.URL_PROFESORES,{});
+  getAll(): Observable<Profesor[]> {
+    return this.http.get<Profesor[]>(Constantes.URL_PROFESORES, {});
   }
 
-  getById(id):Observable<Profesor>{
-    return this.http.get<Profesor>(Constantes.URL_PROFESORES+"/"+id,{});
+  getById(id): Observable<Profesor> {
+    return this.http.get<Profesor>(Constantes.URL_PROFESORES + '/' + id, {});
   }
 
-  getAsignaturas(id):Observable<Asignatura[]>{
-    return this.http.get<Asignatura[]>(Constantes.URL_PROFESORES+"/"+id+"/asignaturas",{});
+  getAsignaturas(id): Observable<Asignatura[]> {
+    return this.http.get<Asignatura[]>(Constantes.URL_PROFESORES + '/' + id + '/asignaturas', {});
   }
 }

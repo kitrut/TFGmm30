@@ -9,34 +9,38 @@ import tfg.backend.models.Usuario;
 import tfg.backend.reposiroties.IAsignaturaRepository;
 import tfg.backend.reposiroties.IMaterialesRepository;
 import tfg.backend.reposiroties.IUsuarioReposority;
+import tfg.backend.services.interfaces.IAsignaturaService;
 
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class AsignaturaService {
+public class AsignaturaService implements IAsignaturaService {
 
     @Autowired
     private IAsignaturaRepository asignaturaRepository;
     @Autowired
     private IMaterialesRepository materialesRepository;
-
     @Autowired
     private IUsuarioReposority usuarioReposority;
 
+    @Override
     public Collection<Asignatura> all(){
         return asignaturaRepository.findAll();
     }
 
+    @Override
     public Optional<Asignatura> findById(Long id){
         return asignaturaRepository.findByIdWithMats(id);
     }
 
+    @Override
     public Asignatura create(Asignatura asignatura){
         return asignaturaRepository.save(asignatura);
     }
 
+    @Override
     public void delete(Long id){
         Asignatura asignatura = asignaturaRepository.findById(id).orElse(null);
         if(asignatura != null) {
@@ -48,7 +52,8 @@ public class AsignaturaService {
         }
         asignaturaRepository.deleteById(id);
     }
-    
+
+    @Override
     public Asignatura addMaterial(Long idAsignatura,Materiales materiales) {
     	Asignatura asignatura=asignaturaRepository.findById(idAsignatura).orElse(null);
     	if(asignatura!=null) {
@@ -64,6 +69,7 @@ public class AsignaturaService {
     	return asignatura;
     }
 
+    @Override
     public void deleteMaterial(Long idAsignatura,Long idMaterial){
         Asignatura asignatura = asignaturaRepository.findById(idAsignatura).orElse(null);
         if(asignatura!=null){
@@ -80,10 +86,13 @@ public class AsignaturaService {
         }
 
     }
-    
+
+    @Override
     public Materiales getMaterial(Long idMat) {
 		return materialesRepository.findById(idMat).orElse(null);
     }
+
+    @Override
     public Usuario getProfesor(Long id){
         Asignatura a = this.asignaturaRepository.findById(id).orElse(null);
         if(a!=null){
@@ -92,9 +101,12 @@ public class AsignaturaService {
         return null;
     }
 
+    @Override
     public Set<Matricula> getMatriculados(Long idAsignatura){
         return this.asignaturaRepository.findByIdWithMatriculas(idAsignatura).get().getMatriculas();
     }
+
+    @Override
     public Asignatura addProfesor(Long idAsignatura,Integer idProfesor){
         Asignatura a = this.asignaturaRepository.findById(idAsignatura).orElse(null);
         if(a!=null){
@@ -111,6 +123,7 @@ public class AsignaturaService {
         return a;
     }
 
+    @Override
     public Collection<Materiales> getMateriales(Long idAsignatura) {
         Asignatura as = asignaturaRepository.findById(idAsignatura).orElse(null);
         if(as!=null){

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Anuncio;
 import tfg.backend.reposiroties.IAnuncioRepository;
+import tfg.backend.services.interfaces.IAnuncioService;
 
 import java.util.List;
 

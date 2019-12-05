@@ -1,34 +1,20 @@
 package tfg.backend.controllers;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Usuario;
-import tfg.backend.services.IUserService;
+import tfg.backend.services.interfaces.IUserService;
 
 import java.util.Collection;
 import java.util.List;
 
+@Data
 class UserWithRole{
     public Usuario user;
     public String rol;
-
-    public Usuario getUser() {
-        return user;
-    }
-
-    public void setUser(Usuario user) {
-        this.user = user;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
 }
 
 @RestController

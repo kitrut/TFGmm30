@@ -1,4 +1,4 @@
-package tfg.backend.services;
+package tfg.backend.services.interfaces;
 
 import tfg.backend.models.Anuncio;
 
