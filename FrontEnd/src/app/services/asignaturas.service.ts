@@ -11,46 +11,46 @@ import { Profesor } from '../models/usuario';
 })
 export class AsignaturasService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAll():Observable<Asignatura[]>{
-    return this.http.get<Asignatura[]>(Constantes.URL_ASIGNATURAS,{});
-  }
-
-  getById(id):Observable<Asignatura>{
-    return this.http.get<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id,{});
+  getAll(): Observable<Asignatura[]> {
+    return this.http.get<Asignatura[]>(Constantes.URL_ASIGNATURAS, {});
   }
 
-  create(Asignatura):Observable<Asignatura>{
-    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS,Asignatura,{});
+  getById(id: string): Observable<Asignatura> {
+    return this.http.get<Asignatura>(Constantes.URL_ASIGNATURAS + '/' + id, {});
   }
 
-  deleteAsignatura(idAsignatura):Observable<any>{
-    return this.http.delete(Constantes.URL_ASIGNATURAS+"/"+idAsignatura);
+  create(asignatura: Asignatura): Observable<Asignatura> {
+    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS, asignatura, {});
   }
 
-  createMaterial(id,mat:Materiales):Observable<Asignatura>{
-    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id+"/materiales",mat,{});
+  deleteAsignatura(idAsignatura: string): Observable<any> {
+    return this.http.delete(Constantes.URL_ASIGNATURAS + '/' + idAsignatura);
   }
 
-  updateMaterial(id,mat:Materiales):Observable<Asignatura>{
-    return this.http.put<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+id+"/materiales",mat,{});
-  }
-  deleteMaterial(idAsignatura,idMaterial):Observable<any>{
-    return this.http.delete(Constantes.URL_ASIGNATURAS+"/"+idAsignatura+"/materiales/"+idMaterial,{});
+  createMaterial(id: string, mat: Materiales): Observable<Asignatura> {
+    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS + '/' + id + '/materiales', mat, {});
   }
 
-  asignProfesor(idAsignatura,idProfesor):Observable<any>{
-    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS+"/"+idAsignatura+"/profesor/"+idProfesor,{});
+  updateMaterial(id: string, mat: Materiales): Observable<Asignatura> {
+    return this.http.put<Asignatura>(Constantes.URL_ASIGNATURAS + '/' + id + '/materiales', mat, {});
   }
-  getProfesor(idAsignatura):Observable<Profesor>{
-    return this.http.get<Profesor>(Constantes.URL_ASIGNATURAS+"/"+idAsignatura+"/profesor",{});
+  deleteMaterial(idAsignatura: string, idMaterial: string): Observable<any> {
+    return this.http.delete(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/materiales/' + idMaterial, {});
   }
 
-  getMaterial(idAsig,idMat):Observable<Materiales>{
-    return this.http.get<Materiales>(Constantes.URL_ASIGNATURAS+"/"+idAsig+"/materiales/"+idMat,{});
+  asignProfesor(idAsignatura: string, idProfesor: string): Observable<any> {
+    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/profesor/' + idProfesor, {});
   }
-  getMateriales(idAsig):Observable<Materiales[]>{
-    return this.http.get<Materiales[]>(Constantes.URL_ASIGNATURAS+"/"+idAsig+"/materiales",{});
+  getProfesor(idAsignatura: string): Observable<Profesor> {
+    return this.http.get<Profesor>(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/profesor', {});
+  }
+
+  getMaterial(idAsig: string, idMat: string): Observable<Materiales> {
+    return this.http.get<Materiales>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/materiales/' + idMat, {});
+  }
+  getMateriales(idAsig: string): Observable<Materiales[]> {
+    return this.http.get<Materiales[]>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/materiales', {});
   }
 }

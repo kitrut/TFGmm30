@@ -6,8 +6,44 @@
     <ion-title>
       {{'Menu.Home' | translate}}
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="createAnnounce(null)">
+          <ion-icon name="star" slot="icon-only" class="ion-no-margin ion-no-padding"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card *ngFor="let anuncio of anuncios">
+    
+    <ion-card-header tappable (click)="anuncio.expanded=!anuncio.expanded" color="tertiary">
+      <ion-card-title>
+        <ion-item lines="none" color="tertiary">
+          {{anuncio.titulo}}
+          <ion-icon name="star" slot="end" size="small" class="ion-no-margin ion-no-padding" color="gold" *ngFor="let stars of [].constructor(anuncio.importancia)"></ion-icon>
+          <ion-buttons slot="end">
+              <ion-button (click)="createAnnounce(anuncio)">
+                <ion-icon name="create" slot="icon-only" class="ion-no-margin ion-no-padding"></ion-icon>
+              </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-card-title>
+      <ion-card-subtitle>
+        <ion-row>
+          <ion-col>
+            Avisador
+          </ion-col>
+          <ion-col class="ion-text-right">
+            {{((anuncio.updateAt===anuncio.createAt) ? anuncio.createAt : anuncio.updateAt) | date:'d/M/yy, h:mm a'}}
+            <ion-icon *ngIf="anuncio.updateAt!==anuncio.createAt" name="clock"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content #content *ngIf="anuncio.expanded">
+      {{anuncio.contenido}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

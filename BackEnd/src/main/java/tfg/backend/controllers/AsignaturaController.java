@@ -6,7 +6,7 @@ import tfg.backend.models.Asignatura;
 import tfg.backend.models.Materiales;
 import tfg.backend.models.Matricula;
 import tfg.backend.models.Usuario;
-import tfg.backend.services.AsignaturaService;
+import tfg.backend.services.interfaces.IAsignaturaService;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class AsignaturaController {
 
     @Autowired
-    private AsignaturaService asignaturaService;
+    private IAsignaturaService asignaturaService;
 
     @GetMapping()
     public Collection<Asignatura> indexAsignatura() {

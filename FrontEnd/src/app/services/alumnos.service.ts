@@ -9,21 +9,21 @@ import { Constantes } from '../global/constantes';
 })
 export class AlumnosService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAll():Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(Constantes.URL_ALUMNOS,{});
+  getAll(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(Constantes.URL_ALUMNOS, {});
   }
 
-  getOthers():Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(Constantes.URL_BACKEND+'private/admins',{});
+  getOthers(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(Constantes.URL_BACKEND + 'private/admins', {});
   }
 
-  create(user:Usuario,rol:string):Observable<Usuario>{
-    return this.http.post<Usuario>(Constantes.URL_BACKEND+'private/usuarios',{user,rol},{})
+  create(user: Usuario, rol: string): Observable<Usuario> {
+    return this.http.post<Usuario>(Constantes.URL_BACKEND + 'private/usuarios', {user, rol}, {});
   }
 
-  getById(id):Observable<Usuario>{
-    return this.http.get<Usuario>(Constantes.URL_ALUMNOS+"/"+id,{});
+  getById(id): Observable<Usuario> {
+    return this.http.get<Usuario>(Constantes.URL_ALUMNOS + '/' + id, {});
   }
 }

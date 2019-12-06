@@ -12,13 +12,14 @@ import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
 import tfg.backend.reposiroties.IRoleReposority;
 import tfg.backend.reposiroties.IUsuarioReposority;
+import tfg.backend.services.interfaces.IUserService;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 @Service
-public class UserService implements UserDetailsService,IUserService {
+public class UserService implements UserDetailsService, IUserService {
 
     @Autowired
     private IUsuarioReposority iUsuarioReposority;

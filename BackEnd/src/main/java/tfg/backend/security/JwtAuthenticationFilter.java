@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import tfg.backend.models.Usuario;
-import tfg.backend.services.IUserService;
+import tfg.backend.services.interfaces.IUserService;
 import tfg.backend.services.UserService;
 
 import javax.servlet.FilterChain;

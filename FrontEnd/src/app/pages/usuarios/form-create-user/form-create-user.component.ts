@@ -11,35 +11,33 @@ import { Usuario } from 'src/app/models/usuario';
 export class FormCreateUserComponent implements OnInit {
 
   userForm = new FormGroup({
-    nombre: new FormControl('',Validators.required),
-    apellidos: new FormControl('',Validators.required),
-    email: new FormControl('',Validators.required),
-    rol: new FormControl('',Validators.required)
+    nombre: new FormControl('', Validators.required),
+    apellidos: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    rol: new FormControl('', Validators.required)
   });
-  
-  constructor(private userService:AlumnosService) { }
+
+  constructor(private userService: AlumnosService) { }
 
   ngOnInit() {}
 
-  onSubmit(){
-    console.log(this.userForm.value)
-    let user:Usuario = {
-      id:null,
-      nombre:this.userForm.value.nombre,
-      apellidos:this.userForm.value.apellidos,
+  onSubmit() {
+    const user: Usuario = {
+      id: null,
+      nombre: this.userForm.value.nombre,
+      apellidos: this.userForm.value.apellidos,
       email: this.userForm.value.email
-    }
-    console.log(user)
-    this.userService.create(user,this.userForm.value.rol).subscribe(
+    };
+    this.userService.create(user, this.userForm.value.rol).subscribe(
       data => {
-        alert("OK")
+        alert('OK');
       },
       error => {
-        alert("Error: "+ error)
+        alert('Error: ' + error);
       }
-    )
+    );
   }
-  clearForm(){
+  clearForm() {
     this.userForm.reset();
   }
 

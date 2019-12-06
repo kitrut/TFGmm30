@@ -17,7 +17,7 @@ export class DetalleAsignaturaPage {
   asignatura: Asignatura = new Asignatura();
   materiales: Materiales[] = [];
   profesores: Profesor[];
-  profesorAsignadoID: number;
+  profesorAsignadoID: string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
