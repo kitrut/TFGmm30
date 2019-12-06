@@ -3,11 +3,9 @@ package tfg.backend.models;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.ReadOnlyProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -22,6 +20,7 @@ public class Anuncio {
     private Integer importancia;
 
     @CreationTimestamp
+    @Column(updatable = false)
     private Date createAt;
     @UpdateTimestamp
     private Date updateAt;

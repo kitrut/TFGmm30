@@ -18,4 +18,8 @@ export class AnunciosService {
   findById(id: number): Observable<Anuncio> {
     return this.http.get<Anuncio>(Constantes.URL_ANUNCIOS + '/' + id , {});
   }
+
+  create(anuncio: any): Observable<any> {
+    return this.http.post<any>(Constantes.URL_ANUNCIOS, anuncio, {});
+  }
 }

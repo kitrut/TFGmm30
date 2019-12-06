@@ -26,6 +26,7 @@ public class AnuncioController {
 
     @PostMapping()
     public Anuncio create(@RequestBody Anuncio anuncio) {
+        System.out.println(anuncio);
         return anuncioService.create(anuncio);
     }
 
