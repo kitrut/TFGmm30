@@ -10,26 +10,26 @@ import { Materiales } from 'src/app/models/materiales';
 })
 export class ViewMaterialPage implements OnInit {
 
-  titulo="";
-  mode="preview";
-  material:Materiales=new Materiales(null,null,null);
-  content=this.material.contenido;
-  options={
-    resizable:true,
+  titulo = '';
+  mode = 'preview';
+  material: Materiales = new Materiales(null, null, null);
+  content = this.material.contenido;
+  options = {
+    resizable: true,
     enablePreviewContentClick: true
   };
-  constructor(private route: ActivatedRoute,private asignaturaService:AsignaturasService) { }
+  constructor(private route: ActivatedRoute, private asignaturaService: AsignaturasService) { }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    let idMat = this.route.snapshot.paramMap.get('idMat');
-    this.asignaturaService.getMaterial(id,idMat).subscribe(
-      data =>{
+    const id = this.route.snapshot.paramMap.get('id');
+    const idMat = this.route.snapshot.paramMap.get('idMat');
+    this.asignaturaService.getMaterial(id, idMat).subscribe(
+      data => {
         this.material = data;
         this.titulo = data.titulo;
         this.content = data.contenido;
       }
-    )
+    );
   }
 
 }

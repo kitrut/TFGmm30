@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 class Event {
-  title:string
-  description:string
-  startTime:string
-  endTime:string
-  allDay:boolean
-  constructor(){
-    this.title=""
-    this.description=""
-    this.startTime = new Date().toISOString()
-    this.endTime = new Date().toISOString()
-    this.allDay=false
+  title: string;
+  description: string;
+  startTime: string;
+  endTime: string;
+  allDay: boolean;
+  constructor() {
+    this.title = '';
+    this.description = '';
+    this.startTime = new Date().toISOString();
+    this.endTime = new Date().toISOString();
+    this.allDay = false;
   }
 }
 
@@ -22,31 +22,33 @@ class Event {
 })
 export class AgendaPage implements OnInit {
 
-  event:Event;
+  startTime = new Date().toISOString();
+  endTime = new Date().toISOString();
+  event: Event;
   eventSource = [];
 
   calendar = {
-    mode:'week',
+    mode: 'week',
     currentDate: new Date(),
-    locale:'es-ES'
-  }
+    locale: 'es-ES'
+  };
 
-  fechaSeleccionada = ""
+  fechaSeleccionada = '';
   constructor() { }
 
-  changeMode(mode){
-    this.calendar.mode=mode;
+  changeMode(mode) {
+    this.calendar.mode = mode;
   }
   ngOnInit() {
-    this.event = new Event()
+    this.event = new Event();
   }
 
-  onCurrentDateChanged(){}
-  reloadSource(){}
-  onEventSelected(){}
-  onViewTitleChanged(event){
-    this.fechaSeleccionada = event
+  onCurrentDateChanged(event) {}
+  reloadSource(startTime, endTime) {}
+  onEventSelected(event) {}
+  onViewTitleChanged(event) {
+    this.fechaSeleccionada = event;
   }
-  onTimeSelected(event){
+  onTimeSelected(event) {
   }
 }

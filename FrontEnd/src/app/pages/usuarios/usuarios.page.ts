@@ -10,16 +10,17 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 })
 export class UsuariosPage implements OnInit {
 
-  usuarios= [];
-  usuariosFiltrados=[];
-  valorSegmento="profesores";
-  buscado="";
-  
+  usuarios = [];
+  usuariosFiltrados = [];
+  valorSegmento = 'profesores';
+  buscado = '';
+  p;
+
   constructor(
-    private profesorService:ProfesoresService,
-    private alumnoService:AlumnosService,
+    private profesorService: ProfesoresService,
+    private alumnoService: AlumnosService,
     private router: Router
-    ) { 
+    ) {
 
     }
 
@@ -27,48 +28,51 @@ export class UsuariosPage implements OnInit {
     this.getProfesores();
   }
 
-  getProfesores(){
+  getProfesores() {
     this.profesorService.getAll().subscribe(
-      data=>this.usuarios =  this.usuariosFiltrados = data,
-      error=>this.usuarios=[]
+      data => this.usuarios =  this.usuariosFiltrados = data,
+      error => this.usuarios = []
     );
   }
 
-  getAlumnos(){
+  getAlumnos() {
     this.alumnoService.getAll().subscribe(
-      data=>this.usuarios =  this.usuariosFiltrados = data,
-      error=>this.usuarios=[]
+      data => this.usuarios =  this.usuariosFiltrados = data,
+      error => this.usuarios = []
     );
   }
 
-  getOthers(){
+  getOthers() {
     this.alumnoService.getOthers().subscribe(
-      data=>this.usuarios =  this.usuariosFiltrados = data,
-      error=>this.usuarios=[]
+      data => this.usuarios =  this.usuariosFiltrados = data,
+      error => this.usuarios = []
     );
   }
 
-  perfil(id){
-    this.router.navigateByUrl('/usuarios/'+id);
+  perfil(id) {
+    this.router.navigateByUrl('/usuarios/' + id);
   }
 
-  segmentChanged(event:any){
-    switch(event.target.value){
-      case 'profesores': this.getProfesores();break;
-      case 'alumnos': this.getAlumnos();break;
-      case 'otros': this.getOthers();break;
-      default: this.usuarios=this.usuariosFiltrados=[];
+  segmentChanged(event: any) {
+    switch (event.target.value) {
+      case 'profesores': this.getProfesores(); break;
+      case 'alumnos': this.getAlumnos(); break;
+      case 'otros': this.getOthers(); break;
+      default: this.usuarios = this.usuariosFiltrados = [];
     }
   }
 
-  buscar(){
-    let info = this.buscado.toLowerCase();
-    if(this.buscado==""){
+  buscar() {
+    const info = this.buscado.toLowerCase();
+    if (this.buscado === '') {
       this.usuariosFiltrados = this.usuarios;
-    }else{
-      this.usuariosFiltrados = this.usuarios.filter(data=>{
-        return (data.nombre.toLowerCase().includes(info) || data.apellidos.toLowerCase().includes(info) ||data.email.toLowerCase().includes(info));
-      })
+    } else {
+      this.usuariosFiltrados = this.usuarios.filter(data => {
+        return (
+          data.nombre.toLowerCase().includes(info)
+          || data.apellidos.toLowerCase().includes(info)
+          || data.email.toLowerCase().includes(info));
+      });
     }
   }
 
