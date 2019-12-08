@@ -36,6 +36,9 @@ export class IndexAsignaturaPage {
   }
 
   getData() {
+    if(this.authService.usuario === null){
+      this.authService.user.subscribe(() => this.getData());
+    }
     if (this.authService.isAdmin()) {
       this.asignService.getAll().subscribe(data => {
         this.dataSource = new MatTableDataSource<Asignatura>(data);
