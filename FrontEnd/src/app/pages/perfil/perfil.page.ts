@@ -8,13 +8,13 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  id:string;
-  user:Usuario;
-  rol:string;
-  
+  id: string;
+  user: Usuario;
+  rol: string;
+
   processing: boolean;
   uploadImage: string;
-  constructor(private auth:AuthService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
     this.user = this.auth.usuario;
@@ -23,22 +23,22 @@ export class PerfilPage implements OnInit {
 
   presentActionSheet(fileLoader) {
     fileLoader.click();
-    var that = this;
-    fileLoader.onchange = ()=>{
-      var file = fileLoader.files[0];
-      var reader = new FileReader();
+    const that = this;
+    fileLoader.onchange = () => {
+      const file = fileLoader.files[0];
+      const reader = new FileReader();
 
-      reader.addEventListener("load", function () {
+      reader.addEventListener('load', () => {
         that.processing = true;
         that.uploadImage = reader.result.toString();
-      },false);
-      if (file) {reader.readAsDataURL(file);}
-    }
+      }, false);
+      if (file) {reader.readAsDataURL(file); }
+    };
   }
   imageLoaded() {
     this.processing = false;
   }
-  
+
   removePic() {
     this.uploadImage = null;
   }

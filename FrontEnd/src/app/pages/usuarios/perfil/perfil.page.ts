@@ -12,17 +12,19 @@ import { Asignatura } from 'src/app/models/asignatura';
 export class PerfilPage implements OnInit {
 
   id: string;
-  profesor:Profesor={id:null,nombre:null,apellidos:null,email:null,asignaturas:[]};
-  asignaturas:Asignatura[];
+  profesor: Profesor = {id: null, nombre: null, apellidos: null, email: null, asignaturas: []};
+  asignaturas: Asignatura[];
+  p;
+  p2;
 
-  constructor(private route: ActivatedRoute, private profesorService:ProfesoresService) {
-    
+  constructor(private route: ActivatedRoute, private profesorService: ProfesoresService) {
+
   }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.profesorService.getById(this.id).subscribe(data=>this.profesor = data);
-    this.profesorService.getAsignaturas(this.id).subscribe(data=>this.asignaturas=data);
+    this.profesorService.getById(this.id).subscribe(data => this.profesor = data);
+    this.profesorService.getAsignaturas(this.id).subscribe(data => this.asignaturas = data);
   }
 
 }

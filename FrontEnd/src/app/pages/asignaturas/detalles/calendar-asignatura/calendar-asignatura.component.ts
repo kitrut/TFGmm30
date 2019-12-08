@@ -22,6 +22,9 @@ class Event {
 })
 export class CalendarAsignaturaComponent implements OnInit {
 
+  startTime = new Date().toISOString();
+  endTime = new Date().toISOString();
+
   event: Event;
   eventSource = [];
 
@@ -41,9 +44,9 @@ export class CalendarAsignaturaComponent implements OnInit {
     this.event = new Event();
   }
 
-  onCurrentDateChanged() {}
-  reloadSource() {}
-  onEventSelected() {}
+  onCurrentDateChanged(event) {}
+  reloadSource(startTime, endTime) {}
+  onEventSelected(event) {}
   onViewTitleChanged(event) {
     this.fechaSeleccionada = event;
   }

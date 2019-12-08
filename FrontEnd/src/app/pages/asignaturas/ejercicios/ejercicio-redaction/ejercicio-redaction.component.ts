@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EjercicioRedactionComponent implements OnInit {
 
-  @Input('pregunta') pregunta: string;
+  @Input() pregunta: string;
   constructor() { }
 
   ngOnInit() {}

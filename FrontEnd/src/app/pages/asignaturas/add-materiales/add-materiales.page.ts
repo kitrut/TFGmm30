@@ -16,6 +16,7 @@ export class AddMaterialesPage implements OnInit {
   matId = null;
   asigId = null;
   titulo = '';
+  mode = 'editor';
   content = `
   # Titulo
   ## Subtitulo
