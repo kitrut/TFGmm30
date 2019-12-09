@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db-mysql:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=tfg
+    volumes:
+      - /data/mysql
+  backend:
+    image: backend
+    build:
+      context: ./
+      dockerfile: ./BackEnd/Dockerfile
+    depends_on:
+      - db-mysql
+      - frontend
+    ports:
+      - 9090:9090
+    volumes:
+      - /data/spring-boot-app
+  frontend:
+    image: frontend
+    build:
+      context: ./
+      dockerfile: ./FrontEnd/Dockerfile
+  nginx:
+    image: nginx:alpine
+    ports:
+    - 8100:80
+    volumes:
+    - ./FrontEnd/www:/usr/share/nginx/html
+    depends_on:
+    - frontend
