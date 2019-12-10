@@ -8,8 +8,11 @@ services:
       - MYSQL_DATABASE=tfg
     volumes:
       - /data/mysql
+    ports:
+      - 3316:3306
   backend:
     image: backend
+    restart: always
     build:
       context: ./
       dockerfile: ./BackEnd/Dockerfile
