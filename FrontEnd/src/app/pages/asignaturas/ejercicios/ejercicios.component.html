@@ -28,25 +28,28 @@
               <ion-reorder slot="start"><ion-icon name="move"></ion-icon></ion-reorder>
               <ion-label class="ion-text-wrap">{{mat.titulo}}</ion-label>              
               <ion-buttons slot="end">
-                  <ion-button (click)="verMaterial(mat.id)" slot="end" color="tertiary" title="Ver">
+                  <ion-button class="action-buttons-expanded" (click)="verMaterial(mat.id)" slot="end" color="tertiary" title="Ver">
                     <ion-icon slot="icon-only" name="book"></ion-icon>
                   </ion-button>
-                  <ion-button (click)="presentModal()"slot="end" color="tertiary" title="Ejercicio">
+                  <ion-button class="action-buttons-expanded" (click)="presentModal()"slot="end" color="tertiary" title="Ejercicio">
                     <ion-icon slot="icon-only" name="calculator"></ion-icon>
                   </ion-button>
-                  <ion-button (click)="editMaterial(mat.id)" slot="end" color="secondary" title="Editar">
+                  <ion-button class="action-buttons-expanded" (click)="editMaterial(mat.id)" slot="end" color="secondary" title="Editar">
                     <ion-icon slot="icon-only" name="create"></ion-icon>
                   </ion-button>
-                  <ion-button (click)="presentAlertConfirm(mat.id)" slot="end" color="danger" title="Borrar">
+                  <ion-button class="action-buttons-expanded" (click)="presentAlertConfirm(mat.id)" slot="end" color="danger" title="Borrar">
                     <ion-icon slot="icon-only" name="trash"></ion-icon>
                   </ion-button>
                   <ion-button [matMenuTriggerFor]="appMenu">
                       <ion-icon slot="icon-only" name="more"></ion-icon>
                   </ion-button>
                   <mat-menu #appMenu="matMenu">
-                      <button mat-menu-item (click)="moveMat(mat,sec,-1)" [disabled]="firstSec">Subir sección</button>
-                      <button mat-menu-item (click)="moveMat(mat,sec,1)" [disabled]="lastSec">Bajar sección</button>
-                      <button mat-menu-item>Help</button>
+                      <button mat-menu-item (click)="moveMat(mat,sec,-1)" [disabled]="firstSec"><mat-icon>arrow_upward</mat-icon>Subir sección</button>
+                      <button mat-menu-item (click)="moveMat(mat,sec,1)" [disabled]="lastSec"><mat-icon>arrow_downward</mat-icon>Bajar sección</button>
+                      <button mat-menu-item (click)="verMaterial(mat.id)"><mat-icon>remove_red_eye</mat-icon>Ver</button>
+                      <button mat-menu-item (click)="presentModal()"><mat-icon>square_foot</mat-icon>Ejercicios</button>
+                      <button mat-menu-item (click)="editMaterial(mat.id)"><mat-icon>create</mat-icon>Editar</button>
+                      <button mat-menu-item (click)="presentAlertConfirm(mat.id)"><mat-icon>delete</mat-icon>Borrar</button>
                   </mat-menu>
                 </ion-buttons>
             </ion-item>
