@@ -2,11 +2,9 @@ package tfg.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tfg.backend.models.Asignatura;
-import tfg.backend.models.Materiales;
-import tfg.backend.models.Matricula;
-import tfg.backend.models.Usuario;
+import tfg.backend.models.*;
 import tfg.backend.services.interfaces.IAsignaturaService;
+import tfg.backend.services.interfaces.ISectionService;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -18,6 +16,9 @@ public class AsignaturaController {
 
     @Autowired
     private IAsignaturaService asignaturaService;
+
+    @Autowired
+    private ISectionService sectionService;
 
     @GetMapping()
     public Collection<Asignatura> indexAsignatura() {
@@ -55,8 +56,8 @@ public class AsignaturaController {
     }
 
     @GetMapping("/{id}/materiales")
-    public Collection<Materiales> getMateriales(@PathVariable("id") Long id) {
-        return asignaturaService.getMateriales(id);
+    public Collection<Section> getMateriales(@PathVariable("id") Long id) {
+        return sectionService.findAllByAsignatura(id);
     }
 
     @PostMapping

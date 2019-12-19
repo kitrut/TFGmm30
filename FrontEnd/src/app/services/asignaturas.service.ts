@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Constantes } from '../global/constantes';
 import { Materiales } from '../models/materiales';
 import { Profesor } from '../models/usuario';
+import { Section } from '../models/section';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +51,7 @@ export class AsignaturasService {
   getMaterial(idAsig: string, idMat: string): Observable<Materiales> {
     return this.http.get<Materiales>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/materiales/' + idMat, {});
   }
-  getMateriales(idAsig: string): Observable<Materiales[]> {
-    return this.http.get<Materiales[]>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/materiales', {});
+  getMateriales(idAsig: string): Observable<Section[]> {
+    return this.http.get<Section[]>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/materiales', {});
   }
 }

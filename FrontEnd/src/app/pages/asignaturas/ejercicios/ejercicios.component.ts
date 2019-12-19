@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Asignatura } from 'src/app/models/asignatura';
 import { GeneradorEjerciciosComponent } from './generador-ejercicios/generador-ejercicios.component';
+import { Section } from 'src/app/models/section';
 
 const groupBy = function groupBy2<T extends any, K extends keyof T>(array: T[], key: K | ((obj: T) => number)): Record<string, T[]> {
   const keyFn = key instanceof Function ? key : (obj: T) => obj[key];
@@ -44,11 +45,8 @@ export class EjerciciosComponent implements OnInit {
   getData(id) {
     this.asignaturasService.getMateriales(id).subscribe(
       data => {
-        const aux = groupBy(data, obj => obj.seccion);
-        this.secciones = [];
-        Object.entries(aux).forEach(element => {
-          this.secciones.push({title: 'Seccion ' + element[0], materiales: element[1]});
-        });
+        // console.log(data.sections)
+        this.secciones = data;
       }
     );
   }

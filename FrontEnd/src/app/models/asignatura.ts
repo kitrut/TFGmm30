@@ -1,5 +1,6 @@
 import { Usuario } from './usuario';
 import { Materiales } from './materiales';
+import { Section } from './section';
 
 export class Asignatura {
     id: string;
@@ -9,6 +10,7 @@ export class Asignatura {
     profesor: Usuario;
     materiales: Materiales[];
     matriculas: any[];
+    sections: Section[];
 
     constructor() {
         this.id = null;

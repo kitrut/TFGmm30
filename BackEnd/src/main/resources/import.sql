@@ -31,11 +31,16 @@ INSERT INTO matricula (id,anyo,asignatura_id) VALUES (1,'2019',1);
 INSERT INTO matricula (id,anyo,asignatura_id) VALUES (2,'2019',1);
 INSERT INTO matricula (id,anyo,asignatura_id) VALUES (3,'2019',1);
 
-INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (1,'Tema 1','## Tema 1: la la la \n\n  <div style="display:flex;justify-content: center;:center;"><div class="embed-responsive embed-responsive-16by9"  style="width:70%;"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hK0OS4E_xjM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>',1,1,1);
-INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (2,'Tema 2','## Tema 2: la la la',1,2,1);
-INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (3,'Tema 3','## Tema 3: la la la',1,3,1);
-INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (4,'Tema 4','## Tema 1: la la la',2,1,1);
-INSERT INTO materiales (id,titulo,contenido,seccion,orden,asignatura_id) VALUES (5,'Tema 5','## Tema 1: la la la',2,2,1);
+INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (1,"SECCION 1",1,1,NOW(),NOW())
+INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (2,"SECCION 2",2,1,NOW(),NOW())
+INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (3,"SECCION 3",3,1,NOW(),NOW())
+INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (4,"SECCION 4",4,1,NOW(),NOW())
+
+INSERT INTO materiales (id,titulo,contenido,orden,section_id) VALUES (1,'Tema 1','## Tema 1: la la la \n\n  <div style="display:flex;justify-content: center;:center;"><div class="embed-responsive embed-responsive-16by9"  style="width:70%;"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hK0OS4E_xjM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>',1,1);
+INSERT INTO materiales (id,titulo,contenido,orden,section_id) VALUES (2,'Tema 2','## Tema 2: la la la',2,1);
+INSERT INTO materiales (id,titulo,contenido,orden,section_id) VALUES (3,'Tema 3','## Tema 3: la la la',3,2);
+INSERT INTO materiales (id,titulo,contenido,orden,section_id) VALUES (4,'Tema 4','## Tema 1: la la la',1,2);
+INSERT INTO materiales (id,titulo,contenido,orden,section_id) VALUES (5,'Tema 5','## Tema 1: la la la',2,3);
 
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (2,1);
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (3,2);

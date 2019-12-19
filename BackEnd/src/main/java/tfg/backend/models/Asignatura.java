@@ -18,11 +18,10 @@ public class Asignatura {
     private String nombre;
     private String descripcion;
     private String curso;
-    
+
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "asignatura_id")
-    @JsonIgnore
-    private Collection<Materiales> materiales;
+    private Collection<Section> sections;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference(value = "asignaturasImpartidas")
@@ -32,8 +31,4 @@ public class Asignatura {
     @JoinColumn(name = "asignatura_id")
     @JsonIgnore
     private Set<Matricula> matriculas;
-
-    public boolean addMateriales(Materiales materiales) {
-        return this.materiales.add(materiales);
-    }
 }

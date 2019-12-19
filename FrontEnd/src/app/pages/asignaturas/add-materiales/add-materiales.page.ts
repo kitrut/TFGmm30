@@ -17,8 +17,6 @@ export class AddMaterialesPage implements OnInit {
   asigId = null;
   titulo = '';
   mode = 'editor';
-
-  seccion = 0;
   orden = 0;
 
   content = `
@@ -67,7 +65,6 @@ export class AddMaterialesPage implements OnInit {
         data => {
           this.titulo = data.titulo;
           this.content = data.contenido;
-          this.seccion = data.seccion;
           this.orden = data.orden;
         }
       );
@@ -77,7 +74,6 @@ export class AddMaterialesPage implements OnInit {
   guardar() {
     const mat: Materiales = new Materiales(this.matId, this.titulo, this.content);
     mat.orden = this.orden;
-    mat.seccion = this.seccion;
     if (this.matId == null) {
       this.asigService.createMaterial(this.asigId, mat).subscribe(() => {this.router.navigate(['/asignaturas/', this.asigId]); });
     } else {

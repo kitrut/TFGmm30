@@ -3,7 +3,6 @@ export class Materiales {
     titulo: string;
     contenido: string;
     orden: number;
-    seccion: number;
     constructor(id, titulo, contenido) {
         this.id = id;
         this.titulo = titulo;
