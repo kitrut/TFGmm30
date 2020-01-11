@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tfg.backend.models.*;
 import tfg.backend.services.interfaces.IAsignaturaService;
-import tfg.backend.services.interfaces.ISectionService;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -16,9 +15,6 @@ public class AsignaturaController {
 
     @Autowired
     private IAsignaturaService asignaturaService;
-
-    @Autowired
-    private ISectionService sectionService;
 
     @GetMapping()
     public Collection<Asignatura> indexAsignatura() {
@@ -49,16 +45,6 @@ public class AsignaturaController {
     public Set<Matricula> getMatriculados(@PathVariable("id") Long id) {
         return asignaturaService.getMatriculados(id);
     }
-    
-    @GetMapping("/{id}/materiales/{idMat}")
-    public Materiales getMaterial(@PathVariable("id") Long id,@PathVariable("idMat") Long idMat) {
-        return asignaturaService.getMaterial(idMat);
-    }
-
-    @GetMapping("/{id}/materiales")
-    public Collection<Section> getMateriales(@PathVariable("id") Long id) {
-        return sectionService.findAllByAsignatura(id);
-    }
 
     @PostMapping
     public Asignatura create(@RequestBody Asignatura asignatura){
@@ -67,9 +53,4 @@ public class AsignaturaController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id){asignaturaService.delete(id);}
-
-    @DeleteMapping("/{id}/materiales/{idMat}")
-    private void deleteMat(@PathVariable("id") Long id,@PathVariable("idMat") Long idMat){
-        asignaturaService.deleteMaterial(id,idMat);
-    }
 }

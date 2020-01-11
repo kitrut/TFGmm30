@@ -51,7 +51,4 @@ export class AsignaturasService {
   getMaterial(idAsig: string, idMat: string): Observable<Materiales> {
     return this.http.get<Materiales>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/materiales/' + idMat, {});
   }
-  getMateriales(idAsig: string): Observable<Section[]> {
-    return this.http.get<Section[]>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/materiales', {});
-  }
 }

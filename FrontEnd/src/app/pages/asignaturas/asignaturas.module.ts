@@ -30,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NotasAsignaturaComponent } from './detalles/notas-asignatura/notas-asignatura.component';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { CalendarAsignaturaComponent } from './detalles/calendar-asignatura/calendar-asignatura.component';
+import { AddSectionComponent } from './add-section/add-section.component';
 
 const routes: Routes = [
   {
@@ -99,12 +100,14 @@ const routes: Routes = [
     EjercicioRedactionComponent,
     EjercicioChecksComponent,
     GeneradorEjerciciosComponent,
+    AddSectionComponent,
     AsignaturasPage,
     NotasAsignaturaComponent,
     CalendarAsignaturaComponent
   ],
   entryComponents: [
-    GeneradorEjerciciosComponent
+    GeneradorEjerciciosComponent,
+    AddSectionComponent
   ]
 })
 export class AsignaturasPageModule { }

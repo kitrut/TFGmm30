@@ -71,28 +71,6 @@ public class AsignaturaService implements IAsignaturaService {
     }
 
     @Override
-    public void deleteMaterial(Long idAsignatura,Long idMaterial){
-        /*Asignatura asignatura = asignaturaRepository.findById(idAsignatura).orElse(null);
-        if(asignatura!=null){
-            Materiales mat = materialesRepository.findById(idMaterial).orElse(null);
-            if(mat!=null){
-                Collection<Materiales> materiales = asignatura.getMateriales();
-                if(materiales.remove(mat)){
-                    asignatura.setMateriales(materiales);
-                    asignaturaRepository.save(asignatura);
-                    materialesRepository.delete(mat);
-                }
-
-            }
-        }*/
-    }
-
-    @Override
-    public Materiales getMaterial(Long idMat) {
-		return materialesRepository.findById(idMat).orElse(null);
-    }
-
-    @Override
     public Usuario getProfesor(Long id){
         Asignatura a = this.asignaturaRepository.findById(id).orElse(null);
         if(a!=null){
@@ -121,14 +99,5 @@ public class AsignaturaService implements IAsignaturaService {
             }
         }
         return a;
-    }
-
-    @Override
-    public Collection<Materiales> getMateriales(Long idAsignatura) {
-        Asignatura as = asignaturaRepository.findByIdWithSections(idAsignatura).orElse(null);
-        if(as!=null){
-            //return  as.getSections();
-        }
-        return null;
     }
 }

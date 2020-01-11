@@ -16,10 +16,8 @@ public interface IAsignaturaService {
     Asignatura create(Asignatura asignatura);
     void delete(Long id);
     Asignatura addMaterial(Long idAsignatura, Materiales materiales);
-    void deleteMaterial(Long idAsignatura,Long idMaterial);
-    Materiales getMaterial(Long idMat);
+
     Usuario getProfesor(Long id);
     Set<Matricula> getMatriculados(Long idAsignatura);
     Asignatura addProfesor(Long idAsignatura,Integer idProfesor);
-    Collection<Materiales> getMateriales(Long idAsignatura);
 }
