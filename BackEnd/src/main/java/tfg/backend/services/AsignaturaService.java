@@ -32,7 +32,7 @@ public class AsignaturaService implements IAsignaturaService {
 
     @Override
     public Optional<Asignatura> findById(Long id){
-        return asignaturaRepository.findByIdWithMats(id);
+        return asignaturaRepository.findByIdWithSections(id);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class AsignaturaService implements IAsignaturaService {
 
     @Override
     public Asignatura addMaterial(Long idAsignatura,Materiales materiales) {
-    	Asignatura asignatura=asignaturaRepository.findById(idAsignatura).orElse(null);
+    	/*Asignatura asignatura=asignaturaRepository.findById(idAsignatura).orElse(null);
     	if(asignatura!=null) {
     	    if(materiales.getId()==null){
                 Materiales mat = materialesRepository.save(materiales);
@@ -66,30 +66,8 @@ public class AsignaturaService implements IAsignaturaService {
                 materialesRepository.save(materiales);
             }
     	}
-    	return asignatura;
-    }
-
-    @Override
-    public void deleteMaterial(Long idAsignatura,Long idMaterial){
-        Asignatura asignatura = asignaturaRepository.findById(idAsignatura).orElse(null);
-        if(asignatura!=null){
-            Materiales mat = materialesRepository.findById(idMaterial).orElse(null);
-            if(mat!=null){
-                Collection<Materiales> materiales = asignatura.getMateriales();
-                if(materiales.remove(mat)){
-                    asignatura.setMateriales(materiales);
-                    asignaturaRepository.save(asignatura);
-                    materialesRepository.delete(mat);
-                }
-
-            }
-        }
-
-    }
-
-    @Override
-    public Materiales getMaterial(Long idMat) {
-		return materialesRepository.findById(idMat).orElse(null);
+    	return asignatura;*/
+    	return null;
     }
 
     @Override
@@ -121,14 +99,5 @@ public class AsignaturaService implements IAsignaturaService {
             }
         }
         return a;
-    }
-
-    @Override
-    public Collection<Materiales> getMateriales(Long idAsignatura) {
-        Asignatura as = asignaturaRepository.findById(idAsignatura).orElse(null);
-        if(as!=null){
-            return  as.getMateriales();
-        }
-        return null;
     }
 }

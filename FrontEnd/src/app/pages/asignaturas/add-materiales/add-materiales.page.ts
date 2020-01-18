@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Materiales } from 'src/app/models/materiales';
+import { MaterialesService } from 'src/app/services/materiales.service';
 interface UploadResult {
   isImg: boolean;
   name: string;
@@ -15,8 +15,11 @@ interface UploadResult {
 export class AddMaterialesPage implements OnInit {
   matId = null;
   asigId = null;
+  sectionId = null;
   titulo = '';
   mode = 'editor';
+  orden = 0;
+
   content = `
   # Titulo
   ## Subtitulo
@@ -53,27 +56,34 @@ export class AddMaterialesPage implements OnInit {
     resizable: true,
     scrollPastEnd: 0,
   };
-  constructor(private asigService: AsignaturasService, private route: ActivatedRoute, private router: Router) {   }
+  constructor(private materialesService: MaterialesService, private route: ActivatedRoute, private router: Router) {   }
 
   ngOnInit() {
     this.matId = this.route.snapshot.paramMap.get('idMat');
     this.asigId = this.route.snapshot.paramMap.get('id');
     if (this.matId != null) {
-      this.asigService.getMaterial(this.asigId, this.matId).subscribe(
+      this.materialesService.getMaterial(this.matId).subscribe(
         data => {
           this.titulo = data.titulo;
           this.content = data.contenido;
+          this.orden = data.orden;
         }
       );
+    } else {
+      this.sectionId = this.router.getCurrentNavigation().extras.state.sectionId;
     }
   }
 
   guardar() {
     const mat: Materiales = new Materiales(this.matId, this.titulo, this.content);
+    mat.orden = this.orden;
     if (this.matId == null) {
-      this.asigService.createMaterial(this.asigId, mat).subscribe(() => {this.router.navigate(['/asignaturas/', this.asigId]); });
+      this.materialesService.createMaterial(this.sectionId, mat).subscribe(() => {
+        this.router.navigateByUrl('/asignaturas/' + this.asigId);
+        //this.router.navigate(['/asignaturas/', this.asigId]);
+      });
     } else {
-      this.asigService.createMaterial(this.asigId, mat).subscribe(() => {this.router.navigate(['/asignaturas/', this.asigId]); });
+      this.materialesService.updateMaterial(mat).subscribe(() => {this.router.navigate(['/asignaturas/', this.asigId]); });
     }
   }
 

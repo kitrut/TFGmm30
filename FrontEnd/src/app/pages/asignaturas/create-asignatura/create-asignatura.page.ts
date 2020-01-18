@@ -30,7 +30,8 @@ export class CreateAsignaturaPage implements OnInit {
       curso: this.asignaturaForm.value.curso,
       profesor: null,
       materiales: null,
-      matriculas : null
+      matriculas : null,
+      sections: null
     };
 
     this.asignaturasService.create(asig).subscribe(

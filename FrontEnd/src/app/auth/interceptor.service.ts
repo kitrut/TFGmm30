@@ -30,17 +30,18 @@ export class InterceptorService implements HttpInterceptor {
                         map((event: HttpEvent<any>) => {
                             if (event instanceof HttpResponse) {
                                 //captura el token de la respuesta del servidor
-                                const token =event.headers.get("Authorization");
-                                if(token)
-                                  this.storage.set(TOKEN_KEY,token)
+                                token = event.headers.get('Authorization');
+                                if (token) {
+                                  this.storage.set(TOKEN_KEY, token);
+                                }
                             }
                             return event;
                         }),
                         catchError((error: HttpErrorResponse) => {
-                            console.log(error)
+                            console.log(error);
                             const status =  error.status;
-                            if(status == 403){
-                                this.storage.remove(Constantes.TOKEN_KEY)
+                            if (status === 403) {
+                                this.storage.remove(Constantes.TOKEN_KEY);
                                 this.auth.logout();
                             }
                             return throwError(error);

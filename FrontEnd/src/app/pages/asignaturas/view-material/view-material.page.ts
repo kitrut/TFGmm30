@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Materiales } from 'src/app/models/materiales';
+import { MaterialesService } from 'src/app/services/materiales.service';
 
 @Component({
   selector: 'app-view-material',
@@ -18,12 +18,11 @@ export class ViewMaterialPage implements OnInit {
     resizable: true,
     enablePreviewContentClick: true
   };
-  constructor(private route: ActivatedRoute, private asignaturaService: AsignaturasService) { }
+  constructor(private route: ActivatedRoute, private materialesService: MaterialesService) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
     const idMat = this.route.snapshot.paramMap.get('idMat');
-    this.asignaturaService.getMaterial(id, idMat).subscribe(
+    this.materialesService.getMaterial(idMat).subscribe(
       data => {
         this.material = data;
         this.titulo = data.titulo;

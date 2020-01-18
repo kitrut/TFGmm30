@@ -26,9 +26,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 import { NotasAsignaturaComponent } from './detalles/notas-asignatura/notas-asignatura.component';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { CalendarAsignaturaComponent } from './detalles/calendar-asignatura/calendar-asignatura.component';
+import { AddSectionComponent } from './add-section/add-section.component';
+import { DetalleAsignaturaComponent } from './detalles/detalle-asignatura/detalle-asignatura.component';
 
 const routes: Routes = [
   {
@@ -49,20 +52,17 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component: DetalleAsignaturaPage
+        component: DetalleAsignaturaPage,
+        children: [
+          { path: 'detalles', component: DetalleAsignaturaComponent, pathMatch: 'full' },
+          { path: 'materiales', outlet: 'tabs-asignatura', component: EjerciciosComponent, pathMatch: 'full' },
+          { path: 'calendario', outlet: 'tabs-asignatura', component: CalendarAsignaturaComponent, pathMatch: 'full' },
+          { path: 'notas', outlet: 'tabs-asignatura', component: NotasAsignaturaComponent, pathMatch: 'full' }
+        ]
       },
-      {
-        path: ':id/addMaterial',
-        component: AddMaterialesPage
-      },
-      {
-        path: ':id/update/:idMat',
-        component: AddMaterialesPage
-      },
-      {
-        path: ':id/materiales/:idMat',
-        component: ViewMaterialPage
-      }
+      { path: ':id/addMaterial', component: AddMaterialesPage },
+      { path: ':id/update/:idMat',component: AddMaterialesPage },
+      { path: ':id/materiales/:idMat', component: ViewMaterialPage}
     ]
   },
 ];
@@ -82,6 +82,7 @@ const routes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatIconModule,
     NgCalendarModule
   ],
   declarations: [
@@ -97,12 +98,15 @@ const routes: Routes = [
     EjercicioRedactionComponent,
     EjercicioChecksComponent,
     GeneradorEjerciciosComponent,
+    AddSectionComponent,
     AsignaturasPage,
     NotasAsignaturaComponent,
-    CalendarAsignaturaComponent
+    CalendarAsignaturaComponent,
+    DetalleAsignaturaComponent
   ],
   entryComponents: [
-    GeneradorEjerciciosComponent
+    GeneradorEjerciciosComponent,
+    AddSectionComponent
   ]
 })
 export class AsignaturasPageModule { }

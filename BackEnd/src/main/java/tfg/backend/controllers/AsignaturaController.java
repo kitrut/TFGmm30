@@ -2,10 +2,7 @@ package tfg.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tfg.backend.models.Asignatura;
-import tfg.backend.models.Materiales;
-import tfg.backend.models.Matricula;
-import tfg.backend.models.Usuario;
+import tfg.backend.models.*;
 import tfg.backend.services.interfaces.IAsignaturaService;
 
 import java.util.Collection;
@@ -48,16 +45,6 @@ public class AsignaturaController {
     public Set<Matricula> getMatriculados(@PathVariable("id") Long id) {
         return asignaturaService.getMatriculados(id);
     }
-    
-    @GetMapping("/{id}/materiales/{idMat}")
-    public Materiales getMaterial(@PathVariable("id") Long id,@PathVariable("idMat") Long idMat) {
-        return asignaturaService.getMaterial(idMat);
-    }
-
-    @GetMapping("/{id}/materiales")
-    public Collection<Materiales> getMateriales(@PathVariable("id") Long id) {
-        return asignaturaService.getMateriales(id);
-    }
 
     @PostMapping
     public Asignatura create(@RequestBody Asignatura asignatura){
@@ -66,9 +53,4 @@ public class AsignaturaController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id){asignaturaService.delete(id);}
-
-    @DeleteMapping("/{id}/materiales/{idMat}")
-    private void deleteMat(@PathVariable("id") Long id,@PathVariable("idMat") Long idMat){
-        asignaturaService.deleteMaterial(id,idMat);
-    }
 }

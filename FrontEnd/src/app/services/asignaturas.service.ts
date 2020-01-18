@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Constantes } from '../global/constantes';
 import { Materiales } from '../models/materiales';
 import { Profesor } from '../models/usuario';
+import { Section } from '../models/section';
 
 @Injectable({
   providedIn: 'root'
@@ -29,17 +30,6 @@ export class AsignaturasService {
     return this.http.delete(Constantes.URL_ASIGNATURAS + '/' + idAsignatura);
   }
 
-  createMaterial(id: string, mat: Materiales): Observable<Asignatura> {
-    return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS + '/' + id + '/materiales', mat, {});
-  }
-
-  updateMaterial(id: string, mat: Materiales): Observable<Asignatura> {
-    return this.http.put<Asignatura>(Constantes.URL_ASIGNATURAS + '/' + id + '/materiales', mat, {});
-  }
-  deleteMaterial(idAsignatura: string, idMaterial: string): Observable<any> {
-    return this.http.delete(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/materiales/' + idMaterial, {});
-  }
-
   asignProfesor(idAsignatura: string, idProfesor: string): Observable<any> {
     return this.http.post<Asignatura>(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/profesor/' + idProfesor, {});
   }
@@ -47,10 +37,4 @@ export class AsignaturasService {
     return this.http.get<Profesor>(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/profesor', {});
   }
 
-  getMaterial(idAsig: string, idMat: string): Observable<Materiales> {
-    return this.http.get<Materiales>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/materiales/' + idMat, {});
-  }
-  getMateriales(idAsig: string): Observable<Materiales[]> {
-    return this.http.get<Materiales[]>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/materiales', {});
-  }
 }

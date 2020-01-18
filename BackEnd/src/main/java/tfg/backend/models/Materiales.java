@@ -19,11 +19,10 @@ public class Materiales {
 	@Size(max = 2000)
 	private String contenido;
 
-	private Integer seccion;
 	private Integer orden;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
-	private Asignatura asignatura;
+	private Section section;
 
 }
