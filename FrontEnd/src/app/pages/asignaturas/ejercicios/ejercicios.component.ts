@@ -1,25 +1,10 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonReorderGroup, AlertController, ModalController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AsignaturasService } from 'src/app/services/asignaturas.service';
-import { Asignatura } from 'src/app/models/asignatura';
 import { GeneradorEjerciciosComponent } from './generador-ejercicios/generador-ejercicios.component';
-import { Section } from 'src/app/models/section';
 import { SectionService } from 'src/app/services/section.service';
 import { MaterialesService } from 'src/app/services/materiales.service';
 import { AddSectionComponent } from '../add-section/add-section.component';
-
-const groupBy = function groupBy2<T extends any, K extends keyof T>(array: T[], key: K | ((obj: T) => number)): Record<string, T[]> {
-  const keyFn = key instanceof Function ? key : (obj: T) => obj[key];
-  return array.reduce(
-    (objectsByKeyValue, obj) => {
-      const value = keyFn(obj);
-      objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
-      return objectsByKeyValue;
-    },
-    {} as Record<string, T[]>
-  );
-};
 
 @Component({
   selector: 'app-ejercicios',
@@ -29,14 +14,12 @@ const groupBy = function groupBy2<T extends any, K extends keyof T>(array: T[], 
 export class EjerciciosComponent implements OnInit {
 
   @ViewChild(IonReorderGroup, { static: false }) reorderGroup: IonReorderGroup;
-  @Input() asignatura: Asignatura = new Asignatura();
   id: any;
 
   secciones = [];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private asignaturasService: AsignaturasService,
               private materialesService: MaterialesService,
               private sectionsService: SectionService,
               private alertController: AlertController,
@@ -71,27 +54,27 @@ export class EjerciciosComponent implements OnInit {
     this.reorderGroup.disabled = !this.reorderGroup.disabled;
   }
 
-  addMaterial() {
-    this.router.navigateByUrl('/asignaturas/' + this.asignatura.id + '/addMaterial');
+  addMaterial(idSection: string) {
+    this.router.navigate(['asignaturas', this.id, 'addMaterial'], {state: {sectionId: idSection}});
   }
 
   editMaterial(idMat) {
-    this.router.navigateByUrl('/asignaturas/' + this.asignatura.id + '/update/' + idMat);
+    this.router.navigateByUrl('/asignaturas/' + this.id + '/update/' + idMat);
   }
   deleteMaterial(idMat) {
-    this.materialesService.deleteMaterial(idMat).subscribe(data => this.getData(this.asignatura.id));
+    this.materialesService.deleteMaterial(idMat).subscribe(data => this.getData(this.id));
   }
 
   async addSection() {
     const modal = await this.modalController.create({
       component: AddSectionComponent,
       componentProps: {
-        id : this.asignatura.id
+        id : this.id
       }
     });
     await modal.present();
     await modal.onWillDismiss();
-    this.getData(this.asignatura.id);
+    this.getData(this.id);
   }
 
   async presentAlertConfirm(idMat) {
@@ -134,7 +117,7 @@ export class EjerciciosComponent implements OnInit {
   }
 
   verMaterial(id) {
-    this.router.navigateByUrl('/asignaturas/' + this.asignatura.id + '/materiales/' + id);
+    this.router.navigateByUrl('/asignaturas/' + this.id + '/materiales/' + id);
   }
 
 }

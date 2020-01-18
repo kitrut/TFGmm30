@@ -20,57 +20,13 @@
       <ion-segment-button value="calendarTab">
           <ion-icon name="calendar"></ion-icon>
       </ion-segment-button>
-    </ion-segment>
+    </ion-segment>  
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="segment.value=='infoTab'">
-      <ion-card-header class="ion-text-center" color="primary">
-        <ion-card-title>{{asignatura.nombre}}</ion-card-title>
-        <ion-card-subtitle>{{'Asignaturas.Curso' | translate}}: {{asignatura.curso}}</ion-card-subtitle>
-
-      </ion-card-header>
-
-      <ion-card-content>
-
-        <p *ngIf="asignatura.descripcion">{{'Asignaturas.Descripción' | translate}}: {{asignatura.descripcion}}</p>
-        <p *ngIf="asignatura.profesor">{{'Asignaturas.Profesor' | translate}}: {{asignatura.profesor.nombre + " "+ asignatura.profesor.apellidos}}</p>
-        
-        <ion-item *ngIf="!asignatura.profesor">
-          <ion-label>Asignar profesor</ion-label>
-          <ion-select placeholder="Select One" [(ngModel)]="profesorAsignadoID">
-            <ion-select-option *ngFor="let p of profesores" value="{{p.id}}">{{p.nombre+' '+p.apellidos}}</ion-select-option>
-          </ion-select>              
-        </ion-item>
-        <ion-button *ngIf="!asignatura.profesor" (click)="asignarProfesor()" expand="full">Asignar</ion-button>
-      </ion-card-content>
-  </ion-card>
-
-  <ion-card *ngIf="segment.value=='infoTab'">
-      <ion-item class="ion-text-center" color="primary">
-        <ion-label>{{'Asignaturas.AlumnosMatriculados' | translate}}</ion-label>
-        <ion-button (click)="crear()" slot="end">
-          <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-      <ion-card-content>
-        <ion-list>
-          <ion-item *ngFor="let a of [1,2,3,4,5] | paginate: { itemsPerPage: 5, currentPage: p,id:'alumnos' }">
-            Alumno {{a}}
-            <ion-button (click)="crear()" slot="end">
-              <ion-icon slot="icon-only" name="contact"></ion-icon>
-            </ion-button>
-            <ion-button (click)="crear()" slot="end">
-              <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
-            </ion-button>
-          </ion-item>
-        </ion-list>
-        <pagination-controls (pageChange)="p = $event" id="alumnos"></pagination-controls>
-      </ion-card-content>
-    </ion-card>
-
-  <app-ejercicios *ngIf="segment.value=='materialesTab'" [asignatura]="asignatura"></app-ejercicios>
+  <app-detalle-asignatura *ngIf="segment.value=='infoTab'"></app-detalle-asignatura>
+  <app-ejercicios *ngIf="segment.value=='materialesTab'"></app-ejercicios>
   <app-notas-asignatura *ngIf="segment.value=='notesTab'"></app-notas-asignatura>
   <app-calendar-asignatura *ngIf="segment.value=='calendarTab'"></app-calendar-asignatura>
 </ion-content>

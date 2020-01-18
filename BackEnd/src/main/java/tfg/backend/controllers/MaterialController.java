@@ -21,4 +21,14 @@ public class MaterialController {
         materialesService.delete(idMat);
     }
 
+    /*@PostMapping
+    public Materiales addMateriales(@RequestBody Materiales material) {
+        return materialesService.create(material);
+    }*/
+
+    @PutMapping
+    public Materiales editMaterial(@RequestBody Materiales material) {
+        return materialesService.update(material);
+    }
+
 }
