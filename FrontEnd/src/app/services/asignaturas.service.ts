@@ -6,6 +6,7 @@ import { Constantes } from '../global/constantes';
 import { Materiales } from '../models/materiales';
 import { Profesor } from '../models/usuario';
 import { Section } from '../models/section';
+import { Matricula } from '../models/matricula';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,14 @@ export class AsignaturasService {
   }
   getProfesor(idAsignatura: string): Observable<Profesor> {
     return this.http.get<Profesor>(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/profesor', {});
+  }
+
+  getMatriculados(idAsignatura: string): Observable<any> {
+    return this.http.get<Profesor>(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/matriculas', {});
+  }
+
+  getMatriculasAlumno(idAlumno: string): Observable<Asignatura[]>{
+    return this.http.get<Asignatura[]>(Constantes.URL_ALUMNOS + '/' + idAlumno + '/asignaturas', {});
   }
 
 }

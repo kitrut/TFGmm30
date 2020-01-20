@@ -3,9 +3,11 @@ package tfg.backend.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Data
@@ -16,13 +18,13 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String anyo;
+    private Integer anyo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value = "matriculas")
-    private Asignatura asignatura;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToMany
     @JsonIgnore
+    private Collection<Asignatura> asignaturas;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Usuario usuario;
 }
