@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Asignatura } from 'src/app/models/asignatura';
 import { Profesor } from 'src/app/models/usuario';
 import { ActivatedRoute } from '@angular/router';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { ProfesoresService } from 'src/app/services/profesores.service';
+import { Matricula } from 'src/app/models/matricula';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-detalle-asignatura',
@@ -16,11 +19,17 @@ export class DetalleAsignaturaComponent implements OnInit{
   profesores: Profesor[];
   profesorAsignadoID: string;
 
+  matriculas = new MatTableDataSource<Matricula>();
+
+  displayedColumns = ['name', 'surname', 'email'];
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
   constructor(private route: ActivatedRoute,
               private asginaturasService: AsignaturasService,
               private profService: ProfesoresService) { }
 
               ngOnInit() {
+
     const id = this.route.snapshot.paramMap.get('id');
     this.getData(id);
   }
@@ -37,6 +46,12 @@ export class DetalleAsignaturaComponent implements OnInit{
             if (this.asignatura.profesor == null) {
               this.mostrarProfesores();
             }
+          }
+        );
+        this.asginaturasService.getMatriculados(id).subscribe(
+          matriculados => {
+            this.matriculas = new MatTableDataSource<Matricula>(matriculados);
+            this.matriculas.paginator = this.paginator;
           }
         );
       });

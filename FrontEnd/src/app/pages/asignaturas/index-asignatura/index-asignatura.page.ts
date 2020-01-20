@@ -36,7 +36,7 @@ export class IndexAsignaturaPage {
   }
 
   getData() {
-    if(this.authService.usuario === null){
+    if (this.authService.usuario === null) {
       this.authService.user.subscribe(() => this.getData());
     }
     if (this.authService.isAdmin()) {
@@ -52,6 +52,14 @@ export class IndexAsignaturaPage {
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
       }
+      );
+    } else if (this.authService.isAlumno()) {
+      this.asignService.getMatriculasAlumno(this.authService.usuario.id).subscribe(
+        data => {
+          this.dataSource = new MatTableDataSource<Asignatura>(data);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }
       );
     } else {
       console.error('No es nada');

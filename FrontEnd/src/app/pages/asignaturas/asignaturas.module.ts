@@ -55,9 +55,9 @@ const routes: Routes = [
         component: DetalleAsignaturaPage,
         children: [
           { path: 'detalles', component: DetalleAsignaturaComponent, pathMatch: 'full' },
-          { path: 'materiales', outlet: 'tabs-asignatura', component: EjerciciosComponent, pathMatch: 'full' },
-          { path: 'calendario', outlet: 'tabs-asignatura', component: CalendarAsignaturaComponent, pathMatch: 'full' },
-          { path: 'notas', outlet: 'tabs-asignatura', component: NotasAsignaturaComponent, pathMatch: 'full' }
+          { path: 'materiales', component: EjerciciosComponent, pathMatch: 'full' },
+          { path: 'calendario', component: CalendarAsignaturaComponent, pathMatch: 'full' },
+          { path: 'notas', component: NotasAsignaturaComponent, pathMatch: 'full' }
         ]
       },
       { path: ':id/addMaterial', component: AddMaterialesPage },

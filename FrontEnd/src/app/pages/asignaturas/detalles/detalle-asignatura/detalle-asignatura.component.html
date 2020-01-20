@@ -23,7 +23,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card class="card-users">
     <ion-item class="ion-text-center" color="primary">
       <ion-label>{{'Asignaturas.AlumnosMatriculados' | translate}}</ion-label>
       <ion-button (click)="crear()" slot="end">
@@ -31,18 +31,23 @@
       </ion-button>
     </ion-item>
     <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let a of [1,2,3,4,5] | paginate: { itemsPerPage: 5, currentPage: p,id:'alumnos' }">
-          Alumno {{a}}
-          <ion-button (click)="crear()" slot="end">
-            <ion-icon slot="icon-only" name="contact"></ion-icon>
-          </ion-button>
-          <ion-button (click)="crear()" slot="end">
-            <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
-          </ion-button>
-        </ion-item>
-      </ion-list>
-      <pagination-controls (pageChange)="p = $event" id="alumnos"></pagination-controls>
+      <table mat-table [dataSource]="matriculas">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.usuario.nombre}} </td>
+        </ng-container>
+        <ng-container matColumnDef="surname">
+          <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+          <td mat-cell *matCellDef="let element"> {{element.usuario.apellidos}} </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.usuario.email}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
     </ion-card-content>
   </ion-card>
 </ion-content>

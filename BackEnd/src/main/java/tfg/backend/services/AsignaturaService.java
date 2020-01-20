@@ -20,6 +20,7 @@ public class AsignaturaService implements IAsignaturaService {
 
     @Autowired
     private IAsignaturaRepository asignaturaRepository;
+
     @Autowired
     private IMaterialesRepository materialesRepository;
     @Autowired
@@ -80,8 +81,17 @@ public class AsignaturaService implements IAsignaturaService {
     }
 
     @Override
-    public Set<Matricula> getMatriculados(Long idAsignatura){
-        return this.asignaturaRepository.findByIdWithMatriculas(idAsignatura).get().getMatriculas();
+    public Collection<Matricula> getMatriculados(Long idAsignatura){
+        Optional<Asignatura> asignatura = asignaturaRepository.findByIdWithMatriculas(idAsignatura);
+        if(asignatura.isPresent()){
+            return asignatura.get().getMatriculas();
+        }
+        return null;
+        /*Asignatura asignatura = asignaturaRepository.findById(idAsignatura).orElse(null);
+        if(asignatura != null){
+            return asignatura.getMatriculas();
+        }
+        return null;*/
     }
 
     @Override
@@ -99,5 +109,10 @@ public class AsignaturaService implements IAsignaturaService {
             }
         }
         return a;
+    }
+
+    @Override
+    public Collection<Asignatura> getAsignaturasAlumno(Integer idAlumno) {
+        return this.asignaturaRepository.findByMatriculasUsuarioId(idAlumno);
     }
 }

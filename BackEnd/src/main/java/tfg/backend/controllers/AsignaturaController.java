@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tfg.backend.models.*;
 import tfg.backend.services.interfaces.IAsignaturaService;
+import tfg.backend.services.interfaces.IMaterialesService;
+import tfg.backend.services.interfaces.ISectionService;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -15,6 +17,12 @@ public class AsignaturaController {
 
     @Autowired
     private IAsignaturaService asignaturaService;
+
+    @Autowired
+    ISectionService sectionService;
+
+    @Autowired
+    IMaterialesService materialesService;
 
     @GetMapping()
     public Collection<Asignatura> indexAsignatura() {
@@ -42,8 +50,13 @@ public class AsignaturaController {
     }
 
     @GetMapping("/{id}/matriculas")
-    public Set<Matricula> getMatriculados(@PathVariable("id") Long id) {
+    public Collection<Matricula> getMatriculados(@PathVariable("id") Long id) {
         return asignaturaService.getMatriculados(id);
+    }
+
+    @GetMapping("/{id}/sections")
+    public Collection<Section> getAllSectionsOfAsignatura(@PathVariable("id") Long id) {
+        return sectionService.findAllByAsignatura(id);
     }
 
     @PostMapping
@@ -53,4 +66,6 @@ public class AsignaturaController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id){asignaturaService.delete(id);}
+
+
 }

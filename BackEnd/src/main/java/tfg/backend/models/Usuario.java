@@ -1,5 +1,6 @@
 package tfg.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -8,7 +9,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Set;
 
 @Entity
 @Data
@@ -41,9 +41,9 @@ public class Usuario implements Serializable {
     @JsonManagedReference(value = "asignaturasImpartidas")
     private Collection<Asignatura> asignaturasImpartidas;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
-    @JsonIgnore
-    private Set<Matricula> matriculas;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Collection<Matricula> matriculas;
 
     public boolean addAsignaturaImpartida(Asignatura a){
         return this.asignaturasImpartidas.add(a);

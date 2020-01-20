@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import tfg.backend.models.Asignatura;
+import tfg.backend.models.Matricula;
 import tfg.backend.models.Usuario;
+import tfg.backend.services.interfaces.IAsignaturaService;
 import tfg.backend.services.interfaces.IUserService;
 
 import java.util.Collection;
@@ -23,6 +25,8 @@ public class UserController {
 
     @Autowired
     IUserService userService;
+    @Autowired
+    IAsignaturaService asignaturaService;
 
     @Autowired
     PasswordEncoder bCryptPasswordEncoder;
@@ -65,5 +69,10 @@ public class UserController {
     @GetMapping("/profesores/{id}/asignaturas")
     public Collection<Asignatura> getProfesoresIDAsignatura(@PathVariable("id") Integer id) {
         return userService.findById(id).getAsignaturasImpartidas();
+    }
+
+    @GetMapping("/alumnos/{id}/asignaturas")
+    public Collection<Asignatura> getMatriculasAlumno(@PathVariable("id") Integer id) {
+        return asignaturaService.getAsignaturasAlumno(id);
     }
 }

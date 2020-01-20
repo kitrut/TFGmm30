@@ -13,7 +13,8 @@ export class SectionService {
   constructor(private http: HttpClient) { }
 
   getSections(idAsig: string): Observable<Section[]> {
-    return this.http.get<Section[]>(Constantes.URL_SECTIONS + '/' + idAsig + '/sections', {});
+    return this.http.get<Section[]>(Constantes.URL_ASIGNATURAS + '/' + idAsig + '/sections', {});
+    // return this.http.get<Section[]>(Constantes.URL_SECTIONS + '/' + idAsig + '/sections', {});
   }
 
   addSection(idAsig: string, section: Section): Observable<Asignatura> {

@@ -5,14 +5,18 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{titulo}}</ion-title>
+    <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="calculator"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="paper"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <md-editor name="Content"
-  [(ngModel)]="content"
-  [mode]="mode"
-  [height]="'auto'"
-  [options]="options">
-</md-editor>
+    <md-editor name="Content" [(ngModel)]="content" [mode]="mode" [height]="'auto'" [options]="options">
+    </md-editor>  
 </ion-content>
