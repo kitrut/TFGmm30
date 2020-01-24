@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
+import tfg.backend.models.enums.RoleType;
+import tfg.backend.models.exceptions.NotFoundException;
 import tfg.backend.reposiroties.IRoleReposority;
 import tfg.backend.reposiroties.IUsuarioReposority;
 import tfg.backend.services.interfaces.IUserService;
@@ -28,61 +30,49 @@ public class UserService implements UserDetailsService, IUserService {
     private IRoleReposority roleReposority;
 
     @Override
-    public Usuario create(Usuario user, String role) {
+    public Usuario create(Usuario user, RoleType role) {
         Role r = this.roleReposority.findByNombre(role).orElse(null);
+
         user.setRoles(Collections.singletonList(r));
-        Usuario usuario =  this.iUsuarioReposority.save(user);
-        return null;
+        return this.iUsuarioReposority.save(user);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario user = iUsuarioReposority.findByUser(username).orElse(null);
 
-        if(user==null)
-            throw  new UsernameNotFoundException("Usuario no encontrado");
+        if (user == null)
+            throw new UsernameNotFoundException("Usuario no encontrado");
 
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for(Role r:user.getRoles()) {
-        	authorities.add(new SimpleGrantedAuthority(r.getNombre()));
+        for (Role r : user.getRoles()) {
+            authorities.add(new SimpleGrantedAuthority(r.getNombre().name()));
         }
 
-        return new User(user.getUser(), user.getPassword(),authorities);
+        return new User(user.getUser(), user.getPassword(), authorities);
     }
 
-    public Usuario getUser(String username){
+    @Override
+    public Usuario getUser(String username) {
+
         return iUsuarioReposority.findByUser(username).orElse(null);
     }
 
-    public List<Usuario> all(){
+    @Override
+    public List<Usuario> all() {
+
         return iUsuarioReposority.findAll();
     }
 
-    public Usuario findById(Integer id){
-        return this.iUsuarioReposority.findById(id).orElse(null);
-    }
+    @Override
+    public Usuario findById(Long id) {
 
-    public List<Usuario> getProfesores(){
-        Role r = new Role();
-        r.setId(2l);
-        r.setNombre("PROFESOR");
-        return iUsuarioReposority.findByRoles(r);
+        return this.iUsuarioReposority.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
     @Override
-    public List<Usuario> getAlumnos() {
-        Role r = new Role();
-        r.setId(3l);
-        r.setNombre("ALUMNO");
-        return iUsuarioReposority.findByRoles(r);
-    }
+    public List<Usuario> getByRole(RoleType role) {
 
-    @Override
-    public List<Usuario> getAdmins() {
-        Role r = new Role();
-        r.setId(1l);
-        r.setNombre("ADMIN");
-        return iUsuarioReposority.findByRoles(r);
+        return iUsuarioReposority.findAllByRolesNombre(role);
     }
-
 }

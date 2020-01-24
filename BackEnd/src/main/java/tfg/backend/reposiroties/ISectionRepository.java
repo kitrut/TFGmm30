@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ISectionRepository  extends JpaRepository<Section, Long> {
+public interface ISectionRepository extends JpaRepository<Section, Long> {
 
     @Query("Select s from Section s left join fetch s.materiales m where s.id=?1")
     Optional<Section> findByIdWithMateriales(Long id);

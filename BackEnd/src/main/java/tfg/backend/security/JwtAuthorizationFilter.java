@@ -1,6 +1,11 @@
 package tfg.backend.security;
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.SignatureException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,20 +24,20 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
+public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-	private static final Logger log = LoggerFactory.getLogger(JwtAuthorizationFilter.class);
-	
-	public JwtAuthorizationFilter(AuthenticationManager authenticationManager) {
-		super(authenticationManager);
-	}
+    private static final Logger log = LoggerFactory.getLogger(JwtAuthorizationFilter.class);
 
-	@Override
-	protected void doFilterInternal(HttpServletRequest request,
-			HttpServletResponse response, FilterChain filterChain)
-					throws IOException, ServletException {
-		
-		UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager) {
+        super(authenticationManager);
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response, FilterChain filterChain)
+            throws IOException, ServletException {
+
+        UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
         if (authentication == null) {
             filterChain.doFilter(request, response);
             return;
@@ -40,27 +45,27 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         filterChain.doFilter(request, response);
-	}
-	
-	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
+    }
+
+    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(SecurityConstants.TOKEN_HEADER);
         if (!StringUtils.isEmpty(token) && token.startsWith(SecurityConstants.TOKEN_PREFIX)) {
             try {
                 byte[] signingKey = SecurityConstants.JWT_SECRET.getBytes();
 
                 Jws<Claims> parsedToken = Jwts.parser()
-                    .setSigningKey(signingKey)
-                    .parseClaimsJws(token.replace("Bearer ", ""));
+                        .setSigningKey(signingKey)
+                        .parseClaimsJws(token.replace("Bearer ", ""));
 
                 String username = parsedToken
-                    .getBody()
-                    .getSubject();
+                        .getBody()
+                        .getSubject();
 
                 List<SimpleGrantedAuthority> authorities = ((List<?>) parsedToken.getBody()
-                    .get("rol")).stream()
-                    .map(authority -> new SimpleGrantedAuthority((String) authority))
-                    .collect(Collectors.toList());
-                System.out.println("Roles de usuario:" +username+"=>"+authorities);
+                        .get("rol")).stream()
+                        .map(authority -> new SimpleGrantedAuthority((String) authority))
+                        .collect(Collectors.toList());
+                System.out.println("Roles de usuario:" + username + "=>" + authorities);
 
                 if (!StringUtils.isEmpty(username)) {
                     return new UsernamePasswordAuthenticationToken(username, null, authorities);

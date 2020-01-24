@@ -3,6 +3,7 @@ package tfg.backend.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Anuncio;
+import tfg.backend.models.exceptions.NotFoundException;
 import tfg.backend.reposiroties.IAnuncioRepository;
 import tfg.backend.services.interfaces.IAnuncioService;
 
@@ -16,16 +17,19 @@ public class AnuncioService implements IAnuncioService {
 
     @Override
     public Anuncio findById(Long id) {
-        return anuncioRepository.findById(id).orElse(null);
+
+        return anuncioRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
     @Override
     public List<Anuncio> findAll() {
+
         return anuncioRepository.findAllByOrderByCreateAtDesc();
     }
 
     @Override
     public Anuncio create(Anuncio anuncio) {
+
         return anuncioRepository.save(anuncio);
     }
 }

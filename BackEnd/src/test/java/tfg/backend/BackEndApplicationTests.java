@@ -12,14 +12,15 @@ import tfg.backend.reposiroties.IUsuarioReposority;
 @SpringBootTest
 public class BackEndApplicationTests {
 
-	@Autowired
-	private IUsuarioReposority usuarioReposority;
+    @Autowired
+    private IUsuarioReposority usuarioReposority;
 
-	@Autowired
-	private PasswordEncoder encoder;
+    @Autowired
+    private PasswordEncoder encoder;
 
 
     @Test
-    public void someTest(){}
+    public void someTest() {
+    }
 
 }

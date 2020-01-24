@@ -4,7 +4,7 @@ import { Asignatura } from '../models/asignatura';
 import { Observable } from 'rxjs';
 import { Constantes } from '../global/constantes';
 import { Materiales } from '../models/materiales';
-import { Profesor } from '../models/usuario';
+import { Profesor, Usuario } from '../models/usuario';
 import { Section } from '../models/section';
 import { Matricula } from '../models/matricula';
 
@@ -39,7 +39,7 @@ export class AsignaturasService {
   }
 
   getMatriculados(idAsignatura: string): Observable<any> {
-    return this.http.get<Profesor>(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/matriculas', {});
+    return this.http.get<Usuario>(Constantes.URL_ASIGNATURAS + '/' + idAsignatura + '/alumnos', {});
   }
 
   getMatriculasAlumno(idAlumno: string): Observable<Asignatura[]>{

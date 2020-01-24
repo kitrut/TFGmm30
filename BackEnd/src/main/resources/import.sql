@@ -235,27 +235,24 @@ insert into matricula (id, anyo, usuario_id) values (16, 2019, 20);
 insert into matricula (id, anyo, usuario_id) values (17, 2019, 21);
 insert into matricula (id, anyo, usuario_id) values (18, 2019, 22);
 
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,1), (2,1), (3,1), (4,1), (5,1), (6,1);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,2), (2,2), (3,2);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,3), (2,3), (3,3);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (2,4), (5,4), (3,4);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (7,5), (6,5), (1,5);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,6), (2,6), (3,6);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,7), (2,7), (3,7);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,8), (2,8), (3,8);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,9), (2,9), (3,9);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,10), (2,10), (3,10);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,11), (2,11), (3,11);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,12), (2,12), (3,12);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,13), (2,13), (3,13);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,14), (2,14), (3,14);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,15), (2,15), (3,15);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,16), (2,16), (3,16);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,17), (2,17), (3,17);
-INSERT INTO asignatura_matriculas (asignatura_id, matriculas_id) VALUES (1,18), (2,18), (3,18);
-
-
--- INSERT INTO usuario_matriculas (usuario_id, matriculas_id) VALUES (5,1)
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,1), (2,1), (3,1), (4,1), (5,1), (6,1);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,2), (2,2), (3,2);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,3), (2,3), (3,3);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (2,4), (5,4), (3,4);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (7,5), (6,5), (1,5);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,6), (2,6), (3,6);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,7), (2,7), (3,7);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,8), (2,8), (3,8);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,9), (2,9), (3,9);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,10), (2,10), (3,10);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,11), (2,11), (3,11);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,12), (2,12), (3,12);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,13), (2,13), (3,13);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,14), (2,14), (3,14);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,15), (2,15), (3,15);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,16), (2,16), (3,16);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,17), (2,17), (3,17);
+INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,18), (2,18), (3,18);
 
 INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (1,"SECCION 1",1,1,NOW(),NOW())
 INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (2,"SECCION 2",2,1,NOW(),NOW())
