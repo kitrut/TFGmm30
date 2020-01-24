@@ -1,15 +1,23 @@
 package tfg.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import tfg.backend.models.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import tfg.backend.models.Asignatura;
+import tfg.backend.models.Materiales;
+import tfg.backend.models.Matricula;
+import tfg.backend.models.Section;
+import tfg.backend.models.Usuario;
 import tfg.backend.services.interfaces.IAsignaturaService;
 import tfg.backend.services.interfaces.IMaterialesService;
 import tfg.backend.services.interfaces.ISectionService;
 
 import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/private/asignaturas")
@@ -26,26 +34,29 @@ public class AsignaturaController {
 
     @GetMapping()
     public Collection<Asignatura> indexAsignatura() {
+
         return asignaturaService.all();
     }
 
     @GetMapping("/{id}")
-    public Optional<Asignatura> find(@PathVariable("id") Long id) {
+    public Asignatura find(@PathVariable("id") Long id) {
+
         return asignaturaService.findById(id);
     }
-    
+
     @PostMapping("/{id}/materiales")
-    public void addMateriales(@PathVariable("id") Long id,@RequestBody Materiales material) {
+    public void addMateriales(@PathVariable("id") Long id, @RequestBody Materiales material) {
         asignaturaService.addMaterial(id, material);
     }
 
     @PostMapping("/{id}/profesor/{idProfesor}")
-    public Asignatura addProfesor(@PathVariable("id") Long id,@PathVariable("idProfesor") Integer idProfesor) {
+    public Asignatura addProfesor(@PathVariable("id") Long id, @PathVariable("idProfesor") Long idProfesor) {
         return asignaturaService.addProfesor(id, idProfesor);
     }
 
     @GetMapping("/{id}/profesor")
     public Usuario getProfesor(@PathVariable("id") Long id) {
+
         return asignaturaService.getProfesor(id);
     }
 
@@ -60,12 +71,15 @@ public class AsignaturaController {
     }
 
     @PostMapping
-    public Asignatura create(@RequestBody Asignatura asignatura){
+    public Asignatura create(@RequestBody Asignatura asignatura) {
+
         return asignaturaService.create(asignatura);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") Long id){asignaturaService.delete(id);}
+    public void delete(@PathVariable("id") Long id) {
+        asignaturaService.delete(id);
+    }
 
 
 }

@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import tfg.backend.models.Materiales;
 
 @Repository
-public interface IMaterialesRepository extends JpaRepository<Materiales, Long>{
+public interface IMaterialesRepository extends JpaRepository<Materiales, Long> {
 
 }

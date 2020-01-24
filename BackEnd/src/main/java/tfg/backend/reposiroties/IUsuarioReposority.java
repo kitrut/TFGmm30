@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface IUsuarioReposority extends JpaRepository<Usuario, Integer> {
+public interface IUsuarioReposority extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByUser(String username);
 
     List<Usuario> findByRoles(Role rol);

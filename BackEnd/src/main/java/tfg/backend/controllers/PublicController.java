@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/public")
 public class PublicController {
-	
-	@GetMapping
-	public String getMessage() {
-		return "Hello from public API";
-	}
+
+    @GetMapping
+    public String getMessage() {
+        return "Hello from public API";
+    }
 }

@@ -6,7 +6,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -16,15 +24,15 @@ import java.util.Collection;
 public class Usuario implements Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column(unique=true)
+    @Column(unique = true)
     @JsonIgnore
     private String user;
     @JsonIgnore
@@ -33,11 +41,11 @@ public class Usuario implements Serializable {
     private String nombre;
     private String apellidos;
     private String email;
-    
+
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles;
-    
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "asignaturasImpartidas")
     private Collection<Asignatura> asignaturasImpartidas;
 
@@ -45,8 +53,11 @@ public class Usuario implements Serializable {
     @JsonBackReference
     private Collection<Matricula> matriculas;
 
-    public boolean addAsignaturaImpartida(Asignatura a){
+    public boolean addAsignaturaImpartida(Asignatura a) {
         return this.asignaturasImpartidas.add(a);
     }
-    public boolean removeAsignaturaImpartida(Asignatura a) { return this.asignaturasImpartidas.remove(a);}
+
+    public boolean removeAsignaturaImpartida(Asignatura a) {
+        return this.asignaturasImpartidas.remove(a);
+    }
 }

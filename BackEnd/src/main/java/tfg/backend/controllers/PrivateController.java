@@ -19,41 +19,41 @@ import java.util.Map;
 @RequestMapping("/api/private")
 public class PrivateController {
 
-	@Autowired
-	private IUserService userService;
+    @Autowired
+    private IUserService userService;
 
-	@GetMapping("/checktoken")
-	public void checktoken(HttpServletResponse response, Authentication auth) throws IOException {
-		Map<String,Object> body = new HashMap<>();
-		Usuario u = this.userService.getUser(auth.getPrincipal().toString());
-		body.put("nombre",u.getNombre());
-		body.put("apellidos",u.getApellidos());
-		body.put("email",u.getEmail());
-		body.put("id",u.getId());
-		body.put("roles",u.getRoles());
-		response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-		response.setStatus(200);
-		response.setContentType("application/json");
-	}
+    @GetMapping("/checktoken")
+    public void checktoken(HttpServletResponse response, Authentication auth) throws IOException {
+        Map<String, Object> body = new HashMap<>();
+        Usuario u = this.userService.getUser(auth.getPrincipal().toString());
+        body.put("nombre", u.getNombre());
+        body.put("apellidos", u.getApellidos());
+        body.put("email", u.getEmail());
+        body.put("id", u.getId());
+        body.put("roles", u.getRoles());
+        response.getWriter().write(new ObjectMapper().writeValueAsString(body));
+        response.setStatus(200);
+        response.setContentType("application/json");
+    }
 
-	@GetMapping
-	public String getMessage() {
-		return "Hello from private API";
-	}
-	
-	@GetMapping("/admin")
-	@PreAuthorize("hasRole('ADMIN')")
-	public String getMessageAdmin() {
-		return "Hello from private API admin";
-	}
-	
-	@GetMapping("/profesor")
-	public String getMessageProfesor() {
-		return "Hello from private API profesor";
-	}	
-	
-	@GetMapping("/alumno")
-	public String getMessageAlumno() {
-		return "Hello from private API alumno";
-	}
+    @GetMapping
+    public String getMessage() {
+        return "Hello from private API";
+    }
+
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String getMessageAdmin() {
+        return "Hello from private API admin";
+    }
+
+    @GetMapping("/profesor")
+    public String getMessageProfesor() {
+        return "Hello from private API profesor";
+    }
+
+    @GetMapping("/alumno")
+    public String getMessageAlumno() {
+        return "Hello from private API alumno";
+    }
 }

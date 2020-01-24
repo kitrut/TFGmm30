@@ -22,37 +22,38 @@ public class UserServiceTest {
     IUserService userService;
 
     @Test
-    public void UserNotFound(){
-        assertNull(this.userService.findById(0));
+    public void UserNotFound() {
+        assertNull(this.userService.findById(0l));
     }
+
     @Test
-    public void UserAdmin(){
-        Usuario usuario=this.userService.findById(1);
-        assertEquals("Administrador",usuario.getNombre());
+    public void UserAdmin() {
+        Usuario usuario = this.userService.findById(1l);
+        assertEquals("Administrador", usuario.getNombre());
         Role rol = new Role();
         rol.setId(1L);
         rol.setNombre("ADMIN");
-        assertEquals(1,usuario.getRoles().size());
-        for (Role r:usuario.getRoles()) {
-            assertEquals("ADMIN",r.getNombre());
+        assertEquals(1, usuario.getRoles().size());
+        for (Role r : usuario.getRoles()) {
+            assertEquals("ADMIN", r.getNombre());
         }
     }
 
     @Test
-    public void getProfesores(){
+    public void getProfesores() {
         Collection<Usuario> profesores = userService.getProfesores();
-        assertEquals(3,profesores.size());
+        assertEquals(3, profesores.size());
     }
 
     @Test
-    public void getProfesoresByID(){
-        Usuario profesor = userService.findById(2);
-        assertEquals("Manuel",profesor.getNombre());
+    public void getProfesoresByID() {
+        Usuario profesor = userService.findById(2l);
+        assertEquals("Manuel", profesor.getNombre());
     }
 
     @Test
-    public void getAll(){
+    public void getAll() {
         Collection<Usuario> usuarios = userService.all();
-        assertEquals(5,usuarios.size());
+        assertEquals(5, usuarios.size());
     }
 }
