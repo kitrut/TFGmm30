@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Usuario;
+import tfg.backend.models.enums.RoleType;
 
 import java.util.List;
 
@@ -17,13 +18,9 @@ public interface IUserService extends UserDetailsService {
 
     List<Usuario> all();
 
-    Usuario create(Usuario user, String role);
+    Usuario create(Usuario user, RoleType role);
 
     Usuario findById(Long id);
 
-    List<Usuario> getProfesores();
-
-    List<Usuario> getAlumnos();
-
-    List<Usuario> getAdmins();
+    List<Usuario> getByRole(RoleType role);
 }

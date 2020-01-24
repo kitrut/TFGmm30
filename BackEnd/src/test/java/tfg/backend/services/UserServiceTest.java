@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
+import tfg.backend.models.enums.RoleType;
 import tfg.backend.services.interfaces.IUserService;
 
 import java.util.Collection;
@@ -23,6 +24,7 @@ public class UserServiceTest {
 
     @Test
     public void UserNotFound() {
+
         assertNull(this.userService.findById(0l));
     }
 
@@ -30,18 +32,15 @@ public class UserServiceTest {
     public void UserAdmin() {
         Usuario usuario = this.userService.findById(1l);
         assertEquals("Administrador", usuario.getNombre());
-        Role rol = new Role();
-        rol.setId(1L);
-        rol.setNombre("ADMIN");
         assertEquals(1, usuario.getRoles().size());
         for (Role r : usuario.getRoles()) {
-            assertEquals("ADMIN", r.getNombre());
+            assertEquals(RoleType.ADMIN, r.getNombre());
         }
     }
 
     @Test
     public void getProfesores() {
-        Collection<Usuario> profesores = userService.getProfesores();
+        Collection<Usuario> profesores = userService.getByRole(RoleType.PROFESOR);
         assertEquals(3, profesores.size());
     }
 

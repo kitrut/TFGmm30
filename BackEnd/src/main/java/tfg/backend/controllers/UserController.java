@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Usuario;
+import tfg.backend.models.enums.RoleType;
 import tfg.backend.services.interfaces.IAsignaturaService;
 import tfg.backend.services.interfaces.IUserService;
 
@@ -20,7 +21,7 @@ import java.util.List;
 @Data
 class UserWithRole {
     public Usuario user;
-    public String rol;
+    public RoleType rol;
 }
 
 @RestController
@@ -49,7 +50,7 @@ public class UserController {
 
     @GetMapping("/profesores")
     public List<Usuario> getProfesores() {
-        return userService.getProfesores();
+        return userService.getByRole(RoleType.PROFESOR);
     }
 
     @GetMapping("/profesores/{id}")
@@ -59,12 +60,12 @@ public class UserController {
 
     @GetMapping("/admins")
     public List<Usuario> getAdmins() {
-        return userService.getAdmins();
+        return userService.getByRole(RoleType.ADMIN);
     }
 
     @GetMapping("/alumnos")
     public List<Usuario> getAlumnos() {
-        return userService.getAlumnos();
+        return userService.getByRole(RoleType.ALUMNO);
     }
 
     @GetMapping("/alumnos/{id}")

@@ -21,13 +21,11 @@ public class AsignaturaService implements IAsignaturaService {
     private IAsignaturaRepository asignaturaRepository;
 
     @Autowired
-    private IMaterialesRepository materialesRepository;
-
-    @Autowired
     private IUsuarioReposority usuarioReposority;
 
     @Override
     public Collection<Asignatura> all() {
+
         return asignaturaRepository.findAll();
     }
 
@@ -39,6 +37,7 @@ public class AsignaturaService implements IAsignaturaService {
 
     @Override
     public Asignatura create(Asignatura asignatura) {
+
         return asignaturaRepository.save(asignatura);
     }
 
