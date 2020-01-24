@@ -6,6 +6,7 @@ import tfg.backend.models.Matricula;
 import tfg.backend.models.Usuario;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface IAsignaturaService {
 
@@ -21,7 +22,7 @@ public interface IAsignaturaService {
 
     Usuario getProfesor(Long id);
 
-    Collection<Matricula> getMatriculados(Long idAsignatura);
+    List<Usuario> getMatriculados(Long idAsignatura);
 
     Asignatura addProfesor(Long idAsignatura, Long idProfesor);
 

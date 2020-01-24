@@ -18,6 +18,7 @@ import tfg.backend.services.interfaces.IMaterialesService;
 import tfg.backend.services.interfaces.ISectionService;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/private/asignaturas")
@@ -60,8 +61,8 @@ public class AsignaturaController {
         return asignaturaService.getProfesor(id);
     }
 
-    @GetMapping("/{id}/matriculas")
-    public Collection<Matricula> getMatriculados(@PathVariable("id") Long id) {
+    @GetMapping("/{id}/alumnos")
+    public List<Usuario> getMatriculados(@PathVariable("id") Long id) {
         return asignaturaService.getMatriculados(id);
     }
 

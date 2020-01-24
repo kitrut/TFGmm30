@@ -13,6 +13,7 @@ import tfg.backend.reposiroties.IUsuarioReposority;
 import tfg.backend.services.interfaces.IAsignaturaService;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class AsignaturaService implements IAsignaturaService {
@@ -80,10 +81,10 @@ public class AsignaturaService implements IAsignaturaService {
     }
 
     @Override
-    public Collection<Matricula> getMatriculados(Long idAsignatura) {
-        Asignatura asignatura = asignaturaRepository.findByIdWithMatriculas(idAsignatura).orElseThrow(() -> new NotFoundException(idAsignatura));
-
-        return asignatura.getMatriculas();
+    public List<Usuario> getMatriculados(Long idAsignatura) {
+        //Asignatura asignatura = asignaturaRepository.findByIdWithMatriculas(idAsignatura).orElseThrow(() -> new NotFoundException(idAsignatura));
+        return usuarioReposority.findAllByMatriculasAsignaturasId(idAsignatura);
+        //return asignatura.getMatriculas();
     }
 
     @Override

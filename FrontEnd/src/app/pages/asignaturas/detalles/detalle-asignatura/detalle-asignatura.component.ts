@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Asignatura } from 'src/app/models/asignatura';
-import { Profesor } from 'src/app/models/usuario';
+import { Profesor, Usuario } from 'src/app/models/usuario';
 import { ActivatedRoute } from '@angular/router';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { ProfesoresService } from 'src/app/services/profesores.service';
@@ -19,7 +19,7 @@ export class DetalleAsignaturaComponent implements OnInit{
   profesores: Profesor[];
   profesorAsignadoID: string;
 
-  matriculas = new MatTableDataSource<Matricula>();
+  usuariosMatriculados = new MatTableDataSource<Usuario>();
 
   displayedColumns = ['name', 'surname', 'email'];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -50,8 +50,8 @@ export class DetalleAsignaturaComponent implements OnInit{
         );
         this.asginaturasService.getMatriculados(id).subscribe(
           matriculados => {
-            this.matriculas = new MatTableDataSource<Matricula>(matriculados);
-            this.matriculas.paginator = this.paginator;
+            this.usuariosMatriculados = new MatTableDataSource<Usuario>(matriculados);
+            this.usuariosMatriculados.paginator = this.paginator;
           }
         );
       });

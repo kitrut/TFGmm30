@@ -13,4 +13,5 @@ public interface IUsuarioReposority extends JpaRepository<Usuario, Long> {
 
     Optional<Usuario> findByUser(String username);
     List<Usuario> findAllByRolesNombre(RoleType name);
+    List<Usuario> findAllByMatriculasAsignaturasId(Long id);
 }

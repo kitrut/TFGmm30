@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
@@ -46,11 +47,12 @@ public class Usuario implements Serializable {
     private Collection<Role> roles;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "asignaturasImpartidas")
+    @JsonIgnore
     private Collection<Asignatura> asignaturasImpartidas;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JoinColumn(name = "usuario_id")
+    @JsonIgnore
     private Collection<Matricula> matriculas;
 
     public boolean addAsignaturaImpartida(Asignatura a) {
