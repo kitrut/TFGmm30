@@ -12,7 +12,7 @@ import { PerfilPage } from './perfil/perfil.page';
 import { FormCreateUserComponent } from './form-create-user/form-create-user.component';
 
 const routes: Routes = [
-  { path: '', component: UsuariosPage },  
+  { path: '', component: UsuariosPage },
   { path: 'create', component: FormCreateUserComponent},
   { path: ':id', component: PerfilPage},
 ];
@@ -26,6 +26,6 @@ const routes: Routes = [
     TranslateModule.forChild(),
     NgxPaginationModule
   ],
-  declarations: [UsuariosPage,PerfilPage,FormCreateUserComponent]
+  declarations: [UsuariosPage, PerfilPage, FormCreateUserComponent]
 })
 export class UsuariosPageModule {}

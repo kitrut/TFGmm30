@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EjercicioReorderComponent implements OnInit {
 
-  @Input('pregunta') pregunta: string;
-  @Input('opciones') opciones: string[];
+  @Input() pregunta: string;
+  @Input() opciones: string[];
 
   constructor() { }
 

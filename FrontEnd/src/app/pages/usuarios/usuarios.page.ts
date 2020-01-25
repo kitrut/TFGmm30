@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfesoresService } from 'src/app/services/profesores.service';
 import { Router } from '@angular/router';
-import { AlumnosService } from 'src/app/services/alumnos.service';
+import { ProfesoresService } from '@services/profesores.service';
+import { AlumnosService } from '@services/alumnos.service';
 
 @Component({
   selector: 'app-usuarios',

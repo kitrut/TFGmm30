@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 
-import { Platform, MenuController} from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
-import { RolMenuService } from './services/rol-menu.service';
 import { AuthService } from './auth/auth.service';
-import { ThemeService } from './services/theme.service';
-import { Usuario } from './models/usuario';
+import { Usuario } from '@models/usuario';
+import { RolMenuService } from '@services/rol-menu.service';
+import { ThemeService } from '@services/theme.service';
 
 
 

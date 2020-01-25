@@ -7,10 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EjercicioRelationComponent implements OnInit {
 
-  @Input('pregunta') pregunta: string;
-  @Input('opciones1') opciones1: string[];
-  @Input('opciones2') opciones2: string[];
-  
+  @Input() pregunta: string;
+  @Input() opciones1: string[];
+  @Input() opciones2: string[];
+
   constructor() { }
 
   ngOnInit() {}

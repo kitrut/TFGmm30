@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AnunciosService } from 'src/app/services/anuncios.service';
 import { ModalController } from '@ionic/angular';
 import { AnnounceModalComponent } from './announce-modal/announce-modal.component';
-import { Anuncio } from 'src/app/models/anuncio';
+import { AnunciosService } from '@services/anuncios.service';
+import { Anuncio } from '@models/anuncio';
 
 @Component({
   selector: 'app-home',

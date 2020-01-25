@@ -3,6 +3,23 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+
+export interface Calificacion {
+  nombre: string;
+  peso: number;
+  nota: number;
+  comentarios: string;
+}
+
+const NOTAS: Calificacion[] =  [
+  {nombre: 'Tema 1', peso: 20, nota: 10, comentarios: 'adsada'},
+  {nombre: 'Tema 2', peso: 20, nota: 10, comentarios: 'adsada'},
+  {nombre: 'Tema 3', peso: 20, nota: 6, comentarios: 'adsada'},
+  {nombre: 'Tema 4', peso: 20, nota: 7, comentarios: 'adsada'},
+  {nombre: 'Tema 5', peso: 10, nota: 2, comentarios: 'adsada'},
+  {nombre: 'Tema 6', peso: 10, nota: 10, comentarios: 'adsada'}
+];
+
 @Component({
   selector: 'app-notas',
   templateUrl: './notas.page.html',
@@ -10,7 +27,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class NotasPage implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight','weight2', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'weight2', 'symbol'];
   dataSource = new MatTableDataSource<Calificacion>(NOTAS);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -26,26 +43,11 @@ export class NotasPage implements OnInit {
   }
 
   getTotalCost() {
-    return NOTAS.map(t => (t.nota*t.peso)/100).reduce((acc, value) => acc + value, 0);
+    return NOTAS.map(t => (t.nota * t.peso) / 100).reduce((acc, value) => acc + value, 0);
   }
-  getTotalPercent(){
+  getTotalPercent() {
     return NOTAS.map(t => (t.peso)).reduce((acc, value) => acc + value, 0);
   }
 
 }
 
-export interface Calificacion{
-  nombre: string;
-  peso: number;
-  nota: number;
-  comentarios: string;
-}
-
-const NOTAS : Calificacion[] =  [
-  {nombre: "Tema 1",peso:20,nota:10,comentarios:"adsada"},
-  {nombre: "Tema 2",peso:20,nota:10,comentarios:"adsada"},
-  {nombre: "Tema 3",peso:20,nota:6,comentarios:"adsada"},
-  {nombre: "Tema 4",peso:20,nota:7,comentarios:"adsada"},
-  {nombre: "Tema 5",peso:10,nota:2,comentarios:"adsada"},
-  {nombre: "Tema 6",peso:10,nota:10,comentarios:"adsada"}
-]

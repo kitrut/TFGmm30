@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Asignatura } from 'src/app/models/asignatura';
-import { Profesor, Usuario } from 'src/app/models/usuario';
 import { ActivatedRoute } from '@angular/router';
-import { AsignaturasService } from 'src/app/services/asignaturas.service';
-import { ProfesoresService } from 'src/app/services/profesores.service';
-import { Matricula } from 'src/app/models/matricula';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Asignatura } from '@models/asignatura';
+import { Profesor, Usuario } from '@models/usuario';
+import { AsignaturasService } from '@services/asignaturas.service';
+import { ProfesoresService } from '@services/profesores.service';
 
 @Component({
   selector: 'app-detalle-asignatura',

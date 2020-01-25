@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ThemeService } from 'src/app/services/theme.service';
+import { ThemeService } from '@services/theme.service';
 
 @Component({
   selector: 'app-ajustes',

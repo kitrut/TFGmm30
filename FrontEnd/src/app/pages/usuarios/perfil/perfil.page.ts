@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProfesoresService } from 'src/app/services/profesores.service';
-import { Usuario, Profesor } from 'src/app/models/usuario';
-import { Asignatura } from 'src/app/models/asignatura';
+import { Profesor } from '@models/usuario';
+import { Asignatura } from '@models/asignatura';
+import { ProfesoresService } from '@services/profesores.service';
 
 @Component({
   selector: 'app-perfil',
