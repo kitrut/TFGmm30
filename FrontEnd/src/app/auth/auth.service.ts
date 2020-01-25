@@ -12,7 +12,7 @@ import { Usuario } from '../models/usuario';
 export class AuthService {
 
   public isLoggedIn = new Subject();
-  public user = new Subject();
+  public user = new Subject<Usuario>();
   usuario: Usuario = null;
   rol = '';
 

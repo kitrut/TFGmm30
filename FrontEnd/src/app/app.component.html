@@ -5,10 +5,10 @@
         <ion-toolbar>
             <ion-item color="primary" [routerDirection]="'root'" [routerLink]="['/perfil']">
               <ion-avatar slot="start">
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                <img [src]="user? 'http://localhost:9090/uploads/' + user?.photo_url : null">
               </ion-avatar>
               <ion-label>
-                <h3>{{usuarioNombreApellidos}}</h3>
+                <h3>{{user?.nombre + ' ' + user?.apellidos + ' '}}</h3>
                 <p>{{rolUsuario}}</p>
               </ion-label>
             </ion-item>

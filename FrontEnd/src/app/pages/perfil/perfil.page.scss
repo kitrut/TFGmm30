@@ -1,0 +1,11 @@
+.image-container{
+    display: flex;
+    justify-content: center;
+
+    background-color: dimgray;
+    .perfil-image{
+        padding: 10px;
+        height: 300px;
+        width: 300px;
+    }
+}
