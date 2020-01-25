@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonReorderGroup, AlertController, ModalController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GeneradorEjerciciosComponent } from './generador-ejercicios/generador-ejercicios.component';
-import { SectionService } from 'src/app/services/section.service';
-import { MaterialesService } from 'src/app/services/materiales.service';
 import { AddSectionComponent } from '../add-section/add-section.component';
+import { MaterialesService } from '@services/materiales.service';
+import { SectionService } from '@services/section.service';
 
 @Component({
   selector: 'app-ejercicios',

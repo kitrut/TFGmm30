@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AsignaturasService } from 'src/app/services/asignaturas.service';
-import { Asignatura } from 'src/app/models/asignatura';
 import { Router } from '@angular/router';
+import { AsignaturasService } from '@services/asignaturas.service';
+import { Asignatura } from '@models/asignatura';
 
 @Component({
   selector: 'app-create-asignatura',

@@ -1,12 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Asignatura } from 'src/app/models/asignatura';
 import { Router } from '@angular/router';
-import { ProfesoresService } from 'src/app/services/profesores.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { AsignaturasService } from '@services/asignaturas.service';
+import { ProfesoresService } from '@services/profesores.service';
 
 @Component({
   selector: 'app-index-asignaturas',

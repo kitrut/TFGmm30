@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Section } from 'src/app/models/section';
-import { SectionService } from 'src/app/services/section.service';
 import { ModalController } from '@ionic/angular';
+import { SectionService } from '@services/section.service';
+import { Section } from '@models/section';
 
 @Component({
   selector: 'app-add-section',
@@ -19,7 +19,7 @@ export class AddSectionComponent implements OnInit {
 
   constructor(private sectionsService: SectionService, private modalCtrl: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onSubmit() {
     const section: Section = {

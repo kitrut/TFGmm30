@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AlumnosService } from 'src/app/services/alumnos.service';
-import { Usuario } from 'src/app/models/usuario';
+import { AlumnosService } from '@services/alumnos.service';
+import { Usuario } from '@models/usuario';
 
 @Component({
   selector: 'app-form-create-user',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { AlumnosService } from 'src/app/services/alumnos.service';
+import { Usuario } from '@models/usuario';
+import { AlumnosService } from '@services/alumnos.service';
 
 @Component({
   selector: 'app-perfil',
@@ -47,12 +47,10 @@ export class PerfilPage implements OnInit {
       const base64Image = 'data:image/jpeg;base64,' + imageData;
       this.uploadImage = base64Image;
       this.alumnoService.addPhoto(this.user.id, imageData).subscribe(data => {
-        console.log(data)
-      })
-      console.log(base64Image);
-     }, (err) => {
+      });
+    }, (err) => {
       // Handle error
-     });
+    });
   }
 
 }

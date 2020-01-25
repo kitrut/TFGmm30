@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Materiales } from 'src/app/models/materiales';
-import { MaterialesService } from 'src/app/services/materiales.service';
+import { Materiales } from '@models/materiales';
+import { MaterialesService } from '@services/materiales.service';
 
 @Component({
   selector: 'app-view-material',

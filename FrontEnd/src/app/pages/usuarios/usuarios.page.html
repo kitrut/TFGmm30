@@ -12,7 +12,7 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar color="primary">
-    <ion-segment  (ionChange)="segmentChanged($event)" [(ngModel)]="valorSegmento">
+    <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="valorSegmento">
       <ion-segment-button value="profesores" style="font-size:11px;">
         Profesores
       </ion-segment-button>
@@ -57,7 +57,8 @@
 
         <ion-item class="ion-text-center">
           <ion-avatar slot="start">
-            <img [src]="usuario.photo_url ? 'http://localhost:9090/uploads/' + usuario.photo_url : 'https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y'">
+            <img
+              [src]="usuario.photo_url ? 'http://localhost:9090/uploads/' + usuario.photo_url : 'https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y'">
           </ion-avatar>
           <ion-label class="ion-text-wrap">{{usuario.nombre}}</ion-label>
           <ion-label class="ion-text-wrap">{{usuario.apellidos}}</ion-label>

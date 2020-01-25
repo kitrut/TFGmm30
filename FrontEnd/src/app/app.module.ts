@@ -12,11 +12,11 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './auth/interceptor.service';
 
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import {NgxPaginationModule} from 'ngx-pagination';
-import {NgCalendarModule} from 'ionic2-calendar';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgCalendarModule } from 'ionic2-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Camera } from '@ionic-native/camera/ngx';
 
@@ -31,9 +31,9 @@ import { Camera } from '@ionic-native/camera/ngx';
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
       }
     }),
     NgxPaginationModule,
@@ -45,11 +45,11 @@ import { Camera } from '@ionic-native/camera/ngx';
     SplashScreen,
     Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
 
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient) {

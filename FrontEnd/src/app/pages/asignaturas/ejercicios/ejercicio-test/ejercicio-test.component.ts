@@ -7,8 +7,8 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 })
 export class EjercicioTestComponent implements OnInit {
 
-  @Input('pregunta') pregunta: string;
-  @Input('opciones') opciones: string[];
+  @Input() pregunta: string;
+  @Input() opciones: string[];
   @Output() opcionSeleccionada: string;
 
   constructor() { }
