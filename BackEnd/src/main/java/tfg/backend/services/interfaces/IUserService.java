@@ -20,6 +20,8 @@ public interface IUserService extends UserDetailsService {
 
     Usuario create(Usuario user, RoleType role);
 
+    Usuario save(Usuario user);
+
     Usuario findById(Long id);
 
     List<Usuario> getByRole(RoleType role);

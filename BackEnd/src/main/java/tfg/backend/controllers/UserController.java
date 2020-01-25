@@ -1,6 +1,7 @@
 package tfg.backend.controllers;
 
 import lombok.Data;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,13 +9,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.enums.RoleType;
 import tfg.backend.services.interfaces.IAsignaturaService;
 import tfg.backend.services.interfaces.IUserService;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,6 +48,7 @@ public class UserController {
 
     @GetMapping("/usuarios")
     public List<Usuario> index() {
+
         return userService.all();
     }
 
@@ -48,28 +59,46 @@ public class UserController {
         return userService.create(user.user, user.rol);
     }
 
+    @PostMapping("/usuarios/{id}/photo")
+    public Usuario addPhoto(@PathVariable("id") Long id, @RequestBody String foto) throws IOException {
+        Path rootPath = Paths.get("uploads/profile-photo").resolve("profile-"+id+".jpeg");
+        Path rootAbsolutePath = rootPath.toAbsolutePath();
+
+        byte[] imageBytes = javax.xml.bind.DatatypeConverter.parseBase64Binary(foto);
+        Files.copy(new ByteArrayInputStream(imageBytes),rootAbsolutePath, StandardCopyOption.REPLACE_EXISTING);
+
+        Usuario usuario = userService.findById(id);
+        usuario.setPhoto_url("profile-photo/" + "profile-"+id+".jpeg");
+        return userService.save(usuario);
+    }
+
     @GetMapping("/profesores")
     public List<Usuario> getProfesores() {
+
         return userService.getByRole(RoleType.PROFESOR);
     }
 
     @GetMapping("/profesores/{id}")
     public Usuario getProfesoresID(@PathVariable("id") Long id) {
+
         return userService.findById(id);
     }
 
     @GetMapping("/admins")
     public List<Usuario> getAdmins() {
+
         return userService.getByRole(RoleType.ADMIN);
     }
 
     @GetMapping("/alumnos")
     public List<Usuario> getAlumnos() {
+
         return userService.getByRole(RoleType.ALUMNO);
     }
 
     @GetMapping("/alumnos/{id}")
     public Usuario getAlumnosID(@PathVariable("id") Long id) {
+
         return userService.findById(id);
     }
 

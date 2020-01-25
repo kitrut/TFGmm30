@@ -26,4 +26,8 @@ export class AlumnosService {
   getById(id): Observable<Usuario> {
     return this.http.get<Usuario>(Constantes.URL_ALUMNOS + '/' + id, {});
   }
+
+  addPhoto(id: string, photoBase64: string): Observable<Usuario> {
+    return this.http.post<Usuario>(Constantes.URL_BACKEND + 'private/usuarios/' + id + '/photo', photoBase64, {});
+  }
 }

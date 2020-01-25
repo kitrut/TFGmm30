@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage';
 import { RolMenuService } from './services/rol-menu.service';
 import { AuthService } from './auth/auth.service';
 import { ThemeService } from './services/theme.service';
+import { Usuario } from './models/usuario';
 
 
 
@@ -19,7 +20,7 @@ import { ThemeService } from './services/theme.service';
 export class AppComponent {
   public appPages;
   public rolUsuario;
-  public usuarioNombreApellidos;
+  public user: Usuario;
   public isLoggued;
 
   public theme;
@@ -47,9 +48,7 @@ export class AppComponent {
       this.auth.checktoken();
       this.auth.user.subscribe(
         () => {
-          if (this.auth.usuario) {
-            this.usuarioNombreApellidos = this.auth.usuario.nombre + ' ' + this.auth.usuario.apellidos;
-          }
+          this.user = this.auth.usuario;
           this.rolUsuario = this.auth.rol;
           this.appPages = this.rolMenuService.getMenu(this.rolUsuario);
         }
@@ -59,6 +58,7 @@ export class AppComponent {
         if (!data) {
           this.appPages = null;
           this.rolUsuario = null;
+          this.user = null;
         }
       });
     });

@@ -38,6 +38,11 @@ public class UserService implements UserDetailsService, IUserService {
     }
 
     @Override
+    public Usuario save(Usuario user) {
+        return iUsuarioReposority.save(user);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario user = iUsuarioReposority.findByUser(username).orElse(null);
 
