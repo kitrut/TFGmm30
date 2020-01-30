@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import tfg.backend.models.Exercise;
 import tfg.backend.models.Materiales;
+import tfg.backend.reposiroties.IExerciseRepository;
+import tfg.backend.services.interfaces.IExerciceService;
 import tfg.backend.services.interfaces.IMaterialesService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/private/materiales")
@@ -17,6 +22,9 @@ public class MaterialController {
 
     @Autowired
     IMaterialesService materialesService;
+
+    @Autowired
+    IExerciceService exerciseService;
 
     @GetMapping("{idMat}")
     public Materiales getMaterial(@PathVariable("idMat") Long idMat) {
@@ -33,4 +41,8 @@ public class MaterialController {
         return materialesService.update(material);
     }
 
+    @GetMapping("{materialId}/exercises")
+    public Set<Exercise> getExercises(@PathVariable("materialId") Long materialId){
+        return exerciseService.findExercisesByMaterialId(materialId);
+    }
 }

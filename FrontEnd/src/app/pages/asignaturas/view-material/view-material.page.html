@@ -7,11 +7,11 @@
     <ion-title>{{titulo}}</ion-title>
   </ion-toolbar>
   <ion-toolbar color="primary">
-    <ion-segment #segment value="matTab">
+    <ion-segment #segment value="materialTab">
       <ion-segment-button value="matTab">
         <ion-icon name="book"></ion-icon>
       </ion-segment-button>
-      <ion-segment-button value="ejTab">
+      <ion-segment-button value="exerciseTab">
         <ion-icon name="calculator"></ion-icon>
       </ion-segment-button>
       <ion-segment-button value="notesTab">
@@ -22,9 +22,13 @@
 </ion-header>
 
 <ion-content>
-  <md-editor *ngIf="segment.value=='matTab'" name="Content" [(ngModel)]="content" [mode]="mode" [height]="'auto'" [options]="options">
-  </md-editor>
-
-  <md-editor *ngIf="segment.value=='notesTab'" name="Content" [(ngModel)]="content" [mode]="!mode" [height]="'auto'" [options]="options">
+  <md-editor *ngIf="segment.value === 'materialTab'" name="Content" [(ngModel)]="content" [mode]="mode" [height]="'auto'" [options]="options"></md-editor>
+  <div *ngIf="segment.value === 'exerciseTab'">
+    <div *ngFor="let exercise of exercices">
+      <app-ejercicio [exercise]="exercise"></app-ejercicio>
+    </div>
+    <ion-button *ngIf="exercices.length > 0" color="success" expand="block">Resolver</ion-button>
+  </div>
+  <md-editor *ngIf="segment.value === 'notesTab'" name="Content" [(ngModel)]="content" [mode]="!mode" [height]="'auto'" [options]="options">
   </md-editor>
 </ion-content>

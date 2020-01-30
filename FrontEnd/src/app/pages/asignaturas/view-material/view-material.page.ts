@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Materiales } from '@models/materiales';
 import { MaterialesService } from '@services/materiales.service';
+import { Exercise } from '@models/exercise';
+import { ExerciseType } from '@models/exercise-type';
 
 @Component({
   selector: 'app-view-material',
@@ -14,6 +16,9 @@ export class ViewMaterialPage implements OnInit {
   mode = 'preview';
   material: Materiales = new Materiales(null, null, null);
   content = this.material.contenido;
+  exercices: Exercise[] = [];
+  EXERCISE_TYPE = ExerciseType;
+
   options = {
     resizable: true,
     enablePreviewContentClick: true
@@ -27,6 +32,12 @@ export class ViewMaterialPage implements OnInit {
         this.material = data;
         this.titulo = data.titulo;
         this.content = data.contenido;
+      }
+    );
+
+    this.materialesService.getExercisesOfMaterial(idMat).subscribe(
+      exercises => {
+        this.exercices = exercises;
       }
     );
   }

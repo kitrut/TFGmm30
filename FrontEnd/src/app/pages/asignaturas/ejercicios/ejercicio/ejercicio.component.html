@@ -1,0 +1,39 @@
+<ion-card>
+  <ion-card-header color="tertiary">
+    {{exercise.question}}
+  </ion-card-header>
+  <ion-card-content>
+    
+    <ion-list *ngIf="exercise.exerciseType === EXERCISE_TYPE.CHECKS">
+      <ion-item *ngFor="let responses of exercise.exerciseOptions">
+        <ion-label>{{responses.option}}</ion-label>
+        <ion-checkbox slot="start" color="tertiary"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+
+    <ion-radio-group allowEmptySelection="true" *ngIf="exercise.exerciseType === EXERCISE_TYPE.TEST">
+      <ion-item *ngFor="let responses of exercise.exerciseOptions">
+        <ion-label>{{responses.option}}</ion-label>
+        <ion-radio slot="start" color="tertiary" value="{{responses.option}}"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-list *ngIf="exercise.exerciseType === EXERCISE_TYPE.REORDER">
+      <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+        <ion-reorder *ngFor="let responses of exercise.exerciseOptions">
+          <ion-item>
+            <ion-label>
+              {{responses.option}}
+            </ion-label>
+          </ion-item>
+        </ion-reorder>
+      </ion-reorder-group>
+    </ion-list>
+
+    <ion-item *ngIf="exercise.exerciseType === EXERCISE_TYPE.REDACTION">
+      <ion-textarea rows="5" placeholder="..."></ion-textarea>
+      <br>
+    </ion-item>
+
+  </ion-card-content>
+</ion-card>

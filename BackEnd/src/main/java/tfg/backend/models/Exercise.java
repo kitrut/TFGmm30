@@ -1,41 +1,40 @@
 package tfg.backend.models;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import tfg.backend.models.enums.ExerciseType;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Size;
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
-@Data
-public class Materiales {
+public class Exercise {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String titulo;
+    @Enumerated(EnumType.STRING)
+    private ExerciseType exerciseType;
 
-    @Size(max = 2000)
-    private String contenido;
-
-    private Integer orden;
+    private String question;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    private Section section;
+    private Materiales materiales;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JsonIgnore
-    @JoinColumn(name = "exercise_id")
-    private Set<Exercise> exercises;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "exercise")
+    private Set<ExerciseOption> exerciseOptions;
 
 }

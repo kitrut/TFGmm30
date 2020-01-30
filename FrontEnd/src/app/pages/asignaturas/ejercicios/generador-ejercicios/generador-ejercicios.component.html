@@ -87,20 +87,20 @@
     </ion-card-header>
     <ion-card-content>
       <div *ngFor="let ejercicio of ejercicios">
-        <app-ejercicio-checks *ngIf="ejercicio.tipo=='CHECKS'" pregunta="{{ejercicio.pregunta}}"
+        <!--<app-ejercicio-checks *ngIf="ejercicio.tipo=='CHECKS'" answer="{{ejercicio.pregunta}}"
           [opciones]="ejercicio.opciones">
         </app-ejercicio-checks>
-        <app-ejercicio-redaction *ngIf="ejercicio.tipo=='REDACTION'" pregunta="{{ejercicio.pregunta}}">
+        <app-ejercicio-redaction *ngIf="ejercicio.tipo=='REDACTION'" answer="{{ejercicio.pregunta}}">
         </app-ejercicio-redaction>
-        <!--<app-ejercicio-relation *ngIf="ejercicio.tipo==RELATION" 
+        <app-ejercicio-relation *ngIf="ejercicio.tipo==RELATION" 
             pregunta="ejercicio.pregunta" [opciones]="ejercicio.opciones">
-          </app-ejercicio-test>-->
-        <app-ejercicio-reorder *ngIf="ejercicio.tipo=='REORDER'" pregunta="{{ejercicio.pregunta}}"
+          </app-ejercicio-test>
+        <app-ejercicio-reorder *ngIf="ejercicio.tipo=='REORDER'" answer="{{ejercicio.pregunta}}"
           [opciones]="ejercicio.opciones">
         </app-ejercicio-reorder>
-        <app-ejercicio-test *ngIf="ejercicio.tipo=='TEST'" pregunta="{{ejercicio.pregunta}}"
+        <app-ejercicio-test *ngIf="ejercicio.tipo=='TEST'" answer="{{ejercicio.pregunta}}"
           [opciones]="ejercicio.opciones">
-        </app-ejercicio-test>
+        </app-ejercicio-test>-->
       </div>
       {{ejercicios}}
     </ion-card-content>

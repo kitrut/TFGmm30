@@ -283,3 +283,12 @@ INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id
 INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (1, 'Primer anuncio','Esto es un anuncio de prueba 1',5,NOW(),NOW())
 INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (2, 'Segundo anuncio','Esto es un anuncio de prueba 2',3,NOW(),NOW())
 INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (3, 'Tercer anuncio','Esto es un anuncio de prueba 3',1,NOW(),NOW())
+
+INSERT INTO exercise (id, exercise_type, question, materiales_id) VALUES  (1, 'TEST', '2 es par', 1);
+INSERT INTO exercise_option (id, answer, `option`, exercise_id) VALUES (1,1,'Verdadero',1), (2,0,'Falso',1);
+
+INSERT INTO exercise (id, exercise_type, question, materiales_id) VALUES  (2, 'TEST', '2 es menor que 4', 1);
+INSERT INTO exercise_option (id, answer, `option`, exercise_id) VALUES (3, 0,'Verdadero',2), (4,1,'Falso',2);
+
+INSERT INTO exercise (id, exercise_type, question, materiales_id) VALUES  (3, 'TEST', '4 x 4 = 16', 1);
+INSERT INTO exercise_option (id, answer, `option`, exercise_id) VALUES (5, 1,'Verdadero',3), (6,0,'Falso',3);
