@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Materiales;
-import tfg.backend.models.Matricula;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.exceptions.NotFoundException;
 import tfg.backend.reposiroties.IAsignaturaRepository;
-import tfg.backend.reposiroties.IMaterialesRepository;
 import tfg.backend.reposiroties.IUsuarioReposority;
 import tfg.backend.services.interfaces.IAsignaturaService;
 

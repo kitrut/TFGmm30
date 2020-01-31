@@ -1,0 +1,63 @@
+<ion-card scrollY="true">
+  
+  <ion-card-header color="primary">
+    Generador de ejercicios
+  </ion-card-header>
+  
+  <ion-card-content>
+    
+    <ion-item>
+      <ion-label>Tipo de ejercicio</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="exerciseType">
+        <ion-select-option *ngFor="let exerciseType of EXERCISE_TYPE.keys()" [value]="exerciseType">
+          {{EXERCISE_TYPE.label(exerciseType)}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Pregunta:</ion-label>
+      <ion-input type="text" ngDefaultControl [(ngModel)]="pregunta"></ion-input>
+    </ion-item>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Añadir respuestas:</ion-label>
+        <ion-textarea ngDefaultControl [(ngModel)]="nuevaOpt" autoGrow="true" (keydown.enter)="addOption()">
+        </ion-textarea>
+
+        <ion-buttons slot="end">
+          <ion-button (click)="addOption()" slot="end" color="success" title="Add">
+            <ion-icon slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+
+      <ion-item *ngFor="let opt of opciones" color="light">
+        <ion-label class="ion-text-wrap">{{opt.option}}</ion-label>
+
+
+        <ion-buttons slot="end">
+          <ion-button *ngIf="opt.answer" (click)="checkOpt(opt)" slot="end" color="success" title="Add">
+            <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="!opt.answer" (click)="checkOpt(opt)" slot="end" color="gray" title="Add">
+            <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="!opt.answer" (click)="checkOpt(opt)" slot="end" color="danger" title="Add">
+            <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="opt.answer" (click)="checkOpt(opt)" slot="end" color="gray" title="Add">
+            <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+          </ion-button>
+          <ion-button (click)="removeOption(opt)" slot="end" color="danger" title="Borrar">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+
+    <ion-button color="success" expand="block" (click)="createEjer()">Guardar</ion-button>
+  </ion-card-content>
+</ion-card>

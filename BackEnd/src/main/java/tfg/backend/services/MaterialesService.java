@@ -2,7 +2,6 @@ package tfg.backend.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tfg.backend.models.Exercise;
 import tfg.backend.models.Materiales;
 import tfg.backend.models.Section;
 import tfg.backend.models.exceptions.NotFoundException;
@@ -11,7 +10,6 @@ import tfg.backend.reposiroties.ISectionRepository;
 import tfg.backend.services.interfaces.IMaterialesService;
 
 import java.util.Collection;
-import java.util.Set;
 
 @Service
 public class MaterialesService implements IMaterialesService {

@@ -20,6 +20,9 @@ export class MaterialesService {
   getExercisesOfMaterial(materialId: string): Observable<Exercise[]> {
     return this.http.get<Exercise[]>(Constantes.URL_MATERIALES + '/' + materialId + '/exercises', {});
   }
+  createExercise(materialId: string, exercise: Exercise): Observable<Exercise> {
+    return this.http.post<Exercise>(Constantes.URL_MATERIALES + '/' + materialId + '/exercises', exercise, {});
+  }
 
   deleteMaterial(materialId: string): Observable<any> {
     return this.http.delete(Constantes.URL_MATERIALES + '/' + materialId, {});

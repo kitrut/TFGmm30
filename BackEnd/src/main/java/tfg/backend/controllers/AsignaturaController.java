@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Materiales;
-import tfg.backend.models.Matricula;
 import tfg.backend.models.Section;
 import tfg.backend.models.Usuario;
 import tfg.backend.services.interfaces.IAsignaturaService;

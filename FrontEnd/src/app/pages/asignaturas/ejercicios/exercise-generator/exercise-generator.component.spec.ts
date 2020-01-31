@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GeneradorEjerciciosComponent } from './generador-ejercicios.component';
+import { ExerciseGeneratorComponent } from './exercise-generator.component';
 
-describe('GeneradorEjerciciosComponent', () => {
-  let component: GeneradorEjerciciosComponent;
-  let fixture: ComponentFixture<GeneradorEjerciciosComponent>;
+describe('ExerciseGeneratorComponent', () => {
+  let component: ExerciseGeneratorComponent;
+  let fixture: ComponentFixture<ExerciseGeneratorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GeneradorEjerciciosComponent ],
+      declarations: [ ExerciseGeneratorComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GeneradorEjerciciosComponent);
+    fixture = TestBed.createComponent(ExerciseGeneratorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

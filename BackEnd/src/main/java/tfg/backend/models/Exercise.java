@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import tfg.backend.models.enums.ExerciseType;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -34,7 +35,7 @@ public class Exercise {
     @JsonIgnore
     private Materiales materiales;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "exercise")
+    @OneToMany(mappedBy = "exercise", cascade = CascadeType.PERSIST)
     private Set<ExerciseOption> exerciseOptions;
 
 }

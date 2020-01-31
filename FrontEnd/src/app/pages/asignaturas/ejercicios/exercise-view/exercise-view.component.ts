@@ -3,11 +3,11 @@ import { Exercise } from '@models/exercise';
 import { ExerciseType } from '@models/exercise-type';
 
 @Component({
-  selector: 'app-ejercicio',
-  templateUrl: './ejercicio.component.html',
-  styleUrls: ['./ejercicio.component.scss'],
+  selector: 'app-exercise-view',
+  templateUrl: './exercise-view.component.html',
+  styleUrls: ['./exercise-view.component.scss'],
 })
-export class EjercicioComponent implements OnInit {
+export class ExerciseViewComponent implements OnInit {
 
   @Input() exercise: Exercise;
   EXERCISE_TYPE = ExerciseType;

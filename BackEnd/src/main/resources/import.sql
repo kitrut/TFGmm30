@@ -254,10 +254,10 @@ INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,16),
 INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,17), (2,17), (3,17);
 INSERT INTO asignatura_matriculas (asignaturas_id, matriculas_id) VALUES (1,18), (2,18), (3,18);
 
-INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (1,"SECCION 1",1,1,NOW(),NOW())
-INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (2,"SECCION 2",2,1,NOW(),NOW())
-INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (3,"SECCION 3",3,1,NOW(),NOW())
-INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (4,"SECCION 4",4,1,NOW(),NOW())
+INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (1,'SECCION 1',1,1,NOW(),NOW());
+INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (2,'SECCION 2',2,1,NOW(),NOW());
+INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (3,'SECCION 3',3,1,NOW(),NOW());
+INSERT INTO section (id,name,order_section,asignatura_id,create_at,update_at) VALUES (4,'SECCION 4',4,1,NOW(),NOW());
 
 INSERT INTO materiales (id,titulo,contenido,orden,section_id) VALUES (1,'Tema 1','## Tema 1: la la la \n\n  <div style="display:flex;justify-content: center;:center;"><div class="embed-responsive embed-responsive-16by9"  style="width:70%;"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hK0OS4E_xjM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>',1,1);
 INSERT INTO materiales (id,titulo,contenido,orden,section_id) VALUES (2,'Tema 2','## Tema 2: la la la',2,1);
@@ -280,9 +280,9 @@ INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (2,11);
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (4,12);
 
-INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (1, 'Primer anuncio','Esto es un anuncio de prueba 1',5,NOW(),NOW())
-INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (2, 'Segundo anuncio','Esto es un anuncio de prueba 2',3,NOW(),NOW())
-INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (3, 'Tercer anuncio','Esto es un anuncio de prueba 3',1,NOW(),NOW())
+INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (1, 'Primer anuncio','Esto es un anuncio de prueba 1',5,NOW(),NOW());
+INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (2, 'Segundo anuncio','Esto es un anuncio de prueba 2',3,NOW(),NOW());
+INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (3, 'Tercer anuncio','Esto es un anuncio de prueba 3',1,NOW(),NOW());
 
 INSERT INTO exercise (id, exercise_type, question, materiales_id) VALUES  (1, 'TEST', '2 es par', 1);
 INSERT INTO exercise_option (id, answer, `option`, exercise_id) VALUES (1,1,'Verdadero',1), (2,0,'Falso',1);
