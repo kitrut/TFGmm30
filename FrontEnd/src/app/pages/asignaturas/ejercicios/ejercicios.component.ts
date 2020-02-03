@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonReorderGroup, AlertController, ModalController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
-import { GeneradorEjerciciosComponent } from './generador-ejercicios/generador-ejercicios.component';
 import { AddSectionComponent } from '../add-section/add-section.component';
 import { MaterialesService } from '@services/materiales.service';
 import { SectionService } from '@services/section.service';
@@ -106,14 +105,6 @@ export class EjerciciosComponent implements OnInit {
     const mats = this.secciones[this.secciones.indexOf(sec)].materiales;
     mats.splice(mats.indexOf(mat), mats.indexOf(mat) + 1);
     this.secciones[this.secciones.indexOf(sec) + numb].materiales.push(mat);
-  }
-
-  async presentModal() {
-    const modal = await this.modalController.create({
-      component: GeneradorEjerciciosComponent,
-
-    });
-    return await modal.present();
   }
 
   verMaterial(id) {

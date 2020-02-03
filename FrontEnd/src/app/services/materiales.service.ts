@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Materiales } from '../models/materiales';
-import { Constantes } from '../global/constantes';
 import { HttpClient } from '@angular/common/http';
-import { Asignatura } from '../models/asignatura';
-import { Section } from '../models/section';
+import { Materiales } from '@models/materiales';
+import { Constantes } from '../global/constantes';
+import { Section } from '@models/section';
+import { Exercise } from '@models/exercise';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +13,26 @@ export class MaterialesService {
 
   constructor(private http: HttpClient) { }
 
-  getMaterial(idMat: string): Observable<Materiales> {
-    return this.http.get<Materiales>(Constantes.URL_MATERIALES + '/' + idMat, {});
+  getMaterial(materialId: string): Observable<Materiales> {
+    return this.http.get<Materiales>(Constantes.URL_MATERIALES + '/' + materialId, {});
   }
 
-  deleteMaterial(idMat: string): Observable<any> {
-    return this.http.delete(Constantes.URL_MATERIALES + '/' + idMat, {});
+  getExercisesOfMaterial(materialId: string): Observable<Exercise[]> {
+    return this.http.get<Exercise[]>(Constantes.URL_MATERIALES + '/' + materialId + '/exercises', {});
+  }
+  createExercise(materialId: string, exercise: Exercise): Observable<Exercise> {
+    return this.http.post<Exercise>(Constantes.URL_MATERIALES + '/' + materialId + '/exercises', exercise, {});
   }
 
-  createMaterial(sectionId: string, mat: Materiales): Observable<Section> {
-    return this.http.post<Section>(Constantes.URL_SECTIONS + '/' + sectionId + '/materiales' , mat, {});
+  deleteMaterial(materialId: string): Observable<any> {
+    return this.http.delete(Constantes.URL_MATERIALES + '/' + materialId, {});
   }
 
-  updateMaterial(mat: Materiales): Observable<Materiales> {
-    return this.http.put<Materiales>(Constantes.URL_MATERIALES, mat, {});
+  createMaterial(sectionId: string, materiales: Materiales): Observable<Section> {
+    return this.http.post<Section>(Constantes.URL_SECTIONS + '/' + sectionId + '/materiales' , materiales, {});
+  }
+
+  updateMaterial(materiales: Materiales): Observable<Materiales> {
+    return this.http.put<Materiales>(Constantes.URL_MATERIALES, materiales, {});
   }
 }

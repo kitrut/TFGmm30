@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Materiales } from '@models/materiales';
 import { MaterialesService } from '@services/materiales.service';
+import { Exercise } from '@models/exercise';
+import { ExerciseType } from '@models/exercise-type';
+import { ClassNotesService } from '@services/class-notes.service';
+import { ClassNotes } from '@models/class-notes';
 
 @Component({
   selector: 'app-view-material',
@@ -14,11 +18,18 @@ export class ViewMaterialPage implements OnInit {
   mode = 'preview';
   material: Materiales = new Materiales(null, null, null);
   content = this.material.contenido;
+  exercices: Exercise[] = [];
+  classNotes: ClassNotes;
+  classNotesContent = '';
+  EXERCISE_TYPE = ExerciseType;
+
   options = {
     resizable: true,
-    enablePreviewContentClick: true
+    enablePreviewContentClick: true,
+    showLineNumbers: false
+
   };
-  constructor(private route: ActivatedRoute, private materialesService: MaterialesService) { }
+  constructor(private route: ActivatedRoute, private materialesService: MaterialesService, private classNotesService: ClassNotesService) { }
 
   ngOnInit() {
     const idMat = this.route.snapshot.paramMap.get('idMat');
@@ -29,6 +40,49 @@ export class ViewMaterialPage implements OnInit {
         this.content = data.contenido;
       }
     );
+
+    this.materialesService.getExercisesOfMaterial(idMat).subscribe(
+      exercises => {
+        this.exercices = exercises;
+      }
+    );
+
+    this.classNotesService.getById(idMat).subscribe(
+      classNotes => {
+        this.classNotes = {
+          id: null,
+          material: idMat,
+          user: null,
+          content: this.content
+        };
+        this.classNotesContent = classNotes.content;
+      }, error => {
+        this.classNotesContent = this.content;
+      }
+    );
+  }
+
+  saveClassNotes(){
+    if ( this.classNotes ) {
+      this.classNotes.content = this.classNotesContent;
+    } else {
+      this.classNotes = {
+        id: null,
+        material: this.route.snapshot.paramMap.get('idMat'),
+        user: null,
+        content: this.classNotesContent
+      };
+    }
+
+    this.classNotesService.create(this.classNotes).subscribe(
+      data => {
+        this.classNotes = data;
+      }
+    );
+  }
+
+  editorLoad($event){
+    console.log($event)
   }
 
 }

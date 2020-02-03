@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EjercicioRelationComponent } from './ejercicio-relation.component';
+import { ExerciseViewComponent } from './exercise-view.component';
 
-describe('EjercicioRelationComponent', () => {
-  let component: EjercicioRelationComponent;
-  let fixture: ComponentFixture<EjercicioRelationComponent>;
+describe('EjercicioComponent', () => {
+  let component: ExerciseViewComponent;
+  let fixture: ComponentFixture<ExerciseViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EjercicioRelationComponent ],
+      declarations: [ ExerciseViewComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EjercicioRelationComponent);
+    fixture = TestBed.createComponent(ExerciseViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

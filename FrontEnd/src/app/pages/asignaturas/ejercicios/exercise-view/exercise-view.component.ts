@@ -1,18 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Exercise } from '@models/exercise';
+import { ExerciseType } from '@models/exercise-type';
 
 @Component({
-  selector: 'app-ejercicio-reorder',
-  templateUrl: './ejercicio-reorder.component.html',
-  styleUrls: ['./ejercicio-reorder.component.scss'],
+  selector: 'app-exercise-view',
+  templateUrl: './exercise-view.component.html',
+  styleUrls: ['./exercise-view.component.scss'],
 })
-export class EjercicioReorderComponent implements OnInit {
+export class ExerciseViewComponent implements OnInit {
 
-  @Input() pregunta: string;
-  @Input() opciones: string[];
+  @Input() exercise: Exercise;
+  EXERCISE_TYPE = ExerciseType;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   doReorder(ev: any) {
     // The `from` and `to` properties contain the index of the item

@@ -14,12 +14,6 @@ import { AddMaterialesPage } from './add-materiales/add-materiales.page';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { ViewMaterialPage } from './view-material/view-material.page';
 import { EjerciciosComponent } from './ejercicios/ejercicios.component';
-import { EjercicioTestComponent } from './ejercicios/ejercicio-test/ejercicio-test.component';
-import { EjercicioReorderComponent } from './ejercicios/ejercicio-reorder/ejercicio-reorder.component';
-import { EjercicioRelationComponent } from './ejercicios/ejercicio-relation/ejercicio-relation.component';
-import { EjercicioRedactionComponent } from './ejercicios/ejercicio-redaction/ejercicio-redaction.component';
-import { EjercicioChecksComponent } from './ejercicios/ejercicio-checks/ejercicio-checks.component';
-import { GeneradorEjerciciosComponent } from './ejercicios/generador-ejercicios/generador-ejercicios.component';
 import { AsignaturasPage } from './asignaturas/asignaturas.page';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
@@ -32,6 +26,8 @@ import { NgCalendarModule } from 'ionic2-calendar';
 import { CalendarAsignaturaComponent } from './detalles/calendar-asignatura/calendar-asignatura.component';
 import { AddSectionComponent } from './add-section/add-section.component';
 import { DetalleAsignaturaComponent } from './detalles/detalle-asignatura/detalle-asignatura.component';
+import { ExerciseGeneratorComponent } from './ejercicios/exercise-generator/exercise-generator.component';
+import { ExerciseViewComponent } from './ejercicios/exercise-view/exercise-view.component';
 
 const routes: Routes = [
   {
@@ -61,7 +57,7 @@ const routes: Routes = [
         ]
       },
       { path: ':id/addMaterial', component: AddMaterialesPage },
-      { path: ':id/update/:idMat',component: AddMaterialesPage },
+      { path: ':id/update/:idMat', component: AddMaterialesPage },
       { path: ':id/materiales/:idMat', component: ViewMaterialPage}
     ]
   },
@@ -92,12 +88,8 @@ const routes: Routes = [
     AddMaterialesPage,
     ViewMaterialPage,
     EjerciciosComponent,
-    EjercicioTestComponent,
-    EjercicioReorderComponent,
-    EjercicioRelationComponent,
-    EjercicioRedactionComponent,
-    EjercicioChecksComponent,
-    GeneradorEjerciciosComponent,
+    ExerciseViewComponent,
+    ExerciseGeneratorComponent,
     AddSectionComponent,
     AsignaturasPage,
     NotasAsignaturaComponent,
@@ -105,7 +97,6 @@ const routes: Routes = [
     DetalleAsignaturaComponent
   ],
   entryComponents: [
-    GeneradorEjerciciosComponent,
     AddSectionComponent
   ]
 })
