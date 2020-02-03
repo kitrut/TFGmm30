@@ -5,6 +5,11 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{titulo}}</ion-title>
+    <ion-buttons slot="end" *ngIf="segment.value === 'notesTab'">
+      <ion-button (click)="saveClassNotes()">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
   <ion-toolbar color="primary">
     <ion-segment #segment value="materialTab">
@@ -30,6 +35,6 @@
     </div>
     <ion-button *ngIf="exercices.length > 0" color="success" expand="block">Resolver</ion-button>
   </div>
-  <md-editor *ngIf="segment.value === 'notesTab'" name="Content" [(ngModel)]="content" [mode]="!mode" [height]="'auto'" [options]="options">
+  <md-editor *ngIf="segment.value === 'notesTab'" name="Content" [(ngModel)]="classNotesContent" [mode]="editor" [height]="'auto'" [options]="options" (onEditorLoaded)="editorLoad($event)">
   </md-editor>
 </ion-content>
