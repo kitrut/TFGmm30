@@ -9,7 +9,7 @@ export class RolMenuService {
     { title: 'Asignaturas', url: '/asignaturas', icon: 'book' },
     { title: 'Tutorías', url: '/tutorias', icon: 'chatboxes' },
     { title: 'Agenda', url: '/agenda', icon: 'calendar' },
-    { title: 'Notas', url: '/notas', icon: 'school' },
+    { title: 'Ratings', url: '/ratings', icon: 'school' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Salir', url: '/login', icon: 'log-out' }
   ];

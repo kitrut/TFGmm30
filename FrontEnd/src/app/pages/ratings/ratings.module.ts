@@ -10,13 +10,13 @@ import { MatTableModule } from '@angular/material/table';
 
 import { IonicModule } from '@ionic/angular';
 
-import { NotasPage } from './notas.page';
+import { RatingsPage } from './ratings.page';
 import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
     path: '',
-    component: NotasPage
+    component: RatingsPage
   }
 ];
 
@@ -32,6 +32,6 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSortModule,
   ],
-  declarations: [NotasPage]
+  declarations: [RatingsPage]
 })
-export class NotasPageModule {}
+export class RatingsPageModule {}

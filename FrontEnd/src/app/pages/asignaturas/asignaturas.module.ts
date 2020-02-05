@@ -21,7 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { NotasAsignaturaComponent } from './detalles/notas-asignatura/notas-asignatura.component';
+import { RatingsSubjectComponent } from './detalles/ratings-subject/ratings-subject.component';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { CalendarAsignaturaComponent } from './detalles/calendar-asignatura/calendar-asignatura.component';
 import { AddSectionComponent } from './add-section/add-section.component';
@@ -53,7 +53,7 @@ const routes: Routes = [
           { path: 'detalles', component: DetalleAsignaturaComponent, pathMatch: 'full' },
           { path: 'materiales', component: EjerciciosComponent, pathMatch: 'full' },
           { path: 'calendario', component: CalendarAsignaturaComponent, pathMatch: 'full' },
-          { path: 'notas', component: NotasAsignaturaComponent, pathMatch: 'full' }
+          { path: 'ratings', component: RatingsSubjectComponent, pathMatch: 'full' }
         ]
       },
       { path: ':id/addMaterial', component: AddMaterialesPage },
@@ -92,7 +92,7 @@ const routes: Routes = [
     ExerciseGeneratorComponent,
     AddSectionComponent,
     AsignaturasPage,
-    NotasAsignaturaComponent,
+    RatingsSubjectComponent,
     CalendarAsignaturaComponent,
     DetalleAsignaturaComponent
   ],

@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'materiales', loadChildren: './pages/materiales/materiales.module#MaterialesPageModule', canActivate: [AlumnoGuard] },
   { path: 'tutorias', loadChildren: './pages/tutorias/tutorias.module#TutoriasPageModule', canActivate: [AlumnoGuard] },
   { path: 'agenda', loadChildren: './pages/agenda/agenda.module#AgendaPageModule', canActivate: [AlumnoGuard] },
-  { path: 'notas', loadChildren: './pages/notas/notas.module#NotasPageModule', canActivate: [AlumnoGuard] },
+  { path: 'ratings', loadChildren: './pages/ratings/ratings.module#RatingsPageModule', canActivate: [AlumnoGuard] },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule', canActivate: [AlumnoGuard] },
 
   // ASIGNATURAS

@@ -8,7 +8,7 @@
         "Materiales": "Matériels",
         "Tutorías": "Tutoriels",
         "Agenda": "Agenda",
-        "Notas" : "Évaluations",
+        "Ratings" : "Évaluations",
         "Settings": "Paramètres",
         "Salir" : "Sortir"
     },
@@ -22,6 +22,14 @@
         "Message": "Mensaje",
         "Clear": "Limpiar",
         "Save": "Guardar"
+    },
+
+    "Ratings":{
+        "Name": "Nombre",
+        "Weight": "Peso",
+        "Rating": "Nota",
+        "Weighted": "Ponderada",
+        "Comments": "Comentarios"
     },
 
     "Settings":{
