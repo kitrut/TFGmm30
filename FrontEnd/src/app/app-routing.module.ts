@@ -5,7 +5,7 @@ import { AlumnoGuard } from './guards/alumno.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule' },
-  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule', canActivate: [AlumnoGuard] },
+  { path: 'announcements', loadChildren: './pages/announcements/announcements.module#AnnouncementsPageModule', canActivate: [AlumnoGuard] },
   { path: 'materiales', loadChildren: './pages/materiales/materiales.module#MaterialesPageModule', canActivate: [AlumnoGuard] },
   { path: 'tutorias', loadChildren: './pages/tutorias/tutorias.module#TutoriasPageModule', canActivate: [AlumnoGuard] },
   { path: 'agenda', loadChildren: './pages/agenda/agenda.module#AgendaPageModule', canActivate: [AlumnoGuard] },

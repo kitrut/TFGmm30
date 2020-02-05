@@ -7,32 +7,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tfg.backend.models.Anuncio;
-import tfg.backend.services.interfaces.IAnuncioService;
+import tfg.backend.models.Announcement;
+import tfg.backend.services.interfaces.IAnnouncementService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/private/anuncios")
-public class AnuncioController {
+@RequestMapping("/api/private/announcements")
+public class AnnouncementController {
 
     @Autowired
-    IAnuncioService anuncioService;
+    IAnnouncementService announcementService;
 
     @GetMapping()
-    public List<Anuncio> index() {
-        return anuncioService.findAll();
+    public List<Announcement> index() {
+        return announcementService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Anuncio find(@PathVariable("id") Long id) {
-        return anuncioService.findById(id);
+    public Announcement find(@PathVariable("id") Long id) {
+        return announcementService.findById(id);
     }
 
     @PostMapping()
-    public Anuncio create(@RequestBody Anuncio anuncio) {
-        System.out.println(anuncio);
-        return anuncioService.create(anuncio);
+    public Announcement create(@RequestBody Announcement announcement) {
+        System.out.println(announcement);
+        return announcementService.create(announcement);
     }
 
 }

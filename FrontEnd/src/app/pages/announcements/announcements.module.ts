@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
-import { HomePage } from './home.page';
+import { AnnouncementsPage } from './announcements.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { AnnounceModalComponent } from './announce-modal/announce-modal.component';
+import { AnnouncementModalComponent } from './announcement-modal/announcement-modal.component';
 
 @NgModule({
   imports: [
@@ -16,13 +16,13 @@ import { AnnounceModalComponent } from './announce-modal/announce-modal.componen
     RouterModule.forChild([
       {
         path: '',
-        component: HomePage
+        component: AnnouncementsPage
       }
     ]),
     TranslateModule.forChild(),
     ReactiveFormsModule
   ],
-  declarations: [HomePage, AnnounceModalComponent],
-  entryComponents: [AnnounceModalComponent]
+  declarations: [AnnouncementsPage, AnnouncementModalComponent],
+  entryComponents: [AnnouncementModalComponent]
 })
-export class HomePageModule {}
+export class AnnouncementsPageModule {}

@@ -1,16 +1,27 @@
 {
     "Menu":{
-        "Home": "Principale",
+        "Announcements": "Annonces",
         "Alumnos":"Élèves",
         "Profesores":"Enseignants",
         "Usuarios":"Utilisateurs",
-        "Asignaturas":"Sujets",
+        "Asignaturas":"Matières ",
         "Materiales": "Matériels",
         "Tutorías": "Tutoriels",
         "Agenda": "Agenda",
         "Notas" : "Évaluations",
         "Ajustes": "Paramètres",
         "Salir" : "Sortir"
+    },
+
+    "Announcements":{
+        "CreateAnnouncement": "Crear anuncio",
+        "UpdateAnnouncement": "Actualizar anuncio",
+        "Title": "Título",
+        "SelectASubject": "Seleccione una asignatura",
+        "Importance": "Importancia",
+        "Message": "Mensaje",
+        "Clear": "Limpiar",
+        "Save": "Guardar"
     },
 
     "Ajustes":{

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      {{'Announcements.CreateAnnouncement' | translate}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss(null)">
+        <ion-icon name="close" slot="icon-only" class="ion-no-margin ion-no-padding"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [formGroup]="announceForm" (ngSubmit)="onSubmit()">
+  
+  <ion-input clearInput formControlName="id" ngDefaultControl hidden></ion-input>
+
+  <ion-item>
+    <ion-label position="floating">{{'Announcements.Title' | translate}}</ion-label>
+    <ion-input clearInput formControlName="title" ngDefaultControl></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">{{'Announcements.SelectASubject' | translate}}</ion-label>
+    <ion-select>
+      <ion-select-option value="0">General</ion-select-option>
+      <ion-select-option *ngFor="let asi of asignaturas" value="asi.id">
+        <ion-icon slot="end" name="bookmarks"></ion-icon>{{'['+ asi.curso + '] ' +  asi.nombre}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{'Announcements.Importannce' | translate}}</ion-label>
+    <ion-range placeholder="dasdas" min="1" max="5" step="1" snaps ticks="true" pin="true" clearInput
+      formControlName="importance" ngDefaultControl>
+      <ion-icon slot="end" name="star"></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">{{'Announcements.Message' | translate}}</ion-label>
+    <ion-textarea rows="8" clearInput formControlName="content" ngDefaultControl></ion-textarea>
+  </ion-item>
+
+  <ion-input clearInput formControlName="id" ngDefaultControl hidden></ion-input>
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="full" color="danger" (click)="announceForm.reset()">{{'Announcements.Clear' | translate}}
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="full" color="primary" type="submit" (click)="onSubmit()" [disabled]="!announceForm.valid">
+        {{'Announcements.Save' | translate}}</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

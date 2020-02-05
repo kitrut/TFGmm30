@@ -4,10 +4,10 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      {{'Menu.Home' | translate}}
+      {{'Menu.Announcements' | translate}}
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="createAnnounce(null)">
+      <ion-button (click)="createAnnouncement(null)">
           <ion-icon name="star" slot="icon-only" class="ion-no-margin ion-no-padding"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -15,35 +15,39 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let anuncio of anuncios">
+  
+  <ion-card *ngFor="let announcement of announcements">
     
-    <ion-card-header tappable (click)="anuncio.expanded=!anuncio.expanded" color="tertiary">
+    <ion-card-header tappable (click)="announcement.expanded = !announcement.expanded" color="tertiary">
+      
       <ion-card-title>
         <ion-item lines="none" color="tertiary">
-          {{anuncio.titulo}}
-          <ion-icon name="star" slot="end" size="small" class="ion-no-margin ion-no-padding" color="gold" *ngFor="let stars of [].constructor(anuncio.importancia)"></ion-icon>
+          {{announcement.title}}
+          <ion-icon name="star" slot="end" size="small" class="ion-no-margin ion-no-padding" color="gold" *ngFor="let stars of [].constructor(announcement.importance)"></ion-icon>
           <ion-buttons slot="end">
-              <ion-button (click)="createAnnounce(anuncio)">
+              <ion-button (click)="createAnnouncement(announcement)">
                 <ion-icon name="create" slot="icon-only" class="ion-no-margin ion-no-padding"></ion-icon>
               </ion-button>
           </ion-buttons>
         </ion-item>
       </ion-card-title>
+
       <ion-card-subtitle>
         <ion-row>
           <ion-col>
-            Avisador
+            <ion-icon name="contact" size="2x"></ion-icon>
           </ion-col>
           <ion-col class="ion-text-right">
-            {{((anuncio.updateAt===anuncio.createAt) ? anuncio.createAt : anuncio.updateAt) | date:'d/M/yy, h:mm a'}}
-            <ion-icon *ngIf="anuncio.updateAt!==anuncio.createAt" name="clock"></ion-icon>
+            {{((announcement.updateAt === announcement.createAt) ? announcement.createAt : announcement.updateAt) | date:'d/M/yy, h:mm a'}}
+            <ion-icon *ngIf="announcement.updateAt !== announcement.createAt" name="clock"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-card-subtitle>
+      
     </ion-card-header>
 
-    <ion-card-content #content *ngIf="anuncio.expanded">
-      {{anuncio.contenido}}
+    <ion-card-content #content *ngIf="announcement.expanded">
+      {{announcement.content}}
     </ion-card-content>
   </ion-card>
 </ion-content>

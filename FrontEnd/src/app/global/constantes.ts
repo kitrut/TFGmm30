@@ -6,7 +6,7 @@ export class Constantes {
     static URL_SECTIONS = Constantes.URL_BACKEND + 'private/sections';
     static URL_MATERIALES = Constantes.URL_BACKEND + 'private/materiales';
     static URL_ALUMNOS = Constantes.URL_BACKEND + 'private/alumnos';
-    static URL_ANUNCIOS = Constantes.URL_BACKEND + 'private/anuncios';
+    static URL_ANNOUNCEMENTS = Constantes.URL_BACKEND + 'private/announcements';
     static URL_CLASSNOTES = Constantes.URL_BACKEND + 'private/classNotes';
     static TOKEN_KEY = 'auth-token';
 }

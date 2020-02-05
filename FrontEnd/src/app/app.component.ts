@@ -11,8 +11,6 @@ import { Usuario } from '@models/usuario';
 import { RolMenuService } from '@services/rol-menu.service';
 import { ThemeService } from '@services/theme.service';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'

@@ -13,14 +13,14 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Anuncio {
+public class Announcement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String titulo;
-    private String contenido;
-    private Integer importancia;
+    private String title;
+    private String content;
+    private Integer importance;
 
     @CreationTimestamp
     @Column(updatable = false)

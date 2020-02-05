@@ -1,6 +1,6 @@
 {
     "Menu":{
-        "Home": "Principal",
+        "Announcements": "Anuncios",
         "Alumnos":"Alumnos",
         "Profesores":"Profesores",
         "Usuarios":"Usuarios",
@@ -11,6 +11,17 @@
         "Notas" : "Notas",
         "Ajustes": "Ajustes",
         "Salir" : "Salir"
+    },
+
+    "Announcements":{
+        "CreateAnnouncement": "Crear anuncio",
+        "UpdateAnnouncement": "Actualizar anuncio",
+        "Title": "Título",
+        "SelectASubject": "Seleccione una asignatura",
+        "Importance": "Importancia",
+        "Message": "Mensaje",
+        "Clear": "Limpiar",
+        "Save": "Guardar"
     },
 
     "Ajustes":{
