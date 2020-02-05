@@ -10,7 +10,7 @@ export class RolMenuService {
     { title: 'Tutorías', url: '/tutorias', icon: 'chatboxes' },
     { title: 'Agenda', url: '/agenda', icon: 'calendar' },
     { title: 'Notas', url: '/notas', icon: 'school' },
-    { title: 'Ajustes', url: '/ajustes', icon: 'settings' },
+    { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Salir', url: '/login', icon: 'log-out' }
   ];
   public profesorPages = [
@@ -19,14 +19,14 @@ export class RolMenuService {
     { title: 'Alumnos', url: '/alumnos', icon: 'contacts' },
     { title: 'Tutorías', url: '/tutorias', icon: 'chatboxes' },
     { title: 'Agenda', url: '/agenda', icon: 'calendar' },
-    { title: 'Ajustes', url: '/ajustes', icon: 'settings' },
+    { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Salir', url: '/login', icon: 'log-out' }
   ];
   public adminPages = [
     { title: 'Announcements', url: '/announcements', icon: 'mail' },
     { title: 'Asignaturas', url: '/asignaturas', icon: 'color-palette' },
     { title: 'Usuarios', url: '/usuarios', icon: 'contacts' },
-    { title: 'Ajustes', url: '/ajustes', icon: 'settings' },
+    { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Salir', url: '/login', icon: 'log-out' }
   ];
 

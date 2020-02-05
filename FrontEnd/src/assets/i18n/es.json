@@ -9,7 +9,7 @@
         "Tutorías": "Tutorías",
         "Agenda": "Agenda",
         "Notas" : "Notas",
-        "Ajustes": "Ajustes",
+        "Settings": "Ajustes",
         "Salir" : "Salir"
     },
 
@@ -24,8 +24,9 @@
         "Save": "Guardar"
     },
 
-    "Ajustes":{
-        "Selecciona un idioma":"Selecciona un idioma"
+    "Settings":{
+        "SelectALanguage":"Seleccione un idioma",
+        "SelectATheme": "Selecciona un tema"
     },
 
     "Asignaturas":{
@@ -42,5 +43,17 @@
         "Detalles":"Detalles",
         "Editar":"Editar",
         "Borrar":"Borrar"
+    },
+
+    "Themes": {
+        "Default": "Predeterminado",
+        "Light": "Claro",
+        "Dark": "Oscuro"
+    },
+
+    "Languages": {
+        "Spanish": "Español",
+        "English": "Inglés",
+        "French": "Francés"
     }
 }

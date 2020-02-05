@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AjustesPage } from './ajustes.page';
+import { SettingsPage } from './settings.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 const routes: Routes = [
   {
     path: '',
-    component: AjustesPage
+    component: SettingsPage
   }
 ];
 
@@ -31,6 +31,6 @@ const routes: Routes = [
       }
     })
   ],
-  declarations: [AjustesPage]
+  declarations: [SettingsPage]
 })
-export class AjustesPageModule {}
+export class SettingsPageModule {}

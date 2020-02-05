@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AjustesPage } from './ajustes.page';
+import { SettingsPage } from './settings.page';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
 
-describe('AjustesPage', () => {
-  let component: AjustesPage;
-  let fixture: ComponentFixture<AjustesPage>;
+describe('SettingsPage', () => {
+  let component: SettingsPage;
+  let fixture: ComponentFixture<SettingsPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AjustesPage ],
+      declarations: [ SettingsPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         HttpClientModule,
         TranslateModule.forRoot({
           loader: {
@@ -24,7 +24,7 @@ describe('AjustesPage', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }), 
+        }),
           IonicStorageModule.forRoot(),
       ],
     })
@@ -32,7 +32,7 @@ describe('AjustesPage', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AjustesPage);
+    fixture = TestBed.createComponent(SettingsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

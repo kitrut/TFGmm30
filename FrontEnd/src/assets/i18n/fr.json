@@ -9,7 +9,7 @@
         "Tutorías": "Tutoriels",
         "Agenda": "Agenda",
         "Notas" : "Évaluations",
-        "Ajustes": "Paramètres",
+        "Settings": "Paramètres",
         "Salir" : "Sortir"
     },
 
@@ -24,9 +24,11 @@
         "Save": "Guardar"
     },
 
-    "Ajustes":{
-        "Selecciona un idioma":"Sélectionnez une langue"
+    "Settings":{
+        "SelectALanguage":"Sélectionnez une langue",
+        "SelectATheme": "Select a theme"
     },
+
     "Asignaturas":{
         "Nombre":"Nombre",
         "Descripción":"Descripción",
@@ -35,5 +37,17 @@
         "Editar":"Editar",
         "Borrar":"Borrar"
 
+    },
+
+    "Themes": {
+        "Default": "Défaut",
+        "Light": "Clair",
+        "Dark": "Sombre"
+    },
+
+    "Languages": {
+        "Spanish": "Espagnol",
+        "English": "Anglais",
+        "French": "Français"
     }
 }
