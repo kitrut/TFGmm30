@@ -17,11 +17,17 @@ jobs:
     - name: Install dependencies
       working-directory: FrontEnd
       run: npm install
+    
+    - name: Download chrome
+      run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-    - name: Install dependencies
+    - name: Install chrome
+      run: dpkg -i google-chrome-stable_current_amd64.deb
+
+    - name: Build
       working-directory: FrontEnd
       run: npm run build --if-present
 
-    - name: Install dependencies
+    - name: Testing
       working-directory: FrontEnd
       run: npm test
