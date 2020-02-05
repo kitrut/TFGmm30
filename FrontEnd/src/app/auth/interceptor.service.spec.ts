@@ -7,10 +7,11 @@ import { IonicStorageModule } from '@ionic/storage';
 
 describe('InterceptorService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [ 
+    imports: [
       RouterTestingModule.withRoutes([]),
       HttpClientModule,
-      IonicStorageModule.forRoot(),],
+      IonicStorageModule.forRoot(),
+    ],
   }));
 
   it('should be created', () => {

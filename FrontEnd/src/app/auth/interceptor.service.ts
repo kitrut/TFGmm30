@@ -12,13 +12,13 @@ const TOKEN_KEY = 'auth-token';
 })
 export class InterceptorService implements HttpInterceptor {
 
-  constructor(private storage: Storage,private auth:AuthService) {}
+  constructor(private storage: Storage, private auth: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return from(this.storage.get(Constantes.TOKEN_KEY))
             .pipe(
                 switchMap(token => {
-                    //si tiene el token, lo añade a las cabeceras de todas las peticiones
+                    // si tiene el token, lo añade a las cabeceras de todas las peticiones
                     if (token) {
                       req = req.clone({ headers: req.headers.set('Authorization', token) });
                     }
@@ -29,7 +29,7 @@ export class InterceptorService implements HttpInterceptor {
                     return next.handle(req).pipe(
                         map((event: HttpEvent<any>) => {
                             if (event instanceof HttpResponse) {
-                                //captura el token de la respuesta del servidor
+                                // captura el token de la respuesta del servidor
                                 token = event.headers.get('Authorization');
                                 if (token) {
                                   this.storage.set(TOKEN_KEY, token);
@@ -40,10 +40,10 @@ export class InterceptorService implements HttpInterceptor {
                         catchError((error: HttpErrorResponse) => {
                             console.log(error);
                             const status =  error.status;
-                            if (status === 403) {
+                            /*if (status === 403) {
                                 this.storage.remove(Constantes.TOKEN_KEY);
                                 this.auth.logout();
-                            }
+                            }*/
                             return throwError(error);
                         })
                     );

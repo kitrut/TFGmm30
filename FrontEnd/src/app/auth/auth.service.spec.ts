@@ -4,17 +4,14 @@ import { AuthService } from './auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpLoaderFactory } from '../app.module';
-import { HttpClient } from '@angular/common/http';
 
 describe('AuthService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [ 
+    imports: [
       RouterTestingModule.withRoutes([]),
       HttpClientModule,
       IonicStorageModule.forRoot(),
-],
+    ],
   }));
 
   it('should be created', () => {
