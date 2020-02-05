@@ -64,5 +64,9 @@
         "Spanish": "Espagnol",
         "English": "Anglais",
         "French": "Français"
+    },
+
+    "Errors":{
+        "PageNotFound": "Page non trouvée"
     }
 }
