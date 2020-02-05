@@ -1,20 +1,20 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TutoriasPage } from './tutorias.page';
+import { TutoringPage } from './tutoring.page';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 
-describe('TutoriasPage', () => {
-  let component: TutoriasPage;
-  let fixture: ComponentFixture<TutoriasPage>;
+describe('TutoringPage', () => {
+  let component: TutoringPage;
+  let fixture: ComponentFixture<TutoringPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TutoriasPage ],
+      declarations: [ TutoringPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         HttpClientModule,
         TranslateModule.forRoot({
           loader: {
@@ -29,7 +29,7 @@ describe('TutoriasPage', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TutoriasPage);
+    fixture = TestBed.createComponent(TutoringPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

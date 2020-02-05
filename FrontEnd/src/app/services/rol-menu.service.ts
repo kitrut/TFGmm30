@@ -7,7 +7,7 @@ export class RolMenuService {
   public userPages = [
     { title: 'Announcements', url: '/announcements', icon: 'mail' },
     { title: 'Asignaturas', url: '/asignaturas', icon: 'book' },
-    { title: 'Tutorías', url: '/tutorias', icon: 'chatboxes' },
+    { title: 'Tutoring', url: '/tutoring', icon: 'chatboxes' },
     { title: 'Calendar', url: '/calendar', icon: 'calendar' },
     { title: 'Ratings', url: '/ratings', icon: 'school' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
@@ -17,7 +17,7 @@ export class RolMenuService {
     { title: 'Announcements', url: '/announcements', icon: 'mail' },
     { title: 'Asignaturas', url: '/asignaturas', icon: 'book' },
     { title: 'Alumnos', url: '/alumnos', icon: 'contacts' },
-    { title: 'Tutorías', url: '/tutorias', icon: 'chatboxes' },
+    { title: 'Tutoring', url: '/tutoring', icon: 'chatboxes' },
     { title: 'Calendar', url: '/calendar', icon: 'calendar' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Salir', url: '/login', icon: 'log-out' }

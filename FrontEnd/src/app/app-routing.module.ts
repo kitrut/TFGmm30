@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule' },
   { path: 'announcements', loadChildren: './pages/announcements/announcements.module#AnnouncementsPageModule', canActivate: [AlumnoGuard] },
   { path: 'materiales', loadChildren: './pages/materiales/materiales.module#MaterialesPageModule', canActivate: [AlumnoGuard] },
-  { path: 'tutorias', loadChildren: './pages/tutorias/tutorias.module#TutoriasPageModule', canActivate: [AlumnoGuard] },
+  { path: 'tutoring', loadChildren: './pages/tutoring/tutoring.module#TutoringPageModule', canActivate: [AlumnoGuard] },
   { path: 'calendar', loadChildren: './pages/calendar/calendar.module#CalendarPageModule', canActivate: [AlumnoGuard] },
   { path: 'ratings', loadChildren: './pages/ratings/ratings.module#RatingsPageModule', canActivate: [AlumnoGuard] },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule', canActivate: [AlumnoGuard] },
