@@ -23,7 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { RatingsSubjectComponent } from './detalles/ratings-subject/ratings-subject.component';
 import { NgCalendarModule } from 'ionic2-calendar';
-import { CalendarAsignaturaComponent } from './detalles/calendar-asignatura/calendar-asignatura.component';
+import { CalendarSubjectComponent } from './detalles/calendar-subject/calendar-subject.component';
 import { AddSectionComponent } from './add-section/add-section.component';
 import { DetalleAsignaturaComponent } from './detalles/detalle-asignatura/detalle-asignatura.component';
 import { ExerciseGeneratorComponent } from './ejercicios/exercise-generator/exercise-generator.component';
@@ -52,7 +52,7 @@ const routes: Routes = [
         children: [
           { path: 'detalles', component: DetalleAsignaturaComponent, pathMatch: 'full' },
           { path: 'materiales', component: EjerciciosComponent, pathMatch: 'full' },
-          { path: 'calendario', component: CalendarAsignaturaComponent, pathMatch: 'full' },
+          { path: 'calendario', component: CalendarSubjectComponent, pathMatch: 'full' },
           { path: 'ratings', component: RatingsSubjectComponent, pathMatch: 'full' }
         ]
       },
@@ -93,7 +93,7 @@ const routes: Routes = [
     AddSectionComponent,
     AsignaturasPage,
     RatingsSubjectComponent,
-    CalendarAsignaturaComponent,
+    CalendarSubjectComponent,
     DetalleAsignaturaComponent
   ],
   entryComponents: [

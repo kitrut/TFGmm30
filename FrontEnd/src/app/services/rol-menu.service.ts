@@ -8,7 +8,7 @@ export class RolMenuService {
     { title: 'Announcements', url: '/announcements', icon: 'mail' },
     { title: 'Asignaturas', url: '/asignaturas', icon: 'book' },
     { title: 'Tutorías', url: '/tutorias', icon: 'chatboxes' },
-    { title: 'Agenda', url: '/agenda', icon: 'calendar' },
+    { title: 'Calendar', url: '/calendar', icon: 'calendar' },
     { title: 'Ratings', url: '/ratings', icon: 'school' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Salir', url: '/login', icon: 'log-out' }
@@ -18,7 +18,7 @@ export class RolMenuService {
     { title: 'Asignaturas', url: '/asignaturas', icon: 'book' },
     { title: 'Alumnos', url: '/alumnos', icon: 'contacts' },
     { title: 'Tutorías', url: '/tutorias', icon: 'chatboxes' },
-    { title: 'Agenda', url: '/agenda', icon: 'calendar' },
+    { title: 'Calendar', url: '/calendar', icon: 'calendar' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Salir', url: '/login', icon: 'log-out' }
   ];

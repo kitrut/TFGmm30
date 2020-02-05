@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalendarAsignaturaComponent } from './calendar-asignatura.component';
+import { CalendarSubjectComponent } from './calendar-subject.component';
 
-describe('CalendarAsignaturaComponent', () => {
-  let component: CalendarAsignaturaComponent;
-  let fixture: ComponentFixture<CalendarAsignaturaComponent>;
+describe('CalendarSubjectComponent', () => {
+  let component: CalendarSubjectComponent;
+  let fixture: ComponentFixture<CalendarSubjectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalendarAsignaturaComponent ],
+      declarations: [ CalendarSubjectComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CalendarAsignaturaComponent);
+    fixture = TestBed.createComponent(CalendarSubjectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

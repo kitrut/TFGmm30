@@ -16,11 +16,11 @@ class Event {
 }
 
 @Component({
-  selector: 'app-agenda',
-  templateUrl: './agenda.page.html',
-  styleUrls: ['./agenda.page.scss'],
+  selector: 'app-calendar',
+  templateUrl: './calendar.page.html',
+  styleUrls: ['./calendar.page.scss']
 })
-export class AgendaPage implements OnInit {
+export class CalendarPage implements OnInit {
 
   startTime = new Date().toISOString();
   endTime = new Date().toISOString();
@@ -33,7 +33,8 @@ export class AgendaPage implements OnInit {
     locale: 'es-ES'
   };
 
-  fechaSeleccionada = '';
+  dateSelected = '';
+
   constructor() { }
 
   changeMode(mode) {
@@ -44,10 +45,13 @@ export class AgendaPage implements OnInit {
   }
 
   onCurrentDateChanged(event) {}
+
   reloadSource(startTime, endTime) {}
+
   onEventSelected(event) {}
+
   onViewTitleChanged(event) {
-    this.fechaSeleccionada = event;
+    this.dateSelected = event;
   }
   onTimeSelected(event) {
   }

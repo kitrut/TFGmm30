@@ -16,11 +16,11 @@ class Event {
 }
 
 @Component({
-  selector: 'app-calendar-asignatura',
-  templateUrl: './calendar-asignatura.component.html',
-  styleUrls: ['./calendar-asignatura.component.scss'],
+  selector: 'app-calendar-subject',
+  templateUrl: './calendar-subject.component.html',
+  styleUrls: ['./calendar-subject.component.scss'],
 })
-export class CalendarAsignaturaComponent implements OnInit {
+export class CalendarSubjectComponent implements OnInit {
 
   startTime = new Date().toISOString();
   endTime = new Date().toISOString();
@@ -34,7 +34,7 @@ export class CalendarAsignaturaComponent implements OnInit {
     locale: 'es-ES'
   };
 
-  fechaSeleccionada = '';
+  dateSelected = '';
   constructor() { }
 
   changeMode(mode) {
@@ -48,7 +48,7 @@ export class CalendarAsignaturaComponent implements OnInit {
   reloadSource(startTime, endTime) {}
   onEventSelected(event) {}
   onViewTitleChanged(event) {
-    this.fechaSeleccionada = event;
+    this.dateSelected = event;
   }
   onTimeSelected(event) {
   }

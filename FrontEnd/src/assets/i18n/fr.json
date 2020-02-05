@@ -7,7 +7,7 @@
         "Asignaturas":"Matières ",
         "Materiales": "Matériels",
         "Tutorías": "Tutoriels",
-        "Agenda": "Agenda",
+        "Calendar": "Agenda",
         "Ratings" : "Évaluations",
         "Settings": "Paramètres",
         "Salir" : "Sortir"
@@ -24,12 +24,19 @@
         "Save": "Guardar"
     },
 
+    "Calendar": {
+        "Day" : "Jour",
+        "Week" : "Semaine",
+        "Month": "Mois",
+        "AddEvent": "Ajouter un événement"
+    },
+
     "Ratings":{
-        "Name": "Nombre",
-        "Weight": "Peso",
-        "Rating": "Nota",
-        "Weighted": "Ponderada",
-        "Comments": "Comentarios"
+        "Name": "Nom",
+        "Weight": "Poids",
+        "Rating": "Note",
+        "Weighted": "Pondéré",
+        "Comments": "Commentaires"
     },
 
     "Settings":{
