@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04-amd64
 
     strategy:
       matrix:
@@ -17,12 +17,6 @@ jobs:
     - name: Install dependencies
       working-directory: FrontEnd
       run: npm install
-    
-    - name: Download chrome
-      run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-
-    - name: Install chrome
-      run: dpkg -i google-chrome-stable_current_amd64.deb
 
     - name: Build
       working-directory: FrontEnd
