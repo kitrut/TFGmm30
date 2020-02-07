@@ -19,9 +19,7 @@
         "Title": "Título",
         "SelectASubject": "Seleccione una asignatura",
         "Importance": "Importancia",
-        "Message": "Mensaje",
-        "Clear": "Limpiar",
-        "Save": "Guardar"
+        "Message": "Mensaje"
     },
 
     "Calendar": {
@@ -51,13 +49,27 @@
         "DetalleAsignatura": "Detalles de la asignatura",
         "AlumnosMatriculados":"Alumnos matriculados",
         "Profesor":"Profesor"
-    }
-    ,
-    "Botones":{
-        "Crear":"Crear",
-        "Detalles":"Detalles",
-        "Editar":"Editar",
-        "Borrar":"Borrar"
+    },
+
+    "Users":{
+        "Name": "Nombre",
+        "Surnames": "Apellidos",
+        "Email": "Email",
+        "Teachers": "Profesores",
+        "Students": "Alumnos",
+        "Otros": "Otros",
+        "Profile": "Perfil",
+        "PersonalData": "Datos personales"
+    },
+
+    "Buttons":{
+        "Create": "Crear",
+        "Details": "Detalles",
+        "Edit": "Editar",
+        "Delete": "Borrar",
+        "Message": "Mensaje",
+        "Save": "Guardar",
+        "Clear": "Limpiar"
     },
 
     "Themes": {

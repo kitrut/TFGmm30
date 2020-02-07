@@ -19,9 +19,7 @@
         "Title": "Title",
         "SelectASubject": "Select a subject",
         "Importance": "Importance",
-        "Message": "Message",
-        "Clear": "Clear",
-        "Save": "Save"
+        "Message": "Message"
     },
 
     "Calendar": {
@@ -53,11 +51,26 @@
         "Profesor":"Teacher"
 
     },
-    "Botones":{
-        "Crear":"Create",
-        "Detalles":"Details",
-        "Editar":"Edit",
-        "Borrar":"Delete"
+
+    "Users":{
+        "Name": "Name",
+        "Surnames": "Surnames",
+        "Email": "Email",
+        "Teachers": "Teachers",
+        "Students": "Students",
+        "Others": "Others",
+        "Profile": "Profile",
+        "PersonalData": "Personal data"
+    },
+    
+    "Buttons":{
+        "Create": "Create",
+        "Details": "Details",
+        "Edit": "Edit",
+        "Delete": "Delete",
+        "Message": "Message",
+        "Save": "Save",
+        "Clear": "Clear"
     },
 
     "Themes": {

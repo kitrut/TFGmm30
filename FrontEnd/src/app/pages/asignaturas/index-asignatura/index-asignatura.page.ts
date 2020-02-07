@@ -66,19 +66,22 @@ export class IndexAsignaturaPage {
     }
   }
 
-  detalles(id) {
+  details(id) {
     this.router.navigateByUrl('/asignaturas/' + id);
   }
-  borrar(asignatura) {
+
+  delete(asignatura) {
     this.asignService.deleteAsignatura(asignatura.id).subscribe(
       () => {
         this.getData();
       }
     );
   }
+
   crear() {
     this.router.navigateByUrl('/asignaturas/create');
   }
+
   filtrar(value) {
     if (value.detail.value === 'Todos') {
       this.asignaturas = this.asignaturasTodas;
