@@ -281,9 +281,9 @@ INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (2,11);
 INSERT INTO usuario_asignaturas_impartidas (usuario_id,asignaturas_impartidas_id) VALUES (4,12);
 
-INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (1, 'Primer anuncio','Esto es un anuncio de prueba 1',5,NOW(),NOW());
-INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (2, 'Segundo anuncio','Esto es un anuncio de prueba 2',3,NOW(),NOW());
-INSERT INTO anuncio (id,titulo,contenido,importancia,create_at,update_at) VALUES (3, 'Tercer anuncio','Esto es un anuncio de prueba 3',1,NOW(),NOW());
+INSERT INTO announcement (id, title, content, importance, create_at,update_at) VALUES (1, 'Primer announcement','Esto es un announcement de prueba 1',5,NOW(),NOW());
+INSERT INTO announcement (id, title, content, importance, create_at,update_at) VALUES (2, 'Segundo announcement','Esto es un announcement de prueba 2',3,NOW(),NOW());
+INSERT INTO announcement (id, title, content, importance, create_at,update_at) VALUES (3, 'Tercer announcement','Esto es un announcement de prueba 3',1,NOW(),NOW());
 
 INSERT INTO exercise (id, exercise_type, question, materiales_id) VALUES  (1, 'TEST', '2 es par', 1);
 INSERT INTO exercise_option (id, answer, `option`, exercise_id) VALUES (1,1,'Verdadero',1), (2,0,'Falso',1);

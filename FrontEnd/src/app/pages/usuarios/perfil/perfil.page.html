@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Perfil</ion-title>
+    <ion-title>{{'Users.Profile' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,12 +12,12 @@
   <ion-grid>
     <ion-row>
       <ion-col class="ion-text-center">
-        <img class="rounded-circle" width="200" height="200" src="assets\images\User_icon.png" />
+        <img class="rounded-circle" width="200" height="200" src="assets/images/User_icon.png" />
       </ion-col>
       <ion-col>
         <ion-card>
           <ion-item class="ion-text-center" color="primary">
-            <ion-label>Datos personales</ion-label>
+            <ion-label>{{'Users.PersonalData' | translate}}</ion-label>
             <ion-button slot="end">
               <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
             </ion-button>
@@ -26,7 +26,7 @@
             <ion-item>
               <ion-label>
                 <ion-row>
-                  <ion-col><b>Nombre</b></ion-col>
+                  <ion-col><b>{{'Users.Name' | translate}}</b></ion-col>
                   <ion-col>{{profesor.nombre}}</ion-col>
                 </ion-row>
               </ion-label>
@@ -34,7 +34,7 @@
             <ion-item>
               <ion-label>
                 <ion-row>
-                  <ion-col><b>Apellidos</b></ion-col>
+                  <ion-col><b>{{'Users.Surnames' | translate}}</b></ion-col>
                   <ion-col>{{profesor.apellidos}}</ion-col>
                 </ion-row>
               </ion-label>
@@ -42,7 +42,7 @@
             <ion-item>
               <ion-label>
                 <ion-row>
-                  <ion-col><b>Email</b></ion-col>
+                  <ion-col><b>{{'Users.Email' | translate}}</b></ion-col>
                   <ion-col>{{profesor.email}}</ion-col>
                 </ion-row>
               </ion-label>
@@ -55,6 +55,7 @@
       <ion-col class="ion-text-center">
         <ion-card>
           <ion-item class="ion-text-center" color="primary">
+            <!-- TODO translate -->
             <ion-label>Asignaturas que imparte</ion-label>
             <ion-button slot="end">
               <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>

@@ -5,29 +5,29 @@ import { Injectable } from '@angular/core';
 })
 export class RolMenuService {
   public userPages = [
-    { title: 'Home',        url: '/home',         icon: 'home'     },
-    { title: 'Asignaturas', url: '/asignaturas',  icon: 'book'     },
-    { title: 'Tutorías',    url: '/tutorias',     icon: 'chatboxes'},
-    { title: 'Agenda',      url: '/agenda',       icon: 'calendar' },
-    { title: 'Notas',       url: '/notas',        icon: 'school'   },
-    { title: 'Ajustes',     url: '/ajustes',      icon: 'settings' },
-    { title: 'Salir',       url: '/login',        icon: 'log-out'  }
+    { title: 'Announcements', url: '/announcements', icon: 'mail' },
+    { title: 'Asignaturas', url: '/asignaturas', icon: 'book' },
+    { title: 'Tutoring', url: '/tutoring', icon: 'chatboxes' },
+    { title: 'Calendar', url: '/calendar', icon: 'calendar' },
+    { title: 'Ratings', url: '/ratings', icon: 'school' },
+    { title: 'Settings', url: '/settings', icon: 'settings' },
+    { title: 'Salir', url: '/login', icon: 'log-out' }
   ];
   public profesorPages = [
-    { title: 'Home',        url: '/home',         icon: 'home'     },
-    { title: 'Asignaturas', url: '/asignaturas',  icon: 'book'     },
-    { title: 'Alumnos',     url: '/alumnos',      icon: 'contacts'},
-    { title: 'Tutorías',    url: '/tutorias',     icon: 'chatboxes'},
-    { title: 'Agenda',      url: '/agenda',       icon: 'calendar' },
-    { title: 'Ajustes',     url: '/ajustes',      icon: 'settings' },
-    { title: 'Salir',       url: '/login',        icon: 'log-out'  }
+    { title: 'Announcements', url: '/announcements', icon: 'mail' },
+    { title: 'Asignaturas', url: '/asignaturas', icon: 'book' },
+    { title: 'Alumnos', url: '/alumnos', icon: 'contacts' },
+    { title: 'Tutoring', url: '/tutoring', icon: 'chatboxes' },
+    { title: 'Calendar', url: '/calendar', icon: 'calendar' },
+    { title: 'Settings', url: '/settings', icon: 'settings' },
+    { title: 'Salir', url: '/login', icon: 'log-out' }
   ];
   public adminPages = [
-    { title: 'Home',        url: '/home',         icon: 'home'     },
-    { title: 'Asignaturas', url: '/asignaturas',  icon: 'color-palette'     },
-    { title: 'Usuarios',    url: '/usuarios',     icon: 'contacts'},
-    { title: 'Ajustes',     url: '/ajustes',      icon: 'settings'   },
-    { title: 'Salir',       url: '/login',        icon: 'log-out'  }
+    { title: 'Announcements', url: '/announcements', icon: 'mail' },
+    { title: 'Asignaturas', url: '/asignaturas', icon: 'color-palette' },
+    { title: 'Usuarios', url: '/usuarios', icon: 'contacts' },
+    { title: 'Settings', url: '/settings', icon: 'settings' },
+    { title: 'Salir', url: '/login', icon: 'log-out' }
   ];
 
   constructor() { }

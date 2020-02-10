@@ -14,13 +14,13 @@
   <ion-toolbar color="primary">
     <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="valorSegmento">
       <ion-segment-button value="profesores" style="font-size:11px;">
-        Profesores
+        {{'Users.Teachers' | translate}}
       </ion-segment-button>
       <ion-segment-button value="alumnos" style="font-size:11px;">
-        Alumnos
+        {{'Users.Students' | translate}}
       </ion-segment-button>
       <ion-segment-button value="otros" style="font-size:11px;">
-        Otros
+        {{'Users.Others' | translate}}
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -31,34 +31,34 @@
     <ion-list class="ion-no-padding">
       <ion-item class="ion-text-center" color="primary">
         <ion-avatar slot="start"></ion-avatar>
-        <ion-label>Nombre</ion-label>
-        <ion-label>Apellidos</ion-label>
-        <ion-label>Email</ion-label>
+        <ion-label>{{'Users.Name' | translate}}</ion-label>
+        <ion-label>{{'Users.Surnames' | translate}}</ion-label>
+        <ion-label>{{'Users.Email' | translate}}</ion-label>
       </ion-item>
       <ion-item-sliding *ngFor="let usuario of usuariosFiltrados | paginate: { itemsPerPage: 5, currentPage: p }">
         <ion-item-options side="end">
           <ion-item-option color="primary" (click)="perfil(usuario.id)">
             <ion-icon slot="top" name="information-circle-outline"></ion-icon>
-            Detalles
+            {{'Buttons.Details' | translate}}
           </ion-item-option>
           <ion-item-option color="secondary">
             <ion-icon slot="top" name="chatboxes"></ion-icon>
-            Mensaje
+            {{'Buttons.Message' | translate}}
           </ion-item-option>
           <ion-item-option color="tertiary">
             <ion-icon slot="top" name="create"></ion-icon>
-            Editar
+            {{'Buttons.Edit' | translate}}
           </ion-item-option>
           <ion-item-option color="danger">
             <ion-icon slot="top" name="trash"></ion-icon>
-            Borrar
+            {{'Buttons.Delete' | translate}}
           </ion-item-option>
         </ion-item-options>
 
         <ion-item class="ion-text-center">
           <ion-avatar slot="start">
             <img
-              [src]="usuario.photo_url ? 'http://localhost:9090/uploads/' + usuario.photo_url : 'https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y'">
+              [src]="usuario.photo_url ? 'http://localhost:9090/uploads/' + usuario.photo_url : 'assets/images/User_icon.png'">
           </ion-avatar>
           <ion-label class="ion-text-wrap">{{usuario.nombre}}</ion-label>
           <ion-label class="ion-text-wrap">{{usuario.apellidos}}</ion-label>

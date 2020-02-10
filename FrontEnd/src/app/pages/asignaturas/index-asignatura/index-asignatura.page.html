@@ -46,8 +46,8 @@
           </ion-button>
         </ion-buttons>
         <mat-menu #appMenu="matMenu">
-          <button mat-menu-item (click)="detalles(element.id)">Detalles</button>
-          <button mat-menu-item (click)="borrar(element)">Borrar</button>
+          <button mat-menu-item [routerLink]="'/asignaturas/'+element.id">{{'Buttons.Details' | translate}}</button>
+          <button mat-menu-item (click)="delete(element)">{{'Buttons.Delete' | translate}}</button>
         </mat-menu>
       </td>
     </ng-container>

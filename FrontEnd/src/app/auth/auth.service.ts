@@ -34,7 +34,7 @@ export class AuthService {
         this.usuario.nombre = data.body.nombre;
         this.usuario.apellidos = data.body.apellidos;
         this.usuario.email = data.body.email;
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/announcements');
         this.isLoggedIn.next(true);
         this.user.next(this.usuario);
       },

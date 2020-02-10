@@ -1,21 +1,47 @@
 {
     "Menu":{
-        "Home": "Home",
+        "Announcements": "Announcements",
         "Alumnos":"Students",
         "Profesores":"Teachers",
         "Usuarios":"Users",
         "Asignaturas":"Subjects",
         "Materiales": "Supplies",
-        "Tutorías": "Tutorials",
-        "Agenda": "Schedule",
-        "Notas" : "Ratings",
-        "Ajustes": "Settings",
+        "Tutoring": "Tutoring",
+        "Calendar": "Schedule",
+        "Ratings" : "Ratings",
+        "Settings": "Settings",
         "Salir" : "Exit"
     },
 
-    "Ajustes":{
-        "Selecciona un idioma":"Select a language"
+    "Announcements":{
+        "CreateAnnouncement": "Create announcement",
+        "UpdateAnnouncement": "Update announcement",
+        "Title": "Title",
+        "SelectASubject": "Select a subject",
+        "Importance": "Importance",
+        "Message": "Message"
     },
+
+    "Calendar": {
+        "Day" : "Day",
+        "Week" : "Week",
+        "Month": "Month",
+        "AddEvent": "Add event"
+    },
+
+    "Ratings":{
+        "Name": "Name",
+        "Weight": "Weight",
+        "Rating": "Rating",
+        "Weighted": "Weighted",
+        "Comments": "Comments"
+    },
+
+    "Settings":{
+        "SelectALanguage": "Select a language",
+        "SelectATheme": "Select a theme"
+    },
+
     "Asignaturas":{
         "Nombre":"Name",
         "Descripción":"Description",
@@ -25,10 +51,41 @@
         "Profesor":"Teacher"
 
     },
-    "Botones":{
-        "Crear":"Create",
-        "Detalles":"Details",
-        "Editar":"Edit",
-        "Borrar":"Delete"
+
+    "Users":{
+        "Name": "Name",
+        "Surnames": "Surnames",
+        "Email": "Email",
+        "Teachers": "Teachers",
+        "Students": "Students",
+        "Others": "Others",
+        "Profile": "Profile",
+        "PersonalData": "Personal data"
+    },
+    
+    "Buttons":{
+        "Create": "Create",
+        "Details": "Details",
+        "Edit": "Edit",
+        "Delete": "Delete",
+        "Message": "Message",
+        "Save": "Save",
+        "Clear": "Clear"
+    },
+
+    "Themes": {
+        "Default": "Default",
+        "Light": "Light",
+        "Dark": "Dark"
+    },
+
+    "Languages": {
+        "Spanish": "Spanish",
+        "English": "English",
+        "French": "French"
+    },
+
+    "Errors":{
+        "PageNotFound": "Page not found"
     }
 }
