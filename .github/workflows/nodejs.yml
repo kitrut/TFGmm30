@@ -13,11 +13,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - working-directory: FrontEnd
     
-    - name: Install dependencies
-      working-directory: FrontEnd
-      run: npm install
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
 
-    - name: Testing
-      working-directory: FrontEnd
-      run: npm test
+    - run: npm install
+    - run: npm test
+
+    env:
+        CI: true
