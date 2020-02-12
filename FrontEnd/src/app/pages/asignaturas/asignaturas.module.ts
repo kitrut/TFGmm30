@@ -95,9 +95,6 @@ const routes: Routes = [
     RatingsSubjectComponent,
     CalendarSubjectComponent,
     DetalleAsignaturaComponent
-  ],
-  entryComponents: [
-    AddSectionComponent
   ]
 })
 export class AsignaturasPageModule { }
