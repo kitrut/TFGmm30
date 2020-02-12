@@ -10,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import es from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
-import { NgCalendarModule  } from 'ionic2-calendar';
+// import { NgCalendarModule  } from 'ionic2-calendar';
 
 registerLocaleData(es);
 
@@ -28,7 +28,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     TranslateModule.forChild(),
-    NgCalendarModule
+    // NgCalendarModule
   ],
   declarations: [CalendarPage],
   providers: [ { provide: LOCALE_ID, useValue: 'es-*' } ]

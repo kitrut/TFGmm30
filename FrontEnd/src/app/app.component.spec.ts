@@ -15,8 +15,8 @@ import { IonicStorageModule } from '@ionic/storage';
 
 describe('AppComponent', () => {
 
-  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;  
-  
+  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
+
   beforeEach(async(() => {
     statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
     splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
@@ -31,7 +31,7 @@ describe('AppComponent', () => {
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
       ],
-      imports: [ 
+      imports: [
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
         IonicStorageModule.forRoot(),
@@ -41,9 +41,9 @@ describe('AppComponent', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }),],
+        }), ],
     }).compileComponents();
-  }));  
+  }));
 
   it('should create the app', async () => {
     const fixture = TestBed.createComponent(AppComponent);
