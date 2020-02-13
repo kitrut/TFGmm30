@@ -12,7 +12,7 @@ import { SectionService } from '@services/section.service';
 })
 export class EjerciciosComponent implements OnInit {
 
-  @ViewChild(IonReorderGroup, { static: false }) reorderGroup: IonReorderGroup;
+  @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
   id: any;
 
   secciones = [];

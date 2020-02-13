@@ -22,7 +22,6 @@ import { AnnouncementModalComponent } from './announcement-modal/announcement-mo
     TranslateModule.forChild(),
     ReactiveFormsModule
   ],
-  declarations: [AnnouncementsPage, AnnouncementModalComponent],
-  entryComponents: [AnnouncementModalComponent]
+  declarations: [AnnouncementsPage, AnnouncementModalComponent]
 })
 export class AnnouncementsPageModule {}

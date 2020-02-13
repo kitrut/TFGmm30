@@ -16,13 +16,12 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgCalendarModule } from 'ionic2-calendar';
+// import { NgCalendarModule } from 'ionic2-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -37,7 +36,7 @@ import { Camera } from '@ionic-native/camera/ngx';
       }
     }),
     NgxPaginationModule,
-    NgCalendarModule,
+    // NgCalendarModule,
     BrowserAnimationsModule
   ],
   providers: [

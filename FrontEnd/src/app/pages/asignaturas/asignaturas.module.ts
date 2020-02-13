@@ -22,7 +22,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { RatingsSubjectComponent } from './detalles/ratings-subject/ratings-subject.component';
-import { NgCalendarModule } from 'ionic2-calendar';
+// import { NgCalendarModule } from 'ionic2-calendar';
 import { CalendarSubjectComponent } from './detalles/calendar-subject/calendar-subject.component';
 import { AddSectionComponent } from './add-section/add-section.component';
 import { DetalleAsignaturaComponent } from './detalles/detalle-asignatura/detalle-asignatura.component';
@@ -79,7 +79,7 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    NgCalendarModule
+    // NgCalendarModule
   ],
   declarations: [
     DetalleAsignaturaPage,
@@ -95,9 +95,6 @@ const routes: Routes = [
     RatingsSubjectComponent,
     CalendarSubjectComponent,
     DetalleAsignaturaComponent
-  ],
-  entryComponents: [
-    AddSectionComponent
   ]
 })
 export class AsignaturasPageModule { }

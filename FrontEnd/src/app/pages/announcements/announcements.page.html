@@ -39,7 +39,7 @@
           </ion-col>
           <ion-col class="ion-text-right">
             {{((announcement.updateAt === announcement.createAt) ? announcement.createAt : announcement.updateAt) | date:'d/M/yy, h:mm a'}}
-            <ion-icon *ngIf="announcement.updateAt !== announcement.createAt" name="clock"></ion-icon>
+            <ion-icon *ngIf="announcement.updateAt !== announcement.createAt" name="time"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-card-subtitle>

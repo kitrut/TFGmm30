@@ -7,7 +7,7 @@ export class RolMenuService {
   public userPages = [
     { title: 'Announcements', url: '/announcements', icon: 'mail' },
     { title: 'Asignaturas', url: '/asignaturas', icon: 'book' },
-    { title: 'Tutoring', url: '/tutoring', icon: 'chatboxes' },
+    { title: 'Tutoring', url: '/tutoring', icon: 'chatbubbles' },
     { title: 'Calendar', url: '/calendar', icon: 'calendar' },
     { title: 'Ratings', url: '/ratings', icon: 'school' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
@@ -16,8 +16,8 @@ export class RolMenuService {
   public profesorPages = [
     { title: 'Announcements', url: '/announcements', icon: 'mail' },
     { title: 'Asignaturas', url: '/asignaturas', icon: 'book' },
-    { title: 'Alumnos', url: '/alumnos', icon: 'contacts' },
-    { title: 'Tutoring', url: '/tutoring', icon: 'chatboxes' },
+    { title: 'Alumnos', url: '/alumnos', icon: 'people' },
+    { title: 'Tutoring', url: '/tutoring', icon: 'chatbubbles' },
     { title: 'Calendar', url: '/calendar', icon: 'calendar' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Salir', url: '/login', icon: 'log-out' }
@@ -25,7 +25,7 @@ export class RolMenuService {
   public adminPages = [
     { title: 'Announcements', url: '/announcements', icon: 'mail' },
     { title: 'Asignaturas', url: '/asignaturas', icon: 'color-palette' },
-    { title: 'Usuarios', url: '/usuarios', icon: 'contacts' },
+    { title: 'Usuarios', url: '/usuarios', icon: 'people' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Salir', url: '/login', icon: 'log-out' }
   ];
