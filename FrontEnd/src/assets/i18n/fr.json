@@ -48,7 +48,9 @@
         "Curso":"Curso",
         "DetalleAsignatura": "Detalles de la asignatura",
         "AlumnosMatriculados":"Alumnos matriculados",
-        "Profesor":"Profesor"
+        "Profesor":"Profesor",
+        "AssignTeacher": "Assign teacher",
+        "SubjectCreation": "Subject creation"
 
     },
     
@@ -60,7 +62,15 @@
         "Students": "Students",
         "Others": "Others",
         "Profile": "Profile",
-        "PersonalData": "Personal data"
+        "PersonalData": "Personal data",
+        "AddUser": "Add user"
+    },
+
+    "Role": {
+        "Role": "Role",
+        "Admin" : "Admin",
+        "Teacher" : "Teacher",
+        "Student": "Student"
     },
 
     "Buttons":{

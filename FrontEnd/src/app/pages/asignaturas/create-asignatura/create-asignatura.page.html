@@ -2,9 +2,9 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="asignaturas"></ion-back-button>
     </ion-buttons>
-    <ion-title>Creación de Asignaturas</ion-title>
+    <ion-title>{{'Asignaturas.SubjectCreation' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,6 +22,6 @@
       <ion-label position="floating">{{'Asignaturas.Curso' | translate}}:</ion-label>
       <ion-input type="text" formControlName="curso" ngDefaultControl></ion-input>
     </ion-item>
-    <ion-button color="success" type="submit" [disabled]="!asignaturaForm.valid">{{'Botones.Crear' | translate}}</ion-button>
+    <ion-button color="success" type="submit" [disabled]="!asignaturaForm.valid">{{'Buttons.Create' | translate}}</ion-button>
   </form>
 </ion-content>
