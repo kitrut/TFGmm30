@@ -13,7 +13,7 @@ import { ClassNotes } from '@models/class-notes';
   styleUrls: ['./view-material.page.scss'],
 })
 export class ViewMaterialPage implements OnInit {
-
+  asignaturaId;
   titulo = '';
   mode = 'preview';
   material: Materiales = new Materiales(null, null, null);
@@ -32,6 +32,8 @@ export class ViewMaterialPage implements OnInit {
   constructor(private route: ActivatedRoute, private materialesService: MaterialesService, private classNotesService: ClassNotesService) { }
 
   ngOnInit() {
+    this.asignaturaId = this.route.snapshot.paramMap.get('id');
+    console.log(this.route.snapshot.paramMap.get('id'))
     const idMat = this.route.snapshot.paramMap.get('idMat');
     this.materialesService.getMaterial(idMat).subscribe(
       data => {

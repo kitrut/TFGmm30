@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlumnosService } from '@services/alumnos.service';
 import { Usuario } from '@models/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-create-user',
@@ -17,7 +18,7 @@ export class FormCreateUserComponent implements OnInit {
     rol: new FormControl('', Validators.required)
   });
 
-  constructor(private userService: AlumnosService) { }
+  constructor(private userService: AlumnosService, private router: Router) { }
 
   ngOnInit() {}
 
@@ -30,7 +31,7 @@ export class FormCreateUserComponent implements OnInit {
     };
     this.userService.create(user, this.userForm.value.rol).subscribe(
       data => {
-        alert('OK');
+        this.router.navigateByUrl('usuarios')
       },
       error => {
         alert('Error: ' + error);
