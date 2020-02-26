@@ -12,7 +12,7 @@ describe('AlumnoGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [AlumnoGuard],
-      imports: [ 
+      imports: [
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
         IonicStorageModule.forRoot(),
@@ -22,7 +22,7 @@ describe('AlumnoGuard', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }),],
+        }), ],
     });
   });
 

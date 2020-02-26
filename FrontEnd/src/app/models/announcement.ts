@@ -5,5 +5,5 @@ export class Announcement {
     importance: number;
     createAt?: Date;
     updateAt?: Date;
-    expanded? = true;
+    expanded ? = true;
 }
