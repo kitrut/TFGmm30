@@ -12,7 +12,7 @@ import { ProfesoresService } from '@services/profesores.service';
   templateUrl: './detalle-asignatura.component.html',
   styleUrls: ['./detalle-asignatura.component.scss'],
 })
-export class DetalleAsignaturaComponent implements OnInit{
+export class DetalleAsignaturaComponent implements OnInit {
 
   asignatura: Asignatura = new Asignatura();
   profesores: Profesor[];

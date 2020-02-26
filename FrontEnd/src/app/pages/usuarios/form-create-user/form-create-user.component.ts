@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlumnosService } from '@services/alumnos.service';
 import { Router } from '@angular/router';
+import { UserRole } from '@models/enums/user-role.enum';
 
 @Component({
   selector: 'app-form-create-user',
@@ -9,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-create-user.component.scss'],
 })
 export class FormCreateUserComponent implements OnInit {
+
+  userRole = UserRole;
 
   userForm = new FormGroup({
     id: new FormControl(null),

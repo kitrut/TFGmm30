@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Constantes } from '../global/constantes';
-import { Profesor } from '../models/usuario';
 import { Observable } from 'rxjs';
-import { Asignatura } from '../models/asignatura';
+import { Profesor } from '@models/usuario';
+import { Asignatura } from '@models/asignatura';
 
 @Injectable({
   providedIn: 'root'
