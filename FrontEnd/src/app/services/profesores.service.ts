@@ -12,11 +12,11 @@ export class ProfesoresService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Profesor[]> {
+  findAll(): Observable<Profesor[]> {
     return this.http.get<Profesor[]>(Constantes.URL_PROFESORES, {});
   }
 
-  getById(id): Observable<Profesor> {
+  findById(id): Observable<Profesor> {
     return this.http.get<Profesor>(Constantes.URL_PROFESORES + '/' + id, {});
   }
 

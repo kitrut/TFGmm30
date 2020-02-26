@@ -10,13 +10,7 @@ export class ThemeService {
   public theme: BehaviorSubject<string>;
   constructor(private storage: Storage) {
     this.theme = new BehaviorSubject('');
-    let tema;
-    this.storage.get('theme').then(
-      data => {
-        (data ? tema = data : tema = '');
-        this.setActiveTheme(tema);
-      }
-    );
+    this.storage.get('theme').then( data => this.setActiveTheme(data ? data : ''));
   }
 
   setActiveTheme(val: string) {

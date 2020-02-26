@@ -11,8 +11,12 @@ export class AlumnosService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Usuario[]> {
+  findAll(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(Constantes.URL_ALUMNOS, {});
+  }
+
+  findById(id): Observable<Usuario> {
+    return this.http.get<Usuario>(Constantes.URL_ALUMNOS + '/' + id, {});
   }
 
   getOthers(): Observable<Usuario[]> {
@@ -21,10 +25,6 @@ export class AlumnosService {
 
   create(user: Usuario, rol: string): Observable<Usuario> {
     return this.http.post<Usuario>(Constantes.URL_BACKEND + 'private/usuarios', {user, rol}, {});
-  }
-
-  getById(id): Observable<Usuario> {
-    return this.http.get<Usuario>(Constantes.URL_ALUMNOS + '/' + id, {});
   }
 
   addPhoto(id: string, photoBase64: string): Observable<Usuario> {

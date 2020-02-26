@@ -33,9 +33,8 @@ export class ViewMaterialPage implements OnInit {
 
   ngOnInit() {
     this.asignaturaId = this.route.snapshot.paramMap.get('id');
-    console.log(this.route.snapshot.paramMap.get('id'))
     const idMat = this.route.snapshot.paramMap.get('idMat');
-    this.materialesService.getMaterial(idMat).subscribe(
+    this.materialesService.findById(idMat).subscribe(
       data => {
         this.material = data;
         this.titulo = data.titulo;
@@ -49,7 +48,7 @@ export class ViewMaterialPage implements OnInit {
       }
     );
 
-    this.classNotesService.getById(idMat).subscribe(
+    this.classNotesService.findByMaterialId(idMat).subscribe(
       classNotes => {
         this.classNotes = {
           id: null,
@@ -64,7 +63,7 @@ export class ViewMaterialPage implements OnInit {
     );
   }
 
-  saveClassNotes(){
+  saveClassNotes() {
     if ( this.classNotes ) {
       this.classNotes.content = this.classNotesContent;
     } else {
@@ -83,8 +82,8 @@ export class ViewMaterialPage implements OnInit {
     );
   }
 
-  editorLoad($event){
-    console.log($event)
+  editorLoad($event) {
+    console.log($event);
   }
 
 }

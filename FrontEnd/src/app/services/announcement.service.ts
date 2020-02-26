@@ -11,7 +11,7 @@ export class AnnouncementService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Announcement[]> {
+  findAll(): Observable<Announcement[]> {
     return this.http.get<Announcement[]>(Constantes.URL_ANNOUNCEMENTS, {});
   }
 

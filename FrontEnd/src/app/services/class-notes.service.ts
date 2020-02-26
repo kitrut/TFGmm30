@@ -11,7 +11,7 @@ export class ClassNotesService {
 
   constructor(private http: HttpClient) { }
 
-  getById(materialId: string): Observable<ClassNotes> {
+  findByMaterialId(materialId: string): Observable<ClassNotes> {
     return this.http.get<ClassNotes>(Constantes.URL_CLASSNOTES + '/' + materialId, {});
   }
 

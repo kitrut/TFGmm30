@@ -23,18 +23,7 @@ export class CreateAsignaturaPage implements OnInit {
   }
 
   onSubmit() {
-    const asig: Asignatura = {
-      id: null,
-      nombre: this.asignaturaForm.value.nombre,
-      descripcion: this.asignaturaForm.value.descripcion,
-      curso: this.asignaturaForm.value.curso,
-      profesor: null,
-      materiales: null,
-      matriculas : null,
-      sections: null
-    };
-
-    this.asignaturasService.create(asig).subscribe(
+    this.asignaturasService.create(this.asignaturaForm.value).subscribe(
       data => this.router.navigateByUrl('/asignaturas/' + data.id),
       err => console.error(err)
     );
