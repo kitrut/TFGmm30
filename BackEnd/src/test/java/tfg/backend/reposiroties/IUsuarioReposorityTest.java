@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.enums.RoleType;
 import tfg.backend.models.exceptions.NotFoundException;
@@ -33,4 +32,10 @@ public class IUsuarioReposorityTest {
         assertEquals(96, usuarioReposority.findAllByRolesNombre(RoleType.ALUMNO).size());
     }
 
+    @Test
+    public void findAllByMatriculasAsignaturasId() {
+
+        assertEquals(usuarioReposority.findAllByMatriculasAsignaturasId(1l).size(), 17);
+        assertEquals(usuarioReposority.findAllByMatriculasAsignaturasId(4l).size(), 1);
+    }
 }

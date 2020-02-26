@@ -2,6 +2,8 @@ package tfg.backend.controllers;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +30,11 @@ import java.util.List;
 class UserWithRole {
     public Usuario user;
     public RoleType rol;
+
+    public UserWithRole(Usuario user, RoleType rol) {
+        this.user = user;
+        this.rol = rol;
+    }
 }
 
 @RestController
@@ -49,10 +56,10 @@ public class UserController {
     }
 
     @PostMapping("/usuarios")
-    public Usuario crearUsuario(@RequestBody UserWithRole user) {
+    public ResponseEntity<Usuario> crearUsuario(@RequestBody UserWithRole user) {
         //TODO reemplazar con contraseña aleatoria
         user.user.setPassword(bCryptPasswordEncoder.encode("password"));
-        return userService.create(user.user, user.rol);
+        return new ResponseEntity<>(userService.create(user.user, user.rol), HttpStatus.CREATED);
     }
 
     @PostMapping("/usuarios/{id}/photo")
