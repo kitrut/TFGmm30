@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Materiales } from '@models/materiales';
 import { MaterialesService } from '@services/materiales.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 interface UploadResult {
   isImg: boolean;
   name: string;
@@ -14,44 +16,16 @@ interface UploadResult {
 })
 export class AddMaterialesPage implements OnInit {
   matId = null;
-  asigId = null;
   sectionId = null;
-  titulo = '';
   mode = 'editor';
-  orden = 0;
 
-  content = `
-  # Titulo
-  ## Subtitulo
-  ---
+  materialForm = new FormGroup({
+    id: new FormControl(null),
+    titulo: new FormControl('', Validators.required),
+    orden: new FormControl(0),
+    contenido: new FormControl('')
+  });
 
-  > seccion
-
-  daadsada
-
-  \`\`\`Java
-  System.out.println("Hello world");
-  \`\`\`
-
-  ![Foto](https://www.stickpng.com/assets/images/5848093ccef1014c0b5e48fc.png)
-
-   <table class="table table-stripped">
-      <thead class="thead-dark">
-          <th>Nombre</th>
-          <th>Apellidos</th>
-      </thead>
-      <tbody>
-          <tr>
-              <td>Juan</td>
-              <td>Martinez</td>
-          </tr>
-      </tbody>
-   </table>
-
-  |Nombre|Apellidos|
-  |--|--|
-  |Juan|Martinez|
-  `;
   options = {
     resizable: true,
     scrollPastEnd: 0,
@@ -60,14 +34,9 @@ export class AddMaterialesPage implements OnInit {
 
   ngOnInit() {
     this.matId = this.route.snapshot.paramMap.get('idMat');
-    this.asigId = this.route.snapshot.paramMap.get('id');
     if (this.matId != null) {
-      this.materialesService.getMaterial(this.matId).subscribe(
-        data => {
-          this.titulo = data.titulo;
-          this.content = data.contenido;
-          this.orden = data.orden;
-        }
+      this.materialesService.findById(this.matId).subscribe(
+        data => this.materialForm.patchValue(data)
       );
     } else {
       this.sectionId = this.router.getCurrentNavigation().extras.state.sectionId;
@@ -75,15 +44,18 @@ export class AddMaterialesPage implements OnInit {
   }
 
   guardar() {
-    const mat: Materiales = new Materiales(this.matId, this.titulo, this.content);
-    mat.orden = this.orden;
+
+
+    const asigId = this.route.snapshot.paramMap.get('id');
+
     if (this.matId == null) {
-      this.materialesService.createMaterial(this.sectionId, mat).subscribe(() => {
-        this.router.navigateByUrl('/asignaturas/' + this.asigId);
-        //this.router.navigate(['/asignaturas/', this.asigId]);
+      this.materialesService.create(this.sectionId, this.materialForm.value).subscribe(() => {
+        this.router.navigateByUrl('/asignaturas/' + asigId);
       });
     } else {
-      this.materialesService.updateMaterial(mat).subscribe(() => {this.router.navigate(['/asignaturas/', this.asigId]); });
+      this.materialesService.update(this.materialForm.value).subscribe(() => {
+        this.router.navigate(['/asignaturas/', asigId]);
+      });
     }
   }
 

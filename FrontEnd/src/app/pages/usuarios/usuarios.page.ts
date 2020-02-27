@@ -29,14 +29,14 @@ export class UsuariosPage implements OnInit {
   }
 
   getProfesores() {
-    this.profesorService.getAll().subscribe(
+    this.profesorService.findAll().subscribe(
       data => this.usuarios =  this.usuariosFiltrados = data,
       error => this.usuarios = []
     );
   }
 
   getAlumnos() {
-    this.alumnoService.getAll().subscribe(
+    this.alumnoService.findAll().subscribe(
       data => this.usuarios =  this.usuariosFiltrados = data,
       error => this.usuarios = []
     );

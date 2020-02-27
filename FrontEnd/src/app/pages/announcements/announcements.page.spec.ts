@@ -23,7 +23,7 @@ describe('AnnouncementsPage', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }),],
+        }), ],
     })
       .compileComponents();
   }));

@@ -5,11 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 describe('AsignaturasService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [ HttpClientModule,]
+    imports: [ HttpClientModule, ]
   }));
 
   it('should be created', () => {
-    const service: AsignaturasService = TestBed.get(AsignaturasService);
+    const service: AsignaturasService = TestBed.inject(AsignaturasService);
     expect(service).toBeTruthy();
   });
 });

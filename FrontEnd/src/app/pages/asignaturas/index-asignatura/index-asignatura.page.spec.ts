@@ -17,7 +17,7 @@ describe('IndexAsignaturaPage', () => {
     TestBed.configureTestingModule({
       declarations: [ IndexAsignaturaPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
         IonicStorageModule.forRoot(),

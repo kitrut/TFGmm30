@@ -16,7 +16,7 @@ describe('ViewMaterialPage', () => {
     TestBed.configureTestingModule({
       declarations: [ ViewMaterialPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
         TranslateModule.forRoot({

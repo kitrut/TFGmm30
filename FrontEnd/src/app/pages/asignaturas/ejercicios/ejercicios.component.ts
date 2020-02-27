@@ -30,7 +30,7 @@ export class EjerciciosComponent implements OnInit {
   }
 
   getData(id) {
-    this.sectionsService.getSections(id).subscribe(
+    this.sectionsService.findAllByAsignaturaId(id).subscribe(
       data => {
         // console.log(data.sections)
         this.secciones = data;
@@ -61,7 +61,7 @@ export class EjerciciosComponent implements OnInit {
     this.router.navigateByUrl('/asignaturas/' + this.id + '/update/' + idMat);
   }
   deleteMaterial(idMat) {
-    this.materialesService.deleteMaterial(idMat).subscribe(data => this.getData(this.id));
+    this.materialesService.delete(idMat).subscribe(data => this.getData(this.id));
   }
 
   async addSection() {

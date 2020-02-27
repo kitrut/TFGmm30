@@ -40,7 +40,7 @@ export class IndexAsignaturaPage {
       this.authService.user.subscribe(() => this.getData());
     }
     if (this.authService.isAdmin()) {
-      this.asignService.getAll().subscribe(data => {
+      this.asignService.findAll().subscribe(data => {
         this.dataSource = new MatTableDataSource<Asignatura>(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -71,7 +71,7 @@ export class IndexAsignaturaPage {
   }
 
   delete(asignatura) {
-    this.asignService.deleteAsignatura(asignatura.id).subscribe(
+    this.asignService.delete(asignatura.id).subscribe(
       () => {
         this.getData();
       }

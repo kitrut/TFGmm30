@@ -4,7 +4,8 @@ import { Subject, Observable } from 'rxjs';
 import { Constantes } from '../global/constantes';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { Usuario } from '../models/usuario';
+import { UserRole } from '@models/enums/user-role.enum';
+import { Usuario } from '@models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
   public isLoggedIn = new Subject();
   public user = new Subject<Usuario>();
   usuario: Usuario = null;
-  rol = '';
+  rol: UserRole;
 
   constructor(
     private http: HttpClient,
@@ -67,7 +68,7 @@ export class AuthService {
       this.isLoggedIn.next(false);
       this.usuario = null;
       this.user.next(null);
-      this.rol = '';
+      this.rol = null;
       this.router.navigate(['/login']);
     });
 

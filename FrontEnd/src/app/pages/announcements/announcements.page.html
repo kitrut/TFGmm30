@@ -8,7 +8,7 @@
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="createAnnouncement(null)">
-          <ion-icon name="star" slot="icon-only" class="ion-no-margin ion-no-padding"></ion-icon>
+          <ion-icon name="add-circle-outline" slot="icon-only" class="ion-no-margin ion-no-padding"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -35,7 +35,7 @@
       <ion-card-subtitle>
         <ion-row>
           <ion-col>
-            <ion-icon name="contact" size="2x"></ion-icon>
+            <ion-icon name="person" size="2x"></ion-icon>
           </ion-col>
           <ion-col class="ion-text-right">
             {{((announcement.updateAt === announcement.createAt) ? announcement.createAt : announcement.updateAt) | date:'d/M/yy, h:mm a'}}

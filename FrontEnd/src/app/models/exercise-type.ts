@@ -5,6 +5,7 @@ export enum ExerciseType {
     TEST = 'TEST'
 }
 
+// tslint:disable-next-line: no-namespace
 export namespace ExerciseType {
     export function keys(): ExerciseType[] {
         return [ExerciseType.CHECKS, ExerciseType.REORDER, ExerciseType.TEST];

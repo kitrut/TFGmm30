@@ -15,7 +15,7 @@ describe('InterceptorService', () => {
   }));
 
   it('should be created', () => {
-    const service: InterceptorService = TestBed.get(InterceptorService);
+    const service: InterceptorService = TestBed.inject(InterceptorService);
     expect(service).toBeTruthy();
   });
 });
