@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="tutoring"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'Menu.Tutoring' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input placeholder="Título"></ion-input>
+    </ion-item>
+    
+    
+    <ion-item>
+
+      <ion-label position="floating">{{'Announcements.SelectASubject' | translate}}</ion-label>
+      <ion-select>
+        <ion-select-option value="0">General</ion-select-option>
+        <ion-select-option *ngFor="let asi of asignaturas" [value]="asi">
+          <ion-icon slot="end" name="bookmarks"></ion-icon>{{'['+ asi.curso + '] ' +  asi.nombre}}
+        </ion-select-option>
+      </ion-select>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Mensaje</ion-label>
+      <ion-input placeholder="Mensaje"></ion-input>
+    </ion-item>
+
+    <ion-button routerLink="../../tutoring" color="success" expand="full">{{'Buttons.Create' | translate }}</ion-button>
+  </form>
+</ion-content>

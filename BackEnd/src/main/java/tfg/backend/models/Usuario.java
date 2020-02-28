@@ -46,6 +46,10 @@ public class Usuario implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Collection<Tutoring> tutorings;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private Collection<Asignatura> asignaturasImpartidas;

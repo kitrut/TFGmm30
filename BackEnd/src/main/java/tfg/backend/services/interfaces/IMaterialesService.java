@@ -1,10 +1,8 @@
 package tfg.backend.services.interfaces;
 
-import org.springframework.stereotype.Service;
 import tfg.backend.models.Materiales;
 import tfg.backend.models.Section;
 
-@Service
 public interface IMaterialesService {
 
     Materiales findById(Long id);
