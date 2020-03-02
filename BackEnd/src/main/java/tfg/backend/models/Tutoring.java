@@ -1,5 +1,8 @@
 package tfg.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +35,7 @@ public class Tutoring {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="tutoring_id")
+    @JsonManagedReference
     private Collection<TutoringMessage> tutoringMessages;
 
     @CreationTimestamp

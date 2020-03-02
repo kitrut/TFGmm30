@@ -9,10 +9,10 @@
 </ion-header>
 
 <ion-content>
-  <form>
+  <form [formGroup]="tutoringForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">Título</ion-label>
-      <ion-input placeholder="Título"></ion-input>
+      <ion-input placeholder="Título" clearInput formControlName="title" ngDefaultControl></ion-input>
     </ion-item>
     
     
@@ -28,11 +28,13 @@
 
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Mensaje</ion-label>
-      <ion-input placeholder="Mensaje"></ion-input>
-    </ion-item>
+    <ion-item formArrayName="tutoringMessages">
+      <ng-container formGroupName="0">
+        <ion-label position="floating">Mensaje</ion-label>
+        <ion-textarea rows="15" clearInput formControlName="message" ngDefaultControl></ion-textarea>  
+      </ng-container>
+     </ion-item>
 
-    <ion-button routerLink="../../tutoring" color="success" expand="full">{{'Buttons.Create' | translate }}</ion-button>
+    <ion-button type="submit" color="success" expand="full">{{'Buttons.Create' | translate }}</ion-button>
   </form>
 </ion-content>

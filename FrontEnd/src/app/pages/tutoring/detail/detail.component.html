@@ -16,17 +16,17 @@
 <ion-content #content>
   <ion-list style="margin-bottom: 50px;">
 
-    <ion-item *ngFor="let message of messages">
+    <ion-item *ngFor="let message of messages" [ngClass]="message.fromConnectedUser ? 'user-message' : 'other-message'">
       <ion-avatar slot="start">
         <img src="assets/images/User_icon.png">
       </ion-avatar>
 
       <ion-label>
-        <p>Usuario 1 </p>
-        <p>{{ message }}</p>
+        <p>{{ message.user?.nombre + ' ' + message.user?.apellidos}}</p>
+        <p class="message-detail">{{ message.message }}</p>
       </ion-label>
 
-      <ion-note slot="end">10/10/10 14:00</ion-note>
+      <ion-note slot="end">{{ message.createAt | date:'d/M/yy, h:mm a'}}</ion-note>
     </ion-item>
 
 

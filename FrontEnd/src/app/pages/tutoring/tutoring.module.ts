@@ -10,6 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IndexComponent } from './index/index.component';
 import { DetailComponent } from './detail/detail.component';
 import { AddTutoringComponent } from './add-tutoring/add-tutoring.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const routes: Routes = [
   {
@@ -39,7 +40,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     TranslateModule.forChild(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   declarations: [
     TutoringPage,

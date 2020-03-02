@@ -2,6 +2,7 @@ package tfg.backend.controllers;
 
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,9 @@ import tfg.backend.models.Asignatura;
 import tfg.backend.models.Materiales;
 import tfg.backend.models.Tutoring;
 import tfg.backend.models.TutoringMessage;
+import tfg.backend.models.Usuario;
 import tfg.backend.services.interfaces.ITutoringService;
+import tfg.backend.services.interfaces.IUserService;
 
 @RestController
 @RequestMapping("/api/private/tutorings")
@@ -21,18 +24,36 @@ public class TutoringController {
     @Autowired
     ITutoringService tutoringService;
 
+    @Autowired
+    private IUserService userService;
+
+    @GetMapping()
+    public Collection<Tutoring>  findAll() {
+        return tutoringService.findAll();
+    }
+
     @GetMapping("{id}")
     public Tutoring findById(@PathVariable("id") Long id) {
         return tutoringService.findById(id);
     }
 
     @PostMapping
-    public Tutoring create(@RequestBody Tutoring tutoring) { return tutoringService.create(tutoring); }
+    public Tutoring create(@RequestBody Tutoring tutoring, Authentication auth) {
+        Usuario u = this.userService.getUser(auth.getPrincipal().toString());
+        tutoring.getTutoringMessages().stream().forEach(message -> message.setUser(u));
+        return tutoringService.create(tutoring);
+    }
 
 
     @GetMapping("{id}/messages")
-    public Collection<TutoringMessage> getMessages(@PathVariable("id") Long id) {
-        return tutoringService.findMessagesById(id);
+    public Collection<TutoringMessage> getMessages(@PathVariable("id") Long id,  Authentication auth) {
+        return tutoringService.findMessagesById(id, this.userService.getUser(auth.getPrincipal().toString()));
+    }
+
+    @PostMapping("{id}/messages")
+    public Tutoring create(@PathVariable("id") Long id, @RequestBody TutoringMessage message, Authentication auth) {
+        Usuario usuario = this.userService.getUser(auth.getPrincipal().toString());
+        return tutoringService.createMessage(id,message, usuario);
     }
 
 }

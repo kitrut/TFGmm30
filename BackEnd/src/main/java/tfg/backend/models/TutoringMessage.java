@@ -1,14 +1,13 @@
 package tfg.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -28,7 +27,10 @@ public class TutoringMessage {
     private Usuario user;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private Tutoring tutoring;
+
+    private boolean isFromConnectedUser;
 
     @CreationTimestamp
     @Column(updatable = false)

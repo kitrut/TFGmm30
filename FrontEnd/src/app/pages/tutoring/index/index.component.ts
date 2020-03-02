@@ -1,17 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { TutoringService } from '@services/tutoring.service';
+import { Tutoring } from '@models/tutoring';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent {
 
-  get tutorings(): any[] {
-    return [1, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5];
+  p = null;
+
+  tutorings: Tutoring[] =  [];
+
+  constructor(private tutoringService: TutoringService) { }
+
+  ionViewDidEnter() {
+    this.tutoringService.findAll().subscribe(
+      tutorings => this.tutorings = tutorings
+    );
   }
-  constructor() { }
-
-  ngOnInit() {}
-
 }
