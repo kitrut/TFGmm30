@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.enums.RoleType;
+import tfg.backend.models.exceptions.NotFoundException;
 import tfg.backend.services.interfaces.IUserService;
 
 import java.util.Collection;
@@ -22,10 +23,9 @@ public class UserServiceTest {
     @Autowired
     IUserService userService;
 
-    @Test
+    @Test(expected = NotFoundException.class)
     public void UserNotFound() {
-
-        assertNull(this.userService.findById(0l));
+        this.userService.findById(0l);
     }
 
     @Test
@@ -53,6 +53,6 @@ public class UserServiceTest {
     @Test
     public void getAll() {
         Collection<Usuario> usuarios = userService.all();
-        assertEquals(5, usuarios.size());
+        assertEquals(100, usuarios.size());
     }
 }
