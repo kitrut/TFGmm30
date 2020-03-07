@@ -13,11 +13,14 @@ import tfg.backend.services.interfaces.IExerciceService;
 @Service
 public class ExerciseService implements IExerciceService {
 
-    @Autowired
     IExerciseRepository exerciseRepository;
+    IMaterialesRepository materialesRepository;
 
     @Autowired
-    IMaterialesRepository materialesRepository;
+    public ExerciseService(IExerciseRepository exerciseRepository, IMaterialesRepository materialesRepository) {
+        this.exerciseRepository = exerciseRepository;
+        this.materialesRepository = materialesRepository;
+    }
 
     @Override
     public Set<Exercise> findExercisesByMaterialId(Long materialId) {

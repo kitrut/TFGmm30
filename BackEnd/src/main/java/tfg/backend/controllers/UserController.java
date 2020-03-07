@@ -39,7 +39,13 @@ public class UserController {
     IAsignaturaService asignaturaService;
 
     @Autowired
-    PasswordEncoder bCryptPasswordEncoder;
+    PasswordEncoder passwordEncoder;
+
+    public UserController(IUserService userService, IAsignaturaService asignaturaService, PasswordEncoder passwordEncoder){
+        this.userService = userService;
+        this.asignaturaService = asignaturaService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @GetMapping("/usuarios")
     public List<Usuario> index() {
@@ -50,7 +56,7 @@ public class UserController {
     @PostMapping("/usuarios")
     public Usuario crearUsuario(@RequestBody UserWithRole user) {
         //TODO reemplazar con contraseña aleatoria
-        user.user.setPassword(bCryptPasswordEncoder.encode("password"));
+        user.user.setPassword(passwordEncoder.encode("password"));
         return userService.create(user.user, user.rol);
     }
 

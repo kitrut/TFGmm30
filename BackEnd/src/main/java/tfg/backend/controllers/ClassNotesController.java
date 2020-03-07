@@ -15,8 +15,12 @@ import tfg.backend.services.interfaces.IClassNotesService;
 @RequestMapping("/api/private/classNotes")
 public class ClassNotesController {
 
-    @Autowired
     IClassNotesService classNotesService;
+
+    @Autowired
+    public ClassNotesController(IClassNotesService classNotesService) {
+        this.classNotesService = classNotesService;
+    }
 
     @GetMapping("/{idMaterial}")
     public ClassNotes find(@PathVariable("idMaterial") Long idMaterial, Principal principal) {

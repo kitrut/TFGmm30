@@ -18,8 +18,12 @@ import tfg.backend.services.interfaces.IUserService;
 @RequestMapping("/api/private")
 public class PrivateController {
 
-    @Autowired
     private IUserService userService;
+
+    @Autowired
+    public PrivateController(IUserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/checktoken")
     public void checktoken(HttpServletResponse response, Authentication auth) throws IOException {

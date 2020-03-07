@@ -13,8 +13,12 @@ import tfg.backend.services.interfaces.ITutoringService;
 @Service
 public class TutoringService implements ITutoringService {
 
-    @Autowired
     ITutoringRepository tutoringRepository;
+
+    @Autowired
+    public TutoringService(ITutoringRepository tutoringRepository) {
+        this.tutoringRepository = tutoringRepository;
+    }
 
     @Override
     public Tutoring findById(Long id) {

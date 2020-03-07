@@ -14,11 +14,14 @@ import tfg.backend.services.interfaces.IAsignaturaService;
 @Service
 public class AsignaturaService implements IAsignaturaService {
 
-    @Autowired
     private IAsignaturaRepository asignaturaRepository;
+    private IUserRepository usuarioReposority;
 
     @Autowired
-    private IUserRepository usuarioReposority;
+    public AsignaturaService(IAsignaturaRepository asignaturaRepository, IUserRepository usuarioReposority) {
+        this.asignaturaRepository = asignaturaRepository;
+        this.usuarioReposority = usuarioReposority;
+    }
 
     @Override
     public Collection<Asignatura> all() {

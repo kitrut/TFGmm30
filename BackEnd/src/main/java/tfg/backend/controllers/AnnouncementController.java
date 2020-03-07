@@ -15,8 +15,12 @@ import tfg.backend.services.interfaces.IAnnouncementService;
 @RequestMapping("/api/private/announcements")
 public class AnnouncementController {
 
-    @Autowired
     IAnnouncementService announcementService;
+
+    @Autowired
+    public AnnouncementController(IAnnouncementService announcementService) {
+        this.announcementService = announcementService;
+    }
 
     @GetMapping()
     public List<Announcement> index() {

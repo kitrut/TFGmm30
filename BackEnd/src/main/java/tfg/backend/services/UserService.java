@@ -22,28 +22,31 @@ import tfg.backend.services.interfaces.IUserService;
 @Service
 public class UserService implements UserDetailsService, IUserService {
 
-    @Autowired
-    private IUserRepository iUserRepository;
+    private IUserRepository userRepository;
+    private IRoleReposority roleReposority;
 
     @Autowired
-    private IRoleReposority roleReposority;
+    public UserService(IUserRepository userRepository, IRoleReposority roleReposority){
+        this.userRepository = userRepository;
+        this.roleReposority = roleReposority;
+    }
 
     @Override
     public Usuario create(Usuario user, RoleType role) {
         Role r = this.roleReposority.findByNombre(role).orElse(null);
 
         user.setRoles(Collections.singletonList(r));
-        return this.iUserRepository.save(user);
+        return this.userRepository.save(user);
     }
 
     @Override
     public Usuario save(Usuario user) {
-        return iUserRepository.save(user);
+        return userRepository.save(user);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username){
-        Usuario user = iUserRepository.findByUser(username).orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+        Usuario user = userRepository.findByUser(username).orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         for (Role r : user.getRoles()) {
@@ -56,24 +59,24 @@ public class UserService implements UserDetailsService, IUserService {
     @Override
     public Usuario getUser(String username) {
 
-        return iUserRepository.findByUser(username).orElse(null);
+        return userRepository.findByUser(username).orElse(null);
     }
 
     @Override
     public List<Usuario> all() {
 
-        return iUserRepository.findAll();
+        return userRepository.findAll();
     }
 
     @Override
     public Usuario findById(Long id) {
 
-        return this.iUserRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
+        return this.userRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
     @Override
     public List<Usuario> getByRole(RoleType role) {
 
-        return iUserRepository.findAllByRolesNombre(role);
+        return userRepository.findAllByRolesNombre(role);
     }
 }

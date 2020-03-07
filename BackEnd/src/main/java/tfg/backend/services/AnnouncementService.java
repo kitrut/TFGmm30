@@ -11,8 +11,12 @@ import tfg.backend.services.interfaces.IAnnouncementService;
 @Service
 public class AnnouncementService implements IAnnouncementService {
 
-    @Autowired
     IAnnouncementRepository announcementRepository;
+
+    @Autowired
+    public AnnouncementService(IAnnouncementRepository announcementRepository) {
+        this.announcementRepository = announcementRepository;
+    }
 
     @Override
     public Announcement findById(Long id) {

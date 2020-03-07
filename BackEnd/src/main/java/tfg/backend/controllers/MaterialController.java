@@ -19,11 +19,14 @@ import tfg.backend.services.interfaces.IMaterialesService;
 @RequestMapping("/api/private/materiales")
 public class MaterialController {
 
-    @Autowired
     IMaterialesService materialesService;
+    IExerciceService exerciseService;
 
     @Autowired
-    IExerciceService exerciseService;
+    public MaterialController(IMaterialesService materialesService, IExerciceService exerciseService) {
+        this.materialesService = materialesService;
+        this.exerciseService = exerciseService;
+    }
 
     @GetMapping("{idMat}")
     public Materiales getMaterial(@PathVariable("idMat") Long idMat) {

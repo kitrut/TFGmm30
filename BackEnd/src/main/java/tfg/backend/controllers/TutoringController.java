@@ -19,11 +19,14 @@ import tfg.backend.services.interfaces.IUserService;
 @RequestMapping("/api/private/tutorings")
 public class TutoringController {
 
-    @Autowired
     ITutoringService tutoringService;
+    IUserService userService;
 
     @Autowired
-    private IUserService userService;
+    public TutoringController(ITutoringService tutoringService, IUserService userService) {
+        this.tutoringService = tutoringService;
+        this.userService = userService;
+    }
 
     @GetMapping()
     public Collection<Tutoring>  findAll() {

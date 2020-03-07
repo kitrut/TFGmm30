@@ -15,11 +15,14 @@ import tfg.backend.services.interfaces.ISectionService;
 @Service
 public class SectionService implements ISectionService {
 
-    @Autowired
     ISectionRepository sectionRepository;
+    IAsignaturaRepository asignaturaRepository;
 
     @Autowired
-    IAsignaturaRepository asignaturaRepository;
+    public SectionService(ISectionRepository sectionRepository, IAsignaturaRepository asignaturaRepository) {
+        this.sectionRepository = sectionRepository;
+        this.asignaturaRepository = asignaturaRepository;
+    }
 
     @Override
     public Optional<Section> findById(Long id) {

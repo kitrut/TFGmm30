@@ -18,10 +18,14 @@ import tfg.backend.services.interfaces.ISectionService;
 @RequestMapping("/api/private/sections")
 public class SectionController {
 
-    @Autowired
     ISectionService sectionService;
-    @Autowired
     IMaterialesService materialesService;
+
+    @Autowired
+    public SectionController(ISectionService sectionService, IMaterialesService materialesService){
+        this.sectionService = sectionService;
+        this.materialesService = materialesService;
+    }
 
     @GetMapping("/{id}/sections")
     public Collection<Section> getAllSectionsOfAsignatura(@PathVariable("id") Long id) {

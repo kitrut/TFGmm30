@@ -21,14 +21,16 @@ import tfg.backend.services.interfaces.ISectionService;
 @RequestMapping("/api/private/asignaturas")
 public class AsignaturaController {
 
-    @Autowired
-    private IAsignaturaService asignaturaService;
-
-    @Autowired
+    IAsignaturaService asignaturaService;
     ISectionService sectionService;
+    IMaterialesService materialesService;
 
     @Autowired
-    IMaterialesService materialesService;
+    public AsignaturaController(IAsignaturaService asignaturaService, ISectionService sectionService, IMaterialesService materialesService) {
+        this.asignaturaService = asignaturaService;
+        this.sectionService = sectionService;
+        this.materialesService = materialesService;
+    }
 
     @GetMapping()
     public Collection<Asignatura> indexAsignatura() {
