@@ -44,11 +44,6 @@ public class AsignaturaController {
         return asignaturaService.findById(id);
     }
 
-    @PostMapping("/{id}/materiales")
-    public void addMateriales(@PathVariable("id") Long id, @RequestBody Materiales material) {
-        asignaturaService.addMaterial(id, material);
-    }
-
     @PostMapping("/{id}/profesor/{idProfesor}")
     public Asignatura addProfesor(@PathVariable("id") Long id, @PathVariable("idProfesor") Long idProfesor) {
         return asignaturaService.addProfesor(id, idProfesor);

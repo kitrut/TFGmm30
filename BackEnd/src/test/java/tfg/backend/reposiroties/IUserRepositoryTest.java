@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.enums.RoleType;
 import tfg.backend.models.exceptions.NotFoundException;
@@ -14,10 +13,10 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class IUsuarioReposorityTest {
+public class IUserRepositoryTest {
 
     @Autowired
-    IUsuarioReposority usuarioReposority;
+    IUserRepository usuarioReposority;
 
     @Test
     public void findUserByUsername() {

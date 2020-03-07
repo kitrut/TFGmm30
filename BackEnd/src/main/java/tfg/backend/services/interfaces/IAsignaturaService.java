@@ -17,8 +17,6 @@ public interface IAsignaturaService {
 
     void delete(Long id);
 
-    Asignatura addMaterial(Long idAsignatura, Materiales materiales);
-
     Usuario getProfesor(Long id);
 
     List<Usuario> getMatriculados(Long idAsignatura);
