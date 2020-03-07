@@ -29,11 +29,10 @@ export class DetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.tutoringService.getMessagesByTutoringId(this.id).subscribe(
       messages => this.messages = messages
-    )
+    );
   }
 
   sendMessage() {
-    //this.messages.push(this.messageForm.get('message').value);
     this.tutoringService.createMessage(this.id, this.messageForm.value).subscribe(
       (data: Tutoring) => {
         this.messages =  data.tutoringMessages;

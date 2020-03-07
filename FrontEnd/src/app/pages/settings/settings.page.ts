@@ -21,7 +21,7 @@ export class SettingsPage implements OnInit {
     private translateService: TranslateService,
     private themeService: ThemeService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     this.toggleDarkTheme(prefersDark.matches);
   }
