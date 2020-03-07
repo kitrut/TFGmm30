@@ -32,4 +32,10 @@ public class IUserRepositoryTest {
         assertEquals(96, usuarioReposority.findAllByRolesNombre(RoleType.ALUMNO).size());
     }
 
+    @Test
+    public void findAllByMatriculasAsignaturasId() {
+
+        assertEquals(usuarioReposority.findAllByMatriculasAsignaturasId(1l).size(), 17);
+        assertEquals(usuarioReposority.findAllByMatriculasAsignaturasId(4l).size(), 1);
+    }
 }
