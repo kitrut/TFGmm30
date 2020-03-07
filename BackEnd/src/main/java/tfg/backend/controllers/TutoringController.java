@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tfg.backend.models.Asignatura;
-import tfg.backend.models.Materiales;
 import tfg.backend.models.Tutoring;
 import tfg.backend.models.TutoringMessage;
 import tfg.backend.models.Usuario;

@@ -1,7 +1,6 @@
 package tfg.backend.services;
 
 import java.util.Collection;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Tutoring;
@@ -51,8 +50,8 @@ public class TutoringService implements ITutoringService {
     }
 
     private void fillConnectedUserMessages(Usuario usuario, Tutoring tutoring) {
-        tutoring.getTutoringMessages().stream().forEach(message -> {
-            message.setFromConnectedUser(usuario.equals(message.getUser()));
-        });
+        tutoring.getTutoringMessages().stream().forEach(message ->
+            message.setFromConnectedUser(usuario.equals(message.getUser()))
+        );
     }
 }

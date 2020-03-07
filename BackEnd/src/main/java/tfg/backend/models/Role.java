@@ -1,9 +1,7 @@
 package tfg.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Data;
-import tfg.backend.models.enums.RoleType;
-
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,7 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import java.util.Collection;
+import lombok.Data;
+import tfg.backend.models.enums.RoleType;
 
 @Entity
 @Data

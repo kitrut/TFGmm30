@@ -1,5 +1,7 @@
 package tfg.backend.controllers;
 
+import java.util.Collection;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,15 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tfg.backend.models.Asignatura;
-import tfg.backend.models.Materiales;
 import tfg.backend.models.Section;
 import tfg.backend.models.Usuario;
 import tfg.backend.services.interfaces.IAsignaturaService;
 import tfg.backend.services.interfaces.IMaterialesService;
 import tfg.backend.services.interfaces.ISectionService;
-
-import java.util.Collection;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/private/asignaturas")

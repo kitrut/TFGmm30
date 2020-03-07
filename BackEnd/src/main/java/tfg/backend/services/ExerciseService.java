@@ -1,16 +1,14 @@
 package tfg.backend.services;
 
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Exercise;
-import tfg.backend.models.ExerciseOption;
 import tfg.backend.models.Materiales;
 import tfg.backend.models.exceptions.NotFoundException;
 import tfg.backend.reposiroties.IExerciseRepository;
 import tfg.backend.reposiroties.IMaterialesRepository;
 import tfg.backend.services.interfaces.IExerciceService;
-
-import java.util.Set;
 
 @Service
 public class ExerciseService implements IExerciceService {

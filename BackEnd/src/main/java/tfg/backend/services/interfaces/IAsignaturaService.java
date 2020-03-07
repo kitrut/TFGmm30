@@ -1,11 +1,9 @@
 package tfg.backend.services.interfaces;
 
-import tfg.backend.models.Asignatura;
-import tfg.backend.models.Materiales;
-import tfg.backend.models.Usuario;
-
 import java.util.Collection;
 import java.util.List;
+import tfg.backend.models.Asignatura;
+import tfg.backend.models.Usuario;
 
 public interface IAsignaturaService {
 
