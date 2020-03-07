@@ -2,8 +2,8 @@ package tfg.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
-
+import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,17 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import java.io.Serializable;
-import java.util.Collection;
+import lombok.Data;
 
 @Entity
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario implements Serializable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -41,10 +37,14 @@ public class Usuario implements Serializable {
     private String apellidos;
     private String email;
 
-    private String photo_url;
+    private String photoUrl;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Collection<Tutoring> tutorings;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore

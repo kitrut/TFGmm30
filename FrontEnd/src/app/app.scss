@@ -22,9 +22,21 @@ table{
         color: var(--ion-color-gray-contrast, white);
     }
 }
+
+.mat-row:nth-child(odd){
+    background: var(--ion-color-light, lightgray);
+    td{
+        color: var(--ion-color-light-contrast, white);
+    }
+}
 .mat-footer-row{
     background: var(--ion-color-primary, blue);
     td{
         color: var(--ion-color-primary-contrast, white);
     }
+}
+
+.mat-paginator{
+    background-color: var(--ion-color-primary, blue);
+    color: var(--ion-color-primary-contrast, white);
 }

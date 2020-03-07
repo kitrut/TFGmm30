@@ -18,7 +18,7 @@ describe('LoginPage', () => {
     TestBed.configureTestingModule({
       declarations: [ LoginPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
         FormsModule,
@@ -30,7 +30,7 @@ describe('LoginPage', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }),]
+        }), ]
     })
     .compileComponents();
   }));

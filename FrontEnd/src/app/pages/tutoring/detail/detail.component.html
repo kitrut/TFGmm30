@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="tutoring"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'Menu.Tutoring' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="person-add-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content>
+  <ion-list style="margin-bottom: 50px;">
+
+    <ion-item *ngFor="let message of messages" [ngClass]="message.fromConnectedUser ? 'user-message' : 'other-message'">
+      <ion-avatar slot="start">
+        <img src="assets/images/User_icon.png">
+      </ion-avatar>
+
+      <ion-label>
+        <p>{{ message.user?.nombre + ' ' + message.user?.apellidos}}</p>
+        <p class="message-detail">{{ message.message }}</p>
+      </ion-label>
+
+      <ion-note slot="end">{{ message.createAt | date:'d/M/yy, h:mm a'}}</ion-note>
+    </ion-item>
+
+
+  </ion-list>
+
+</ion-content>
+<ion-footer>
+  <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+    <ion-item>
+
+      <ion-input clearInput formControlName="message" placeholder="Tu respuesta..."></ion-input>
+      <ion-buttons>
+        <ion-button type="submit" [disabled]="!messageForm.valid">
+          <ion-icon name="send" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+
+  </form>
+</ion-footer>

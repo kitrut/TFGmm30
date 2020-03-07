@@ -15,7 +15,7 @@ export class AnnouncementsPage implements OnInit {
   constructor(private announcementService: AnnouncementService, public modalController: ModalController) {}
 
   ngOnInit(): void {
-    this.announcementService.getAll().subscribe(data => this.announcements = data);
+    this.announcementService.findAll().subscribe(data => this.announcements = data);
   }
 
   async createAnnouncement(announcement: Announcement) {

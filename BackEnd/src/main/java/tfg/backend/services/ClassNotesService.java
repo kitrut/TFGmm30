@@ -10,8 +10,12 @@ import tfg.backend.services.interfaces.IClassNotesService;
 @Service
 public class ClassNotesService implements IClassNotesService {
 
-    @Autowired
     IClassNotesRepository classNotesRepository;
+
+    @Autowired
+    public ClassNotesService(IClassNotesRepository classNotesRepository) {
+        this.classNotesRepository = classNotesRepository;
+    }
 
     @Override
     public ClassNotes findByUserAndMaterial(Long materialId, String user) {

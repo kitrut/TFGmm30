@@ -28,9 +28,9 @@
     <ion-item>
       <ion-label position="floating">{{'Role.Role' | translate}}</ion-label>
       <ion-select placeholder="Select One" formControlName="rol" ngDefaultControl>
-        <ion-select-option value="PROFESOR">{{'Role.Teacher' | translate}}</ion-select-option>
-        <ion-select-option value="ALUMNO">{{'Role.Student' | translate}}</ion-select-option>
-        <ion-select-option value="ADMIN">{{'Role.Admin' | translate}}</ion-select-option>
+        <ion-select-option [value]="userRole.PROFESOR">{{'Role.Teacher' | translate}}</ion-select-option>
+        <ion-select-option [value]="userRole.ALUMNO">{{'Role.Student' | translate}}</ion-select-option>
+        <ion-select-option [value]="userRole.ADMIN">{{'Role.Admin' | translate}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-row>
@@ -38,7 +38,7 @@
         <ion-button expand="block" color="danger" (click)="clearForm()">{{'Buttons.Clear' | translate}}</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button type="submit" expand="block" color="success" [disabled]="!userForm.valid">{{'Buttons.Create' | translate}}</ion-button>
+        <ion-button type="submit" expand="full" color="success" [disabled]="!userForm.valid">{{'Buttons.Create' | translate}}</ion-button>
       </ion-col>
     </ion-row>
   </form>

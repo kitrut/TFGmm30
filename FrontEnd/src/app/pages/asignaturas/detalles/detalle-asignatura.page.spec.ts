@@ -17,7 +17,7 @@ describe('DetalleAsignaturaPage', () => {
     TestBed.configureTestingModule({
       declarations: [ DetalleAsignaturaPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
         TranslateModule.forRoot({

@@ -1,5 +1,8 @@
 package tfg.backend.services;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Asignatura;
@@ -9,18 +12,17 @@ import tfg.backend.reposiroties.IAsignaturaRepository;
 import tfg.backend.reposiroties.ISectionRepository;
 import tfg.backend.services.interfaces.ISectionService;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class SectionService implements ISectionService {
 
-    @Autowired
     ISectionRepository sectionRepository;
+    IAsignaturaRepository asignaturaRepository;
 
     @Autowired
-    IAsignaturaRepository asignaturaRepository;
+    public SectionService(ISectionRepository sectionRepository, IAsignaturaRepository asignaturaRepository) {
+        this.sectionRepository = sectionRepository;
+        this.asignaturaRepository = asignaturaRepository;
+    }
 
     @Override
     public Optional<Section> findById(Long id) {

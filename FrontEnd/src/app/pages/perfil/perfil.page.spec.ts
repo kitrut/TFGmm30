@@ -17,7 +17,7 @@ describe('PerfilPage', () => {
     TestBed.configureTestingModule({
       declarations: [ PerfilPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
         IonicStorageModule.forRoot(),
@@ -27,7 +27,7 @@ describe('PerfilPage', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }),],
+        }), ],
     })
     .compileComponents();
   }));

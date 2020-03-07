@@ -50,6 +50,9 @@ public class UserControllerTest {
         return mapper.writeValueAsBytes(object);
     }
 
+    @MockBean
+    IAsignaturaService asignaturaService;
+
     @Test
     public void getProfesorSinToken() throws Exception {
         when(userService.findById(2l)).thenReturn(null);

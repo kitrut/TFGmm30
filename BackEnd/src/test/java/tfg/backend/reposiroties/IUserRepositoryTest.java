@@ -13,10 +13,10 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class IUsuarioReposorityTest {
+public class IUserRepositoryTest {
 
     @Autowired
-    IUsuarioReposority usuarioReposority;
+    IUserRepository usuarioReposority;
 
     @Test
     public void findUserByUsername() {

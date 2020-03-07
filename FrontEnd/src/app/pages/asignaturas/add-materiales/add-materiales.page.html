@@ -14,11 +14,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label position="floating">Título del documento:</ion-label>
-    <ion-input type="text" [(ngModel)]="titulo"></ion-input>
-  </ion-item>
-  <md-editor name="Content" [upload]="doUpload" [(ngModel)]="content" [mode]="mode" [options]="options"
+
+  <form [formGroup]="materialForm">
+
+    <ion-item>
+      <ion-label position="floating">Título del documento:</ion-label>
+      <ion-input clearInput formControlName="titulo" type="text"></ion-input>
+    </ion-item>
+
+    <md-editor name="Content" [upload]="doUpload" formControlName="contenido" [mode]="mode" [options]="options"
     [height]="'auto'" required maxlength="1000">
-  </md-editor>
+    </md-editor>   
+  </form>
 </ion-content>

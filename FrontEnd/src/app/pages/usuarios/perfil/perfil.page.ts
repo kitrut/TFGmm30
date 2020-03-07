@@ -23,7 +23,7 @@ export class PerfilPage implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.profesorService.getById(this.id).subscribe(data => this.profesor = data);
+    this.profesorService.findById(this.id).subscribe(data => this.profesor = data);
     this.profesorService.getAsignaturas(this.id).subscribe(data => this.asignaturas = data);
   }
 

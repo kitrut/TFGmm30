@@ -16,7 +16,7 @@ describe('CreateAsignaturaPage', () => {
     TestBed.configureTestingModule({
       declarations: [ CreateAsignaturaPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
         FormsModule,
@@ -27,7 +27,7 @@ describe('CreateAsignaturaPage', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }),]
+        }), ]
     })
     .compileComponents();
   }));

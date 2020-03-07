@@ -1,6 +1,6 @@
 package tfg.backend.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Collection;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Materiales;
 import tfg.backend.models.Section;
@@ -9,15 +9,16 @@ import tfg.backend.reposiroties.IMaterialesRepository;
 import tfg.backend.reposiroties.ISectionRepository;
 import tfg.backend.services.interfaces.IMaterialesService;
 
-import java.util.Collection;
-
 @Service
 public class MaterialesService implements IMaterialesService {
 
-    @Autowired
     IMaterialesRepository materialesRepository;
-    @Autowired
     ISectionRepository sectionRepository;
+
+    public MaterialesService(IMaterialesRepository materialesRepository, ISectionRepository sectionRepository) {
+        this.materialesRepository = materialesRepository;
+        this.sectionRepository = sectionRepository;
+    }
 
     @Override
     public Materiales findById(Long id) {

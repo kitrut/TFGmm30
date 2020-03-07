@@ -15,7 +15,7 @@ describe('MaterialesPage', () => {
     TestBed.configureTestingModule({
       declarations: [ MaterialesPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         HttpClientModule,
         TranslateModule.forRoot({
           loader: {
@@ -23,7 +23,7 @@ describe('MaterialesPage', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }),],
+        }), ],
     })
     .compileComponents();
   }));

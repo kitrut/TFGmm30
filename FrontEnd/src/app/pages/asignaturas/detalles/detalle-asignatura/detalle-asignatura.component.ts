@@ -12,7 +12,7 @@ import { ProfesoresService } from '@services/profesores.service';
   templateUrl: './detalle-asignatura.component.html',
   styleUrls: ['./detalle-asignatura.component.scss'],
 })
-export class DetalleAsignaturaComponent implements OnInit{
+export class DetalleAsignaturaComponent implements OnInit {
 
   asignatura: Asignatura = new Asignatura();
   profesores: Profesor[];
@@ -34,7 +34,7 @@ export class DetalleAsignaturaComponent implements OnInit{
   }
 
   getData(id) {
-    this.asginaturasService.getById(id).subscribe(
+    this.asginaturasService.findById(id).subscribe(
       data => {
         this.asignatura = data;
         this.asginaturasService.getProfesor(id).subscribe(
@@ -57,7 +57,7 @@ export class DetalleAsignaturaComponent implements OnInit{
   }
 
   mostrarProfesores() {
-    this.profService.getAll().subscribe(data => this.profesores = data);
+    this.profService.findAll().subscribe(data => this.profesores = data);
   }
 
   asignarProfesor() {

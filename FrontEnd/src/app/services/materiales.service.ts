@@ -13,26 +13,27 @@ export class MaterialesService {
 
   constructor(private http: HttpClient) { }
 
-  getMaterial(materialId: string): Observable<Materiales> {
+  findById(materialId: string): Observable<Materiales> {
     return this.http.get<Materiales>(Constantes.URL_MATERIALES + '/' + materialId, {});
   }
 
   getExercisesOfMaterial(materialId: string): Observable<Exercise[]> {
     return this.http.get<Exercise[]>(Constantes.URL_MATERIALES + '/' + materialId + '/exercises', {});
   }
+
   createExercise(materialId: string, exercise: Exercise): Observable<Exercise> {
     return this.http.post<Exercise>(Constantes.URL_MATERIALES + '/' + materialId + '/exercises', exercise, {});
   }
 
-  deleteMaterial(materialId: string): Observable<any> {
+  delete(materialId: string): Observable<any> {
     return this.http.delete(Constantes.URL_MATERIALES + '/' + materialId, {});
   }
 
-  createMaterial(sectionId: string, materiales: Materiales): Observable<Section> {
+  create(sectionId: string, materiales: Materiales): Observable<Section> {
     return this.http.post<Section>(Constantes.URL_SECTIONS + '/' + sectionId + '/materiales' , materiales, {});
   }
 
-  updateMaterial(materiales: Materiales): Observable<Materiales> {
+  update(materiales: Materiales): Observable<Materiales> {
     return this.http.put<Materiales>(Constantes.URL_MATERIALES, materiales, {});
   }
 }

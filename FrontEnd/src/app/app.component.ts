@@ -10,6 +10,7 @@ import { AuthService } from './auth/auth.service';
 import { Usuario } from '@models/usuario';
 import { RolMenuService } from '@services/rol-menu.service';
 import { ThemeService } from '@services/theme.service';
+import { UserRole } from '@models/enums/user-role.enum';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ import { ThemeService } from '@services/theme.service';
 })
 export class AppComponent {
   public appPages;
-  public rolUsuario;
+  public rolUsuario: UserRole;
   public user: Usuario;
   public isLoggued;
 

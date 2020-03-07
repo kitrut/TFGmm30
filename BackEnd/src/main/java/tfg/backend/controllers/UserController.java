@@ -1,5 +1,13 @@
 package tfg.backend.controllers;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Collection;
+import java.util.List;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,15 +24,6 @@ import tfg.backend.models.Usuario;
 import tfg.backend.models.enums.RoleType;
 import tfg.backend.services.interfaces.IAsignaturaService;
 import tfg.backend.services.interfaces.IUserService;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.Collection;
-import java.util.List;
 
 @Data
 class UserWithRole {
@@ -47,7 +46,13 @@ public class UserController {
     IAsignaturaService asignaturaService;
 
     @Autowired
-    PasswordEncoder bCryptPasswordEncoder;
+    PasswordEncoder passwordEncoder;
+
+    public UserController(IUserService userService, IAsignaturaService asignaturaService, PasswordEncoder passwordEncoder){
+        this.userService = userService;
+        this.asignaturaService = asignaturaService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @GetMapping("/usuarios")
     public List<Usuario> index() {
@@ -58,7 +63,7 @@ public class UserController {
     @PostMapping("/usuarios")
     public ResponseEntity<Usuario> crearUsuario(@RequestBody UserWithRole user) {
         //TODO reemplazar con contraseña aleatoria
-        user.user.setPassword(bCryptPasswordEncoder.encode("password"));
+        user.user.setPassword(passwordEncoder.encode("password"));
         return new ResponseEntity<>(userService.create(user.user, user.rol), HttpStatus.CREATED);
     }
 
@@ -71,7 +76,7 @@ public class UserController {
         Files.copy(new ByteArrayInputStream(imageBytes),rootAbsolutePath, StandardCopyOption.REPLACE_EXISTING);
 
         Usuario usuario = userService.findById(id);
-        usuario.setPhoto_url("profile-photo/" + "profile-"+id+".jpeg");
+        usuario.setPhotoUrl("profile-photo/" + "profile-"+id+".jpeg");
         return userService.save(usuario);
     }
 

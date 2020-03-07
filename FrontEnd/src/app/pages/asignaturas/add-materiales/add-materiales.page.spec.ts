@@ -15,7 +15,7 @@ describe('AddMaterialesPage', () => {
     TestBed.configureTestingModule({
       declarations: [ AddMaterialesPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ 
+      imports: [
         RouterTestingModule.withRoutes([]),
         HttpClientModule,
         TranslateModule.forRoot({
@@ -24,7 +24,7 @@ describe('AddMaterialesPage', () => {
               useFactory: HttpLoaderFactory,
               deps: [HttpClient]
           }
-        }),]
+        }), ]
     })
     .compileComponents();
   }));
