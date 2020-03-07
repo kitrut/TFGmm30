@@ -17,26 +17,27 @@ export class SettingsPage implements OnInit {
     ];
   }
 
-  get themes() {
-    return [
-      {value: '', label: this.translateService.instant('Themes.Default')},
-      {value: 'light-theme', label: this.translateService.instant('Themes.Light')},
-      {value: 'dark-theme', label: this.translateService.instant('Themes.Dark')}
-    ];
-  }
-
   constructor(
     private translateService: TranslateService,
     private themeService: ThemeService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    this.toggleDarkTheme(prefersDark.matches);
+  }
 
   changeLanguage(language) {
     this.translateService.use(language.detail.value);
   }
 
-  changeTheme(theme) {
-    this.themeService.setActiveTheme(theme.detail.value);
+  changeTheme($event) {
+    const checked = $event.detail.checked;
+    this.toggleDarkTheme(checked);
+    this.themeService.setActiveTheme(checked ? 'dark' : null);
+  }
+
+  toggleDarkTheme(shouldAdd) {
+    document.body.classList.toggle('dark', shouldAdd);
   }
 
 }

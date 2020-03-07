@@ -23,7 +23,7 @@
       <ion-card-title>
         <ion-item lines="none" color="tertiary">
           {{announcement.title}}
-          <ion-icon name="star" slot="end" size="small" class="ion-no-margin ion-no-padding" color="gold" *ngFor="let stars of [].constructor(announcement.importance)"></ion-icon>
+          <ion-icon name="star" slot="end" size="small" class="ion-no-margin ion-no-padding" color="warning" *ngFor="let stars of [].constructor(announcement.importance)"></ion-icon>
           <ion-buttons slot="end">
               <ion-button (click)="createAnnouncement(announcement)">
                 <ion-icon name="create" slot="icon-only" class="ion-no-margin ion-no-padding"></ion-icon>

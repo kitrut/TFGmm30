@@ -20,7 +20,7 @@ export class DetailComponent implements OnInit {
     message: new FormControl(null, Validators.required),
   });
 
-  // messages = ['Hola', 'Buenos días', 'Tengo una duda del tema 1'];
+  //  messages = ['Hola', 'Buenos días', 'Tengo una duda del tema 1'];
   messages: TutoringMessage[] = [];
 
   constructor(private tutoringService: TutoringService, private route: ActivatedRoute) { }
