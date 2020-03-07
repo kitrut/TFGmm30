@@ -5,7 +5,7 @@ export class Usuario {
     nombre: string;
     apellidos: string;
     email: string;
-    photo_url?: string;
+    photoUrl?: string;
 }
 
 export class Profesor extends Usuario {

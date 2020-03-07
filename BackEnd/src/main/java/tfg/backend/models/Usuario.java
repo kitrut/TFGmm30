@@ -22,9 +22,6 @@ import java.util.Collection;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario implements Serializable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -41,7 +38,7 @@ public class Usuario implements Serializable {
     private String apellidos;
     private String email;
 
-    private String photo_url;
+    private String photoUrl;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles;

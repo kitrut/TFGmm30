@@ -64,7 +64,7 @@ public class UserController {
         Files.copy(new ByteArrayInputStream(imageBytes),rootAbsolutePath, StandardCopyOption.REPLACE_EXISTING);
 
         Usuario usuario = userService.findById(id);
-        usuario.setPhoto_url("profile-photo/" + "profile-"+id+".jpeg");
+        usuario.setPhotoUrl("profile-photo/" + "profile-"+id+".jpeg");
         return userService.save(usuario);
     }
 
