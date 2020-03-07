@@ -1,5 +1,7 @@
 package tfg.backend.controllers;
 
+import java.util.Collection;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,28 +11,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tfg.backend.models.Asignatura;
-import tfg.backend.models.Materiales;
 import tfg.backend.models.Section;
 import tfg.backend.models.Usuario;
 import tfg.backend.services.interfaces.IAsignaturaService;
 import tfg.backend.services.interfaces.IMaterialesService;
 import tfg.backend.services.interfaces.ISectionService;
 
-import java.util.Collection;
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/private/asignaturas")
 public class AsignaturaController {
 
-    @Autowired
-    private IAsignaturaService asignaturaService;
-
-    @Autowired
+    IAsignaturaService asignaturaService;
     ISectionService sectionService;
+    IMaterialesService materialesService;
 
     @Autowired
-    IMaterialesService materialesService;
+    public AsignaturaController(IAsignaturaService asignaturaService, ISectionService sectionService, IMaterialesService materialesService) {
+        this.asignaturaService = asignaturaService;
+        this.sectionService = sectionService;
+        this.materialesService = materialesService;
+    }
 
     @GetMapping()
     public Collection<Asignatura> indexAsignatura() {
@@ -42,11 +42,6 @@ public class AsignaturaController {
     public Asignatura find(@PathVariable("id") Long id) {
 
         return asignaturaService.findById(id);
-    }
-
-    @PostMapping("/{id}/materiales")
-    public void addMateriales(@PathVariable("id") Long id, @RequestBody Materiales material) {
-        asignaturaService.addMaterial(id, material);
     }
 
     @PostMapping("/{id}/profesor/{idProfesor}")

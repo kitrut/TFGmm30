@@ -1,5 +1,8 @@
 package tfg.backend.services;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,41 +16,37 @@ import tfg.backend.models.Usuario;
 import tfg.backend.models.enums.RoleType;
 import tfg.backend.models.exceptions.NotFoundException;
 import tfg.backend.reposiroties.IRoleReposority;
-import tfg.backend.reposiroties.IUsuarioReposority;
+import tfg.backend.reposiroties.IUserRepository;
 import tfg.backend.services.interfaces.IUserService;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 @Service
 public class UserService implements UserDetailsService, IUserService {
 
-    @Autowired
-    private IUsuarioReposority iUsuarioReposority;
+    private IUserRepository userRepository;
+    private IRoleReposority roleReposority;
 
     @Autowired
-    private IRoleReposority roleReposority;
+    public UserService(IUserRepository userRepository, IRoleReposority roleReposority){
+        this.userRepository = userRepository;
+        this.roleReposority = roleReposority;
+    }
 
     @Override
     public Usuario create(Usuario user, RoleType role) {
         Role r = this.roleReposority.findByNombre(role).orElse(null);
 
         user.setRoles(Collections.singletonList(r));
-        return this.iUsuarioReposority.save(user);
+        return this.userRepository.save(user);
     }
 
     @Override
     public Usuario save(Usuario user) {
-        return iUsuarioReposority.save(user);
+        return userRepository.save(user);
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario user = iUsuarioReposority.findByUser(username).orElse(null);
-
-        if (user == null)
-            throw new UsernameNotFoundException("Usuario no encontrado");
+    public UserDetails loadUserByUsername(String username){
+        Usuario user = userRepository.findByUser(username).orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         for (Role r : user.getRoles()) {
@@ -60,24 +59,24 @@ public class UserService implements UserDetailsService, IUserService {
     @Override
     public Usuario getUser(String username) {
 
-        return iUsuarioReposority.findByUser(username).orElse(null);
+        return userRepository.findByUser(username).orElse(null);
     }
 
     @Override
     public List<Usuario> all() {
 
-        return iUsuarioReposority.findAll();
+        return userRepository.findAll();
     }
 
     @Override
     public Usuario findById(Long id) {
 
-        return this.iUsuarioReposority.findById(id).orElseThrow(() -> new NotFoundException(id));
+        return this.userRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
     @Override
     public List<Usuario> getByRole(RoleType role) {
 
-        return iUsuarioReposority.findAllByRolesNombre(role);
+        return userRepository.findAllByRolesNombre(role);
     }
 }

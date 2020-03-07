@@ -1,18 +1,16 @@
 package tfg.backend.services.interfaces;
 
+import java.util.List;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.enums.RoleType;
 
-import java.util.List;
-
 @Service
 public interface IUserService extends UserDetailsService {
 
-    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+    UserDetails loadUserByUsername(String username);
 
     Usuario getUser(String username);
 

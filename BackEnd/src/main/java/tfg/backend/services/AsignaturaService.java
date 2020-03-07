@@ -1,26 +1,27 @@
 package tfg.backend.services;
 
+import java.util.Collection;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Asignatura;
-import tfg.backend.models.Materiales;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.exceptions.NotFoundException;
 import tfg.backend.reposiroties.IAsignaturaRepository;
-import tfg.backend.reposiroties.IUsuarioReposority;
+import tfg.backend.reposiroties.IUserRepository;
 import tfg.backend.services.interfaces.IAsignaturaService;
-
-import java.util.Collection;
-import java.util.List;
 
 @Service
 public class AsignaturaService implements IAsignaturaService {
 
-    @Autowired
     private IAsignaturaRepository asignaturaRepository;
+    private IUserRepository usuarioReposority;
 
     @Autowired
-    private IUsuarioReposority usuarioReposority;
+    public AsignaturaService(IAsignaturaRepository asignaturaRepository, IUserRepository usuarioReposority) {
+        this.asignaturaRepository = asignaturaRepository;
+        this.usuarioReposority = usuarioReposority;
+    }
 
     @Override
     public Collection<Asignatura> all() {
@@ -54,23 +55,6 @@ public class AsignaturaService implements IAsignaturaService {
     }
 
     @Override
-    public Asignatura addMaterial(Long idAsignatura, Materiales materiales) {
-    	/*Asignatura asignatura=asignaturaRepository.findById(idAsignatura).orElse(null);
-    	if(asignatura!=null) {
-    	    if(materiales.getId()==null){
-                Materiales mat = materialesRepository.save(materiales);
-                asignatura.addMateriales(mat);
-                asignatura = asignaturaRepository.save(asignatura);
-            }else{
-    	        materiales.setAsignatura(asignatura);
-                materialesRepository.save(materiales);
-            }
-    	}
-    	return asignatura;*/
-        return null;
-    }
-
-    @Override
     public Usuario getProfesor(Long id) {
 
         Asignatura a = this.asignaturaRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
@@ -80,9 +64,7 @@ public class AsignaturaService implements IAsignaturaService {
 
     @Override
     public List<Usuario> getMatriculados(Long idAsignatura) {
-        //Asignatura asignatura = asignaturaRepository.findByIdWithMatriculas(idAsignatura).orElseThrow(() -> new NotFoundException(idAsignatura));
         return usuarioReposority.findAllByMatriculasAsignaturasId(idAsignatura);
-        //return asignatura.getMatriculas();
     }
 
     @Override

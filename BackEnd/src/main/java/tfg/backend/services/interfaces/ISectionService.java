@@ -1,10 +1,9 @@
 package tfg.backend.services.interfaces;
 
-import tfg.backend.models.Asignatura;
-import tfg.backend.models.Section;
-
 import java.util.List;
 import java.util.Optional;
+import tfg.backend.models.Asignatura;
+import tfg.backend.models.Section;
 
 public interface ISectionService {
     Optional<Section> findById(Long id);

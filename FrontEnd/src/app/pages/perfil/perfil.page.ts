@@ -23,12 +23,12 @@ export class PerfilPage implements OnInit {
     if (this.auth.usuario) {
       this.user = this.auth.usuario;
       this.rol = this.auth.rol;
-      this.profileImageUrl = this.user.photo_url ? this.profileImageUrl + this.user.photo_url : '';
+      this.profileImageUrl = this.user.photoUrl ? this.profileImageUrl + this.user.photoUrl : '';
     } else {
       this.auth.user.subscribe(data => {
         this.user = data;
         this.rol = this.auth.rol;
-        this.profileImageUrl = this.user.photo_url ? this.profileImageUrl + this.user.photo_url : '';
+        this.profileImageUrl = this.user.photoUrl ? this.profileImageUrl + this.user.photoUrl : '';
       });
     }
   }

@@ -1,6 +1,10 @@
 package tfg.backend.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -10,17 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 import tfg.backend.models.Usuario;
 import tfg.backend.services.interfaces.IUserService;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 @RequestMapping("/api/private")
 public class PrivateController {
 
-    @Autowired
     private IUserService userService;
+
+    @Autowired
+    public PrivateController(IUserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/checktoken")
     public void checktoken(HttpServletResponse response, Authentication auth) throws IOException {

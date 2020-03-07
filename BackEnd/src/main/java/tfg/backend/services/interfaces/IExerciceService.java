@@ -1,8 +1,7 @@
 package tfg.backend.services.interfaces;
 
-import tfg.backend.models.Exercise;
-
 import java.util.Set;
+import tfg.backend.models.Exercise;
 
 public interface IExerciceService {
     Set<Exercise> findExercisesByMaterialId(Long materialId);

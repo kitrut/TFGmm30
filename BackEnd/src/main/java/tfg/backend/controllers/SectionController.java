@@ -1,5 +1,6 @@
 package tfg.backend.controllers;
 
+import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,16 +14,18 @@ import tfg.backend.models.Section;
 import tfg.backend.services.interfaces.IMaterialesService;
 import tfg.backend.services.interfaces.ISectionService;
 
-import java.util.Collection;
-
 @RestController
 @RequestMapping("/api/private/sections")
 public class SectionController {
 
-    @Autowired
     ISectionService sectionService;
-    @Autowired
     IMaterialesService materialesService;
+
+    @Autowired
+    public SectionController(ISectionService sectionService, IMaterialesService materialesService){
+        this.sectionService = sectionService;
+        this.materialesService = materialesService;
+    }
 
     @GetMapping("/{id}/sections")
     public Collection<Section> getAllSectionsOfAsignatura(@PathVariable("id") Long id) {
