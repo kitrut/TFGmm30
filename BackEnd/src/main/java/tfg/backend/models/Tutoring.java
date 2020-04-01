@@ -1,5 +1,6 @@
 package tfg.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Collection;
 import java.util.Date;
@@ -29,6 +30,7 @@ public class Tutoring {
     private String title;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tutorings")
+    @JsonIgnore
     private List<Usuario> users;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
