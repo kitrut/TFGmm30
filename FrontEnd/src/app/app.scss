@@ -16,19 +16,19 @@ table{
         color: var(--ion-color-primary-contrast, white);
     }
 }
-//.mat-row:nth-child(even){
-//    background: var(--ion-color-gray, lightgray);
-//    td{
-//        color: var(--ion-color-gray-contrast, white);
-//    }
-//}
-//
-//.mat-row:nth-child(odd){
-//    background: var(--ion-color-light, lightgray);
-//    td{
-//        color: var(--ion-color-light-contrast, white);
-//    }
-//}
+.mat-row:nth-child(even){
+    background: var(--ion-color-medium, lightgray);
+    td{
+        color: var(--ion-color-medium-contrast, white);
+    }
+}
+
+.mat-row:nth-child(odd){
+    background: var(--ion-color-light, lightgray);
+    td{
+        color: var(--ion-color-light-contrast, white);
+    }
+}
 .mat-footer-row{
     background: var(--ion-color-primary, blue);
     td{

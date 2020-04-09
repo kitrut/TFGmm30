@@ -34,6 +34,11 @@ public class Asignatura {
     @JsonIgnore
     private Usuario profesor;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "asignatura_id")
+    @JsonIgnore
+    private Collection<Tutoring> tutorings;
+
     @ManyToMany
     @JsonIgnore
     private Collection<Matricula> matriculas;
