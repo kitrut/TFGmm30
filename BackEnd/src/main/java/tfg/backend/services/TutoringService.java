@@ -7,10 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import tfg.backend.models.Asignatura;
 import tfg.backend.models.Tutoring;
 import tfg.backend.models.TutoringMessage;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.exceptions.NotFoundException;
+import tfg.backend.reposiroties.IAsignaturaRepository;
 import tfg.backend.reposiroties.ITutoringRepository;
 import tfg.backend.services.interfaces.ITutoringService;
 import tfg.backend.services.interfaces.IUserService;
@@ -19,12 +21,14 @@ import tfg.backend.services.interfaces.IUserService;
 public class TutoringService implements ITutoringService {
 
     ITutoringRepository tutoringRepository;
+    IAsignaturaRepository asignaturaRepository;
     IUserService userService;
 
     @Autowired
-    public TutoringService(ITutoringRepository tutoringRepository, IUserService userService) {
+    public TutoringService(ITutoringRepository tutoringRepository, IUserService userService, IAsignaturaRepository asignaturaRepository) {
         this.tutoringRepository = tutoringRepository;
         this.userService = userService;
+        this.asignaturaRepository = asignaturaRepository;
     }
 
     @Override
@@ -34,15 +38,26 @@ public class TutoringService implements ITutoringService {
 
     @Override
     public Tutoring create(Tutoring tutoring, Authentication auth) {
-        Usuario u = this.userService.getUser(auth.getPrincipal().toString());
-        tutoring.getTutoringMessages().stream().forEach(message -> message.setUser(u));
-        tutoring.setUsers(Arrays.asList(u));
-        Collection<Tutoring> tutoringList = u.getTutorings();
-        
+        Usuario user = this.userService.getUser(auth.getPrincipal().toString());
+
+        tutoring.getTutoringMessages().stream().forEach(message -> message.setUser(user));
+        tutoring.setUsers(Arrays.asList(user, tutoring.getAsignatura().getProfesor()));
+
+        Collection<Tutoring> tutoringList = user.getTutorings();
         if(tutoringList != null){
             tutoringList.add(tutoring);
         } else {
-            u.setTutorings(Arrays.asList(tutoring));
+            user.setTutorings(Arrays.asList(tutoring));
+        }
+
+        Long asignaturaId = tutoring.getAsignatura().getId();
+        Asignatura asignatura = this.asignaturaRepository.findById(asignaturaId).orElseThrow(()-> new NotFoundException(asignaturaId));
+        Usuario profesor = asignatura.getProfesor();
+        Collection<Tutoring> profesorList = profesor.getTutorings();
+        if(profesorList != null){
+            profesorList.add(tutoring);
+        } else {
+            profesor.setTutorings(Arrays.asList(tutoring));
         }
 
         return tutoringRepository.save(tutoring);

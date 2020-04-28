@@ -11,7 +11,6 @@ import { IndexComponent } from './index/index.component';
 import { DetailComponent } from './detail/detail.component';
 import { AddTutoringComponent } from './add-tutoring/add-tutoring.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import {InviteUsersComponent} from './invite-users/invite-users.component';
 
 const routes: Routes = [
   {
@@ -29,10 +28,6 @@ const routes: Routes = [
       {
         path: ':id',
         component: DetailComponent
-      },
-      {
-        path: ':id/inviteUsers',
-        component: InviteUsersComponent
       }
     ]
   }
@@ -52,8 +47,7 @@ const routes: Routes = [
     TutoringPage,
     IndexComponent,
     DetailComponent,
-    AddTutoringComponent,
-    InviteUsersComponent
+    AddTutoringComponent
   ]
 })
 export class TutoringPageModule {}
