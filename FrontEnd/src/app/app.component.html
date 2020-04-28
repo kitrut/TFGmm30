@@ -1,0 +1,39 @@
+<ion-app [ngClass]="theme">
+  <ion-split-pane contentId="main-content" when="(min-width: 2000px)">
+    <ion-menu [disabled]="!isLoggued" contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+            <ion-item color="primary" [routerDirection]="'root'" [routerLink]="['/perfil']">
+              <ion-avatar slot="start">
+                <img [src]="user? 'http://localhost:9090/uploads/' + user?.photoUrl : null">
+              </ion-avatar>
+              <ion-label>
+                <h3>{{user?.nombre + ' ' + user?.apellidos + ' '}}</h3>
+                <p>{{rolUsuario}}</p>
+              </ion-label>
+            </ion-item>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages;let lastItem = last;">
+            <ion-item *ngIf="!lastItem" [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{ 'Menu.'+p.title | translate }}
+              </ion-label>
+              <ion-badge slot="end">0</ion-badge>
+            </ion-item>
+            <ion-item *ngIf="lastItem" [routerDirection]="'root'" [routerLink]="[p.url]" (click)="salir()">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>
+                {{ 'Menu.Salir' | translate }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

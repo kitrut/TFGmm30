@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button [defaultHref]="'/asignaturas/' + asignaturaId"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{titulo}}</ion-title>
+    <ion-buttons slot="end" *ngIf="segment.value === 'notesTab'">
+      <ion-button (click)="saveClassNotes()">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-segment #segment value="materialTab">
+      <ion-segment-button value="materialTab">
+        <ion-icon name="book"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="exerciseTab">
+        <ion-icon name="calculator"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="notesTab">
+          <ion-icon name="library"></ion-icon>
+      </ion-segment-button>
+    </ion-segment> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <md-editor *ngIf="segment.value === 'materialTab'" name="Content" [(ngModel)]="content" [mode]="mode" [height]="'auto'" [options]="options"></md-editor>
+  <div *ngIf="segment.value === 'exerciseTab'">
+    <app-exercise-generator></app-exercise-generator>
+    <div *ngFor="let exercise of exercices">      
+      <app-exercise-view [exercise]="exercise"></app-exercise-view>
+    </div>
+    <ion-button *ngIf="exercices.length > 0" color="success" expand="block">Resolver</ion-button>
+  </div>
+  <md-editor *ngIf="segment.value === 'notesTab'" name="Content" [(ngModel)]="classNotesContent" [mode]="editor" [height]="'auto'" [options]="options" (onEditorLoaded)="editorLoad($event)">
+  </md-editor>
+</ion-content>

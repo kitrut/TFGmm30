@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'Menu.Usuarios' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="create">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-searchbar animated [(ngModel)]="buscado" (ionChange)="buscar()" debounce="500"></ion-searchbar>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="valorSegmento">
+      <ion-segment-button value="profesores" style="font-size:11px;">
+        {{'Users.Teachers' | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="alumnos" style="font-size:11px;">
+        {{'Users.Students' | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="otros" style="font-size:11px;">
+        {{'Users.Others' | translate}}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list class="ion-no-padding">
+      <ion-item class="ion-text-center" color="primary">
+        <ion-avatar slot="start"></ion-avatar>
+        <ion-label>{{'Users.Name' | translate}}</ion-label>
+        <ion-label>{{'Users.Surnames' | translate}}</ion-label>
+        <ion-label>{{'Users.Email' | translate}}</ion-label>
+      </ion-item>
+      <ion-item-sliding *ngFor="let usuario of usuariosFiltrados | paginate: { itemsPerPage: 5, currentPage: p }">
+        <ion-item-options side="end">
+          <ion-item-option color="primary" (click)="perfil(usuario.id)">
+            <ion-icon slot="top" name="information-circle-outline"></ion-icon>
+            {{'Buttons.Details' | translate}}
+          </ion-item-option>
+          <ion-item-option color="secondary">
+            <ion-icon slot="top" name="chatboxes"></ion-icon>
+            {{'Buttons.Message' | translate}}
+          </ion-item-option>
+          <ion-item-option color="tertiary">
+            <ion-icon slot="top" name="create"></ion-icon>
+            {{'Buttons.Edit' | translate}}
+          </ion-item-option>
+          <ion-item-option color="danger">
+            <ion-icon slot="top" name="trash"></ion-icon>
+            {{'Buttons.Delete' | translate}}
+          </ion-item-option>
+        </ion-item-options>
+
+        <ion-item class="ion-text-center">
+          <ion-avatar slot="start">
+            <img
+              [src]="usuario.photoUrl ? 'http://localhost:9090/uploads/' + usuario.photoUrl : 'assets/images/User_icon.png'">
+          </ion-avatar>
+          <ion-label class="ion-text-wrap">{{usuario.nombre}}</ion-label>
+          <ion-label class="ion-text-wrap">{{usuario.apellidos}}</ion-label>
+          <ion-label class="ion-text-wrap">{{usuario.email}}</ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </ion-card>
+</ion-content>

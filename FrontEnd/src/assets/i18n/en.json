@@ -1,0 +1,101 @@
+{
+    "Menu":{
+        "Announcements": "Announcements",
+        "Alumnos":"Students",
+        "Profesores":"Teachers",
+        "Usuarios":"Users",
+        "Asignaturas":"Subjects",
+        "Materiales": "Supplies",
+        "Tutoring": "Tutoring",
+        "Calendar": "Schedule",
+        "Ratings" : "Ratings",
+        "Settings": "Settings",
+        "Salir" : "Exit"
+    },
+
+    "Announcements":{
+        "CreateAnnouncement": "Create announcement",
+        "UpdateAnnouncement": "Update announcement",
+        "Title": "Title",
+        "SelectASubject": "Select a subject",
+        "Importance": "Importance",
+        "Message": "Message"
+    },
+
+    "Calendar": {
+        "Day" : "Day",
+        "Week" : "Week",
+        "Month": "Month",
+        "AddEvent": "Add event"
+    },
+
+    "Ratings":{
+        "Name": "Name",
+        "Weight": "Weight",
+        "Rating": "Rating",
+        "Weighted": "Weighted",
+        "Comments": "Comments"
+    },
+
+    "Settings":{
+        "SelectALanguage": "Select a language",
+        "SelectATheme": "Select a theme"
+    },
+
+    "Asignaturas":{
+        "Nombre":"Name",
+        "Descripción":"Description",
+        "Curso":"Course",
+        "DetalleAsignatura": "Subject details",
+        "AlumnosMatriculados":"Enrolled students",
+        "Profesor":"Teacher",
+        "AssignTeacher": "Assign teacher",
+        "SubjectCreation": "Subject creation"
+
+    },
+
+    "Users":{
+        "Name": "Name",
+        "Surnames": "Surnames",
+        "Email": "Email",
+        "Teachers": "Teachers",
+        "Students": "Students",
+        "Others": "Others",
+        "Profile": "Profile",
+        "PersonalData": "Personal data",
+        "AddUser": "Add user"
+    },
+
+    "Role": {
+        "Role": "Role",
+        "Admin" : "Admin",
+        "Teacher" : "Teacher",
+        "Student": "Student"
+    },
+    
+    "Buttons":{
+        "Create": "Create",
+        "Details": "Details",
+        "Edit": "Edit",
+        "Delete": "Delete",
+        "Message": "Message",
+        "Save": "Save",
+        "Clear": "Clear"
+    },
+
+    "Themes": {
+        "Default": "Default",
+        "Light": "Light",
+        "Dark": "Dark"
+    },
+
+    "Languages": {
+        "Spanish": "Spanish",
+        "English": "English",
+        "French": "French"
+    },
+
+    "Errors":{
+        "PageNotFound": "Page not found"
+    }
+}

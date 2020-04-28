@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>addMateriales</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardar()">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="materialForm">
+
+    <ion-item>
+      <ion-label position="floating">Título del documento:</ion-label>
+      <ion-input clearInput formControlName="titulo" type="text"></ion-input>
+    </ion-item>
+
+    <md-editor name="Content" [upload]="doUpload" formControlName="contenido" [mode]="mode" [options]="options"
+    [height]="'auto'" required maxlength="1000">
+    </md-editor>   
+  </form>
+</ion-content>

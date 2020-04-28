@@ -1,0 +1,100 @@
+{
+    "Menu":{
+        "Announcements": "Anuncios",
+        "Alumnos":"Alumnos",
+        "Profesores":"Profesores",
+        "Usuarios":"Usuarios",
+        "Asignaturas":"Asignaturas",
+        "Materiales": "Materiales",
+        "Tutoring": "Tutorías",
+        "Calendar": "Agenda",
+        "Ratings" : "Notas",
+        "Settings": "Ajustes",
+        "Salir" : "Salir"
+    },
+
+    "Announcements":{
+        "CreateAnnouncement": "Crear anuncio",
+        "UpdateAnnouncement": "Actualizar anuncio",
+        "Title": "Título",
+        "SelectASubject": "Seleccione una asignatura",
+        "Importance": "Importancia",
+        "Message": "Mensaje"
+    },
+
+    "Calendar": {
+        "Day" : "Día",
+        "Week" : "Semana",
+        "Month": "Mes",
+        "AddEvent": "Añadir evento"
+    },
+
+    "Ratings":{
+        "Name": "Nombre",
+        "Weight": "Peso",
+        "Rating": "Nota",
+        "Weighted": "Ponderada",
+        "Comments": "Comentarios"
+    },
+
+    "Settings":{
+        "SelectALanguage":"Seleccione un idioma",
+        "SelectATheme": "Selecciona un tema"
+    },
+
+    "Asignaturas":{
+        "Nombre":"Nombre",
+        "Descripción":"Descripción",
+        "Curso":"Curso",
+        "DetalleAsignatura": "Detalles de la asignatura",
+        "AlumnosMatriculados":"Alumnos matriculados",
+        "Profesor":"Profesor",
+        "AssignTeacher": "Asignar profesor",
+        "SubjectCreation": "Creación de asignaturas"
+    },
+
+    "Users":{
+        "Name": "Nombre",
+        "Surnames": "Apellidos",
+        "Email": "Email",
+        "Teachers": "Profesores",
+        "Students": "Alumnos",
+        "Others": "Otros",
+        "Profile": "Perfil",
+        "PersonalData": "Datos personales",
+        "AddUser": "Añadir usuario"
+    },
+
+    "Role": {
+        "Role": "Rol",
+        "Admin" : "Administrador",
+        "Teacher" : "Profesor",
+        "Student": "Alumno"
+    },
+
+    "Buttons":{
+        "Create": "Crear",
+        "Details": "Detalles",
+        "Edit": "Editar",
+        "Delete": "Borrar",
+        "Message": "Mensaje",
+        "Save": "Guardar",
+        "Clear": "Limpiar"
+    },
+
+    "Themes": {
+        "Default": "Predeterminado",
+        "Light": "Claro",
+        "Dark": "Oscuro"
+    },
+
+    "Languages": {
+        "Spanish": "Español",
+        "English": "Inglés",
+        "French": "Francés"
+    },
+
+    "Errors":{
+        "PageNotFound": "Página no encontrada"
+    }
+}

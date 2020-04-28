@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="asignaturas"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'Asignaturas.SubjectCreation' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="asignaturaForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">{{'Asignaturas.Nombre' | translate}}:</ion-label>
+      <ion-input type="text" formControlName="nombre" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Asignaturas.Descripción' | translate}}:</ion-label>
+      <ion-input type="text" formControlName="descripcion" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Asignaturas.Curso' | translate}}:</ion-label>
+      <ion-input type="text" formControlName="curso" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-button color="success" type="submit" [disabled]="!asignaturaForm.valid">{{'Buttons.Create' | translate}}</ion-button>
+  </form>
+</ion-content>

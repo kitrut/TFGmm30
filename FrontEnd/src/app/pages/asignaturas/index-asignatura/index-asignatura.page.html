@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'Menu.Asignaturas' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="crear()">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+      <ion-icon slot="start" name="search"></ion-icon>
+      <ion-input inputmode="search" (keyup)="applyFilter($event.target.value)" placeholder="Buscar" clear-input></ion-input>
+  </ion-item>
+
+  <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Asignaturas.Nombre' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="course">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Asignaturas.Curso' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.curso}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Asignaturas.Descripción' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+      <td mat-cell *matCellDef="let element">
+        <ion-buttons>
+          <ion-button [matMenuTriggerFor]="appMenu">
+            <ion-icon [matMenuTriggerFor]="appMenu" slot="icon-only" name="ellipsis-vertical"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <mat-menu #appMenu="matMenu">
+          <button mat-menu-item [routerLink]="'/asignaturas/'+element.id">{{'Buttons.Details' | translate}}</button>
+          <button mat-menu-item (click)="delete(element)">{{'Buttons.Delete' | translate}}</button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</ion-content>

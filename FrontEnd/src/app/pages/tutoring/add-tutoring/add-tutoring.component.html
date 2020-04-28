@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="tutoring"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'Menu.Tutoring' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="tutoringForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input placeholder="Título" clearInput formControlName="title" ngDefaultControl></ion-input>
+    </ion-item>
+    
+    
+    <ion-item>
+      <ion-label position="floating">{{'Announcements.SelectASubject' | translate}}</ion-label>
+      <ion-select formControlName="asignatura">
+        <ion-select-option value="0">General</ion-select-option>
+        <ion-select-option *ngFor="let asi of asignaturas" [value]="asi">
+          <ion-icon slot="end" name="bookmarks"></ion-icon>{{'['+ asi.curso + '] ' +  asi.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item formArrayName="tutoringMessages">
+      <ng-container formGroupName="0">
+        <ion-label position="floating">Mensaje</ion-label>
+        <ion-textarea rows="15" clearInput formControlName="message" ngDefaultControl></ion-textarea>  
+      </ng-container>
+     </ion-item>
+
+    <ion-button type="submit" color="success" expand="full">{{'Buttons.Create' | translate }}</ion-button>
+  </form>
+</ion-content>

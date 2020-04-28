@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="asignaturas"></ion-back-button>      
+    </ion-buttons>
+    <ion-title>{{'Asignaturas.DetalleAsignatura' | translate}}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-segment #segment value="infoTab">
+      <ion-segment-button value="infoTab" selected>
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="materialesTab">
+        <ion-icon name="book"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="notesTab">
+        <ion-icon name="podium"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="calendarTab">
+          <ion-icon name="calendar"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-detalle-asignatura *ngIf="segment.value=='infoTab'"></app-detalle-asignatura>
+  <app-ejercicios *ngIf="segment.value=='materialesTab'"></app-ejercicios>
+  <app-ratings-subject *ngIf="segment.value=='notesTab'"></app-ratings-subject>
+  <app-calendar-subject *ngIf="segment.value=='calendarTab'"></app-calendar-subject>
+</ion-content>

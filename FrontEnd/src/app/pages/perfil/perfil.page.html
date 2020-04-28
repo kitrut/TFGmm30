@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card>
+    <div class="image-container" (click)="openCamera()">
+      <img class="rounded-circle perfil-image" width="300px" height="300px" [src]="uploadImage ? profileImageUrl : defaultImagePath" />
+    </div>
+    
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Datos personales</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-list>
+            <ion-item>
+              <ion-label>
+                <ion-row>
+                  <ion-col><b>Nombre</b></ion-col>
+                  <ion-col>{{user?.nombre}}</ion-col>
+                </ion-row>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-row>
+                  <ion-col><b>Apellidos</b></ion-col>
+                  <ion-col>{{user?.apellidos}}</ion-col>
+                </ion-row>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-row>
+                  <ion-col><b>Email</b></ion-col>
+                  <ion-col>{{user?.email}}</ion-col>
+                </ion-row>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-row>
+                  <ion-col><b>ROL</b></ion-col>
+                  <ion-col>{{rol}}</ion-col>
+                </ion-row>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

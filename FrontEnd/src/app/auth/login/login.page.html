@@ -1,0 +1,42 @@
+<ion-content color="primary">
+  <div class="login-container">
+    
+    <ion-card color="medium">
+
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>
+          <ion-icon name="logo-angular"></ion-icon>
+          <ion-icon name="logo-ionic"></ion-icon>
+          TFG MMH30
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form class="container py-5" [formGroup]="loginForm" (ngSubmit)="login()" (keyup.enter)="login()">
+          <ion-grid>
+            <ion-row class="ion-justify-content-center">
+              <ion-col align-center size="6" size-xs="12">
+                <ion-item>
+                  <ion-input formControlName="user" ngDefaultControl type="text" placeholder="Username" autofocus
+                    required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input formControlName="password" ngDefaultControl type="password" placeholder="Password"
+                    required></ion-input>
+                </ion-item>
+
+                <ion-label *ngIf="error" color="danger">{{errorCode}}</ion-label>
+
+                <ion-button color="success" size="large" type="submit" [disabled]="loginForm.invalid" expand="full">
+                  Sign in
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+</ion-content>
