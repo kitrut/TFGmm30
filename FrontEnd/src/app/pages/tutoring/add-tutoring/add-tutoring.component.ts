@@ -3,7 +3,7 @@ import { AsignaturasService } from '@services/asignaturas.service';
 import { Asignatura } from '@models/asignatura';
 import { TutoringService } from '@services/tutoring.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-add-tutoring',
@@ -18,17 +18,17 @@ export class AddTutoringComponent implements OnInit {
     id: new FormControl(null),
     title: new FormControl('', Validators.required),
     tutoringMessages: new FormArray([
-      this.formBuilder.group({
-        message: new FormControl('', Validators.required)
-      })
-    ])
+        new FormGroup({
+          message: new FormControl('', Validators.required)
+        })
+    ]),
+    asignatura: new FormControl(null)
   });
 
   constructor(
     public asignaturaService: AsignaturasService,
     public tutoringService: TutoringService,
-    public router: Router,
-    private formBuilder: FormBuilder
+    public router: Router
     ) { }
 
   ngOnInit() {

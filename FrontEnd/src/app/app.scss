@@ -17,9 +17,9 @@ table{
     }
 }
 .mat-row:nth-child(even){
-    background: var(--ion-color-gray, lightgray);
+    background: var(--ion-color-medium, lightgray);
     td{
-        color: var(--ion-color-gray-contrast, white);
+        color: var(--ion-color-medium-contrast, white);
     }
 }
 

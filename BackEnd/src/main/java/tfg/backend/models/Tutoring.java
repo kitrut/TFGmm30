@@ -1,5 +1,7 @@
 package tfg.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Collection;
 import java.util.Date;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -29,12 +32,17 @@ public class Tutoring {
     private String title;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tutorings")
+    @JsonIgnore
     private List<Usuario> users;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="tutoring_id")
     @JsonManagedReference
     private Collection<TutoringMessage> tutoringMessages;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Asignatura asignatura;
 
     @CreationTimestamp
     @Column(updatable = false)

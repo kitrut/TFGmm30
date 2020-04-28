@@ -29,8 +29,8 @@ public class TutoringController {
     }
 
     @GetMapping()
-    public Collection<Tutoring>  findAll() {
-        return tutoringService.findAll();
+    public Collection<Tutoring>  findAll(Authentication auth) {
+        return tutoringService.findAllByUser(auth);
     }
 
     @GetMapping("{id}")
@@ -40,21 +40,28 @@ public class TutoringController {
 
     @PostMapping
     public Tutoring create(@RequestBody Tutoring tutoring, Authentication auth) {
-        Usuario u = this.userService.getUser(auth.getPrincipal().toString());
-        tutoring.getTutoringMessages().stream().forEach(message -> message.setUser(u));
-        return tutoringService.create(tutoring);
+        return tutoringService.create(tutoring, auth);
     }
 
 
     @GetMapping("{id}/messages")
     public Collection<TutoringMessage> getMessages(@PathVariable("id") Long id,  Authentication auth) {
-        return tutoringService.findMessagesById(id, this.userService.getUser(auth.getPrincipal().toString()));
+        return tutoringService.findMessagesById(id, auth);
     }
 
     @PostMapping("{id}/messages")
     public Tutoring create(@PathVariable("id") Long id, @RequestBody TutoringMessage message, Authentication auth) {
-        Usuario usuario = this.userService.getUser(auth.getPrincipal().toString());
-        return tutoringService.createMessage(id,message, usuario);
+        return tutoringService.createMessage(id,message, auth);
+    }
+
+    @GetMapping("{id}/users")
+    public Collection<Usuario> getUsers(@PathVariable("id") Long id,  Authentication auth){
+        return tutoringService.getUsersByTutoring(id);
+    }
+
+    @PostMapping("{id}/users")
+    public void addUsers(@PathVariable("id") Long id,  Authentication auth, @RequestBody Collection<Usuario> users){
+        tutoringService.addUsers(id, users);
     }
 
 }

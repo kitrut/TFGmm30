@@ -17,15 +17,13 @@
     
     
     <ion-item>
-
       <ion-label position="floating">{{'Announcements.SelectASubject' | translate}}</ion-label>
-      <ion-select>
+      <ion-select formControlName="asignatura">
         <ion-select-option value="0">General</ion-select-option>
         <ion-select-option *ngFor="let asi of asignaturas" [value]="asi">
           <ion-icon slot="end" name="bookmarks"></ion-icon>{{'['+ asi.curso + '] ' +  asi.nombre}}
         </ion-select-option>
       </ion-select>
-
     </ion-item>
 
     <ion-item formArrayName="tutoringMessages">
