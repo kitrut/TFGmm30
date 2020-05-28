@@ -13,6 +13,7 @@ import { Usuario } from '@models/usuario';
 export class AuthService {
 
   public isLoggedIn = new Subject();
+  logged = false;
   public user = new Subject<Usuario>();
   usuario: Usuario = null;
   rol: UserRole;
@@ -37,6 +38,7 @@ export class AuthService {
         this.usuario.email = data.body.email;
         this.router.navigateByUrl('/announcements');
         this.isLoggedIn.next(true);
+        this.logged = true;
         this.user.next(this.usuario);
       },
       err => {
@@ -57,6 +59,7 @@ export class AuthService {
           this.rol = data.roles[0].nombre;
           this.router.navigateByUrl(document.URL.replace('http://localhost:8100', ''));
           this.isLoggedIn.next(true);
+          this.logged = true;
           this.user.next(this.usuario);
       },
        err => {}
@@ -66,6 +69,7 @@ export class AuthService {
   logout() {
     this.storage.clear().then(() => {
       this.isLoggedIn.next(false);
+      this.logged = false;
       this.usuario = null;
       this.user.next(null);
       this.rol = null;

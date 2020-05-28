@@ -28,6 +28,7 @@ import { AddSectionComponent } from './add-section/add-section.component';
 import { DetalleAsignaturaComponent } from './detalles/detalle-asignatura/detalle-asignatura.component';
 import { ExerciseGeneratorComponent } from './ejercicios/exercise-generator/exercise-generator.component';
 import { ExerciseViewComponent } from './ejercicios/exercise-view/exercise-view.component';
+import {NgCalendarModule} from 'ionic2-calendar';
 
 const routes: Routes = [
   {
@@ -64,23 +65,24 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    TranslateModule.forChild(),
-    NgxPaginationModule,
-    LMarkdownEditorModule,
-    MatMenuModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatIconModule,
-    // NgCalendarModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        TranslateModule.forChild(),
+        NgxPaginationModule,
+        LMarkdownEditorModule,
+        MatMenuModule,
+        MatInputModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatIconModule,
+        NgCalendarModule,
+        // NgCalendarModule
+    ],
   declarations: [
     DetalleAsignaturaPage,
     CreateAsignaturaPage,

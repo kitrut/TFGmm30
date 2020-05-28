@@ -44,12 +44,6 @@ public class UserControllerTest {
     @Autowired
     UserController userController;
 
-    public static byte[] convertObjectToJsonBytes(Object object) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        return mapper.writeValueAsBytes(object);
-    }
-
     @Test
     public void getProfesorSinToken() throws Exception {
         when(userService.findById(2l)).thenReturn(null);
@@ -79,6 +73,13 @@ public class UserControllerTest {
                 .contentType(APPLICATION_JSON_UTF8)
                 .content(UserControllerTest.convertObjectToJsonBytes(userWithRole)))
                 .andExpect(status().is(HttpStatus.CREATED.value()));
+    }
+
+
+    public static byte[] convertObjectToJsonBytes(Object object) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return mapper.writeValueAsBytes(object);
     }
 
     @Test

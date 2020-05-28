@@ -22,7 +22,7 @@ import tfg.backend.services.interfaces.IUserService;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class    SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private IUserService userService;
