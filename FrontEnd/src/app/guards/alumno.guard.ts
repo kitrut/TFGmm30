@@ -13,7 +13,6 @@ export class AlumnoGuard implements  CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
     : boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     if (this.authService.logged) {
-      console.log('usuario loqueado')
       return true;
     } else {
       this.router.navigateByUrl('/login');
