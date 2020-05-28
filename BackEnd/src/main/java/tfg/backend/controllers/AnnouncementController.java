@@ -34,7 +34,6 @@ public class AnnouncementController {
 
     @PostMapping()
     public Announcement create(@RequestBody Announcement announcement) {
-        System.out.println(announcement);
         return announcementService.create(announcement);
     }
 

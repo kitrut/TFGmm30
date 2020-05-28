@@ -37,13 +37,16 @@ const routes: Routes = [
   // ASIGNATURAS
   {
     path: 'asignaturas',
-    loadChildren: () => import('./pages/asignaturas/asignaturas.module').then(m => m.AsignaturasPageModule) },
+    loadChildren: () => import('./pages/asignaturas/asignaturas.module').then(m => m.AsignaturasPageModule),
+    canActivate: [AlumnoGuard] },
   {
     path: 'perfil',
-    loadChildren: () => import('./pages/perfil/perfil.module').then(m => m.PerfilPageModule) },
+    loadChildren: () => import('./pages/perfil/perfil.module').then(m => m.PerfilPageModule),
+    canActivate: [AlumnoGuard] },
   {
     path: 'usuarios',
-    loadChildren: () => import('./pages/usuarios/usuarios.module').then(m => m.UsuariosPageModule) },
+    loadChildren: () => import('./pages/usuarios/usuarios.module').then(m => m.UsuariosPageModule),
+    canActivate: [AlumnoGuard] },
   {
     path: '**',
     loadChildren: () => import('./pages/not-found404/not-found404.module').then(m => m.NotFound404PageModule)
