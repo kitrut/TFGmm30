@@ -1,5 +1,8 @@
 package tfg.backend.services;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.Collection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +13,6 @@ import tfg.backend.models.Usuario;
 import tfg.backend.models.enums.RoleType;
 import tfg.backend.models.exceptions.NotFoundException;
 import tfg.backend.services.interfaces.IUserService;
-
-import java.util.Collection;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

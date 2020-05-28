@@ -39,10 +39,13 @@ public class SectionService implements ISectionService {
     public Asignatura addSection(Long idAsignatura, Section section) {
         Asignatura a = asignaturaRepository.findById(idAsignatura).orElseThrow(() -> new NotFoundException(idAsignatura));
 
-        Collection<Section> sections = a.getSections();
-        sections.add(section);
-        a.setSections(sections);
-        a = asignaturaRepository.save(a);
+//        Collection<Section> sections = a.getSections();
+//        sections.add(section);
+//        a.setSections(sections);
+//        a = asignaturaRepository.save(a);
+        section.setAsignatura(a);
+        sectionRepository.save(section);
+        a = asignaturaRepository.findById(idAsignatura).orElseThrow(() -> new NotFoundException(idAsignatura));
 
         return a;
     }
