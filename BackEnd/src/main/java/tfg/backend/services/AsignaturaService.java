@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.exceptions.NotFoundException;
-import tfg.backend.reposiroties.IAsignaturaRepository;
-import tfg.backend.reposiroties.IUserRepository;
+import tfg.backend.repositories.IAsignaturaRepository;
+import tfg.backend.repositories.IUserRepository;
 import tfg.backend.services.interfaces.IAsignaturaService;
 
 @Service

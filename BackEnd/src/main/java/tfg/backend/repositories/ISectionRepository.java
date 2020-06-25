@@ -1,4 +1,4 @@
-package tfg.backend.reposiroties;
+package tfg.backend.repositories;
 
 import java.util.List;
 import java.util.Optional;

@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import tfg.backend.models.Materiales;
 import tfg.backend.models.Section;
 import tfg.backend.models.exceptions.NotFoundException;
-import tfg.backend.reposiroties.IMaterialesRepository;
-import tfg.backend.reposiroties.ISectionRepository;
+import tfg.backend.repositories.IMaterialesRepository;
+import tfg.backend.repositories.ISectionRepository;
 import tfg.backend.services.interfaces.IMaterialesService;
 
 @Service

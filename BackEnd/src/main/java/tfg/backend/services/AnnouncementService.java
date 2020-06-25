@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.Announcement;
 import tfg.backend.models.exceptions.NotFoundException;
-import tfg.backend.reposiroties.IAnnouncementRepository;
+import tfg.backend.repositories.IAnnouncementRepository;
 import tfg.backend.services.interfaces.IAnnouncementService;
 
 @Service

@@ -1,4 +1,4 @@
-package tfg.backend.reposiroties;
+package tfg.backend.repositories;
 
 import static org.junit.Assert.assertEquals;
 

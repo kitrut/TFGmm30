@@ -7,7 +7,9 @@
         <ion-card-title>
           <ion-icon name="logo-angular"></ion-icon>
           <ion-icon name="logo-ionic"></ion-icon>
-          TFG MMH30
+          <p id="title">
+            TFG MMH30
+          </p>
         </ion-card-title>
       </ion-card-header>
 
@@ -17,11 +19,11 @@
             <ion-row class="ion-justify-content-center">
               <ion-col align-center size="6" size-xs="12">
                 <ion-item>
-                  <ion-input formControlName="user" ngDefaultControl type="text" placeholder="Username" autofocus
+                  <ion-input name="userInput" formControlName="user" ngDefaultControl type="text" placeholder="Username" autofocus
                     required></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-input formControlName="password" ngDefaultControl type="password" placeholder="Password"
+                  <ion-input name="password" formControlName="password" ngDefaultControl type="password" placeholder="Password"
                     required></ion-input>
                 </ion-item>
 

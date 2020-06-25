@@ -15,8 +15,8 @@ import tfg.backend.models.Role;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.enums.RoleType;
 import tfg.backend.models.exceptions.NotFoundException;
-import tfg.backend.reposiroties.IRoleReposority;
-import tfg.backend.reposiroties.IUserRepository;
+import tfg.backend.repositories.IRoleReposority;
+import tfg.backend.repositories.IUserRepository;
 import tfg.backend.services.interfaces.IUserService;
 
 @Service

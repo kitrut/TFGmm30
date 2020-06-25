@@ -1,12 +1,16 @@
 import { browser, by, element } from 'protractor';
 
-export class AppPage {
+export class NavbarPO {
   navigateTo(destination) {
     return browser.get(destination);
   }
 
-  getTitle() {
-    return browser.getTitle();
+  toggle() {
+    element(by.xpath('//ion-menu-button')).click();
+  }
+
+  navigateToButton(number) {
+    element(by.xpath('//a[1]')).click();
   }
 
   getPageOneTitleText() {

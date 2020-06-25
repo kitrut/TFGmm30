@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import tfg.backend.models.Exercise;
 import tfg.backend.models.Materiales;
 import tfg.backend.models.exceptions.NotFoundException;
-import tfg.backend.reposiroties.IExerciseRepository;
-import tfg.backend.reposiroties.IMaterialesRepository;
+import tfg.backend.repositories.IExerciseRepository;
+import tfg.backend.repositories.IMaterialesRepository;
 import tfg.backend.services.interfaces.IExerciceService;
 
 @Service

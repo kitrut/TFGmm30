@@ -2,7 +2,6 @@ package tfg.backend.services;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,8 +11,8 @@ import tfg.backend.models.Tutoring;
 import tfg.backend.models.TutoringMessage;
 import tfg.backend.models.Usuario;
 import tfg.backend.models.exceptions.NotFoundException;
-import tfg.backend.reposiroties.IAsignaturaRepository;
-import tfg.backend.reposiroties.ITutoringRepository;
+import tfg.backend.repositories.IAsignaturaRepository;
+import tfg.backend.repositories.ITutoringRepository;
 import tfg.backend.services.interfaces.ITutoringService;
 import tfg.backend.services.interfaces.IUserService;
 

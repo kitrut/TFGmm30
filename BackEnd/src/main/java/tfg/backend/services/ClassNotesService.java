@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tfg.backend.models.ClassNotes;
 import tfg.backend.models.exceptions.NotFoundException;
-import tfg.backend.reposiroties.IClassNotesRepository;
+import tfg.backend.repositories.IClassNotesRepository;
 import tfg.backend.services.interfaces.IClassNotesService;
 
 @Service

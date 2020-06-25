@@ -3,99 +3,20 @@
   <ID>JAVA</ID>
   <OriginalElement>tfg.backend.models</OriginalElement>
   <nodes>
-    <node x="776.2321428571429" y="0.0">tfg.backend.models.UsuarioTest</node>
-    <node x="595.2321428571429" y="0.0">tfg.backend.models.Anuncio</node>
     <node x="235.0" y="227.0">tfg.backend.models.Matricula</node>
-    <node x="0.0" y="194.0">tfg.backend.models.Section</node>
     <node x="38.5" y="0.0">tfg.backend.models.Materiales</node>
+    <node x="0.0" y="194.0">tfg.backend.models.Section</node>
     <node x="84.8125" y="432.0">tfg.backend.models.Asignatura</node>
     <node x="360.23214285714283" y="476.0">tfg.backend.models.Role</node>
     <node x="197.23214285714283" y="680.0">tfg.backend.models.Usuario</node>
   </nodes>
   <notes />
-  <edges>
-    <edge source="tfg.backend.models.Materiales" target="tfg.backend.models.Section">
-      <point x="46.0" y="72.0" />
-      <point x="153.5" y="169.0" />
-      <point x="179.16666666666669" y="169.0" />
-      <point x="71.66666666666669" y="-94.0" />
-    </edge>
-    <edge source="tfg.backend.models.Section" target="tfg.backend.models.Asignatura">
-      <point x="53.75" y="94.0" />
-      <point x="161.25" y="412.0" />
-      <point x="154.5625" y="412.0" />
-      <point x="-23.25" y="-94.0" />
-    </edge>
-    <edge source="tfg.backend.models.Asignatura" target="tfg.backend.models.Section">
-      <point x="-69.75" y="-94.0" />
-      <point x="108.0625" y="412.0" />
-      <point x="53.75" y="412.0" />
-      <point x="-53.75" y="94.0" />
-    </edge>
-    <edge source="tfg.backend.models.Matricula" target="tfg.backend.models.Asignatura">
-      <point x="-18.875" y="61.0" />
-      <point x="291.625" y="412.0" />
-      <point x="247.5625" y="412.0" />
-      <point x="69.75" y="-94.0" />
-    </edge>
-    <edge source="tfg.backend.models.Role" target="tfg.backend.models.Usuario">
-      <point x="47.5" y="50.0" />
-      <point x="502.73214285714283" y="660.0" />
-      <point x="460.0178571428571" y="660.0" />
-      <point x="121.28571428571428" y="-116.0" />
-    </edge>
-    <edge source="tfg.backend.models.Usuario" target="tfg.backend.models.Matricula">
-      <point x="0.0" y="-116.0" />
-      <point x="338.73214285714283" y="412.0" />
-      <point x="329.375" y="412.0" />
-      <point x="18.875" y="61.0" />
-    </edge>
-    <edge source="tfg.backend.models.Asignatura" target="tfg.backend.models.Matricula">
-      <point x="23.25" y="-94.0" />
-      <point x="201.0625" y="402.0" />
-      <point x="253.875" y="402.0" />
-      <point x="-56.625" y="61.0" />
-    </edge>
-    <edge source="tfg.backend.models.Usuario" target="tfg.backend.models.Role">
-      <point x="80.85714285714289" y="-116.0" />
-      <point x="419.5892857142857" y="660.0" />
-      <point x="407.73214285714283" y="660.0" />
-      <point x="-47.5" y="50.0" />
-    </edge>
-    <edge source="tfg.backend.models.Matricula" target="tfg.backend.models.Usuario">
-      <point x="56.625" y="61.0" />
-      <point x="367.125" y="412.0" />
-      <point x="349.73214285714283" y="412.0" />
-      <point x="349.73214285714283" y="660.0" />
-      <point x="379.1607142857143" y="660.0" />
-      <point x="40.428571428571445" y="-116.0" />
-    </edge>
-    <edge source="tfg.backend.models.Usuario" target="tfg.backend.models.Asignatura">
-      <point x="-121.28571428571422" y="-116.0" />
-      <point x="217.4464285714286" y="660.0" />
-      <point x="115.8125" y="660.0" />
-      <point x="-62.0" y="94.0" />
-    </edge>
-    <edge source="tfg.backend.models.Asignatura" target="tfg.backend.models.Usuario">
-      <point x="62.0" y="94.0" />
-      <point x="239.8125" y="640.0" />
-      <point x="298.30357142857144" y="640.0" />
-      <point x="-40.42857142857139" y="-116.0" />
-    </edge>
-    <edge source="tfg.backend.models.Section" target="tfg.backend.models.Materiales">
-      <point x="-71.66666666666669" y="-94.0" />
-      <point x="35.833333333333314" y="169.0" />
-      <point x="61.5" y="169.0" />
-      <point x="-46.0" y="72.0" />
-    </edge>
-  </edges>
-  <settings layout="Hierarchic Group" zoom="0.8" x="310.48214285714266" y="437.35714285714283" />
-  <SelectedNodes>
-    <node>tfg.backend.models.UsuarioTest</node>
-  </SelectedNodes>
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.6024590163934426" x="275.5" y="478.00000000000006" />
+  <SelectedNodes />
   <Categories>
-    <Category>Properties</Category>
     <Category>Fields</Category>
+    <Category>Properties</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>packageLocal</VISIBILITY>

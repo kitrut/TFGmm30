@@ -1,6 +1,5 @@
 package tfg.backend.services;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,8 @@ import org.springframework.stereotype.Service;
 import tfg.backend.models.Asignatura;
 import tfg.backend.models.Section;
 import tfg.backend.models.exceptions.NotFoundException;
-import tfg.backend.reposiroties.IAsignaturaRepository;
-import tfg.backend.reposiroties.ISectionRepository;
+import tfg.backend.repositories.IAsignaturaRepository;
+import tfg.backend.repositories.ISectionRepository;
 import tfg.backend.services.interfaces.ISectionService;
 
 @Service
