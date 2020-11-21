@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ExerciseGeneratorComponent } from './exercise-generator.component';
 
@@ -7,7 +7,7 @@ describe('ExerciseGeneratorComponent', () => {
   let component: ExerciseGeneratorComponent;
   let fixture: ComponentFixture<ExerciseGeneratorComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ExerciseGeneratorComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

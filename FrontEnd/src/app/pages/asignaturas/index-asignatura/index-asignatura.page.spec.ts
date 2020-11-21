@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IndexAsignaturaPage } from './index-asignatura.page';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -13,7 +13,7 @@ describe('IndexAsignaturaPage', () => {
   let component: IndexAsignaturaPage;
   let fixture: ComponentFixture<IndexAsignaturaPage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ IndexAsignaturaPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

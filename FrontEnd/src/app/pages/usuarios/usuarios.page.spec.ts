@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UsuariosPage } from './usuarios.page';
 
@@ -7,7 +7,7 @@ describe('UsuariosPage', () => {
   let component: UsuariosPage;
   let fixture: ComponentFixture<UsuariosPage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ UsuariosPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
